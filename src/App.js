@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import InitialPage from './components/InitialPage';
 
 function App() {
+  const [step, setStep] = useState(0);
+  const [initialData, setInitialData] = useState(null);
+
+  const handleNext = (data) => {
+    setInitialData(data);
+    // Siirrytään seuraavaan vaiheeseen (esim. lisävaiheisiin)
+    setStep(step + 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {step === 0 ? (
+        <InitialPage onNext={handleNext} />
+      ) : (
+        <div>
+          <h2>Jatko-osa tulee tähän...</h2>
+          <pre>{JSON.stringify(initialData, null, 2)}</pre>
+        </div>
+      )}
     </div>
   );
 }
 
 export default App;
+
