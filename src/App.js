@@ -1,30 +1,46 @@
 import React, { useState } from 'react';
 import InitialPage from './components/InitialPage';
 import EnvironmentPage from './components/EnvironmentPage';
+import DiversityPage from './components/DiversityPage';
+import ProgressBar from './components/ProgressBar';
 
 function App() {
   const [step, setStep] = useState(0);
   const [initialData, setInitialData] = useState(null);
+  const [environmentData, setEnvironmentData] = useState(null);
 
-  // Kutsutaan, kun InitialPage-lomake on lähetetty
+  // Määritellään sivujen otsikot
+  const pageTitles = [
+    "Yrityksen perustiedot",
+    "Hiilijalanjälki ja tuotannon tehokkuus",
+    "Monimuotoisuus",
+    "Pellon käyttö",
+    "Lannan käsittely ja jätehuolto",
+    "Energian käyttö"
+  ];
+
+  // Alkuperäiseltä sivulta saadaan perustiedot
   const handleInitialNext = (data) => {
     setInitialData(data);
     setStep(1); // Siirrytään ympäristö-sivulle
   };
 
-  // Kutsutaan, kun Ympäristö-sivulta halutaan mennä eteenpäin
+  // Ympäristösivulta saadaan data ja siirrytään Monimuotoisuus-sivulle
   const handleEnvironmentNext = (envData) => {
-    console.log('Ympäristö-sivun tiedot:', envData);
-    alert('Voit jatkaa muihin vaiheisiin tai tallentaa PDF:n');
+    setEnvironmentData(envData);
+    setStep(2); // Siirrytään Monimuotoisuus-sivulle
   };
 
-  // Kutsutaan, kun Ympäristö-sivulta halutaan palata taaksepäin
   const handleEnvironmentBack = () => {
     setStep(0);
   };
 
+  const handleDiversityBack = () => {
+    setStep(1);
+  };
+
   return (
-    <div>
+    <div style={{ paddingBottom: '80px' }}>
       {step === 0 && (
         <InitialPage onNext={handleInitialNext} />
       )}
@@ -35,7 +51,13 @@ function App() {
           companyData={initialData}
         />
       )}
-      {/* step === 2, 3... jos haluat lisävaiheita */}
+      {step === 2 && (
+        <DiversityPage
+          onNext={() => alert('Monimuotoisuus-sivu valmis')}
+          onPrevious={handleDiversityBack}
+        />
+      )}
+      <ProgressBar currentPage={step + 1} pageTitles={pageTitles} />
     </div>
   );
 }
