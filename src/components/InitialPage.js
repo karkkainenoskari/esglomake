@@ -20,148 +20,156 @@ const InitialPage = ({ onNext }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Lomaketiedot:', formData);
-    // Voit jatkaa seuraavaan vaiheeseen kutsumalla onNext()
     if (onNext) {
       onNext(formData);
     }
   };
 
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
-      {/* Yläosa: logot ja infoteksti */}
-      <header style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <div>
-          <img src="/logo1.png" alt="Logo 1" style={{ marginRight: '1rem', height: '80px' }} />
-          <img src="/logo2.png" alt="Logo 2" style={{ marginRight: '1rem', height: '80px' }} />
-          {/* Lisää logokuvia tarpeen mukaan */}
+    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Yläosa: Logot, otsikko ja infoteksti */}
+      <header style={{ marginBottom: '2rem' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '2rem',
+            marginBottom: '1rem'
+          }}
+        >
+          <img src="/savonia.png" alt="Savonia" style={{ height: '60px' }} />
+          <img src="/maitoyrittajat.png" alt="Maitoyrittäjät" style={{ height: '60px' }} />
+          <img src="/valio.png" alt="Valio" style={{ height: '60px' }} />
+          <img src="/ysao.png" alt="Ysao" style={{ height: '60px' }} />
+          <img src="/euroopanunioni.png" alt="Euroopan unioni" style={{ height: '60px' }} />
         </div>
-        <h1>Maitotilan ESG -vastuullisuusraportti -malli</h1>
-        <p>
-          ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance.
-          Tulevaisuudessa maidontuotannon vastuullisuuskäsite laajenee ja sen osoittaminen ja
-          raportointi korostuvat yhteiskunnan, asiakkaiden, rahoituslaitosten ja kuluttajien
-          vaatimuksista.
+        <h1 style={{ textAlign: 'center' }}>Maitotilan ESG-vastuullisuusraportti</h1>
+        <p style={{ textAlign: 'center' }}>
+        ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance. Termillä tarkoitetaan ympäristöön, yhteiskuntavastuuseen ja hallintotapaan liittyvien tekijöiden tunnistamista, toimintatapoja ja niistä raportointia. Tulevaisuudessa maidontuotannon vastuullisuuskäsite laajenee ja sen osoittaminen ja raportointi korostuvat yhteiskunnan, asiakkaiden, rahoituslaitosten ja kuluttajien vaatimuksista. Vastuullisuusraportointi tulee nousemaan talousraportoinnin rinnalle osaksi lainoitus- ja rahoitusprosesseja.  
         </p>
       </header>
 
-      {/* Lomake: Yrityksen perustiedot */}
-      <main>
-        <h2>Yrityksen perustiedot</h2>
-        <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: '1rem' }}>
-            <label>
-              Yrityksen nimi:
+      {/* Pääosa: Lomake ja ESG-kuva vierekkäin */}
+      <main
+        style={{
+          display: 'flex',
+          alignItems: 'flex-start'
+        }}
+      >
+        {/* Lomake vasemmalla */}
+        <div style={{ width: '600px', marginRight: '2rem' }}>
+          <h2>Yrityksen perustiedot</h2>
+          <form onSubmit={handleSubmit}>
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Yrityksen nimi:</label>
               <input
                 type="text"
                 name="yrityksenNimi"
                 value={formData.yrityksenNimi}
                 onChange={handleChange}
-                style={{ marginLeft: '1rem' }}
+                style={{ flex: 1 }}
               />
-            </label>
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label>
-              Yrittäjien nimet:
+            </div>
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Yrittäjien nimet:</label>
               <input
                 type="text"
                 name="yrittajienNimet"
                 value={formData.yrittajienNimet}
                 onChange={handleChange}
-                style={{ marginLeft: '1rem' }}
+                style={{ flex: 1 }}
               />
-            </label>
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label>
-              Yhtiömuoto:
+            </div>
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Yhtiömuoto:</label>
               <input
                 type="text"
                 name="yhtiomuoto"
                 value={formData.yhtiomuoto}
                 onChange={handleChange}
-                style={{ marginLeft: '1rem' }}
+                style={{ flex: 1 }}
               />
-            </label>
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label>
-              Tilan kokonaistyövoima:
+            </div>
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Tilan kokonaistyövoima:</label>
               <input
                 type="text"
                 name="tilanKokonaistyovoima"
                 value={formData.tilanKokonaistyovoima}
                 onChange={handleChange}
-                style={{ marginLeft: '1rem' }}
+                style={{ flex: 1 }}
               />
-            </label>
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label>
-              Karjakoko:
+            </div>
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Karjakoko:</label>
               <input
                 type="text"
                 name="karjakoko"
                 value={formData.karjakoko}
                 onChange={handleChange}
-                style={{ marginLeft: '1rem' }}
+                style={{ flex: 1 }}
               />
-            </label>
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label>
-              Peltoala:
+            </div>
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Peltoala:</label>
               <input
                 type="text"
                 name="peltoala"
                 value={formData.peltoala}
                 onChange={handleChange}
-                style={{ marginLeft: '1rem' }}
+                style={{ flex: 1 }}
               />
-            </label>
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label>
-              Luomu vai tavanomainen:
+            </div>
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Luomu vai tavanomainen:</label>
               <select
                 name="tuotomanTavanomainen"
                 value={formData.tuotomanTavanomainen}
                 onChange={handleChange}
-                style={{ marginLeft: '1rem' }}
+                style={{ flex: 1 }}
               >
                 <option value="">Valitse</option>
                 <option value="luomu">Luomu</option>
                 <option value="tavanomainen">Tavanomainen</option>
               </select>
-            </label>
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label>
-              Navettatyyppi:
+            </div>
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Navettatyyppi:</label>
               <input
                 type="text"
                 name="navettatyyppi"
                 value={formData.navettatyyppi}
                 onChange={handleChange}
-                style={{ marginLeft: '1rem' }}
+                style={{ flex: 1 }}
               />
-            </label>
-          </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label>
-              Lypsyjärjestelmä:
+            </div>
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Lypsyjärjestelmä:</label>
               <input
                 type="text"
                 name="lypsyjarjestelma"
                 value={formData.lypsyjarjestelma}
                 onChange={handleChange}
-                style={{ marginLeft: '1rem' }}
+                style={{ flex: 1 }}
               />
-            </label>
-          </div>
-          <button type="submit">Seuraava</button>
-        </form>
+            </div>
+            <button type="submit">Seuraava</button>
+          </form>
+        </div>
+
+     {/* --- ESG-kuva oikealla --- */}
+<div style={{ marginTop: '6rem' }}>
+  <img
+    src="/esg.png"
+    alt="ESG"
+    style={{
+      maxWidth: '400px',
+      height: 'auto',
+      display: 'block'
+    }}
+  />
+</div>
       </main>
     </div>
   );
