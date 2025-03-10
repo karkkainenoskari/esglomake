@@ -111,7 +111,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
     }
   };
 
-  // Fallback, jos companyDataa ei ole annettu
+  // Fallback, jos companyDataa ei ole annettu.
+  // Huom: Käytetään samaa avainnimeä kuin InitialPage.js:ssä ("lypsyjarjestelma")
   const safeCompanyData = companyData || {
     yrityksenNimi: '',
     yrittajienNimet: '',
@@ -121,7 +122,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
     peltoala: '',
     tuotomanTavanomainen: '',
     navettatyyppi: '',
-    lypsyjärjestelmä: ''
+    lypsyjarjestelma: ''
   };
 
   // Muodostetaan yrityksen perustiedot taulukkoon (Kenttä, Arvo)
@@ -151,8 +152,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
     if (safeCompanyData.navettatyyppi.trim() !== '') {
       rows.push(['Navettatyyppi', safeCompanyData.navettatyyppi]);
     }
-    if (safeCompanyData.lypsyjärjestelmä.trim() !== '') {
-      rows.push(['Lypsyjärjestelmä', safeCompanyData.lypsyjärjestelmä]);
+    if (safeCompanyData.lypsyjarjestelma.trim() !== '') {
+      rows.push(['Lypsyjärjestelmä', safeCompanyData.lypsyjarjestelma]);
     }
     return rows;
   };
@@ -316,15 +317,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
     const doc = new jsPDF();
     let currentY = 20;
 
-    // 1) Lisää PDF:ään otsikko
+    // 1) Otsikko
     doc.setFontSize(16);
     doc.text('Maitotilan ESG -vastuullisuusraportti', 20, currentY);
     currentY += 20;
 
-    // 2) Lisää johdantoteksti
+    // 2) Johdantoteksti
     doc.setFontSize(10);
     const introText = `ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance. 
-Termillä tarkoitetaan ympäristöön, yhteiskuntavastuuseen ja hallintotapaan liittyvien tekijöiden tunnistamista, 
+Termillä tarkoitetaan ympäristöön, yhteiskuntavastuuseen ja hallintatapaan liittyvien tekijöiden tunnistamista, 
 toimintatapoja ja niistä raportointia. Tulevaisuudessa maidontuotannon vastuullisuuskäsite laajenee ja sen 
 osoittaminen ja raportointi korostuvat yhteiskunnan, asiakkaiden, rahoituslaitosten ja kuluttajien vaatimuksista. 
 Vastuullisuusraportointi tulee nousemaan talousraportoinnin rinnalle osaksi lainoitus- ja rahoitusprosesseja.`;
@@ -1136,4 +1137,3 @@ const styles = {
 };
 
 export default EnvironmentPage;
-

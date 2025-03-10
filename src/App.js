@@ -14,10 +14,7 @@ function App() {
 
   // Kutsutaan, kun Ympäristö-sivulta halutaan mennä eteenpäin
   const handleEnvironmentNext = (envData) => {
-    // envData = Ympäristö-sivun syötteet, voit tallentaa ne stateen
     console.log('Ympäristö-sivun tiedot:', envData);
-    // Seuraavaan vaiheeseen (step=2) – jos lisävaiheita on
-    // setStep(2);
     alert('Voit jatkaa muihin vaiheisiin tai tallentaa PDF:n');
   };
 
@@ -35,6 +32,7 @@ function App() {
         <EnvironmentPage
           onNext={handleEnvironmentNext}
           onPrevious={handleEnvironmentBack}
+          companyData={initialData}
         />
       )}
       {/* step === 2, 3... jos haluat lisävaiheita */}
@@ -43,4 +41,3 @@ function App() {
 }
 
 export default App;
-
