@@ -12,11 +12,9 @@ function App() {
   // Määritellään sivujen otsikot
   const pageTitles = [
     "Yrityksen perustiedot",
-    "Hiilijalanjälki ja tuotannon tehokkuus",
-    "Monimuotoisuus",
-    "Pellon käyttö",
-    "Lannan käsittely ja jätehuolto",
-    "Energian käyttö"
+    "Ympäristö",
+    "Sosiaaalinen vastuu",
+    "Talous ja hallinto",
   ];
 
   // Alkuperäiseltä sivulta saadaan perustiedot
