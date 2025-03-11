@@ -4,6 +4,7 @@ import EnvironmentPage from './components/EnvironmentPage';
 import DiversityPage from './components/DiversityPage';
 import ProgressBar from './components/ProgressBar';
 
+
 function App() {
   const [step, setStep] = useState(0);
   const [initialData, setInitialData] = useState(null);

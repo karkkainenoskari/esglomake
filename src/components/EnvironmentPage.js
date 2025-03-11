@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import './tables.css';
 
 const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
   const [envData, setEnvData] = useState({
