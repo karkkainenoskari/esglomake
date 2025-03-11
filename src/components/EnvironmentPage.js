@@ -163,7 +163,46 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
     lantaVaarallisetAineet: '',
     lantaJateoljy: '',
     lantaPuristeneste: '',
-    lantaMuutToimenpiteet: ''
+    lantaMuutToimenpiteet: '',
+
+      // --- 2.4 Energian käyttö (energy...) ---
+      energySahkonKayttomaara: '',
+      energySahkonKayttomaaraLisatiedot: '',
+      energySahkonKayttomaaraTavoitteet: '',
+  
+      energySahkonKayttomaaraSuhteessa: '',
+      energySahkonKayttomaaraSuhteessaLisatiedot: '',
+      energySahkonKayttomaaraSuhteessaTavoitteet: '',
+  
+      energyOmaSahkotuotanto: '',
+      energyOmaSahkotuotantoLisatiedot: '',
+      energyOmaSahkotuotantoTavoitteet: '',
+  
+      energyPolttoaineenKaytto: '',
+      energyPolttoaineenKayttoLisatiedot: '',
+      energyPolttoaineenKayttoTavoitteet: '',
+  
+      energyPolttoaineenKayttoSuhteessa: '',
+      energyPolttoaineenKayttoSuhteessaLisatiedot: '',
+      energyPolttoaineenKayttoSuhteessaTavoitteet: '',
+  
+      energyBiokaasu: '',
+      energyBiokaasuLisatiedot: '',
+      energyBiokaasuTavoitteet: '',
+  
+      energyEsijahdytys: '',
+      energyEsijahdytysLisatiedot: '',
+      energyEsijahdytysTavoitteet: '',
+  
+      energyLampotalteenotto: '',
+      energyLampotalteenottoLisatiedot: '',
+      energyLampotalteenottoTavoitteet: '',
+  
+      energyErityisetToimenpiteet: '',
+      energyErityisetToimenpiteetLisatiedot: '',
+      energyErityisetToimenpiteetTavoitteet: ''
+
+    
   });
 
   const handleChange = (e) => {
@@ -1321,7 +1360,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           {/* 12. Peltoviljelyssä on käytössä toimenpiteitä */}
           <tr>
             <td style={styles.td}>
-              Peltoviljelyssä on käytössä toimenpiteitä, jotka parantavat ympäristön tilaa, kyllä/ei
+              Peltoviljelyssä on käytössä toimenpiteitä,,<br /> jotka parantavat ympäristön tilaa, kyllä/ei
             </td>
             <td style={styles.td}>
               <select
@@ -1357,7 +1396,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           {/* 13. Peltojen vesitalous */}
           <tr>
             <td style={styles.td}>
-              Peltojen vesitaloutta ylläpidetään ja kehitetään, kyllä/ei
+              Peltojen vesitaloutta ylläpidetään ja kehitetään, kyllä/ei 
             </td>
             <td style={styles.td}>
               <select
@@ -1429,8 +1468,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
       <table style={{ borderCollapse: 'collapse', width: '100%', marginBottom: '2rem' }}>
         <thead>
           <tr>
-            <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f0f0f0', textAlign: 'left' }}>Kenttä</th>
-            <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f0f0f0', textAlign: 'left' }}>Uusin tulos / Arvo</th>
+            <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f0f0f0', textAlign: 'left' }}>Lannan käsittely ja jätehuolto</th>
+            <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f0f0f0', textAlign: 'left' }}>Uusin tulos</th>
             <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f0f0f0', textAlign: 'left' }}>Lisätiedot</th>
             <th style={{ border: '1px solid #ccc', padding: '8px', backgroundColor: '#f0f0f0', textAlign: 'left' }}>Tavoitteet ja aikataulut</th>
           </tr>
@@ -1559,6 +1598,309 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
             </td>
             <td style={{ border: '1px solid #ccc', padding: '8px' }}>
               <input type="text" name="lantaMuutToimenpiteetTavoitteet" value={envData.lantaMuutToimenpiteetTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+       {/* --- 2.4 Energian käyttö --- */}
+       <h3>2.4 Energian käyttö</h3>
+      <table style={styles.table}>
+        <thead>
+          <tr>
+            <th style={styles.th}>Energian käyttö</th>
+            <th style={styles.th}>Uusin tulos</th>
+            <th style={styles.th}>Lisätiedot</th>
+            <th style={styles.th}>Tavoitteet ja aikataulut</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* 1. Sähkön käyttömäärä, kWh/v (sininen) */}
+          <tr style={{ color: 'blue' }}>
+            <td style={styles.td}>Sähkön käyttömäärä, kWh/v</td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energySahkonKayttomaara"
+                value={envData.energySahkonKayttomaara}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energySahkonKayttomaaraLisatiedot"
+                value={envData.energySahkonKayttomaaraLisatiedot}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energySahkonKayttomaaraTavoitteet"
+                value={envData.energySahkonKayttomaaraTavoitteet}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+          </tr>
+          {/* 2. Sähkön käyttömäärä suhteessa tuotantoon */}
+          <tr>
+            <td style={styles.td}>Sähkön käyttömäärä suhteessa tuotantoon, kWh/kg maitoa/v</td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energySahkonKayttomaaraSuhteessa"
+                value={envData.energySahkonKayttomaaraSuhteessa}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energySahkonKayttomaaraSuhteessaLisatiedot"
+                value={envData.energySahkonKayttomaaraSuhteessaLisatiedot}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energySahkonKayttomaaraSuhteessaTavoitteet"
+                value={envData.energySahkonKayttomaaraSuhteessaTavoitteet}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+          </tr>
+          {/* 3. Oman sähkön tuotanto, kwh/v */}
+          <tr>
+            <td style={styles.td}>Oman sähkön tuotanto, kwh/v (esim. aurinko- tai tuulivoimala)</td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyOmaSahkotuotanto"
+                value={envData.energyOmaSahkotuotanto}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyOmaSahkotuotantoLisatiedot"
+                value={envData.energyOmaSahkotuotantoLisatiedot}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyOmaSahkotuotantoTavoitteet"
+                value={envData.energyOmaSahkotuotantoTavoitteet}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+          </tr>
+          {/* 4. Polttoaineiden kokonaiskäyttömäärä (sininen) */}
+          <tr style={{ color: 'blue' }}>
+            <td style={styles.td}>Polttoaineiden kokonaiskäyttömäärä, l/v</td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyPolttoaineenKaytto"
+                value={envData.energyPolttoaineenKaytto}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyPolttoaineenKayttoLisatiedot"
+                value={envData.energyPolttoaineenKayttoLisatiedot}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyPolttoaineenKayttoTavoitteet"
+                value={envData.energyPolttoaineenKayttoTavoitteet}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+          </tr>
+          {/* 5. Polttoaineiden käyttömäärä suhteessa tuotantoon */}
+          <tr>
+            <td style={styles.td}>Polttoaineiden käyttömäärä suhteessa tuotantoon, l/kg maitoa</td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyPolttoaineenKayttoSuhteessa"
+                value={envData.energyPolttoaineenKayttoSuhteessa}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyPolttoaineenKayttoSuhteessaLisatiedot"
+                value={envData.energyPolttoaineenKayttoSuhteessaLisatiedot}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyPolttoaineenKayttoSuhteessaTavoitteet"
+                value={envData.energyPolttoaineenKayttoSuhteessaTavoitteet}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+          </tr>
+          {/* 6. Lanta käsitellään biokaasulaitoksessa, kyllä/ei */}
+          <tr>
+            <td style={styles.td}>Lanta käsitellään biokaasulaitoksessa, kyllä/ei</td>
+            <td style={styles.td}>
+              <select
+                name="energyBiokaasu"
+                value={envData.energyBiokaasu}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              >
+                <option value="">Valitse</option>
+                <option value="kylla">Kyllä</option>
+                <option value="ei">Ei</option>
+              </select>
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyBiokaasuLisatiedot"
+                value={envData.energyBiokaasuLisatiedot}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyBiokaasuTavoitteet"
+                value={envData.energyBiokaasuTavoitteet}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+          </tr>
+          {/* 7. Maidon esijäähdytys, kyllä/ei */}
+          <tr>
+            <td style={styles.td}>Maidon esijäähdytys, kyllä/ei</td>
+            <td style={styles.td}>
+              <select
+                name="energyEsijahdytys"
+                value={envData.energyEsijahdytys}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              >
+                <option value="">Valitse</option>
+                <option value="kylla">Kyllä</option>
+                <option value="ei">Ei</option>
+              </select>
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyEsijahdytysLisatiedot"
+                value={envData.energyEsijahdytysLisatiedot}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyEsijahdytysTavoitteet"
+                value={envData.energyEsijahdytysTavoitteet}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+          </tr>
+          {/* 8. Lämmön talteenotto, kyllä/ei */}
+          <tr>
+            <td style={styles.td}>Lämmön talteenotto, kyllä/ei</td>
+            <td style={styles.td}>
+              <select
+                name="energyLampotalteenotto"
+                value={envData.energyLampotalteenotto}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              >
+                <option value="">Valitse</option>
+                <option value="kylla">Kyllä</option>
+                <option value="ei">Ei</option>
+              </select>
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyLampotalteenottoLisatiedot"
+                value={envData.energyLampotalteenottoLisatiedot}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyLampotalteenottoTavoitteet"
+                value={envData.energyLampotalteenottoTavoitteet}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+          </tr>
+          {/* 9. Erityiset toimenpiteet */}
+          <tr>
+            <td style={styles.td}>Erityiset toimenpiteet</td>
+            <td style={styles.td}>
+              <textarea
+                name="energyErityisetToimenpiteet"
+                value={envData.energyErityisetToimenpiteet}
+                onChange={handleChange}
+                rows={2}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyErityisetToimenpiteetLisatiedot"
+                value={envData.energyErityisetToimenpiteetLisatiedot}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
+            </td>
+            <td style={styles.td}>
+              <input
+                type="text"
+                name="energyErityisetToimenpiteetTavoitteet"
+                value={envData.energyErityisetToimenpiteetTavoitteet}
+                onChange={handleChange}
+                style={{ width: '100%' }}
+              />
             </td>
           </tr>
         </tbody>
