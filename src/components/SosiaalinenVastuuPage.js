@@ -109,7 +109,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
       <h2>Sosiaalinen vastuu</h2>
       
       {/* Otsikko, joka näkyy ulkopuolella taulukkoa */}
-      <h3>1. Henkilöstö ja työolosuhteet</h3>
+      <h3>3.1 Henkilöstö ja työolosuhteet</h3>
       
       {/* Yhtenäinen taulukko, joka sisältää kaikki kentät */}
       <form onSubmit={handleSubmit}>
@@ -122,7 +122,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
           </colgroup>
           <thead>
             <tr>
-              <th>1.Henkilöstö ja työolosuhteet</th>
+              <th>Henkilöstö ja työolosuhteet</th>
               <th>Uusin tulos</th>
               <th>Lisätiedot</th>
               <th>Tavoitteet ja aikataulut</th>
