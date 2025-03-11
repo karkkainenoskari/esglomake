@@ -92,7 +92,84 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
     avoimuusImagoTavoitteet: '',
     yhteistyoErityiset: '',
     yhteistyoErityisetLisatiedot: '',
-    yhteistyoErityisetTavoitteet: ''
+    yhteistyoErityisetTavoitteet: '',
+
+    // 3.3 Eläinten hyvinvointi
+    nautojenTerveydenhuoltorekisteri: '',
+    nautojenTerveydenhuoltorekisteriLisatiedot: '',
+    nautojenTerveydenhuoltorekisteriTavoitteet: '',
+    nautojenTerveydenhuoltorekisteriErityiset: '',
+    
+    sorkkaterveys: '',
+    sorkkaterveysLisatiedot: '',
+    sorkkaterveysTavoitteet: '',
+    sorkkaterveysErityiset: '',
+    
+    vasikkakuolleisuus: '',
+    vasikkakuolleisuusLisatiedot: '',
+    vasikkakuolleisuusTavoitteet: '',
+    vasikkakuolleisuusErityiset: '',
+    
+    lehmienKeskipoikimakerta: '',
+    lehmienKeskipoikimakertaLisatiedot: '',
+    lehmienKeskipoikimakertaTavoitteet: '',
+    lehmienKeskipoikimakertaErityiset: '',
+    
+    poistettujenLehmienElinikaiTuotos: '',
+    poistettujenLehmienElinikaiTuotosLisatiedot: '',
+    poistettujenLehmienElinikaiTuotosTavoitteet: '',
+    poistettujenLehmienElinikaiTuotosErityiset: '',
+    
+    ekmPerElinpiva: '',
+    ekmPerElinpivaLisatiedot: '',
+    ekmPerElinpivaTavoitteet: '',
+    ekmPerElinpivaErityiset: '',
+    
+    laiduntaminen: '',
+    laiduntaminenLisatiedot: '',
+    laiduntaminenTavoitteet: '',
+    laiduntaminenErityiset: '',
+    
+    jaloittelu: '',
+    jaloitteluLisatiedot: '',
+    jaloitteluTavoitteet: '',
+    jaloitteluErityiset: '',
+    
+    ymparivuotinenJaloittelu: '',
+    ymparivuotinenJaloitteluLisatiedot: '',
+    ymparivuotinenJaloitteluTavoitteet: '',
+    ymparivuotinenJaloitteluErityiset: '',
+    
+    lehmienMakuupaikka: '',
+    lehmienMakuupaikkaLisatiedot: '',
+    lehmienMakuupaikkaTavoitteet: '',
+    lehmienMakuupaikkaErityiset: '',
+    
+    viilennys: '',
+    viilennysLisatiedot: '',
+    viilennysTavoitteet: '',
+    viilennysErityiset: '',
+    
+    lehmillaKaytavat: '',
+    lehmillaKaytavatLisatiedot: '',
+    lehmillaKaytavatTavoitteet: '',
+    lehmillaKaytavatErityiset: '',
+    
+    vierihoito: '',
+    vierihoitoLisatiedot: '',
+    vierihoitoTavoitteet: '',
+    vierihoitoErityiset: '',
+    
+    wellfareQuality: '',
+    wellfareQualityLisatiedot: '',
+    wellfareQualityTavoitteet: '',
+    wellfareQualityErityiset: '',
+    
+    elviStatus: '',
+    elviStatusLisatiedot: '',
+    elviStatusTavoitteet: '',
+    elviStatusErityiset: ''
+
   });
 
   const handleChange = (e) => {
@@ -782,6 +859,272 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
             </tr>
           </tbody>
         </table>
+
+         {/* Uusi taulukko: 3.2 Yhteistyö ja avoimuus on jo yllä, ja sen jälkeen uusi taulukko 3.3 Eläinten hyvinvointi */}
+         <h3>3.3 Eläinten hyvinvointi</h3>
+        <table className="common-table">
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Eläinten hyvinvointi</th>
+              <th>Uusin tulos</th>
+              <th>Lisätiedot</th>
+              <th>Tavoitteet ja aikataulut</th>  
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nautojen terveydenhuoltorekisteri Naseva käytössä, kyllä/ei</td>
+              <td>
+                <select name="nautojenTerveydenhuoltorekisteri" value={socialData.nautojenTerveydenhuoltorekisteri} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="nautojenTerveydenhuoltorekisteriLisatiedot" value={socialData.nautojenTerveydenhuoltorekisteriLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="nautojenTerveydenhuoltorekisteriTavoitteet" value={socialData.nautojenTerveydenhuoltorekisteriTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            
+            </tr>
+            <tr>
+              <td>Sorkkaterveyden seuranta ja hoito säännöllisesti, kyllä/ei</td>
+              <td>
+                <select name="sorkkaterveys" value={socialData.sorkkaterveys} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="sorkkaterveysLisatiedot" value={socialData.sorkkaterveysLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="sorkkaterveysTavoitteet" value={socialData.sorkkaterveysTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+            <tr>
+              <td style={{ color: 'green' }}>Vasikkakuolleisuus %</td>
+              <td>
+                <input type="text" name="vasikkakuolleisuus" value={socialData.vasikkakuolleisuus} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="vasikkakuolleisuusLisatiedot" value={socialData.vasikkakuolleisuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="vasikkakuolleisuusTavoitteet" value={socialData.vasikkakuolleisuusTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+            <tr>
+              <td style={{ color: 'green' }}>Lehmien keskipoikimakerta</td>
+              <td>
+                <input type="text" name="lehmienKeskipoikimakerta" value={socialData.lehmienKeskipoikimakerta} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="lehmienKeskipoikimakertaLisatiedot" value={socialData.lehmienKeskipoikimakertaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="lehmienKeskipoikimakertaTavoitteet" value={socialData.lehmienKeskipoikimakertaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              
+            </tr>
+            <tr>
+              <td style={{ color: 'green' }}>Poistettujen lehmien elinikäistuotos, kg</td>
+              <td>
+                <input type="text" name="poistettujenLehmienElinikaiTuotos" value={socialData.poistettujenLehmienElinikaiTuotos} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="poistettujenLehmienElinikaiTuotosLisatiedot" value={socialData.poistettujenLehmienElinikaiTuotosLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="poistettujenLehmienElinikaiTuotosTavoitteet" value={socialData.poistettujenLehmienElinikaiTuotosTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+            <tr>
+              <td style={{ color: 'green' }}>EKM kg/elinpäivä (vuosiraportti)</td>
+              <td>
+                <input type="text" name="ekmPerElinpiva" value={socialData.ekmPerElinpiva} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="ekmPerElinpivaLisatiedot" value={socialData.ekmPerElinpivaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="ekmPerElinpivaTavoitteet" value={socialData.ekmPerElinpivaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+            <tr>
+              <td>Laiduntaminen käytössä, kyllä/ei<br />(kuvaa mitkä eläinryhmät laiduntavat)</td>
+              <td>
+                <select name="laiduntaminen" value={socialData.laiduntaminen} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="laiduntaminenLisatiedot" value={socialData.laiduntaminenLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="laiduntaminenTavoitteet" value={socialData.laiduntaminenTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+            <tr>
+              <td>Jaloittelu käytössä (kuvaa mitkä eläinryhmät jaloittelevat)</td>
+              <td>
+                <input type="text" name="jaloittelu" value={socialData.jaloittelu} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="jaloitteluLisatiedot" value={socialData.jaloitteluLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="jaloitteluTavoitteet" value={socialData.jaloitteluTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+            <tr>
+              <td>Ympärivuotinen jaloittelu käytössä (kuvaa mitkä eläinryhmät jaloittelevat ympärivuotisesti)</td>
+              <td>
+                <input type="text" name="ymparivuotinenJaloittelu" value={socialData.ymparivuotinenJaloittelu} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="ymparivuotinenJaloitteluLisatiedot" value={socialData.ymparivuotinenJaloitteluLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="ymparivuotinenJaloitteluTavoitteet" value={socialData.ymparivuotinenJaloitteluTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              
+            </tr>
+            <tr>
+              <td>
+                Kuvaus lehmien makuupaikasta<br />
+                (esim. parsipeti, syväkuivikeparsi, syväkuivitettu makuualue)
+              </td>
+              <td>
+                <input type="text" name="lehmienMakuupaikka" value={socialData.lehmienMakuupaikka} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="lehmienMakuupaikkaLisatiedot" value={socialData.lehmienMakuupaikkaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="lehmienMakuupaikkaTavoitteet" value={socialData.lehmienMakuupaikkaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              
+            </tr>
+            <tr>
+              <td>Viilennys lypsynavetassa, kyllä/ei</td>
+              <td>
+                <select name="viilennys" value={socialData.viilennys} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="viilennysLisatiedot" value={socialData.viilennysLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="viilennysTavoitteet" value={socialData.viilennysTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+            <tr>
+              <td>Lehmillä käytävämatot, kyllä/ei</td>
+              <td>
+                <select name="lehmillaKaytavat" value={socialData.lehmillaKaytavat} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="lehmillaKaytavatLisatiedot" value={socialData.lehmillaKaytavatLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="lehmillaKaytavatTavoitteet" value={socialData.lehmillaKaytavatTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+            <tr>
+              <td>Pidennetty vierihoito tai imettäjälehmät käytäntönä, kyllä/ei</td>
+              <td>
+                <select name="vierihoito" value={socialData.vierihoito} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="vierihoitoLisatiedot" value={socialData.vierihoitoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="vierihoitoTavoitteet" value={socialData.vierihoitoTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+            <tr>
+              <td>WellFare Quality -koulutus ja sertifiointi suoritettu, kyllä/ei</td>
+              <td>
+                <select name="wellfareQuality" value={socialData.wellfareQuality} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="wellfareQualityLisatiedot" value={socialData.wellfareQualityLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="wellfareQualityTavoitteet" value={socialData.wellfareQualityTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              
+            </tr>
+            <tr>
+              <td>ELVI -merkki -status voimassa, kyllä/ei</td>
+              <td>
+                <select name="elviStatus" value={socialData.elviStatus} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="elviStatusLisatiedot" value={socialData.elviStatusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="elviStatusTavoitteet" value={socialData.elviStatusTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              
+            </tr>
+            <tr>
+              <td>Erityiset toimenpiteet</td>
+              <td>
+                <input type="text" name="erityisetToimenpiteet" value={socialData.erityisetToimenpiteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="erityisetToimenpiteetLisatiedot" value={socialData.erityisetToimenpiteetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="erityisetToimenpiteetTavoitteet" value={socialData.erityisetToimenpiteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+             
+            </tr>
+          </tbody>
+        </table>
+
+        
 
         {/* Navigointi */}
         <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center' }}>
