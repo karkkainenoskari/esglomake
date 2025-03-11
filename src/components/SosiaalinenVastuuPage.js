@@ -1,26 +1,372 @@
 // src/components/SosiaalinenVastuuPage.js
-import React from 'react';
+import React, { useState } from 'react';
+import './tables.css';
 
 const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
+  const [socialData, setSocialData] = useState({
+    // 1. Henkilöstö ja työolosuhteet
+    henkilostoStrategia: '',
+    henkilostoStrategiaLisatiedot: '',
+    henkilostoStrategiaTavoitteet: '',
+    tyotuottavuus: '',
+    tyotuottavuusLisatiedot: '',
+    tyotuottavuusTavoitteet: '',
+    tasaArvo: '',
+    tasaArvoLisatiedot: '',
+    tasaArvoTavoitteet: '',
+    tyotaHelpottavatRatkaisut: '',
+    tyotaHelpottavatRatkaisutLisatiedot: '',
+    tyotaHelpottavatRatkaisutTavoitteet: '',
+    
+    // 2. Yrittäjiin liittyvää
+    osaamisenKehittaminen: '',
+    osaamisenKehittaminenLisatiedot: '',
+    osaamisenKehittaminenTavoitteet: '',
+    tyoterveyshuolto: '',
+    tyoterveyshuoltoLisatiedot: '',
+    tyoterveyshuoltoTavoitteet: '',
+    jaksaminen: '',
+    jaksaminenLisatiedot: '',
+    jaksaminenTavoitteet: '',
+    vapaapäivat: '',
+    vapaapäivatLisatiedot: '',
+    vapaapäivatTavoitteet: '',
+    vuosilomat: '',
+    vuosilomatLisatiedot: '',
+    vuosilomatTavoitteet: '',
+    tyoajanMittaaminen: '',
+    tyoajanMittaaminenLisatiedot: '',
+    tyoajanMittaaminenTavoitteet: '',
+    
+    // 3. Työntekijöihin liittyvää
+    palkkaus: '',
+    palkkausLisatiedot: '',
+    palkkausTavoitteet: '',
+    tyoterveyshuolto2: '',
+    tyoterveyshuolto2Lisatiedot: '',
+    tyoterveyshuolto2Tavoitteet: '',
+    sairauspoissaolot: '',
+    sairauspoissaolotLisatiedot: '',
+    sairauspoissaolotTavoitteet: '',
+    tapaturmat: '',
+    tapaturmatLisatiedot: '',
+    tapaturmatTavoitteet: '',
+    lisakoulutus: '',
+    lisakoulutusLisatiedot: '',
+    lisakoulutusTavoitteet: '',
+    tyhy: '',
+    tyhyLisatiedot: '',
+    tyhyTavoitteet: '',
+    kehityskeskustelut: '',
+    kehityskeskustelutLisatiedot: '',
+    kehityskeskustelutTavoitteet: '',
+    palaverit: '',
+    palaveritLisatiedot: '',
+    palaveritTavoitteet: '',
+    tyosuhteidenKesto: '',
+    tyosuhteidenKestoLisatiedot: '',
+    tyosuhteidenKestoTavoitteet: '',
+    tyotyotyot: '',
+    tyotyotyotLisatiedot: '',
+    tyotyotyotTavoitteet: '',
+    muutErityiset: '',
+    muutErityisetLisatiedot: '',
+    muutErityisetTavoitteet: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSocialData({ ...socialData, [name]: value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Kun tämä sivu on täytetty, voit kutsua onNext()
-    if (onNext) onNext();
+    if (onNext) onNext(socialData);
   };
 
   return (
-    <div style={{ padding: '1rem' }}>
-      <h2>Sosiaalinen vastuu</h2>
-      <p>Tähän voit lisätä lomakkeen kentät, jotka liittyvät sosiaaliseen vastuuseen.</p>
-      <form onSubmit={handleSubmit}>
-        {/* Lomakkeen kenttiä, esim. henkilöstö, työolosuhteet, eläinten hyvinvointi... */}
+    <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Yläreunan infoboksi värikoodien selityksineen */}
+      <div
+        style={{
+          border: '1px solid #ccc',
+          backgroundColor: '#f9f9f9',
+          padding: '1rem',
+          marginBottom: '1rem'
+        }}
+      >
+        <p style={{ margin: 0 }}>
+          <strong> HUOM! Värikoodit tarkoittavat seuraavaa:</strong>
+        </p>
+        <ul style={{ marginTop: '0.5rem' }}>
+          <li style={{ color: 'green' }}>
+          Tieto löytyy tuotosseurannasta tai meijerin tiedoista
+          </li>
+          <li style={{ color: 'blue' }}>
+          Tieto löytyy hiilijalanjälkilaskurista
+          </li>
+        </ul>
+      </div>
 
-        {/* Navigointi */}
+      <h2>Sosiaalinen vastuu</h2>
+      
+      {/* Otsikko ulkopuolella taulukkoa */}
+      <h3>1. Henkilöstö ja työolosuhteet</h3>
+
+      {/* Yhtenäinen taulukko, joka sisältää kaikki kentät */}
+      <form onSubmit={handleSubmit}>
+        <table className="common-table">
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>1.Henkilöstö ja työolosuhteet</th>
+              <th>Uusin tulos</th>
+              <th>Lisätiedot</th>
+              <th>Tavoitteet ja aikataulut</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* 1. Henkilöstö ja työolosuhteet -osio */}
+            <tr>
+              <td>
+                Kirjallinen henkilöstöstrategia tehty, kyllä/ei<br />
+                (kuvaa esim. henkilöstötarpeet, johtaminen, suunnitelmallisuus, vastuut, työntekijöiden määrä)
+              </td>
+              <td>
+                <select name="henkilostoStrategia" value={socialData.henkilostoStrategia} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="henkilostoStrategiaLisatiedot" value={socialData.henkilostoStrategiaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="henkilostoStrategiaTavoitteet" value={socialData.henkilostoStrategiaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Työn tuottavuus, maitokg/navettatyöt h</td>
+              <td>
+                <input type="text" name="tyotuottavuus" value={socialData.tyotuottavuus} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tyotuottavuusLisatiedot" value={socialData.tyotuottavuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tyotuottavuusTavoitteet" value={socialData.tyotuottavuusTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Tasa-arvon huomiointi</td>
+              <td>
+                <input type="text" name="tasaArvo" value={socialData.tasaArvo} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tasaArvoLisatiedot" value={socialData.tasaArvoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tasaArvoTavoitteet" value={socialData.tasaArvoTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Kuvaus töitä helpottavista ja keventävistä ratkaisuista</td>
+              <td>
+                <input type="text" name="tyotaHelpottavatRatkaisut" value={socialData.tyotaHelpottavatRatkaisut} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tyotaHelpottavatRatkaisutLisatiedot" value={socialData.tyotaHelpottavatRatkaisutLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tyotaHelpottavatRatkaisutTavoitteet" value={socialData.tyotaHelpottavatRatkaisutTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+
+            {/* 2. Yrittäjiin liittyvää -osio */}
+            <tr>
+              <td colSpan="4" style={{ fontWeight: 'bold', backgroundColor: '#f7f7f7' }}>
+                Yrittäjiin liittyvää
+              </td>
+            </tr>
+            <tr>
+              <td>Oman osaamisen kehittäminen (kuvaa lisätietokenttään)</td>
+              <td>
+                <input type="text" name="osaamisenKehittaminen" value={socialData.osaamisenKehittaminen} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="osaamisenKehittaminenLisatiedot" value={socialData.osaamisenKehittaminenLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="osaamisenKehittaminenTavoitteet" value={socialData.osaamisenKehittaminenTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Työterveyshuolto, kyllä/ei</td>
+              <td>
+                <select name="tyoterveyshuolto" value={socialData.tyoterveyshuolto} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="tyoterveyshuoltoLisatiedot" value={socialData.tyoterveyshuoltoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tyoterveyshuoltoTavoitteet" value={socialData.tyoterveyshuoltoTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Jaksamisen ylläpito (kuvaa lisätietokenttään)</td>
+              <td>
+                <input type="text" name="jaksaminen" value={socialData.jaksaminen} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="jaksaminenLisatiedot" value={socialData.jaksaminenLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="jaksaminenTavoitteet" value={socialData.jaksaminenTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Mahdollisuus säännöllisiin vapaapäiviin, kyllä/ei<br />
+                (kuvaa lisätietokenttään miten)
+              </td>
+              <td>
+                <select name="vapaapäivat" value={socialData.vapaapäivat} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="vapaapäivatLisatiedot" value={socialData.vapaapäivatLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="vapaapäivatTavoitteet" value={socialData.vapaapäivatTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Vuosilomien pitäminen suunnitellusti, kyllä/ei</td>
+              <td>
+                <select name="vuosilomat" value={socialData.vuosilomat} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="vuosilomatLisatiedot" value={socialData.vuosilomatLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="vuosilomatTavoitteet" value={socialData.vuosilomatTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Työajan mittaaminen, kyllä/ei<br />
+                (kuvaa lisätietokenttään miten)
+              </td>
+              <td>
+                <select name="tyoajanMittaaminen" value={socialData.tyoajanMittaaminen} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="tyoajanMittaaminenLisatiedot" value={socialData.tyoajanMittaaminenLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tyoajanMittaaminenTavoitteet" value={socialData.tyoajanMittaaminenTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+
+            {/* 3. Työntekijöihin liittyvää -osio */}
+            <tr>
+              <td colSpan="4" style={{ fontWeight: 'bold', backgroundColor: '#f7f7f7' }}>
+                Työntekijöihin liittyvää
+              </td>
+            </tr>
+            <tr>
+              <td>Kuvaus työntekijöiden palkkauksesta (esim. TES, lisät, bonukset)</td>
+              <td>
+                <input type="text" name="palkkaus" value={socialData.palkkaus} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="palkkausLisatiedot" value={socialData.palkkausLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="palkkausTavoitteet" value={socialData.palkkausTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Työterveyshuolto, kyllä/ei</td>
+              <td>
+                <select name="tyoterveyshuolto2" value={socialData.tyoterveyshuolto2} onChange={handleChange} style={{ width: '100%' }}>
+                  <option value="">Valitse</option>
+                  <option value="kylla">Kyllä</option>
+                  <option value="ei">Ei</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" name="tyoterveyshuolto2Lisatiedot" value={socialData.tyoterveyshuolto2Lisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tyoterveyshuolto2Tavoitteet" value={socialData.tyoterveyshuolto2Tavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Sairauspoissaolot, pv/v</td>
+              <td>
+                <input type="text" name="sairauspoissaolot" value={socialData.sairauspoissaolot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="sairauspoissaolotLisatiedot" value={socialData.sairauspoissaolotLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="sairauspoissaolotTavoitteet" value={socialData.sairauspoissaolotTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Hoitota vaativia tapaturmia keskimäärin, kpl/v</td>
+              <td>
+                <input type="text" name="tapaturmat" value={socialData.tapaturmat} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tapaturmatLisatiedot" value={socialData.tapaturmatLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="tapaturmatTavoitteet" value={socialData.tapaturmatTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+            <tr>
+              <td>Muut erityiset toimenpiteet</td>
+              <td>
+                <textarea name="muutErityiset" value={socialData.muutErityiset} onChange={handleChange} rows={2} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="muutErityisetLisatiedot" value={socialData.muutErityisetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+              <td>
+                <input type="text" name="muutErityisetTavoitteet" value={socialData.muutErityisetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
         <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center' }}>
           <button type="button" onClick={onPrevious} style={{ marginRight: '1rem' }}>
             Edellinen
           </button>
-          <button type="submit" style={{ marginRight: '1rem' }}>
+          <button type="submit" onClick={handleSubmit} style={{ marginRight: '1rem' }}>
             Seuraava
           </button>
         </div>
