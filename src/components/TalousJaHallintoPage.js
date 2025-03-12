@@ -73,7 +73,64 @@ const TalousJaHallintoPage = ({ onNext, onPrevious }) => {
   riskTietoturvaTavoitteet: '',
   riskErityisetToimenpiteet: '',
   riskErityisetToimenpiteetLisatiedot: '',
-  riskErityisetToimenpiteetTavoitteet: ''
+  riskErityisetToimenpiteetTavoitteet: '',
+
+  // 4.3 Kilpailukyky ja kannattavuus
+  talousSuunnittelu: '',
+  talousSuunnitteluLisatiedot: '',
+  talousSuunnitteluTavoitteet: '',
+
+  toiminnanMittarit: '',
+  toiminnanMittaritLisatiedot: '',
+  toiminnanMittaritTavoitteet: '',
+
+  maksuvalmius: '',
+  maksuvalmiusLisatiedot: '',
+  maksuvalmiusTavoitteet: '',
+
+  budjetointi: '',
+  budjetointiLisatiedot: '',
+  budjetointiTavoitteet: '',
+
+  kuukausiAlv: '',
+  kuukausiAlvLisatiedot: '',
+  kuukausiAlvTavoitteet: '',
+
+  valintilinpaate: '',
+  valintilinpaateLisatiedot: '',
+  valintilinpaateTavoitteet: '',
+
+  kannattavuusLaskenta: '',
+  kannattavuusLaskentaLisatiedot: '',
+  kannattavuusLaskentaTavoitteet: '',
+
+  tuotantokustannus: '',
+  tuotantokustannusLisatiedot: '',
+  tuotantokustannusTavoitteet: '',
+
+  velkaSuhde: '',
+  velkaSuhdeLisatiedot: '',
+  velkaSuhdeTavoitteet: '',
+
+  keskeisetVerkostot: '',
+  keskeisetVerkostotLisatiedot: '',
+  keskeisetVerkostotTavoitteet: '',
+
+  vertailuTiedot: '',
+  vertailuTiedotLisatiedot: '',
+  vertailuTiedotTavoitteet: '',
+
+  asiantuntijat: '',
+  asiantuntijatLisatiedot: '',
+  asiantuntijatTavoitteet: '',
+
+  ulkoistetutPalvelut: '',
+  ulkoistetutPalvelutLisatiedot: '',
+  ulkoistetutPalvelutTavoitteet: '',
+
+  talousErityisetToimenpiteet: '',
+  talousErityisetToimenpiteetLisatiedot: '',
+  talousErityisetToimenpiteetTavoitteet: ''
   });
 
   const handleChange = (e) => {
@@ -810,6 +867,461 @@ const TalousJaHallintoPage = ({ onNext, onPrevious }) => {
     </tr>
   </tbody>
 </table>
+
+<h3>4.3 Kilpailukyky ja kannattavuus</h3>
+<table className="common-table">
+  <colgroup>
+    <col />
+    <col />
+    <col />
+    <col />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Kenttä</th>
+      <th>Uusin tulos / Arvo</th>
+      <th>Lisätiedot</th>
+      <th>Tavoitteet ja aikataulut</th>
+    </tr>
+  </thead>
+  <tbody>
+    {/* 1. Kuvaus talouden suunnittelusta ja seurannasta */}
+    <tr>
+      <td>Kuvaus talouden suunnittelusta ja seurannasta</td>
+      <td>
+        <input
+          type="text"
+          name="talousSuunnittelu"
+          value={financeData.talousSuunnittelu}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="talousSuunnitteluLisatiedot"
+          value={financeData.talousSuunnitteluLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="talousSuunnitteluTavoitteet"
+          value={financeData.talousSuunnitteluTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 2. Toiminnan mittarit määritetty (k/e) */}
+    <tr>
+      <td>Toiminnan mittarit määritetty (k/e)</td>
+      <td>
+        <input
+          type="text"
+          name="toiminnanMittarit"
+          value={financeData.toiminnanMittarit}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="toiminnanMittaritLisatiedot"
+          value={financeData.toiminnanMittaritLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="toiminnanMittaritTavoitteet"
+          value={financeData.toiminnanMittaritTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 3. Kuvaus maksuvalmiuden ylläpidosta */}
+    <tr>
+      <td>Kuvaus maksuvalmiuden ylläpidosta</td>
+      <td>
+        <input
+          type="text"
+          name="maksuvalmius"
+          value={financeData.maksuvalmius}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="maksuvalmiusLisatiedot"
+          value={financeData.maksuvalmiusLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="maksuvalmiusTavoitteet"
+          value={financeData.maksuvalmiusTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 4. Budjetointikäytännöt */}
+    <tr>
+      <td>Budjetointikäytännöt</td>
+      <td>
+        <input
+          type="text"
+          name="budjetointi"
+          value={financeData.budjetointi}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="budjetointiLisatiedot"
+          value={financeData.budjetointiLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="budjetointiTavoitteet"
+          value={financeData.budjetointiTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 5. Kuukausi alv käytössä (k/e) */}
+    <tr>
+      <td>Kuukausi alv käytössä (k/e)</td>
+      <td>
+        <input
+          type="text"
+          name="kuukausiAlv"
+          value={financeData.kuukausiAlv}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="kuukausiAlvLisatiedot"
+          value={financeData.kuukausiAlvLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="kuukausiAlvTavoitteet"
+          value={financeData.kuukausiAlvTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 6. Välintilinpäätös (k/e) */}
+    <tr>
+      <td>Välintilinpäätös (k/e)</td>
+      <td>
+        <input
+          type="text"
+          name="valintilinpaate"
+          value={financeData.valintilinpaate}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="valintilinpaateLisatiedot"
+          value={financeData.valintilinpaateLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="valintilinpaateTavoitteet"
+          value={financeData.valintilinpaateTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 7. Koko tilan kannattavuuslaskenta (k/e) */}
+    <tr>
+      <td>Koko tilan kannattavuuslaskenta (k/e)</td>
+      <td>
+        <input
+          type="text"
+          name="kannattavuusLaskenta"
+          value={financeData.kannattavuusLaskenta}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="kannattavuusLaskentaLisatiedot"
+          value={financeData.kannattavuusLaskentaLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="kannattavuusLaskentaTavoitteet"
+          value={financeData.kannattavuusLaskentaTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 8. Tuotantokustannuslaskelma (k/e, mm. rehu, maito) */}
+    <tr>
+      <td>Tuotantokustannuslaskelma (k/e, ja mm. rehu, maito)</td>
+      <td>
+        <input
+          type="text"
+          name="tuotantokustannus"
+          value={financeData.tuotantokustannus}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="tuotantokustannusLisatiedot"
+          value={financeData.tuotantokustannusLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="tuotantokustannusTavoitteet"
+          value={financeData.tuotantokustannusTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 9. Velan määrä suhteessa liikevaihtoon (%) */}
+    <tr>
+      <td>Velan määrä suhteessa liikevaihtoon (%)</td>
+      <td>
+        <input
+          type="text"
+          name="velkaSuhde"
+          value={financeData.velkaSuhde}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="velkaSuhdeLisatiedot"
+          value={financeData.velkaSuhdeLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="velkaSuhdeTavoitteet"
+          value={financeData.velkaSuhdeTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 10. Yritykset keskeiset verkostot */}
+    <tr>
+      <td>Yritykset keskeiset verkostot</td>
+      <td>
+        <input
+          type="text"
+          name="keskeisetVerkostot"
+          value={financeData.keskeisetVerkostot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="keskeisetVerkostotLisatiedot"
+          value={financeData.keskeisetVerkostotLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="keskeisetVerkostotTavoitteet"
+          value={financeData.keskeisetVerkostotTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 11. Vertailutiedon hyödyntäminen */}
+    <tr>
+      <td>Vertailutiedon hyödyntäminen (esim. erilaiset pienryhmät)</td>
+      <td>
+        <input
+          type="text"
+          name="vertailuTiedot"
+          value={financeData.vertailuTiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="vertailuTiedotLisatiedot"
+          value={financeData.vertailuTiedotLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="vertailuTiedotTavoitteet"
+          value={financeData.vertailuTiedotTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 12. Asiantuntijoiden käyttö */}
+    <tr>
+      <td>Asiantuntijoiden käyttö</td>
+      <td>
+        <input
+          type="text"
+          name="asiantuntijat"
+          value={financeData.asiantuntijat}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="asiantuntijatLisatiedot"
+          value={financeData.asiantuntijatLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="asiantuntijatTavoitteet"
+          value={financeData.asiantuntijatTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 13. Kuvaus ulkoistetuista palveluista */}
+    <tr>
+      <td>Kuvaus ulkoistetuista palveluista</td>
+      <td>
+        <input
+          type="text"
+          name="ulkoistetutPalvelut"
+          value={financeData.ulkoistetutPalvelut}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="ulkoistetutPalvelutLisatiedot"
+          value={financeData.ulkoistetutPalvelutLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="ulkoistetutPalvelutTavoitteet"
+          value={financeData.ulkoistetutPalvelutTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+    {/* 14. Erityiset toimenpiteet */}
+    <tr>
+      <td>Erityiset toimenpiteet</td>
+      <td>
+        <input
+          type="text"
+          name="talousErityisetToimenpiteet"
+          value={financeData.talousErityisetToimenpiteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="talousErityisetToimenpiteetLisatiedot"
+          value={financeData.talousErityisetToimenpiteetLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="talousErityisetToimenpiteetTavoitteet"
+          value={financeData.talousErityisetToimenpiteetTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 
         {/* Navigointi-napit */}
