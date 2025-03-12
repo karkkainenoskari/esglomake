@@ -123,7 +123,7 @@ const TalousJaHallintoPage = ({ onNext, onPrevious }) => {
           </colgroup>
           <thead>
             <tr>
-              <th>Kenttä</th>
+              <th>Johtaminen</th>
               <th>Uusin tulos</th>
               <th>Lisätiedot</th>
               <th>Tavoitteet ja aikataulut</th>
