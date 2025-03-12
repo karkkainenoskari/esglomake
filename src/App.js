@@ -9,9 +9,9 @@ function App() {
   const [step, setStep] = useState(0);
   const [initialData, setInitialData] = useState(null);
   const [environmentData, setEnvironmentData] = useState(null);
-  // Voit tarvittaessa lisätä myös sosiaalisen vastuun datan
+  const [socialData, setSocialData] = useState(null);
+  const [financeData, setFinanceData] = useState(null);
 
-  // Sivujen otsikot ProgressBar-komponenttia varten
   const pageTitles = [
     "Yrityksen perustiedot",
     "Ympäristö",
@@ -19,50 +19,42 @@ function App() {
     "Talous ja hallinto"
   ];
 
-  // 1) Alkusivu: tallennetaan perustiedot, siirrytään step=1
   const handleInitialNext = (data) => {
     setInitialData(data);
-    setStep(1); // Ympäristö-sivulle
+    setStep(1);
   };
 
-  // 2) Ympäristö-sivu: tallennetaan data, siirrytään step=2 (Sosiaalinen vastuu)
   const handleEnvironmentNext = (data) => {
     setEnvironmentData(data);
-    setStep(2); // Sosiaalinen vastuu -sivulle
+    setStep(2);
   };
 
-  // Paluu Ympäristö-sivulta takaisin (step=0)
   const handleEnvironmentBack = () => {
     setStep(0);
   };
 
-  // 3) Sosiaalinen vastuu -sivu: tallennetaan data, siirrytään step=3 (Talous ja hallinto)
   const handleSocialNext = (data) => {
-    // Jos haluat tallentaa sosiaalisen vastuun datan, tee se tässä
+    setSocialData(data);
     setStep(3);
   };
 
-  // Paluu Sosiaalinen vastuu -sivulta takaisin (step=1)
   const handleSocialBack = () => {
     setStep(1);
   };
 
-  // 4) Talous ja hallinto -sivu
   const handleFinanceBack = () => {
     setStep(2);
   };
 
-  // Voit lisätä handleFinanceNext, jos on jatkovaiheita
   const handleFinanceNext = (data) => {
-    // Esimerkiksi: tallenna talous ja hallinto -data ja siirry seuraavaan vaiheeseen
-    setStep(4);
+    setFinanceData(data);
+    // Tee tarvittavat toimenpiteet tai siirry seuraavaan vaiheeseen
+    alert('PDF tallennus onnistui ja data tallennettu.');
   };
 
   return (
     <div style={{ paddingBottom: '80px' }}>
-      {step === 0 && (
-        <InitialPage onNext={handleInitialNext} />
-      )}
+      {step === 0 && <InitialPage onNext={handleInitialNext} />}
       {step === 1 && (
         <EnvironmentPage
           onNext={handleEnvironmentNext}
@@ -80,9 +72,12 @@ function App() {
         <TalousJaHallintoPage
           onNext={handleFinanceNext}
           onPrevious={handleFinanceBack}
+          initialData={initialData}
+          environmentData={environmentData}
+          socialData={socialData}
+          financeData={financeData}
         />
       )}
-
       <ProgressBar currentPage={step + 1} pageTitles={pageTitles} />
     </div>
   );

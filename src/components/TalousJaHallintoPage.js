@@ -1,9 +1,19 @@
 // src/components/TalousJaHallintoPage.js
 import React, { useState } from 'react';
 import './tables.css';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
-const TalousJaHallintoPage = ({ onNext, onPrevious }) => {
-  const [financeData, setFinanceData] = useState({
+const TalousJaHallintoPage = ({ 
+    onNext, 
+    onPrevious, 
+    initialData, 
+    environmentData, 
+    socialData, 
+    financeData 
+  }) => {
+
+    const [localFinanceData, setLocalFinanceData] = useState({
     // 4.1 Johtaminen
     yrityksenArvot: '',
     yrityksenArvotLisatiedot: '',
@@ -137,6 +147,52 @@ const TalousJaHallintoPage = ({ onNext, onPrevious }) => {
     const { name, value } = e.target;
     setFinanceData({ ...financeData, [name]: value });
   };
+
+  const handlePDFSave = () => {
+    const doc = new jsPDF();
+    let currentY = 20;
+
+    // Esimerkki: Lisää otsikko
+    doc.setFontSize(16);
+    doc.text('Raportti', 20, currentY);
+    currentY += 10;
+
+    // Voit lisätä taulukoita erikseen:
+    // Lisää 4.1 Johtaminen -osio (esimerkiksi)
+    if (Object.values(localFinanceData).some(val => val.trim() !== '')) {
+      doc.setFontSize(14);
+      doc.text('4.1 Johtaminen', 20, currentY);
+      currentY += 10;
+      autoTable(doc, {
+        startY: currentY,
+        head: [['Kenttä', 'Uusin tulos', 'Lisätiedot', 'Tavoitteet']],
+        body: [
+          [
+            'Yrityksen arvot määritetty, kyllä/ei',
+            localFinanceData.yrityksenArvot,
+            localFinanceData.yrityksenArvotLisatiedot,
+            localFinanceData.yrityksenArvotTavoitteet
+          ],
+          // Lisää muut rivit samalla tavalla…
+        ],
+        theme: 'grid',
+        margin: { left: 20, right: 20 },
+        styles: { fontSize: 10 }
+      });
+      currentY = doc.lastAutoTable.finalY + 10;
+    }
+
+    // Lisää Riskien hallinta -osio
+    // Lisää Kilpailukyky ja kannattavuus -osio
+    // Voit lisätä vastaavanlaisen logiikan myös muille osioille,
+    // esim. ottamalla vastaan dataa propsina ja yhdistämällä sen tähän raporttiin.
+    // Kentät, joista arvo on tyhjä, ohitetaan logiikassa – voit esimerkiksi
+    // suodattaa taulukoiden rivit ennen niiden lisäämistä pdf:ään.
+
+    // Lopuksi tallenna PDF:
+    doc.save('Raportti.pdf');
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
