@@ -168,7 +168,28 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
     elviStatus: '',
     elviStatusLisatiedot: '',
     elviStatusTavoitteet: '',
-    elviStatusErityiset: ''
+    elviStatusErityiset: '',
+
+     // 3.4 Maidon laatu
+  laakekirjanpito: '',
+  laakekirjanpitoLisatiedot: '',
+  laakekirjanpitoTavoitteet: '',
+
+  tankkimaidonTestaus: '',
+  tankkimaidonTestausLisatiedot: '',
+  tankkimaidonTestausTavoitteet: '',
+
+  eLuokanOsuus: '',
+  eLuokanOsuusLisatiedot: '',
+  eLuokanOsuusTavoitteet: '',
+
+  maidonSolupitoisuus: '',
+  maidonSolupitoisuusLisatiedot: '',
+  maidonSolupitoisuusTavoitteet: '',
+
+  maitoErityisetToimenpiteet: '',
+  maitoErityisetToimenpiteetLisatiedot: '',
+  maitoErityisetToimenpiteetTavoitteet: ''
 
   });
 
@@ -1123,6 +1144,199 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
             </tr>
           </tbody>
         </table>
+
+        <h3>3.4 Maidon laatu</h3>
+<table className="common-table">
+  <colgroup>
+    <col />
+    <col />
+    <col />
+    <col />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Maidon laatu</th>
+      <th>Uusin tulos</th>
+      <th>Lisätiedot</th>
+      <th>Tavoitteet ja aikataulut</th>
+    </tr>
+  </thead>
+  <tbody>
+    {/* 1. Sähköinen lääkekirjanpito */}
+    <tr>
+      <td>
+        Sähköinen lääkekirjanpito käytössä, kyllä/ei <br />
+        (esim. Naseva)
+      </td>
+      <td>
+        <select
+          name="laakekirjanpito"
+          value={socialData.laakekirjanpito}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        >
+          <option value="">Valitse</option>
+          <option value="kylla">Kyllä</option>
+          <option value="ei">Ei</option>
+        </select>
+      </td>
+      <td>
+        <input
+          type="text"
+          name="laakekirjanpitoLisatiedot"
+          value={socialData.laakekirjanpitoLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="laakekirjanpitoTavoitteet"
+          value={socialData.laakekirjanpitoTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+
+    {/* 2. Tankkimaidon testaaminen */}
+    <tr>
+      <td>
+        Tankkimaidon testaaminen antibioottihoitojen yhteydessä, kyllä/ei
+      </td>
+      <td>
+        <select
+          name="tankkimaidonTestaus"
+          value={socialData.tankkimaidonTestaus}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        >
+          <option value="">Valitse</option>
+          <option value="kylla">Kyllä</option>
+          <option value="ei">Ei</option>
+        </select>
+      </td>
+      <td>
+        <input
+          type="text"
+          name="tankkimaidonTestausLisatiedot"
+          value={socialData.tankkimaidonTestausLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="tankkimaidonTestausTavoitteet"
+          value={socialData.tankkimaidonTestausTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+
+    {/* 3. E-luokan maidon osuus */}
+    <tr>
+      <td>E-luokan maidon osuus, %</td>
+      <td>
+        <input
+          type="text"
+          name="eLuokanOsuus"
+          value={socialData.eLuokanOsuus}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="eLuokanOsuusLisatiedot"
+          value={socialData.eLuokanOsuusLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="eLuokanOsuusTavoitteet"
+          value={socialData.eLuokanOsuusTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+
+    {/* 4. Maidon solupitoisuus */}
+    <tr>
+      <td>
+        Maidon solupitoisuus, tuotosseurannasta
+      </td>
+      <td>
+        <input
+          type="text"
+          name="maidonSolupitoisuus"
+          value={socialData.maidonSolupitoisuus}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="maidonSolupitoisuusLisatiedot"
+          value={socialData.maidonSolupitoisuusLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="maidonSolupitoisuusTavoitteet"
+          value={socialData.maidonSolupitoisuusTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+
+    {/* 5. Erityiset toimenpiteet */}
+    <tr>
+      <td>Erityiset toimenpiteet</td>
+      <td>
+        <input
+          type="text"
+          name="maitoErityisetToimenpiteet"
+          value={socialData.maitoErityisetToimenpiteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="maitoErityisetToimenpiteetLisatiedot"
+          value={socialData.maitoErityisetToimenpiteetLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          name="maitoErityisetToimenpiteetTavoitteet"
+          value={socialData.maitoErityisetToimenpiteetTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
         
 
