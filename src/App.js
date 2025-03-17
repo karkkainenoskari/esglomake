@@ -4,6 +4,7 @@ import EnvironmentPage from './components/EnvironmentPage';
 import SosiaalinenVastuuPage from './components/SosiaalinenVastuuPage';
 import TalousJaHallintoPage from './components/TalousJaHallintoPage';
 import ProgressBar from './components/ProgressBar';
+import generatePdfReport from './components/generatePdfReport';
 
 function App() {
   const [step, setStep] = useState(0);
@@ -36,7 +37,14 @@ function App() {
 
   const handleFinanceNext = (data) => {
     setFinanceData(data);
-    alert('PDF tallennus onnistui ja data tallennettu.');
+    // Kun käyttäjä valitsee "Tallenna ja lopeta" niin generoidaan PDF
+    generatePdfReport(initialData, environmentData, socialData, data);
+  };
+
+  // Voit lisätä myös napin, jolla käyttäjä voi "tallentaa ja lopetta" suoraan missä tahansa vaiheessa.
+  // Esimerkiksi:
+  const handleSaveAndFinish = () => {
+    generatePdfReport(initialData, environmentData, socialData, financeData);
   };
 
   return (
@@ -69,10 +77,22 @@ function App() {
           initialFinanceData={financeData}
         />
       )}
+      {/* Esimerkiksi voit lisätä yhteisen "Tallenna ja lopeta" -napin näytön alaosaan */}
+      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+  <button
+    onClick={handleSaveAndFinish}
+    style={{
+      fontSize: '20px',
+      padding: '12px 24px',
+      borderRadius: '8px',
+      backgroundColor: '#007acc',
+      color: 'white',
+      border: 'none'
+    }}>Tallenna ja lopeta</button>
+      </div>
       <ProgressBar currentPage={step + 1} pageTitles={pageTitles} />
     </div>
   );
 }
 
 export default App;
-
