@@ -934,7 +934,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
              
             </tr>
             <tr>
-              <td style={{ color: 'green' }}>Vasikkakuolleisuus %</td>
+              <td style={{ color: 'green' }}>Vasikkakuolleisuus %  <span
+      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+    >
+      ?
+    </span></td>
               <td>
                 <input type="text" name="vasikkakuolleisuus" value={socialData.vasikkakuolleisuus} onChange={handleChange} style={{ width: '100%' }} />
               </td>
@@ -947,7 +952,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
              
             </tr>
             <tr>
-              <td style={{ color: 'green' }}>Lehmien keskipoikimakerta</td>
+              <td style={{ color: 'green' }}>Lehmien keskipoikimakerta  <span
+      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+    >
+      ?
+    </span></td>
               <td>
                 <input type="text" name="lehmienKeskipoikimakerta" value={socialData.lehmienKeskipoikimakerta} onChange={handleChange} style={{ width: '100%' }} />
               </td>
@@ -960,7 +970,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
               
             </tr>
             <tr>
-              <td style={{ color: 'green' }}>Poistettujen lehmien elinikäistuotos, kg</td>
+              <td style={{ color: 'green' }}>Poistettujen lehmien elinikäistuotos, kg  <span
+      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+    >
+      ?
+    </span></td>
               <td>
                 <input type="text" name="poistettujenLehmienElinikaiTuotos" value={socialData.poistettujenLehmienElinikaiTuotos} onChange={handleChange} style={{ width: '100%' }} />
               </td>
@@ -973,7 +988,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
              
             </tr>
             <tr>
-              <td style={{ color: 'green' }}>EKM kg/elinpäivä (vuosiraportti)</td>
+              <td style={{ color: 'green' }}>EKM kg/elinpäivä (vuosiraportti)  <span
+      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+    >
+      ?
+    </span></td>
               <td>
                 <input type="text" name="ekmPerElinpiva" value={socialData.ekmPerElinpiva} onChange={handleChange} style={{ width: '100%' }} />
               </td>
