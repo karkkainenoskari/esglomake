@@ -264,7 +264,16 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           <tr style={{ color: 'blue' }}>
             <td>Maidon hiilijalanjälki, Co2/kg maitoa
             <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+  style={{
+    marginLeft: '5px',
+    cursor: 'help',
+    color: '#333',
+    border: '1px solid #333',   // Kehyksen tyyli
+    borderRadius: '50%',        // Pyöristetty ympyrä
+    backgroundColor: '#eee',    // Taustaväri
+    padding: '2px 6px',         // Sisämarginaali
+    fontWeight: 'bold',         // Vahvennettu fontti
+  }}
       title="Tieto löytyy hiilijalanjälkilaskurista"
     >
       ?
@@ -282,8 +291,17 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           </tr>
           <tr style={{ color: 'blue' }}>
             <td>Scope 1 päästö, tCO2e, %
-            <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+       <span
+  style={{
+    marginLeft: '5px',
+    cursor: 'help',
+    color: '#333',
+    border: '1px solid #333',   // Kehyksen tyyli
+    borderRadius: '50%',        // Pyöristetty ympyrä
+    backgroundColor: '#eee',    // Taustaväri
+    padding: '2px 6px',         // Sisämarginaali
+    fontWeight: 'bold',         // Vahvennettu fontti
+  }}
       title="Tieto löytyy hiilijalanjälkilaskurista"
     >
       ?
@@ -303,7 +321,14 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
             <td>Scope 2 päästö, tCO2e, %
 
             <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',   // Kehyksen tyyli
+        borderRadius: '50%',        // Pyöristetty ympyrä
+        backgroundColor: '#eee',    // Taustaväri
+        padding: '2px 6px',         // Sisämarginaali
+        fontWeight: 'bold', }}
       title="Tieto löytyy hiilijalanjälkilaskurista"
     >
       ?
@@ -323,7 +348,14 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
             <td>Scope 3 päästö, tCO2e, %
 
             <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',   // Kehyksen tyyli
+        borderRadius: '50%',        // Pyöristetty ympyrä
+        backgroundColor: '#eee',    // Taustaväri
+        padding: '2px 6px',         // Sisämarginaali
+        fontWeight: 'bold', }}
       title="Tieto löytyy hiilijalanjälkilaskurista"
     >
       ?
@@ -370,7 +402,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           <tr style={{ color: 'green' }}>
             <td>Keskilehmäluku, kpl
             <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -388,7 +428,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           </tr>
           <tr style={{ color: 'green' }}>
             <td>Poikimaväli, vrk  <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{ marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -405,7 +453,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           </tr>
           <tr style={{ color: 'green' }}>
             <td>Hiehopoikimaikä, kk  <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{ marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -422,7 +478,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           </tr>
           <tr style={{ color: 'green' }}>
             <td>Keskituotos, EKM kg/lehmä  <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -464,7 +528,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           <tr style={{ color: 'green' }}>
             <td>Maidon ureapitoisuus, mg/100 ml
             <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{ marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -482,7 +554,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           </tr>
           <tr style={{ color: 'green' }}>
             <td>Meijerimaidon osuus, %  <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{ marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -500,7 +580,14 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           <tr style={{ color: 'blue' }}>
             <td>Käytössä vähäpäästöinen kylmäaine tilasäililössä, kyllä/ei
             <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',   // Kehyksen tyyli
+        borderRadius: '50%',        // Pyöristetty ympyrä
+        backgroundColor: '#eee',    // Taustaväri
+        padding: '2px 6px',         // Sisämarginaali
+        fontWeight: 'bold', }}
       title="Tieto löytyy hiilijalanjälkilaskurista"
     >
       ?
@@ -522,7 +609,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           </tr>
           <tr style={{ color: 'green' }}>
             <td>Karkearehun osuus lypsylehmien ruokinnassa, %  <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -539,7 +634,14 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           </tr>
           <tr style={{ color: 'blue' }}>
             <td>Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä, kyllä/ei <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',   // Kehyksen tyyli
+        borderRadius: '50%',        // Pyöristetty ympyrä
+        backgroundColor: '#eee',    // Taustaväri
+        padding: '2px 6px',         // Sisämarginaali
+        fontWeight: 'bold', }}
       title="Tieto löytyy hiilijalanjälkilaskurista"
     >
       ?
@@ -894,7 +996,14 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           </tr>
           <tr style={{ color: 'blue' }}>
             <td>Lietelannan osuus, % <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',   // Kehyksen tyyli
+        borderRadius: '50%',        // Pyöristetty ympyrä
+        backgroundColor: '#eee',    // Taustaväri
+        padding: '2px 6px',         // Sisämarginaali
+        fontWeight: 'bold',}}
       title="Tieto löytyy hiilijalanjälkilaskurista"
     >
       ?
@@ -1019,7 +1128,14 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
         <tbody>
           <tr style={{ color: 'blue' }}>
             <td>Sähkön käyttömäärä, kWh/v <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',   // Kehyksen tyyli
+        borderRadius: '50%',        // Pyöristetty ympyrä
+        backgroundColor: '#eee',    // Taustaväri
+        padding: '2px 6px',         // Sisämarginaali
+        fontWeight: 'bold',}}
       title="Tieto löytyy hiilijalanjälkilaskurista"
     >
       ?
@@ -1060,8 +1176,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
           </tr>
           <tr style={{ color: 'blue' }}>
             <td>Polttoaineiden kokonaiskäyttömäärä, l/v <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
-      title="Tieto löytyy hiilijalanjälkilaskurista"
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',   // Kehyksen tyyli
+        borderRadius: '50%',        // Pyöristetty ympyrä
+        backgroundColor: '#eee',    // Taustaväri
+        padding: '2px 6px',         // Sisämarginaali
+        fontWeight: 'bold', }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
     </span></td>

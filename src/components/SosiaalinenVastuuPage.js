@@ -935,7 +935,15 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
             </tr>
             <tr>
               <td style={{ color: 'green' }}>Vasikkakuolleisuus %  <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -953,7 +961,15 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
             </tr>
             <tr>
               <td style={{ color: 'green' }}>Lehmien keskipoikimakerta  <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -971,7 +987,15 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
             </tr>
             <tr>
               <td style={{ color: 'green' }}>Poistettujen lehmien elinikäistuotos, kg  <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
@@ -989,7 +1013,15 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
             </tr>
             <tr>
               <td style={{ color: 'green' }}>EKM kg/elinpäivä (vuosiraportti)  <span
-      style={{ marginLeft: '5px', cursor: 'help', color: '#333' }}
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
       title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
     >
       ?
