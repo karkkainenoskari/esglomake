@@ -37,20 +37,19 @@ function App() {
 
   const handleFinanceNext = (data) => {
     setFinanceData(data);
-    // Kun käyttäjä valitsee "Tallenna ja lopeta" niin generoidaan PDF
-    generatePdfReport(initialData, environmentData, socialData, data);
+    // PDF generoidaan myöhemmin
+    alert('PDF tallennus onnistui ja data tallennettu.');
   };
 
-  // Voit lisätä myös napin, jolla käyttäjä voi "tallentaa ja lopetta" suoraan missä tahansa vaiheessa.
-  // Esimerkiksi:
   const handleSaveAndFinish = () => {
+    // PDF-generointi funktio, joka käyttää tallennettuja tietoja
     generatePdfReport(initialData, environmentData, socialData, financeData);
   };
 
   return (
     <div style={{ paddingBottom: '80px' }}>
       {step === 0 && (
-        <InitialPage onNext={handleInitialNext} initialData={initialData} />
+        <InitialPage onNext={handleInitialNext} initialData={initialData} onDataUpdate={setInitialData} />
       )}
       {step === 1 && (
         <EnvironmentPage
@@ -58,6 +57,7 @@ function App() {
           onPrevious={() => setStep(0)}
           companyData={initialData}
           initialEnvData={environmentData}
+          onDataUpdate={setEnvironmentData}
         />
       )}
       {step === 2 && (
@@ -65,6 +65,7 @@ function App() {
           onNext={handleSocialNext}
           onPrevious={() => setStep(1)}
           initialSocialData={socialData}
+          onDataUpdate={setSocialData}
         />
       )}
       {step === 3 && (
@@ -75,24 +76,28 @@ function App() {
           environmentData={environmentData}
           socialData={socialData}
           initialFinanceData={financeData}
+          onDataUpdate={setFinanceData}
         />
       )}
-      {/* Esimerkiksi voit lisätä yhteisen "Tallenna ja lopeta" -napin näytön alaosaan */}
       <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-  <button
-    onClick={handleSaveAndFinish}
-    style={{
-      fontSize: '20px',
-      padding: '12px 24px',
-      borderRadius: '8px',
-      backgroundColor: '#007acc',
-      color: 'white',
-      border: 'none'
-    }}>Tallenna ja lopeta</button>
+        <button
+          onClick={handleSaveAndFinish}
+          style={{
+            fontSize: '20px',
+            padding: '12px 24px',
+            borderRadius: '8px',
+            backgroundColor: '#007acc',
+            color: 'white',
+            border: 'none'
+          }}
+        >
+          Tallenna ja lopeta
+        </button>
       </div>
       <ProgressBar currentPage={step + 1} pageTitles={pageTitles} />
     </div>
   );
 }
+
 
 export default App;

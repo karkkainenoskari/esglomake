@@ -4,12 +4,12 @@ import './tables.css';
 const TalousJaHallintoPage = ({
   onNext,
   onPrevious,
-  initialFinanceData,  // Uusi prop, joka sisältää aiemmin tallennetun taloustiedon
+  initialFinanceData,
   initialData,
   environmentData,
-  socialData
+  socialData,
+  onDataUpdate
 }) => {
-  // Alustetaan tila käyttäen initialFinanceDataa, jos sitä on, muuten tyhjillä arvoilla
   const [localFinanceData, setLocalFinanceData] = useState(initialFinanceData || {
     // 4.1 Johtaminen
     yrityksenArvot: '',
@@ -141,6 +141,12 @@ const TalousJaHallintoPage = ({
     }
   }, [initialFinanceData]);
 
+  useEffect(() => {
+    if (onDataUpdate) {
+      onDataUpdate(localFinanceData);
+    }
+  }, [localFinanceData, onDataUpdate]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLocalFinanceData({ ...localFinanceData, [name]: value });
@@ -148,11 +154,8 @@ const TalousJaHallintoPage = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (onNext) {
-      onNext(localFinanceData);
-    }
+    if (onNext) onNext(localFinanceData);
   };
-
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Info-boksi */}

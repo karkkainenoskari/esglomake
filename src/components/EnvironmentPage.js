@@ -3,8 +3,7 @@ import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import './tables.css';
 
-const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData }) => {
-  // Käytetään initialEnvDataa, jos se on saatavilla, muuten alustetaan tyhjillä arvoilla
+const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDataUpdate }) => {
   const [envData, setEnvData] = useState(initialEnvData || {
     // === 2.1 Hiilijalanjälki ja tuotannon tehokkuus (environment) ===
     envMaidonHiilijalanjalki: '',
@@ -211,6 +210,13 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData }) =>
     }
   }, [initialEnvData]);
 
+  // Tämä useEffect päivittää ylätilan aina, kun envData muuttuu
+  useEffect(() => {
+    if (onDataUpdate) {
+      onDataUpdate(envData);
+    }
+  }, [envData, onDataUpdate]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEnvData({ ...envData, [name]: value });
@@ -220,11 +226,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData }) =>
     e.preventDefault();
     if (onNext) onNext(envData);
   };
-
-  const handlePDFSave = () => {
-    alert("PDF-tallennus – toteuta jsPDF-logiikalla.");
-  };
-  
   
 
   return (
@@ -1286,10 +1287,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData }) =>
           Edellinen
         </button>
         <button type="submit" onClick={handleSubmit} style={{ marginRight: '1rem' }}>
-          Seuraava
-        </button>
-        <button type="button" onClick={handlePDFSave}>
-          Tallenna PDF
+          Seuraava       
         </button>
       </div>
     </div>

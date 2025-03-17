@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './tables.css';
 
-const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData }) => {
-  // Alustetaan tila käyttämällä initialSocialDataa, jos se on saatavilla
+const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUpdate }) => {
   const [socialData, setSocialData] = useState(initialSocialData || {
     // 1. Henkilöstö ja työolosuhteet
     henkilostoStrategia: '',
@@ -199,6 +198,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData }) => {
       setSocialData(initialSocialData);
     }
   }, [initialSocialData]);
+
+  useEffect(() => {
+    if (onDataUpdate) {
+      onDataUpdate(socialData);
+    }
+  }, [socialData, onDataUpdate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
