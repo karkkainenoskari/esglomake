@@ -143,10 +143,11 @@ const TalousJaHallintoPage = ({
   talousErityisetToimenpiteetTavoitteet: ''
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFinanceData({ ...financeData, [name]: value });
-  };
+ const handleChange = (e) => {
+  const { name, value } = e.target;
+  setLocalFinanceData({ ...localFinanceData, [name]: value });
+};
+
 
   const handlePDFSave = () => {
     const doc = new jsPDF();
