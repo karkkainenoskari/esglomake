@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import InitialPage from './components/InitialPage';
 import EnvironmentPage from './components/EnvironmentPage';
@@ -10,7 +11,6 @@ function App() {
   const [initialData, setInitialData] = useState(null);
   const [environmentData, setEnvironmentData] = useState(null);
   const [socialData, setSocialData] = useState(null);
-  const [financeData, setFinanceData] = useState(null);
 
   const pageTitles = [
     "Yrityksen perustiedot",
@@ -47,8 +47,7 @@ function App() {
   };
 
   const handleFinanceNext = (data) => {
-    setFinanceData(data);
-    // Tee tarvittavat toimenpiteet tai siirry seuraavaan vaiheeseen
+    // Toimenpiteet ja lopullinen tallennus
     alert('PDF tallennus onnistui ja data tallennettu.');
   };
 
@@ -60,12 +59,14 @@ function App() {
           onNext={handleEnvironmentNext}
           onPrevious={handleEnvironmentBack}
           companyData={initialData}
+          initialEnvData={environmentData}  // välitetään tallennettu data
         />
       )}
       {step === 2 && (
         <SosiaalinenVastuuPage
           onNext={handleSocialNext}
-          onPrevious={handleSocialBack}
+          onPrevious={handleEnvironmentBack}
+          initialSocialData={socialData} // vastaava, jos haluat
         />
       )}
       {step === 3 && (
@@ -75,7 +76,6 @@ function App() {
           initialData={initialData}
           environmentData={environmentData}
           socialData={socialData}
-          financeData={financeData}
         />
       )}
       <ProgressBar currentPage={step + 1} pageTitles={pageTitles} />

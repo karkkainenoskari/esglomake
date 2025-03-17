@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import './tables.css';
 
-const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
-  const [envData, setEnvData] = useState({
+const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData }) => {
+  // Käytetään joko vanhaa dataa tai alustetaan tyhjillä arvoilla
+  const [envData, setEnvData] = useState(initialEnvData || {
     // === 2.1 Hiilijalanjälki ja tuotannon tehokkuus (environment) ===
     envMaidonHiilijalanjalki: '',
     envMaidonHiilijalanjalkiLisatiedot: '',
@@ -204,6 +205,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
     energyErityisetToimenpiteetTavoitteet: ''
   });
 
+  useEffect(() => {
+    if (initialEnvData) {
+      setEnvData(initialEnvData);
+    }
+  }, [initialEnvData]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEnvData({ ...envData, [name]: value });
@@ -217,7 +224,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData }) => {
   const handlePDFSave = () => {
     alert("PDF-tallennus – toteuta jsPDF-logiikalla.");
   };
-
+  
   
 
   return (
