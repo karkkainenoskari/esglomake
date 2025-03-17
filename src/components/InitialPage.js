@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const InitialPage = ({ onNext }) => {
-  const [formData, setFormData] = useState({
+const InitialPage = ({ onNext, initialData }) => {
+  // Käytetään initialDataa, jos se on saatavilla, muuten oletusarvona tyhjiä kenttiä
+  const [formData, setFormData] = useState(initialData || {
     yrityksenNimi: '',
     yrittajienNimet: '',
     yhtiomuoto: '',
@@ -12,6 +13,13 @@ const InitialPage = ({ onNext }) => {
     navettatyyppi: '',
     lypsyjarjestelma: ''
   });
+
+  // Jos initialData muuttuu, päivitetään tilaa
+  useEffect(() => {
+    if (initialData) {
+      setFormData(initialData);
+    }
+  }, [initialData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -1,16 +1,16 @@
-// src/components/TalousJaHallintoPage.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './tables.css';
 
 const TalousJaHallintoPage = ({
   onNext,
   onPrevious,
+  initialFinanceData,  // Uusi prop, joka sisältää aiemmin tallennetun taloustiedon
   initialData,
   environmentData,
-  socialData,
-  // financeData prop poistettu, käytetään paikallista tilaa
+  socialData
 }) => {
-  const [localFinanceData, setLocalFinanceData] = useState({
+  // Alustetaan tila käyttäen initialFinanceDataa, jos sitä on, muuten tyhjillä arvoilla
+  const [localFinanceData, setLocalFinanceData] = useState(initialFinanceData || {
     // 4.1 Johtaminen
     yrityksenArvot: '',
     yrityksenArvotLisatiedot: '',
@@ -135,6 +135,12 @@ const TalousJaHallintoPage = ({
     ulkoistetutPalvelutTavoitteet: '',
   });
 
+  useEffect(() => {
+    if (initialFinanceData) {
+      setLocalFinanceData(initialFinanceData);
+    }
+  }, [initialFinanceData]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLocalFinanceData({ ...localFinanceData, [name]: value });
@@ -143,7 +149,6 @@ const TalousJaHallintoPage = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onNext) {
-      // Lähetetään paikallinen data eteenpäin
       onNext(localFinanceData);
     }
   };

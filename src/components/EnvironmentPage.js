@@ -4,7 +4,7 @@ import autoTable from 'jspdf-autotable';
 import './tables.css';
 
 const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData }) => {
-  // Käytetään joko vanhaa dataa tai alustetaan tyhjillä arvoilla
+  // Käytetään initialEnvDataa, jos se on saatavilla, muuten alustetaan tyhjillä arvoilla
   const [envData, setEnvData] = useState(initialEnvData || {
     // === 2.1 Hiilijalanjälki ja tuotannon tehokkuus (environment) ===
     envMaidonHiilijalanjalki: '',

@@ -1,9 +1,10 @@
 // src/components/SosiaalinenVastuuPage.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './tables.css';
 
-const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
-  const [socialData, setSocialData] = useState({
+const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData }) => {
+  // Alustetaan tila käyttämällä initialSocialDataa, jos se on saatavilla
+  const [socialData, setSocialData] = useState(initialSocialData || {
     // 1. Henkilöstö ja työolosuhteet
     henkilostoStrategia: '',
     henkilostoStrategiaLisatiedot: '',
@@ -192,6 +193,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious }) => {
   maitoErityisetToimenpiteetTavoitteet: ''
 
   });
+
+  useEffect(() => {
+    if (initialSocialData) {
+      setSocialData(initialSocialData);
+    }
+  }, [initialSocialData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
