@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const InitialPage = ({ onNext, initialData }) => {
-  // Käytetään initialDataa, jos se on saatavilla, muuten oletusarvona tyhjiä kenttiä
-  const [formData, setFormData] = useState(initialData || {
+const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
+    const [formData, setFormData] = useState(initialData || {
     yrityksenNimi: '',
     yrittajienNimet: '',
     yhtiomuoto: '',
@@ -14,16 +13,15 @@ const InitialPage = ({ onNext, initialData }) => {
     lypsyjarjestelma: ''
   });
 
-  // Jos initialData muuttuu, päivitetään tilaa
   useEffect(() => {
-    if (initialData) {
-      setFormData(initialData);
+    if (onDataUpdate) {
+      onDataUpdate(formData);
     }
-  }, [initialData]);
+  }, [formData, onDataUpdate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
