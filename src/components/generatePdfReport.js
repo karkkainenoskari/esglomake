@@ -1,9 +1,26 @@
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
+import { 
+    savoniaLogo, 
+    maitoyrittajatLogo, 
+    valioLogo, 
+    ysaoLogo, 
+    euLogo 
+  } from './logos.js';
+
 const generatePdfReport = (initialData,environmentData) => {
   const doc = new jsPDF();
-  let startY = 20;
+ 
+  doc.addImage(savoniaLogo, 'PNG', 14, 10, 30, 20);         // x=14, y=10, leveys=30, korkeus=20
+  doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 30, 20);  // säädä arvoja tarpeen mukaan
+  doc.addImage(valioLogo, 'PNG', 86, 10, 30, 20);
+  doc.addImage(ysaoLogo, 'PNG', 122, 10, 30, 20);
+  doc.addImage(euLogo, 'PNG', 158, 10, 30, 20);
+
+  // Nostetaan startY:tä sen verran, etteivät otsikot mene logojen päälle
+  let startY = 40;
+  
 
   // Otsikko
   doc.setFontSize(16);
