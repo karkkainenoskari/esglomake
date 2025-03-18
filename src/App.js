@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InitialPage from './components/InitialPage';
 import EnvironmentPage from './components/EnvironmentPage';
 import SosiaalinenVastuuPage from './components/SosiaalinenVastuuPage';
 import TalousJaHallintoPage from './components/TalousJaHallintoPage';
 import ProgressBar from './components/ProgressBar';
-import generatePdfReport from './components/generatePdfReport';
 
 function App() {
   const [step, setStep] = useState(0);
@@ -19,6 +18,10 @@ function App() {
     "Sosiaalinen vastuu",
     "Talous ja hallinto"
   ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step]);
 
   const handleInitialNext = (data) => {
     setInitialData(data);
@@ -37,13 +40,7 @@ function App() {
 
   const handleFinanceNext = (data) => {
     setFinanceData(data);
-    // PDF generoidaan myöhemmin
     alert('PDF tallennus onnistui ja data tallennettu.');
-  };
-
-  const handleSaveAndFinish = () => {
-    // PDF-generointi funktio, joka käyttää tallennettuja tietoja
-    generatePdfReport(initialData, environmentData, socialData, financeData);
   };
 
   return (
@@ -81,7 +78,7 @@ function App() {
       )}
       <div style={{ textAlign: 'center', marginTop: '2rem' }}>
         <button
-          onClick={handleSaveAndFinish}
+          onClick={() => { /* tallenna ja lopeta toiminnallisuus */ }}
           style={{
             fontSize: '20px',
             padding: '12px 24px',
@@ -98,6 +95,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
