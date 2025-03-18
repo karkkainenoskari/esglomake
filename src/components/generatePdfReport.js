@@ -1,20 +1,52 @@
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
-const generatePdfReport = (environmentData) => {
+const generatePdfReport = (initialData,environmentData) => {
   const doc = new jsPDF();
   let startY = 20;
 
   // Otsikko
   doc.setFontSize(16);
-  doc.text("ESG Vastuullisuusraportti - Ympäristö", 14, startY);
+  doc.text("ESG Vastuullisuusraportti", 14, startY);
   startY += 10;
 
   doc.setFontSize(12);
+  doc.text("1. Yrityksen perustiedot", 14, startY);
+  startY += 6;
 
-  //
+  // Kahden sarakkeen taulukko: [Kenttä, Arvo]
+  const initialRows = [
+    ["Yrityksen nimi", initialData.yrityksenNimi || ""],
+    ["Yrittäjien nimet", initialData.yrittajienNimet || ""],
+    ["Yhtiömuoto", initialData.yhtiomuoto || ""],
+    ["Tilan kokonaistyövoima", initialData.tilanKokonaistyovoima || ""],
+    ["Karjakoko", initialData.karjakoko || ""],
+    ["Peltoala", initialData.peltoala || ""],
+    ["Luomu vai tavanomainen", initialData.tuotomanTavanomainen || ""],
+    ["Navettatyyppi", initialData.navettatyyppi || ""],
+    ["Lypsyjärjestelmä", initialData.lypsyjarjestelma || ""],
+  ];
+
+  // Suodatetaan pois ne rivit, joissa Arvo on tyhjä
+  const filteredInitialRows = initialRows.filter(([label, value]) => value.trim() !== "");
+
+  if (filteredInitialRows.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Yrityksen perustiedot", ""]],
+      body: filteredInitialRows,
+      theme: 'striped',
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10 },
+    });
+    startY = doc.lastAutoTable.finalY + 10;
+  }
+
+  // --- 2. Ympäristö ---
+  doc.text("2. Ympäristö", 14, startY);
+  startY += 10;
+
   // 2.1 Hiilijalanjälki ja tuotannon tehokkuus
-  //
   doc.text("2.1 Hiilijalanjälki ja tuotannon tehokkuus", 14, startY);
   startY += 6;
 
