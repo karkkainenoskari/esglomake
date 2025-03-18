@@ -76,21 +76,32 @@ function App() {
           onDataUpdate={setFinanceData}
         />
       )}
-      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-        <button
-          onClick={() => { /* tallenna ja lopeta toiminnallisuus */ }}
-          style={{
-            fontSize: '20px',
-            padding: '12px 24px',
-            borderRadius: '8px',
-            backgroundColor: '#007acc',
-            color: 'white',
-            border: 'none'
-          }}
-        >
-          Tallenna ja lopeta
-        </button>
-      </div>
+    <div
+  style={{
+    position: 'fixed',
+    bottom: '20px',
+    left: '0',
+    right: '0',
+    textAlign: 'center',
+    zIndex: 9999, // nostettu z-index
+    
+  }}
+>
+  <button
+    onClick={() => { /* tallenna ja lopeta toiminnallisuus */ }}
+    style={{
+      fontSize: '20px',
+      padding: '12px 24px',
+      borderRadius: '8px',
+      backgroundColor: '#007acc',
+      color: 'white',
+      border: 'none'
+    }}
+  >
+    Tallenna ja lopeta
+  </button>
+</div>
+
       <ProgressBar currentPage={step + 1} pageTitles={pageTitles} />
     </div>
   );
