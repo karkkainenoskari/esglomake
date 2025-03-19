@@ -231,24 +231,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
          {/* --- Infoboksi sivun yläreunaan --- */}
-      <div
-        style={{
-          border: '1px solid #ccc',
-          padding: '1rem',
-          marginBottom: '1rem',
-          backgroundColor: '#f9f9f9'
-        }}
-      >
-        <p style={{ margin: 0 }}>
-          <strong>
-            HUOM! Värikoodit tarkoittavat seuraavaa:
-          </strong>
-        </p>
-        <ul style={{ marginTop: '0.5rem' }}>
-          <li style={{ color: 'green' }}>Tieto löytyy tuotosseurannasta tai meijerin tiedoista</li>
-          <li style={{ color: 'blue' }}>Tieto löytyy hiilijalanjälkilaskurista</li>
-        </ul>
-      </div>
+     
       <h2>Ympäristö</h2>
       
       {/* 2.1 Hiilijalanjälki ja tuotannon tehokkuus */}
@@ -509,8 +492,21 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envKeskituotosTavoitteet" value={envData.envKeskituotosTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr>
-            <td>Tuotosseurannan rasva%, vuoden keskiarvo</td>
+          <tr style={{ color: 'green' }}>
+          <td>Tuotosseurannan rasva-%, vuoden keskiarvo <span
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+    >
+      ?
+    </span></td>
             <td>
               <input type="text" name="envTuotosRasva" value={envData.envTuotosRasva} onChange={handleChange} style={{ width: '100%' }} />
             </td>
@@ -521,8 +517,21 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envTuotosRasvaTavoitteet" value={envData.envTuotosRasvaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr>
-            <td>Tuotosseurannan valkuais%, vuoden keskiarvo</td>
+          <tr style={{ color: 'green' }}>
+          <td>Tuotosseurannan valkuais-%, vuoden keskiarvo <span
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+    >
+      ?
+    </span></td>
             <td>
               <input type="text" name="envTuotosValkuainen" value={envData.envTuotosValkuainen} onChange={handleChange} style={{ width: '100%' }} />
             </td>
@@ -640,20 +649,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envKarkearehunOsuusTavoitteet" value={envData.envKarkearehunOsuusTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'blue' }}>
-            <td>Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä, kyllä/ei <span
-      style={{  marginLeft: '5px',
-        cursor: 'help',
-        color: '#333',
-        border: '1px solid #333',   // Kehyksen tyyli
-        borderRadius: '50%',        // Pyöristetty ympyrä
-        backgroundColor: '#eee',    // Taustaväri
-        padding: '2px 6px',         // Sisämarginaali
-        fontWeight: 'bold', }}
-      title="Tieto löytyy hiilijalanjälkilaskurista"
-    >
-      ?
-    </span></td>
+          <tr>
+            <td>Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä, kyllä/ei</td>
             <td>
               <select name="envPaastojaVahentavatLisaravinteet" value={envData.envPaastojaVahentavatLisaravinteet} onChange={handleChange} style={{ width: '100%' }}>
                 <option value="">Valitse</option>
@@ -668,8 +665,21 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envPaastojaVahentavatLisaravinteetTavoitteet" value={envData.envPaastojaVahentavatLisaravinteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr>
-            <td>Ruokinnan seurantalaskelmia tehty, kyllä/ei</td>
+          <tr style={{ color: 'green' }}>
+          <td>Ruokinnan seurantalaskelma tehty kyllä/ei  <span
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+    >
+      ?
+    </span></td>
             <td>
               <select name="envRuokinnanSeurantalaskelmiaTehty" value={envData.envRuokinnanSeurantalaskelmiaTehty} onChange={handleChange} style={{ width: '100%' }}>
                 <option value="">Valitse</option>
@@ -684,8 +694,23 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envRuokinnanSeurantalaskelmiaTehtyTavoitteet" value={envData.envRuokinnanSeurantalaskelmiaTehtyTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr>
-            <td>Kuiva-ainekiloa rehua/EKM kg (kaikki rehut yhteensä)</td>
+          <tr style={{ color: 'green' }}>
+          <td>Kuiva-ainekiloa rehua/EKM kg 
+(kaikki rehut yhteensä, esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista)
+ <span
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+    >
+      ?
+    </span></td>
             <td>
               <input type="text" name="envKuivaAinekiloa" value={envData.envKuivaAinekiloa} onChange={handleChange} style={{ width: '100%' }} />
             </td>
@@ -696,8 +721,22 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envKuivaAinekiloaTavoitteet" value={envData.envKuivaAinekiloaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr>
-            <td>Typen hyväksikäyttö % ruokinnassa</td>
+          <tr style={{ color: 'green' }}>
+          <td>Typen hyväksikäyttö % ruokinnassa (esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista)
+ <span
+      style={{  marginLeft: '5px',
+        cursor: 'help',
+        color: '#333',
+        border: '1px solid #333',
+        borderRadius: '50%',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        fontWeight: 'bold'
+      }}
+      title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+    >
+      ?
+    </span></td>
             <td>
               <input type="text" name="envTypenHyvaksykaytto" value={envData.envTypenHyvaksykaytto} onChange={handleChange} style={{ width: '100%' }} />
             </td>

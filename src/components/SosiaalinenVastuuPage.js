@@ -218,26 +218,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Yläreunan infoboksi */}
-      <div
-        style={{
-          border: '1px solid #ccc',
-          backgroundColor: '#f9f9f9',
-          padding: '1rem',
-          marginBottom: '1rem'
-        }}
-      >
-        <p style={{ margin: 0 }}>
-          <strong>HUOM! Värikoodit tarkoittavat seuraavaa:</strong>
-        </p>
-        <ul style={{ marginTop: '0.5rem' }}>
-          <li style={{ color: 'green' }}>
-            Tieto löytyy tuotosseurannasta tai meijerin tiedoista
-          </li>
-          <li style={{ color: 'blue' }}>
-            Tieto löytyy hiilijalanjälkilaskurista
-          </li>
-        </ul>
-      </div>
+      
 
       <h2>Sosiaalinen vastuu</h2>
 
