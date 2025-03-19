@@ -211,7 +211,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
     }
   }, [initialEnvData]);
 
-  // Tämä useEffect päivittää ylätilan aina, kun envData muuttuu
+
   useEffect(() => {
     if (onDataUpdate) {
       onDataUpdate(envData);
@@ -827,7 +827,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Monimuotoisuutta edistävä pinta-ala yhteensä, ha</td>
+            <td>Monimuotoisuutta edistävä pinta-ala yhteensä, ha (esim. perinnebiotoopit, luonnonlaitumet, riistapellot, peltojen reuna-alueet, pölyttäjäkasvit)</td>
             <td>
               <input type="text" name="divPintaAla" value={envData.divPintaAla} onChange={handleChange} style={{ width: '100%' }} />
             </td>
