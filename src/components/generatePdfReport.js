@@ -311,12 +311,98 @@ const generatePdfReport = (initialData,environmentData) => {
   });
   startY = doc.lastAutoTable.finalY + 10;
   
-  
+  // --- 2.3 Peltoviljely ---
+doc.text("2.3 Peltoviljely", 14, startY);
+startY += 6;
+
+const rows23Pelto = [
+  [
+    "Viljelykasvien kokonaispinta-ala, ha",
+    environmentData.envPeltoviljelyKokonaispintaAla || "",
+    environmentData.envPeltoviljelyKokonaispintaAlaLisatiedot || "",
+    environmentData.envPeltoviljelyKokonaispintaAlaTavoitteet || ""
+  ],
+  [
+    "Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey",
+    environmentData.envPeltoviljelySuhdeElainmaara || "",
+    environmentData.envPeltoviljelySuhdeElainmaaraLisatiedot || "",
+    environmentData.envPeltoviljelySuhdeElainmaaraTavoitteet || ""
+  ],
+  [
+    "Turvemaiden osuus, %",
+    environmentData.envTurvemaidenOsuus || "",
+    environmentData.envTurvemaidenOsuusLisatiedot || "",
+    environmentData.envTurvemaidenOsuusTavoitteet || ""
+  ],
+  [
+    "Säilörehun D-arvo, keskimäärin",
+    environmentData.envSaileRehunDArvo || "",
+    environmentData.envSaileRehunDArvoLisatiedot || "",
+    environmentData.envSaileRehunDArvoTavoitteet || ""
+  ],
+  [
+    "Nurmisato, kg/ha",
+    environmentData.envNurmisato || "",
+    environmentData.envNurmisatoLisatiedot || "",
+    environmentData.envNurmisatoTavoitteet || ""
+  ],
+  [
+    "Viljasato, kg/ha",
+    environmentData.envViljasato || "",
+    environmentData.envViljasatoLisatiedot || "",
+    environmentData.envViljasatoTavoitteet || ""
+  ],
+  [
+    "Kuvaus rehuntuotannon toimintatavoista/strategiasta",
+    environmentData.envRehuntuotantoKuvaus || "",
+    environmentData.envRehuntuotantoKuvausLisatiedot || "",
+    environmentData.envRehuntuotantoKuvausTavoitteet || ""
+  ],
+  [
+    "Keskimääräinen lohkoetäisyys, km",
+    environmentData.envLohkoetaisyys || "",
+    environmentData.envLohkoetaisyysLisatiedot || "",
+    environmentData.envLohkoetaisyysTavoitteet || ""
+  ],
+  [
+    "Kuvaus peltoviljelyssä käytössä olevista toimenpiteistä",
+    environmentData.envPeltoviljelyToimenpiteet || "",
+    environmentData.envPeltoviljelyToimenpiteetLisatiedot || "",
+    environmentData.envPeltoviljelyToimenpiteetTavoitteet || ""
+  ],
+  [
+    "Kuvaus peltojen vesitalouden ylläpidosta ja kehittämisestä",
+    environmentData.envVesitalousKuvaus || "",
+    environmentData.envVesitalousKuvausLisatiedot || "",
+    environmentData.envVesitalousKuvausTavoitteet || ""
+  ],
+  [
+    "Erityiset toimenpiteet",
+    environmentData.envPeltoviljelyErityisetToimenpiteet || "",
+    environmentData.envPeltoviljelyErityisetToimenpiteetLisatiedot || "",
+    environmentData.envPeltoviljelyErityisetToimenpiteetTavoitteet || ""
+  ]
+];
+
+const filteredRows23Pelto = rows23Pelto.filter(row => {
+  const [label, result, details, targets] = row;
+  return (result.trim() !== "" || details.trim() !== "" || targets.trim() !== "");
+});
+
+autoTable(doc, {
+  startY,
+  head: [["Peltoviljely", "Uusin tulos", "Lisätiedot", "Tavoitteet ja aikataulut"]],
+  body: filteredRows23Pelto,
+  theme: 'striped',
+  margin: { left: 14, right: 14 },
+  styles: { fontSize: 10 }
+});
+startY = doc.lastAutoTable.finalY + 10;
 
   //
-  // 2.3 Lannan käsittely ja jätehuolto
+  // 2.4 Lannan käsittely ja jätehuolto
   //
-  doc.text("2.3 Lannan käsittely ja jätehuolto", 14, startY);
+  doc.text("2.4 Lannan käsittely ja jätehuolto", 14, startY);
 startY += 6;
 
 const rows23 = [
@@ -396,7 +482,7 @@ startY = doc.lastAutoTable.finalY + 10;
   //
   // 2.4 Energian käyttö
   //
-  doc.text("2.4 Energian käyttö", 14, startY);
+  doc.text("2.5 Energian käyttö", 14, startY);
   startY += 6;
   
   const rows24 = [
