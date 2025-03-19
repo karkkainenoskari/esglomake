@@ -6,7 +6,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     yrittajienNimet: '',
     yhtiomuoto: '',
     tilanKokonaistyovoima: '',
-    karjakoko: '',
+    lypsylehmienMaara: '',
     peltoala: '',
     tuotomanTavanomainen: '',
     navettatyyppi: '',
@@ -89,16 +89,20 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
             </div>
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
               <label style={{ width: '180px' }}>Yhtiömuoto:</label>
-              <input
-                type="text"
+              <select
                 name="yhtiomuoto"
                 value={formData.yhtiomuoto}
                 onChange={handleChange}
                 style={{ flex: 1 }}
-              />
+              >
+                <option value="">Valitse</option>
+                <option value="yhtymä">Yhtymä</option>
+                <option value="yhtiö">Yhtiö</option>
+                <option value="toiminimi">Toiminimi</option>
+              </select>
             </div>
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
-              <label style={{ width: '180px' }}>Tilan kokonaistyövoima:</label>
+              <label style={{ width: '180px' }}>Tilan kokonaistyövoima (hlö):</label>
               <input
                 type="text"
                 name="tilanKokonaistyovoima"
@@ -108,17 +112,17 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
               />
             </div>
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
-              <label style={{ width: '180px' }}>Karjakoko:</label>
+              <label style={{ width: '180px' }}>Lypsylehmien määrä (kpl):</label>
               <input
                 type="text"
-                name="karjakoko"
-                value={formData.karjakoko}
+                name="lypsylehmienMaara"
+                value={formData.lypsylehmienMaara}
                 onChange={handleChange}
                 style={{ flex: 1 }}
               />
             </div>
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
-              <label style={{ width: '180px' }}>Peltoala:</label>
+              <label style={{ width: '180px' }}>Peltoala (ha):</label>
               <input
                 type="text"
                 name="peltoala"
@@ -142,24 +146,33 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
             </div>
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
               <label style={{ width: '180px' }}>Navettatyyppi:</label>
-              <input
-                type="text"
+              <select
                 name="navettatyyppi"
                 value={formData.navettatyyppi}
                 onChange={handleChange}
                 style={{ flex: 1 }}
-              />
+              >
+                <option value="">Valitse</option>
+                <option value="pihatto">Pihatto</option>
+                <option value="parsinavetta">Parsinavetta</option>
+              </select>
             </div>
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
               <label style={{ width: '180px' }}>Lypsyjärjestelmä:</label>
-              <input
-                type="text"
+              <select
                 name="lypsyjarjestelma"
                 value={formData.lypsyjarjestelma}
                 onChange={handleChange}
                 style={{ flex: 1 }}
-              />
+              >
+                <option value="">Valitse</option>
+                <option value="automaattilypsy">Automaattilypsy</option>
+                <option value="lypsyasema">Lypsyasema</option>
+                <option value="parsilypsy">Parsilypsy</option>
+              </select>
             </div>
+
+         
             <button type="submit">Seuraava</button>
           </form>
         </div>

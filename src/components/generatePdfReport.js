@@ -37,7 +37,7 @@ const generatePdfReport = (initialData,environmentData) => {
     ["Yrittäjien nimet", initialData.yrittajienNimet || ""],
     ["Yhtiömuoto", initialData.yhtiomuoto || ""],
     ["Tilan kokonaistyövoima", initialData.tilanKokonaistyovoima || ""],
-    ["Karjakoko", initialData.karjakoko || ""],
+    ["Lypsylehmienmäärä", initialData.lypsylehmienmaara || ""],
     ["Peltoala", initialData.peltoala || ""],
     ["Luomu vai tavanomainen", initialData.tuotomanTavanomainen || ""],
     ["Navettatyyppi", initialData.navettatyyppi || ""],
