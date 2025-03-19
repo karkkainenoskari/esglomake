@@ -136,22 +136,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
     divErityisetToimenpiteetLisatiedot: '',
     divErityisetToimenpiteetTavoitteet: '',
     
-    divLohkokoko: '',
-    divLohkokokoLisatiedot: '',
-    divLohkokokoTavoitteet: '',
-    
-    divLohkoetaisyys: '',
-    divLohkoetaisyysLisatiedot: '',
-    divLohkoetaisyysTavoitteet: '',
-    
-    divPeltoviljely: '',
-    divPeltoviljelyLisatiedot: '',
-    divPeltoviljelyTavoitteet: '',
-    
-    divVesitalous: '',
-    divVesitalousLisatiedot: '',
-    divVesitalousTavoitteet: '',
-    
     divErityisetToimenpiteet2: '',
     divErityisetToimenpiteet2Lisatiedot: '',
     divErityisetToimenpiteet2Tavoitteet: '',
@@ -939,76 +923,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Keskimääräinen lohkokoko, ha</td>
-            <td>
-              <input type="text" name="divLohkokoko" value={envData.divLohkokoko} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-              <input type="text" name="divLohkokokoLisatiedot" value={envData.divLohkokokoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-              <input type="text" name="divLohkokokoTavoitteet" value={envData.divLohkokokoTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-          </tr>
-          <tr>
-            <td>Keskimääräinen lohkoetäisyys, km</td>
-            <td>
-              <input type="text" name="divLohkoetaisyys" value={envData.divLohkoetaisyys} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-              <input type="text" name="divLohkoetaisyysLisatiedot" value={envData.divLohkoetaisyysLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-              <input type="text" name="divLohkoetaisyysTavoitteet" value={envData.divLohkoetaisyysTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Peltoviljelyssä on käytössä toimenpiteitä,<br /> jotka parantavat ympäristön tilaa, kyllä/ei
-            </td>
-            <td>
-              <select name="divPeltoviljely" value={envData.divPeltoviljely} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
-            </td>
-            <td>
-              <input type="text" name="divPeltoviljelyLisatiedot" value={envData.divPeltoviljelyLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-              <input type="text" name="divPeltoviljelyTavoitteet" value={envData.divPeltoviljelyTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Peltojen vesitaloutta ylläpidetään ja kehitetään, kyllä/ei
-            </td>
-            <td>
-              <select name="divVesitalous" value={envData.divVesitalous} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
-            </td>
-            <td>
-              <input type="text" name="divVesitalousLisatiedot" value={envData.divVesitalousLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-              <input type="text" name="divVesitalousTavoitteet" value={envData.divVesitalousTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-          </tr>
-          <tr>
-            <td>Erityiset toimenpiteet (lisäkenttä)</td>
-            <td>
-              <textarea name="divErityisetToimenpiteet2" value={envData.divErityisetToimenpiteet2} onChange={handleChange} rows={2} style={{ width: '100%' }} />
-            </td>
-            <td>
-              <input type="text" name="divErityisetToimenpiteet2Lisatiedot" value={envData.divErityisetToimenpiteet2Lisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-              <input type="text" name="divErityisetToimenpiteet2Tavoitteet" value={envData.divErityisetToimenpiteet2Tavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
+            
           </tr>
         </tbody>
       </table>

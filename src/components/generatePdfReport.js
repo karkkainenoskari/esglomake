@@ -287,30 +287,7 @@ const generatePdfReport = (initialData,environmentData) => {
       environmentData.divErityisetToimenpiteetLisatiedot || "",
       environmentData.divErityisetToimenpiteetTavoitteet || ""
     ],
-    [
-      "Keskimääräinen lohkokoko, ha",
-      environmentData.divLohkokoko || "",
-      environmentData.divLohkokokoLisatiedot || "",
-      environmentData.divLohkokokoTavoitteet || ""
-    ],
-    [
-      "Keskimääräinen lohkoetäisyys, km",
-      environmentData.divLohkoetaisyys || "",
-      environmentData.divLohkoetaisyysLisatiedot || "",
-      environmentData.divLohkoetaisyysTavoitteet || ""
-    ],
-    [
-      "Peltoviljelyssä on käytössä toimenpiteitä, jotka parantavat ympäristön tilaa, kyllä/ei",
-      environmentData.divPeltoviljely || "",
-      environmentData.divPeltoviljelyLisatiedot || "",
-      environmentData.divPeltoviljelyTavoitteet || ""
-    ],
-    [
-      "Peltojen vesitaloutta ylläpidetään ja kehitetään, kyllä/ei",
-      environmentData.divVesitalous || "",
-      environmentData.divVesitalousLisatiedot || "",
-      environmentData.divVesitalousTavoitteet || ""
-    ],
+   
     [
       "Erityiset toimenpiteet (lisäkenttä)",
       environmentData.divErityisetToimenpiteet2 || "",
