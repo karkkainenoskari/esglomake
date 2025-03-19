@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './tables.css';
+import LogoHeader from './LogoHeader'; 
 
 const TalousJaHallintoPage = ({
   onNext,
@@ -156,9 +157,11 @@ const TalousJaHallintoPage = ({
     e.preventDefault();
     if (onNext) onNext(localFinanceData);
   };
+  
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Info-boksi */}
+      {/* Lisätään logot yläosaan */}
+      <LogoHeader />
       
 
       <h2>Talous ja hallinto</h2>

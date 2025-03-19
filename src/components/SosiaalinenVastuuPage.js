@@ -1,6 +1,7 @@
 // src/components/SosiaalinenVastuuPage.js
 import React, { useState, useEffect } from 'react';
 import './tables.css';
+import LogoHeader from './LogoHeader'; 
 
 const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUpdate }) => {
   const [socialData, setSocialData] = useState(initialSocialData || {
@@ -217,7 +218,8 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Yläreunan infoboksi */}
+      {/* Lisätään logot yläosaan */}
+      <LogoHeader />
       
 
       <h2>Sosiaalinen vastuu</h2>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import './tables.css';
+import LogoHeader from './LogoHeader'; 
 
 const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDataUpdate }) => {
   const [envData, setEnvData] = useState(initialEnvData || {
@@ -230,7 +231,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
-         {/* --- Infoboksi sivun yläreunaan --- */}
+      {/* Lisätään logot yläosaan */}
+      <LogoHeader />
      
       <h2>Ympäristö</h2>
       

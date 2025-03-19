@@ -1,7 +1,9 @@
+// src/components/InitialPage.js
 import React, { useState, useEffect } from 'react';
+import LogoHeader from './LogoHeader'; // tuodaan logoheader
 
 const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
-    const [formData, setFormData] = useState(initialData || {
+  const [formData, setFormData] = useState(initialData || {
     yrityksenNimi: '',
     yrittajienNimet: '',
     yhtiomuoto: '',
@@ -33,28 +35,13 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
 
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Yläosa: Logot, otsikko ja infoteksti */}
-      <header style={{ marginBottom: '2rem' }}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '2rem',
-            marginBottom: '1rem'
-          }}
-        >
-          <img src="/savonia.png" alt="Savonia" style={{ height: '60px' }} />
-          <img src="/maitoyrittajat.png" alt="Maitoyrittäjät" style={{ height: '60px' }} />
-          <img src="/valio.png" alt="Valio" style={{ height: '60px' }} />
-          <img src="/ysao.png" alt="Ysao" style={{ height: '60px' }} />
-          <img src="/euroopanunioni.png" alt="Euroopan unioni" style={{ height: '60px' }} />
-        </div>
-        <h1 style={{ textAlign: 'center' }}>Maitotilan ESG-vastuullisuusraportti</h1>
-        <p style={{ textAlign: 'center' }}>
-        ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance. Termillä tarkoitetaan ympäristöön, yhteiskuntavastuuseen ja hallintotapaan liittyvien tekijöiden tunnistamista, toimintatapoja ja niistä raportointia. Tulevaisuudessa maidontuotannon vastuullisuuskäsite laajenee ja sen osoittaminen ja raportointi korostuvat yhteiskunnan, asiakkaiden, rahoituslaitosten ja kuluttajien vaatimuksista. Vastuullisuusraportointi tulee nousemaan talousraportoinnin rinnalle osaksi lainoitus- ja rahoitusprosesseja.  
-        </p>
-      </header>
+      {/* Lisätään LogoHeader-komponentti */}
+      <LogoHeader />
+      
+      <h1 style={{ textAlign: 'center' }}>Maitotilan ESG-vastuullisuusraportti</h1>
+      <p style={{ textAlign: 'center' }}>
+      ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance. ESG raportointi termillä tarkoitetaan yrityksen ympäristö-, sosiaaliseen- ja hallinnolliseen vastuuseen liittyvien tekijöiden tunnistamista, vastuullisia toimintatapoja ja niiden raportointia. Tulevaisuudessa vastuullisuusajattelu ja raportointivaade koskee välillisesti myös maitotilayrityksiä, kun yhteiskunta, asiakkaat, rahoituslaitokset ja kuluttajat haluavat tietää koko toimitusketjun vastuullisuudesta. Vastuullisuusraportointi tulee nousemaan talousraportoinnin rinnalle osaksi lainoitus- ja rahoitusprosesseja.  
+      </p>
 
       {/* Pääosa: Lomake ja ESG-kuva vierekkäin */}
       <main
