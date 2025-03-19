@@ -260,12 +260,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Lisätään logot yläosaan */}
+
       <LogoHeader />
 
       <h2>Ympäristö</h2>
 
-      {/* 2.1 Hiilijalanjälki ja tuotannon tehokkuus */}
+   
       <h3>2.1 Hiilijalanjälki ja tuotannon tehokkuus</h3>
       <table className="common-table">
         <colgroup>
@@ -839,7 +839,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-      {/* 2.2 Monimuotoisuus */}
+
       <h3>2.2 Monimuotoisuus</h3>
       <table className="common-table">
         <colgroup>
@@ -990,7 +990,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
         </tbody>
       </table>
-
+          
       <h3>2.3 Peltoviljely</h3>
       <table className="common-table">
         <colgroup>
@@ -1344,7 +1344,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
 
 
-      {/* 2.4 Lannan käsittely ja jätehuolto */}
+    
       <h3>2.4 Lannan käsittely ja jätehuolto</h3>
       <table className="common-table">
         <colgroup>
@@ -1490,7 +1490,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-      {/* 2.4 Energian käyttö */}
+  
       <h3>2.5 Energian käyttö</h3>
       <table className="common-table">
         <colgroup>
@@ -1659,7 +1659,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-      {/* Navigointi- ja PDF-painikkeet */}
+     
       <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center' }}>
         <button type="button" onClick={onPrevious} style={{ marginRight: '1rem' }}>
           Edellinen
