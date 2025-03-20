@@ -177,7 +177,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     src="/esg.png"
     alt="ESG"
     style={{
-      maxWidth: '400px',
+      maxWidth: '800px',
       height: 'auto',
       display: 'block'
     }}
