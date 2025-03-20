@@ -11,7 +11,13 @@ const TalousJaHallintoPage = ({
   socialData,
   onDataUpdate
 }) => {
-  const [localFinanceData, setLocalFinanceData] = useState(initialFinanceData || {
+
+  const [localFinanceData, setLocalFinanceData] = useState(() => {
+    const savedData = localStorage.getItem('financeData');
+    if (savedData) {
+      return JSON.parse(savedData);
+    }
+    return initialFinanceData || {
     // 4.1 Johtaminen
     yrityksenArvot: '',
     yrityksenArvotLisatiedot: '',
@@ -134,15 +140,11 @@ const TalousJaHallintoPage = ({
     ulkoistetutPalvelut: '',
     ulkoistetutPalvelutLisatiedot: '',
     ulkoistetutPalvelutTavoitteet: '',
+  };
   });
 
   useEffect(() => {
-    if (initialFinanceData) {
-      setLocalFinanceData(initialFinanceData);
-    }
-  }, [initialFinanceData]);
-
-  useEffect(() => {
+    localStorage.setItem('financeData', JSON.stringify(localFinanceData));
     if (onDataUpdate) {
       onDataUpdate(localFinanceData);
     }
@@ -150,7 +152,10 @@ const TalousJaHallintoPage = ({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setLocalFinanceData({ ...localFinanceData, [name]: value });
+    setLocalFinanceData({
+      ...localFinanceData,
+      [name]: value
+    });
   };
 
   const handleSubmit = (e) => {
