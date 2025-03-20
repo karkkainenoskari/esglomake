@@ -46,10 +46,65 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
       <LogoHeader />
       
       <h1 style={{ textAlign: 'center' }}>Maitotilan ESG-vastuullisuusraportti</h1>
-      <p style={{ textAlign: 'center' }}>
-      ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance. ESG raportointi termillä tarkoitetaan yrityksen ympäristö-, sosiaaliseen- ja hallinnolliseen vastuuseen liittyvien tekijöiden tunnistamista, vastuullisia toimintatapoja ja niiden raportointia. Tulevaisuudessa vastuullisuusajattelu ja raportointivaade koskee välillisesti myös maitotilayrityksiä, kun yhteiskunta, asiakkaat, rahoituslaitokset ja kuluttajat haluavat tietää koko toimitusketjun vastuullisuudesta. Vastuullisuusraportointi tulee nousemaan talousraportoinnin rinnalle osaksi lainoitus- ja rahoitusprosesseja.  
-      </p>
-
+      
+      {/* Kaksi tekstilaatikkoa vierekkäin */}
+      <div
+        style={{
+          display: 'flex',
+          gap: '2rem',         // Välit laatikoiden välille
+          flexWrap: 'wrap',    // Teksti siirtyy uudelle riville kapeilla näytöillä
+          marginBottom: '2rem'
+        }}
+      >
+        <div
+          style={{
+            flex: '1 1 0',
+            minWidth: '300px',
+            border: '1px solid #ccc',
+            padding: '1rem'
+          }}
+        >
+          <p>
+            ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance. 
+            ESG raportointi termillä tarkoitetaan yrityksen ympäristö-, sosiaaliseen- 
+            ja hallinnolliseen vastuuseen liittyvien tekijöiden tunnistamista, 
+            vastuullisia toimintatapoja ja niiden raportointia. Tulevaisuudessa 
+            vastuullisuusajattelu ja raportointivaade koskee välillisesti myös 
+            maitotilayrityksiä, kun yhteiskunta, asiakkaat, rahoituslaitokset ja 
+            kuluttajat haluavat tietää koko toimitusketjun vastuullisuudesta. 
+            Vastuullisuusraportointi tulee nousemaan talousraportoinnin rinnalle 
+            osaksi lainoitus- ja rahoitusprosesseja.
+            <br></br>
+            <br></br>
+            Tämä työkalu auttaa maitotilayritystä kuvaamaan ja miettimään 
+            omalle yritykselle tärkeitä vastuullisuusasioita ja tuottaa 
+            niistä yrityksen ESG-vastuullisuusraportin. Työkalu ja raporttipohja 
+            on tuotettu osana Tulevaisuuden maatila -hanketta (1.1.2024-31.12.2025). 
+            Toteutuksesta vastasivat yhteistyössä YsAo, Savonia-amk ja 
+            Maitoyrittäjät ry. Hankkeen rahoittajana oli Pohjois-Savon Liitto 
+            ja rahoituslähteenä JTF-rahasto.
+          </p>
+        </div>
+        
+        <div
+          style={{
+            flex: '1 1 0',
+            minWidth: '300px',
+            border: '1px solid #ccc',
+            padding: '1rem'
+          }}
+        >
+           <h3>Ohjeet lomakkeen täyttöön</h3>
+        <ul>
+          <li>Täytä kaikki kentät mahdollisimman tarkasti.</li>
+          <li>Lisää lisätietoja tarvittaessa - erityisesti tavoitteet ja aikataulut.</li>
+          <li>Voit tallentaa keskeneräisen raportin painamalla “Tallenna ja lopeta” -painiketta.</li>
+          <li>Mikäli olet täyttänyt raporttia aiemmin, voit ladata PDF-raportin “Raahaa PDF-tiedosto” -alueelle.</li>
+          <li>Muista lopuksi tallentaa muutokset, jotta tiedot eivät katoa.</li>
+        </ul>
+      </div>
+    </div>
+  
       {/* Pääosa: Lomake ja ESG-kuva vierekkäin */}
       <main
         style={{
