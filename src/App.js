@@ -90,32 +90,51 @@ function App() {
           onDataUpdate={setFinanceData}
         />
       )}
-      {/* Kiinnitetty "Tallenna ja lopeta" -nappi, joka pysyy näkymässä */}
+  
+      {/* Yhdistetty progress bar ja nappi samassa kiinteässä kontissa */}
       <div
         style={{
           position: 'fixed',
-          bottom: '20px',
-          left: '0',
-          right: '0',
-          textAlign: 'center',
-          zIndex: 9999
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '80px', // säädä tarvittaessa
+          zIndex: 9999,
+          backgroundColor: '#eee',
+          boxShadow: '0 -2px 5px rgba(0,0,0,0.2)',
         }}
       >
+        {/* ProgressBar:lle välitetään myös onNavigate-prop */}
+        <ProgressBar
+          currentPage={step + 1}
+          pageTitles={pageTitles}
+          onNavigate={handleNavigate}
+        />
+        {/* Tallenna ja lopeta -nappi sijoitetaan absoluuttisesti keskelle */}
         <button
           onClick={handleSaveAndFinish}
           style={{
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
             fontSize: '20px',
             padding: '12px 24px',
             borderRadius: '8px',
             backgroundColor: '#007acc',
             color: 'white',
-            border: 'none'
+            border: 'none',
+            zIndex: 10000, // varmistetaan, että nappi on päällimmäisenä
           }}
         >
           Tallenna ja lopeta
         </button>
       </div>
-      <ProgressBar currentPage={step + 1} pageTitles={pageTitles} onNavigate={handleNavigate} />
+      <ProgressBar
+        currentPage={step + 1}
+        pageTitles={pageTitles}
+        onNavigate={handleNavigate}
+      />
     </div>
   );
 }

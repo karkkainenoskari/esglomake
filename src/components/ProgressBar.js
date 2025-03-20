@@ -1,16 +1,45 @@
 import React from 'react';
 
-const ProgressBar = ({ currentPage, pageTitles, onNavigate }) => {
+const ProgressBar = ({ currentPage, pageTitles, onNavigate, onSaveAndFinish }) => {
   return (
     <div style={styles.container}>
-      {pageTitles.map((title, index) => {
-        const pageNumber = index + 1;
+      {/* Renderöidään ensin sivut 1 ja 2 */}
+      {pageTitles.slice(0, 2).map((title, index) => {
+        const actualIndex = index; // 0 tai 1
+        const pageNumber = actualIndex + 1;
         const isActive = pageNumber === currentPage;
+
         return (
           <div
-            key={index}
+            key={actualIndex}
             style={{ ...styles.item, ...(isActive ? styles.activeItem : {}) }}
-            onClick={() => onNavigate(index)}
+            onClick={() => onNavigate(actualIndex)}
+          >
+            <div style={styles.number}>{pageNumber}</div>
+            <div style={styles.title}>{title}</div>
+          </div>
+        );
+      })}
+
+      {/* Sijoitetaan nappi sivujen 1 ja 2 (slice(0,2)) JA sivujen 3 ja 4 (slice(2)) väliin */}
+      <button
+        onClick={onSaveAndFinish}
+        style={styles.button}
+      >
+        Tallenna ja lopeta
+      </button>
+
+      {/* Renderöidään sivut 3 ja 4 */}
+      {pageTitles.slice(2).map((title, index) => {
+        const actualIndex = index + 2; // 2 tai 3
+        const pageNumber = actualIndex + 1;
+        const isActive = pageNumber === currentPage;
+
+        return (
+          <div
+            key={actualIndex}
+            style={{ ...styles.item, ...(isActive ? styles.activeItem : {}) }}
+            onClick={() => onNavigate(actualIndex)}
           >
             <div style={styles.number}>{pageNumber}</div>
             <div style={styles.title}>{title}</div>
@@ -26,7 +55,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-    padding: '20px 10px', // Lisätty enemmän pystysuoraa paddingia koko containerille
+    padding: '10px',
     backgroundColor: '#eee',
     position: 'fixed',
     bottom: 0,
@@ -37,20 +66,28 @@ const styles = {
   item: {
     flex: 1,
     textAlign: 'center',
-    padding: '20px 0', // Lisätty enemmän paddingia yksittäisiin vaiheisiin
-    cursor: 'pointer',
-    userSelect: 'none',
+    padding: '5px',
+    cursor: 'pointer'
   },
   activeItem: {
     fontWeight: 'bold',
     color: '#007acc'
   },
   number: {
-    fontSize: '16px',
-    marginBottom: '2px'
+    fontSize: '16px'
   },
   title: {
-    fontSize: '12px'
+    fontSize: '12px',
+    marginTop: '2px'
+  },
+  button: {
+    padding: '8px 12px',
+    borderRadius: '4px',
+    backgroundColor: '#007acc',
+    color: '#fff',
+    border: 'none',
+    cursor: 'pointer',
+    margin: '0 10px'
   }
 };
 
