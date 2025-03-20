@@ -1,13 +1,17 @@
 import React from 'react';
 
-const ProgressBar = ({ currentPage, pageTitles }) => {
+const ProgressBar = ({ currentPage, pageTitles, onNavigate }) => {
   return (
     <div style={styles.container}>
       {pageTitles.map((title, index) => {
         const pageNumber = index + 1;
         const isActive = pageNumber === currentPage;
         return (
-          <div key={index} style={{ ...styles.item, ...(isActive ? styles.activeItem : {}) }}>
+          <div
+            key={index}
+            style={{ ...styles.item, ...(isActive ? styles.activeItem : {}) }}
+            onClick={() => onNavigate(index)}
+          >
             <div style={styles.number}>{pageNumber}</div>
             <div style={styles.title}>{title}</div>
           </div>
@@ -22,7 +26,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-    padding: '10px',
+    padding: '20px 10px', // Lisätty enemmän pystysuoraa paddingia koko containerille
     backgroundColor: '#eee',
     position: 'fixed',
     bottom: 0,
@@ -33,18 +37,20 @@ const styles = {
   item: {
     flex: 1,
     textAlign: 'center',
-    padding: '5px'
+    padding: '20px 0', // Lisätty enemmän paddingia yksittäisiin vaiheisiin
+    cursor: 'pointer',
+    userSelect: 'none',
   },
   activeItem: {
     fontWeight: 'bold',
     color: '#007acc'
   },
   number: {
-    fontSize: '16px'
+    fontSize: '16px',
+    marginBottom: '2px'
   },
   title: {
-    fontSize: '12px',
-    marginTop: '2px'
+    fontSize: '12px'
   }
 };
 

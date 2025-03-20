@@ -49,6 +49,10 @@ function App() {
     generatePdfReport(initialData, environmentData, socialData, financeData);
   };
 
+  const handleNavigate = (targetStep) => {
+    setStep(targetStep);
+  };
+
   return (
     <div style={{ paddingBottom: '80px' }}>
       {step === 0 && (
@@ -111,7 +115,7 @@ function App() {
           Tallenna ja lopeta
         </button>
       </div>
-      <ProgressBar currentPage={step + 1} pageTitles={pageTitles} />
+      <ProgressBar currentPage={step + 1} pageTitles={pageTitles} onNavigate={handleNavigate} />
     </div>
   );
 }
