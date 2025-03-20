@@ -180,8 +180,8 @@ const TalousJaHallintoPage = ({
             <tr>
               <th>Johtaminen</th>
               <th>Uusin tulos</th>
-              <th>Lisätiedot</th>
-              <th>Tavoitteet ja aikataulut</th>
+              <th>Kuvaus</th>
+              <th>Tavoite ja aikataulu</th>
             </tr>
           </thead>
           <tbody>

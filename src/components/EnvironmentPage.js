@@ -243,7 +243,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
   
   useEffect(() => {
-    if (initialEnvData) {
+    if (!localStorage.getItem('environmentData') && initialEnvData) {
       setEnvData(initialEnvData);
     }
   }, [initialEnvData]);
@@ -287,8 +287,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <th>Hiilijalanjälki ja tuotannon tehokkuus</th>
             <th>Uusin tulos</th>
-            <th>Lisätiedot</th>
-            <th>Tavoitteet ja aikataulut</th>
+            <th>Kuvaus</th>
+            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>

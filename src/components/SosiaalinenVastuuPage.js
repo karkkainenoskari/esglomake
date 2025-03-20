@@ -4,7 +4,13 @@ import './tables.css';
 import LogoHeader from './LogoHeader'; 
 
 const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUpdate }) => {
-  const [socialData, setSocialData] = useState(initialSocialData || {
+  // Alustetaan tila lazy initializerilla: ensin tarkistetaan localStorage.
+  const [socialData, setSocialData] = useState(() => {
+    const savedData = localStorage.getItem('socialData');
+    if (savedData) {
+      return JSON.parse(savedData);
+    }
+    return initialSocialData || {
     // 1. Henkilöstö ja työolosuhteet
     henkilostoStrategia: '',
     henkilostoStrategiaLisatiedot: '',
@@ -191,16 +197,18 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
   maitoErityisetToimenpiteet: '',
   maitoErityisetToimenpiteetLisatiedot: '',
   maitoErityisetToimenpiteetTavoitteet: ''
-
+};
   });
 
   useEffect(() => {
-    if (initialSocialData) {
+    if (!localStorage.getItem('socialData') && initialSocialData) {
       setSocialData(initialSocialData);
     }
   }, [initialSocialData]);
 
+  // Tallennetaan socialData localStorageen aina, kun sitä muutetaan.
   useEffect(() => {
+    localStorage.setItem('socialData', JSON.stringify(socialData));
     if (onDataUpdate) {
       onDataUpdate(socialData);
     }
@@ -215,7 +223,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
     e.preventDefault();
     if (onNext) onNext(socialData);
   };
-
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Lisätään logot yläosaan */}
@@ -240,8 +247,8 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <th>Henkilöstö ja työolosuhteet</th>
               <th>Uusin tulos / Arvo</th>
-              <th>Lisätiedot</th>
-              <th>Tavoitteet ja aikataulut</th>
+              <th>Kuvaus</th>
+              <th>Tavoite ja aikataulu</th>
             </tr>
           </thead>
           <tbody>
