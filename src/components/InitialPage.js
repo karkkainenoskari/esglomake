@@ -3,19 +3,26 @@ import React, { useState, useEffect } from 'react';
 import LogoHeader from './LogoHeader'; // tuodaan logoheader
 
 const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
-  const [formData, setFormData] = useState(initialData || {
-    yrityksenNimi: '',
-    yrittajienNimet: '',
-    yhtiomuoto: '',
-    tilanKokonaistyovoima: '',
-    lypsylehmienMaara: '',
-    peltoala: '',
-    tuotomanTavanomainen: '',
-    navettatyyppi: '',
-    lypsyjarjestelma: ''
+  // Alustetaan tila localStoragesta, jos dataa löytyy
+  const [formData, setFormData] = useState(() => {
+    const savedData = localStorage.getItem('initialFormData');
+    return savedData
+      ? JSON.parse(savedData)
+      : {
+          yrityksenNimi: '',
+          yrittajienNimet: '',
+          yhtiomuoto: '',
+          tilanKokonaistyovoima: '',
+          lypsylehmienMaara: '',
+          peltoala: '',
+          tuotomanTavanomainen: '',
+          navettatyyppi: '',
+          lypsyjarjestelma: ''
+        };
   });
 
   useEffect(() => {
+    localStorage.setItem('initialFormData', JSON.stringify(formData));
     if (onDataUpdate) {
       onDataUpdate(formData);
     }

@@ -990,7 +990,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
         </tbody>
       </table>
-          
+      
+       {/* */ }  
       <h3>2.3 Peltoviljely</h3>
       <table className="common-table">
         <colgroup>
@@ -1342,9 +1343,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       </table>
 
 
-
-
-    
       <h3>2.4 Lannan käsittely ja jätehuolto</h3>
       <table className="common-table">
         <colgroup>
@@ -1659,7 +1657,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-     
+      
       <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center' }}>
         <button type="button" onClick={onPrevious} style={{ marginRight: '1rem' }}>
           Edellinen

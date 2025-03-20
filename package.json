@@ -9,8 +9,10 @@
     "@testing-library/user-event": "^13.5.0",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.4",
+    "pdfjs-dist": "^5.0.375",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-dropzone": "^14.3.8",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
