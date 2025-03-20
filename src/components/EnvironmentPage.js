@@ -5,7 +5,13 @@ import './tables.css';
 import LogoHeader from './LogoHeader';
 
 const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDataUpdate }) => {
-  const [envData, setEnvData] = useState(initialEnvData || {
+  // Alustetaan tila localStoragesta, jos dataa löytyy, muuten käytetään initialEnvData tai oletusarvoja.
+  const [envData, setEnvData] = useState(() => {
+    const savedData = localStorage.getItem('environmentData');
+    if (savedData) {
+      return JSON.parse(savedData);
+    }
+    return initialEnvData || {
     // === 2.1 Hiilijalanjälki ja tuotannon tehokkuus (environment) ===
     envMaidonHiilijalanjalki: '',
     envMaidonHiilijalanjalkiLisatiedot: '',
@@ -232,16 +238,19 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
     energyErityisetToimenpiteet: '',
     energyErityisetToimenpiteetLisatiedot: '',
     energyErityisetToimenpiteetTavoitteet: ''
+  };
   });
 
+  
   useEffect(() => {
     if (initialEnvData) {
       setEnvData(initialEnvData);
     }
   }, [initialEnvData]);
 
-
+  // Tallennetaan envData localStorageen aina, kun sitä muutetaan
   useEffect(() => {
+    localStorage.setItem('environmentData', JSON.stringify(envData));
     if (onDataUpdate) {
       onDataUpdate(envData);
     }

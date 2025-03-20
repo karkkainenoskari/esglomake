@@ -1,9 +1,13 @@
 // src/components/InitialPage.js
 import React, { useState, useEffect } from 'react';
+import { useDropzone } from 'react-dropzone';
+import * as pdfjsLib from 'pdfjs-dist';
 import LogoHeader from './LogoHeader'; // tuodaan logoheader
 
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
+
 const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
-  // Alustetaan tila localStoragesta, jos dataa löytyy
+  // Alustetaan lomaketiedot joko localStoragesta tai tyhjillä kentillä
   const [formData, setFormData] = useState(() => {
     const savedData = localStorage.getItem('initialFormData');
     return savedData
@@ -39,6 +43,41 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
       onNext(formData);
     }
   };
+
+  const onDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    if (file && file.type === 'application/pdf') {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        try {
+          const typedarray = new Uint8Array(e.target.result);
+          const pdf = await pdfjsLib.getDocument(typedarray).promise;
+          // Haetaan ensimmäisen sivun sisältö
+          const page = await pdf.getPage(1);
+          const textContent = await page.getTextContent();
+          const strings = textContent.items.map(item => item.str);
+          const fullText = strings.join(' ');
+          // Esimerkinomaisesti etsitään "Yrityksen nimi:" -kentän arvo PDF:stä
+          const yrityksenNimiMatch = fullText.match(/Yrityksen nimi:\s*(.+?)(\s|$)/i);
+          if (yrityksenNimiMatch) {
+            setFormData(prev => ({
+              ...prev,
+              yrityksenNimi: yrityksenNimiMatch[1]
+            }));
+          }
+          // Lisää vastaavat regex-haut muille kentille tarvittaessa.
+        } catch (error) {
+          console.error('PDF:n lukeminen epäonnistui:', error);
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    } else {
+      alert('Ole hyvä ja pudota PDF-tiedosto.');
+    }
+  };
+
+  // Määritellään drop zonen hook
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
@@ -105,6 +144,27 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
       </div>
     </div>
   
+   
+
+    {/* Drop zone PDF-tiedostolle */}
+    <div
+      {...getRootProps()}
+      style={{
+        border: '2px dashed #007acc',
+        padding: '20px',
+        textAlign: 'center',
+        marginTop: '20px'
+      }}
+    >
+      <input {...getInputProps()} />
+      {isDragActive ? (
+        <p>Pudota PDF-tiedosto tähän, niin täytämme lomakkeen tiedot automaattisesti.</p>
+      ) : (
+        <p>
+          Raahaa PDF-tiedosto tähän tai klikkaa valitaksesi tiedoston, jossa aiemmat lomaketiedot ovat.
+        </p>
+      )}
+    </div>
       {/* Pääosa: Lomake ja ESG-kuva vierekkäin */}
       <main
         style={{
