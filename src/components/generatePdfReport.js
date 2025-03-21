@@ -33,15 +33,15 @@ const generatePdfReport = (initialData,environmentData) => {
 
   // Kahden sarakkeen taulukko: [Kenttä, Arvo]
   const initialRows = [
-    ["Yrityksen nimi", initialData.yrityksenNimi || ""],
-    ["Yrittäjien nimet", initialData.yrittajienNimet || ""],
-    ["Yhtiömuoto", initialData.yhtiomuoto || ""],
-    ["Tilan kokonaistyövoima", initialData.tilanKokonaistyovoima || ""],
-    ["Lypsylehmienmäärä", initialData.lypsylehmienmaara || ""],
-    ["Peltoala", initialData.peltoala || ""],
-    ["Luomu vai tavanomainen", initialData.tuotomanTavanomainen || ""],
-    ["Navettatyyppi", initialData.navettatyyppi || ""],
-    ["Lypsyjärjestelmä", initialData.lypsyjarjestelma || ""],
+    ["Yrityksen nimi:", initialData.yrityksenNimi || ""],
+    ["Yrittäjien nimet:", initialData.yrittajienNimet || ""],
+    ["Yhtiömuoto:", initialData.yhtiomuoto || ""],
+    ["Tilan kokonaistyövoima:", initialData.tilanKokonaistyovoima || ""],
+    ["Lypsylehmienmäärä:", initialData.lypsylehmienmaara || ""],
+    ["Peltoala:", initialData.peltoala || ""],
+    ["Luomu vai tavanomainen:", initialData.tuotomanTavanomainen || ""],
+    ["Navettatyyppi:", initialData.navettatyyppi || ""],
+    ["Lypsyjärjestelmä:", initialData.lypsyjarjestelma || ""],
   ];
 
   // Suodatetaan pois ne rivit, joissa Arvo on tyhjä

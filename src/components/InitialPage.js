@@ -1,13 +1,156 @@
-// src/components/InitialPage.js
 import React, { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import * as pdfjsLib from 'pdfjs-dist';
-import LogoHeader from './LogoHeader'; // tuodaan logoheader
+import LogoHeader from './LogoHeader'; // logo
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
+// 1. Määritellään kenttien otsikot, avaimet ja "seuraavat otsikot" lookaheadia varten
+const fieldConfigs = [
+  {
+    key: 'yrityksenNimi',
+    label: 'Yrityksen nimi',
+    nextLabels: [
+      'Yrittäjien nimet',
+      'Yhtiömuoto',
+      'Tilan kokonaistyövoima',
+      'Lypsylehmien määrä',
+      'Peltoala',
+      'Luomu vai tavanomainen',
+      'Navettatyyppi',
+      'Lypsyjärjestelmä'
+    ]
+  },
+  {
+    key: 'yrittajienNimet',
+    label: 'Yrittäjien nimet',
+    nextLabels: [
+      'Yhtiömuoto',
+      'Tilan kokonaistyövoima',
+      'Lypsylehmien määrä',
+      'Peltoala',
+      'Luomu vai tavanomainen',
+      'Navettatyyppi',
+      'Lypsyjärjestelmä'
+    ]
+  },
+  {
+    key: 'yhtiomuoto',
+    label: 'Yhtiömuoto',
+    nextLabels: [
+      'Tilan kokonaistyövoima',
+      'Lypsylehmien määrä',
+      'Peltoala',
+      'Luomu vai tavanomainen',
+      'Navettatyyppi',
+      'Lypsyjärjestelmä'
+    ]
+  },
+  {
+    key: 'tilanKokonaistyovoima',
+    label: 'Tilan kokonaistyövoima',
+    nextLabels: [
+      'Lypsylehmien määrä',
+      'Peltoala',
+      'Luomu vai tavanomainen',
+      'Navettatyyppi',
+      'Lypsyjärjestelmä'
+    ]
+  },
+  {
+    key: 'lypsylehmienMaara',
+    label: 'Lypsylehmien määrä',
+    nextLabels: [
+      'Peltoala',
+      'Luomu vai tavanomainen',
+      'Navettatyyppi',
+      'Lypsyjärjestelmä'
+    ]
+  },
+  {
+    key: 'peltoala',
+    label: 'Peltoala',
+    nextLabels: [
+      'Luomu vai tavanomainen',
+      'Navettatyyppi',
+      'Lypsyjärjestelmä'
+    ]
+  },
+  {
+    key: 'tuotomanTavanomainen',
+    label: 'Luomu vai tavanomainen',
+    nextLabels: [
+      'Navettatyyppi',
+      'Lypsyjärjestelmä'
+    ]
+  },
+  {
+    key: 'navettatyyppi',
+    label: 'Navettatyyppi',
+    nextLabels: [
+      'Lypsyjärjestelmä'
+    ]
+  },
+  {
+    key: 'lypsyjarjestelma',
+    label: 'Lypsyjärjestelmä',
+    nextLabels: []
+  },
+];
+
+// 2. Funktio, joka parsii PDF:stä tekstit lookahead-tekniikalla
+function parsePdfText(allText) {
+  console.log('PDF-sisältö:\n', allText); // Debug: katso, mitä PDF:stä tulee
+
+  // Alustetaan tyhjät arvot
+  const extracted = {
+    yrityksenNimi: '',
+    yrittajienNimet: '',
+    yhtiomuoto: '',
+    tilanKokonaistyovoima: '',
+    lypsylehmienMaara: '',
+    peltoala: '',
+    tuotomanTavanomainen: '',
+    navettatyyppi: '',
+    lypsyjarjestelma: ''
+  };
+
+  // Käydään jokainen kenttäkonfiguraatio läpi
+  fieldConfigs.forEach(cfg => {
+    // Seuraavat otsikot putkeen "Otsikko1|Otsikko2|..."
+    const lookahead = cfg.nextLabels.join('|');
+    // Rakennetaan regex:
+    // label + valinnainen kaksoispiste + laiska match .+? 
+    // pysähtyy lookaheadiin tai tekstin loppuun
+    // esim: /Yrityksen nimi\s*:?\s*(.+?)(?=\s(Yhtiömuoto|Tilan kokonaistyövoima)|$)/i
+    const re = new RegExp(
+      `${cfg.label}\\s*:?\\s*(.+?)(?=\\s(?:${lookahead})|$)`,
+      'i'
+    );
+
+    const match = allText.match(re);
+    if (match) {
+      extracted[cfg.key] = match[1].trim();
+    }
+  });
+
+  // 3. Esimerkki: jos "Luomu vai tavanomainen" on alasvetovalikko
+  // ja haluat muuntaa PDF-tekstin "luomu" tai "tavanomainen"
+  const val = extracted.tuotomanTavanomainen.toLowerCase();
+  if (val.includes('luomu')) {
+    extracted.tuotomanTavanomainen = 'luomu';
+  } else if (val.includes('tav')) {
+    extracted.tuotomanTavanomainen = 'tavanomainen';
+  } else {
+    // jos PDF:ssä lukee jotain muuta, jätä tyhjäksi
+    extracted.tuotomanTavanomainen = '';
+  }
+
+  return extracted;
+}
+
 const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
-  // Alustetaan lomaketiedot joko localStoragesta tai tyhjillä kentillä
+  // Lomaketila
   const [formData, setFormData] = useState(() => {
     const savedData = localStorage.getItem('initialFormData');
     return savedData
@@ -25,6 +168,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
         };
   });
 
+  // Tallenna localStorageen aina kun formData muuttuu
   useEffect(() => {
     localStorage.setItem('initialFormData', JSON.stringify(formData));
     if (onDataUpdate) {
@@ -32,11 +176,13 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     }
   }, [formData, onDataUpdate]);
 
+  // Kentän vaihto
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // Seuraava-nappi
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onNext) {
@@ -44,6 +190,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     }
   };
 
+  // 4. Dropzone-funktio: luetaan PDF
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
     if (file && file.type === 'application/pdf') {
@@ -52,20 +199,26 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
         try {
           const typedarray = new Uint8Array(e.target.result);
           const pdf = await pdfjsLib.getDocument(typedarray).promise;
-          // Haetaan ensimmäisen sivun sisältö
-          const page = await pdf.getPage(1);
-          const textContent = await page.getTextContent();
-          const strings = textContent.items.map(item => item.str);
-          const fullText = strings.join(' ');
-          // Esimerkinomaisesti etsitään "Yrityksen nimi:" -kentän arvo PDF:stä
-          const yrityksenNimiMatch = fullText.match(/Yrityksen nimi:\s*(.+?)(\s|$)/i);
-          if (yrityksenNimiMatch) {
-            setFormData(prev => ({
-              ...prev,
-              yrityksenNimi: yrityksenNimiMatch[1]
-            }));
+
+          // Lue jokainen sivu
+          let allText = '';
+          for (let pageIndex = 1; pageIndex <= pdf.numPages; pageIndex++) {
+            const page = await pdf.getPage(pageIndex);
+            const textContent = await page.getTextContent();
+            const strings = textContent.items.map(item => item.str);
+            // Erotellaan rivinvaihdolla
+            allText += strings.join(' ') + '\n';
           }
-          // Lisää vastaavat regex-haut muille kentille tarvittaessa.
+
+          // Parsitaan
+          const parsedData = parsePdfText(allText);
+
+          // Päivitetään lomake
+          setFormData(prev => ({
+            ...prev,
+            ...parsedData
+          }));
+
         } catch (error) {
           console.error('PDF:n lukeminen epäonnistui:', error);
         }
@@ -76,7 +229,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     }
   };
 
-  // Määritellään drop zonen hook
+  // react-dropzone
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
