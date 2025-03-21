@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone';
 import * as pdfjsLib from 'pdfjs-dist';
 import LogoHeader from './LogoHeader'; // tuodaan logoheader
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
   // Alustetaan lomaketiedot joko localStoragesta tai tyhjillä kentillä
