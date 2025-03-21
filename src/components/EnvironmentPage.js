@@ -292,7 +292,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
         </thead>
         <tbody>
-          <tr style={{ color: 'blue' }}>
+          <tr>
             <td>Maidon hiilijalanjälki, Co2/kg maitoa
               <span
                 style={{
@@ -320,7 +320,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envMaidonHiilijalanjalkiTavoitteet" value={envData.envMaidonHiilijalanjalkiTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'blue' }}>
+          <tr>
             <td>Scope 1 päästö, tCO2e, %
               <span
                 style={{
@@ -348,7 +348,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envScope1Tavoitteet" value={envData.envScope1Tavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'blue' }}>
+          <tr>
             <td>Scope 2 päästö, tCO2e, %
 
               <span
@@ -377,7 +377,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envScope2Tavoitteet" value={envData.envScope2Tavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'blue' }}>
+          <tr>
             <td>Scope 3 päästö, tCO2e, %
 
               <span
@@ -434,7 +434,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envHiiliviljelytoimenpiteetTavoitteet" value={envData.envHiiliviljelytoimenpiteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Keskilehmäluku, kpl
               <span
                 style={{
@@ -462,7 +462,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envKeskilehmalukuTavoitteet" value={envData.envKeskilehmalukuTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Poikimaväli, vrk  <span
               style={{
                 marginLeft: '5px',
@@ -488,7 +488,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envPoikimavaliTavoitteet" value={envData.envPoikimavaliTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Hiehopoikimaikä, kk  <span
               style={{
                 marginLeft: '5px',
@@ -514,7 +514,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envHiehopoikimaikaTavoitteet" value={envData.envHiehopoikimaikaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Keskituotos, EKM kg/lehmä  <span
               style={{
                 marginLeft: '5px',
@@ -540,7 +540,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envKeskituotosTavoitteet" value={envData.envKeskituotosTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Tuotosseurannan rasva-%, vuoden keskiarvo <span
               style={{
                 marginLeft: '5px',
@@ -566,7 +566,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envTuotosRasvaTavoitteet" value={envData.envTuotosRasvaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Tuotosseurannan valkuais-%, vuoden keskiarvo <span
               style={{
                 marginLeft: '5px',
@@ -592,7 +592,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envTuotosValkuainenTavoitteet" value={envData.envTuotosValkuainenTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Maidon ureapitoisuus, mg/100 ml
               <span
                 style={{
@@ -620,7 +620,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envMaidonUreaTavoitteet" value={envData.envMaidonUreaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Meijerimaidon osuus, %  <span
               style={{
                 marginLeft: '5px',
@@ -646,7 +646,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envMeijerimaidonOsuusTavoitteet" value={envData.envMeijerimaidonOsuusTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'blue' }}>
+          <tr>
             <td>Käytössä vähäpäästöinen kylmäaine tilasäililössä, kyllä/ei
               <span
                 style={{
@@ -678,7 +678,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envKaytossaVahapaastoinenKylmainetilasaililossaTavoitteet" value={envData.envKaytossaVahapaastoinenKylmainetilasaililossaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Karkearehun osuus lypsylehmien ruokinnassa, %  <span
               style={{
                 marginLeft: '5px',
@@ -720,7 +720,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envPaastojaVahentavatLisaravinteetTavoitteet" value={envData.envPaastojaVahentavatLisaravinteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Ruokinnan seurantalaskelma tehty kyllä/ei  <span
               style={{
                 marginLeft: '5px',
@@ -750,7 +750,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envRuokinnanSeurantalaskelmiaTehtyTavoitteet" value={envData.envRuokinnanSeurantalaskelmiaTehtyTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Kuiva-ainekiloa rehua/EKM kg
               (kaikki rehut yhteensä, esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista)
               <span
@@ -778,7 +778,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envKuivaAinekiloaTavoitteet" value={envData.envKuivaAinekiloaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'green' }}>
+          <tr>
             <td>Typen hyväksikäyttö % ruokinnassa (esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista)
               <span
                 style={{
@@ -1381,7 +1381,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="lantaYmparistolupaTavoitteet" value={envData.lantaYmparistolupaTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'blue' }}>
+          <tr>
             <td>Lietelannan osuus, % <span
               style={{
                 marginLeft: '5px',
@@ -1515,7 +1515,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
         </thead>
         <tbody>
-          <tr style={{ color: 'blue' }}>
+          <tr>
             <td>Sähkön käyttömäärä, kWh/v <span
               style={{
                 marginLeft: '5px',
@@ -1565,7 +1565,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="energyOmaSahkotuotantoTavoitteet" value={envData.energyOmaSahkotuotantoTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
-          <tr style={{ color: 'blue' }}>
+          <tr>
             <td>Polttoaineiden kokonaiskäyttömäärä, l/v <span
               style={{
                 marginLeft: '5px',
