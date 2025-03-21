@@ -37,12 +37,13 @@ const generatePdfReport = (initialData,environmentData) => {
     ["Yrittäjien nimet:", initialData.yrittajienNimet || ""],
     ["Yhtiömuoto:", initialData.yhtiomuoto || ""],
     ["Tilan kokonaistyövoima:", initialData.tilanKokonaistyovoima || ""],
-    ["Lypsylehmienmäärä:", initialData.lypsylehmienmaara || ""],
+    ["Lypsylehmien määrä:", initialData.lypsylehmienMaara || ""],
     ["Peltoala:", initialData.peltoala || ""],
     ["Luomu vai tavanomainen:", initialData.tuotomanTavanomainen || ""],
     ["Navettatyyppi:", initialData.navettatyyppi || ""],
     ["Lypsyjärjestelmä:", initialData.lypsyjarjestelma || ""],
   ];
+  
 
   // Suodatetaan pois ne rivit, joissa Arvo on tyhjä
   const filteredInitialRows = initialRows.filter(([label, value]) => value.trim() !== "");

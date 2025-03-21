@@ -9,100 +9,98 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 const fieldConfigs = [
   {
     key: 'yrityksenNimi',
-    label: 'Yrityksen nimi',
+    label: 'Yrityksen nimi:',
     nextLabels: [
-      'Yrittäjien nimet',
-      'Yhtiömuoto',
-      'Tilan kokonaistyövoima',
-      'Lypsylehmien määrä',
-      'Peltoala',
-      'Luomu vai tavanomainen',
-      'Navettatyyppi',
-      'Lypsyjärjestelmä'
+      'Yrittäjien nimet:',
+      'Yhtiömuoto:',
+      'Tilan kokonaistyövoima:',
+      'Lypsylehmien määrä:',
+      'Peltoala:',
+      'Luomu vai tavanomainen:',
+      'Navettatyyppi:',
+      'Lypsyjärjestelmä:'
     ]
   },
   {
     key: 'yrittajienNimet',
-    label: 'Yrittäjien nimet',
+    label: 'Yrittäjien nimet:',
     nextLabels: [
-      'Yhtiömuoto',
-      'Tilan kokonaistyövoima',
-      'Lypsylehmien määrä',
-      'Peltoala',
-      'Luomu vai tavanomainen',
-      'Navettatyyppi',
-      'Lypsyjärjestelmä'
+      'Yhtiömuoto:',
+      'Tilan kokonaistyövoima:',
+      'Lypsylehmien määrä:',
+      'Peltoala:',
+      'Luomu vai tavanomainen:',
+      'Navettatyyppi:',
+      'Lypsyjärjestelmä:'
     ]
   },
   {
     key: 'yhtiomuoto',
-    label: 'Yhtiömuoto',
+    label: 'Yhtiömuoto:',
     nextLabels: [
-      'Tilan kokonaistyövoima',
-      'Lypsylehmien määrä',
-      'Peltoala',
-      'Luomu vai tavanomainen',
-      'Navettatyyppi',
-      'Lypsyjärjestelmä'
+      'Tilan kokonaistyövoima:',
+      'Lypsylehmien määrä:',
+      'Peltoala:',
+      'Luomu vai tavanomainen:',
+      'Navettatyyppi:',
+      'Lypsyjärjestelmä:'
     ]
   },
   {
     key: 'tilanKokonaistyovoima',
-    label: 'Tilan kokonaistyövoima',
+    label: 'Tilan kokonaistyövoima:',
     nextLabels: [
-      'Lypsylehmien määrä',
-      'Peltoala',
-      'Luomu vai tavanomainen',
-      'Navettatyyppi',
-      'Lypsyjärjestelmä'
+      'Lypsylehmien määrä:',
+      'Peltoala:',
+      'Luomu vai tavanomainen:',
+      'Navettatyyppi:',
+      'Lypsyjärjestelmä:'
     ]
   },
   {
     key: 'lypsylehmienMaara',
-    label: 'Lypsylehmien määrä',
+    label: 'Lypsylehmien määrä:',
     nextLabels: [
-      'Peltoala',
-      'Luomu vai tavanomainen',
-      'Navettatyyppi',
-      'Lypsyjärjestelmä'
+      'Peltoala:',
+      'Luomu vai tavanomainen:',
+      'Navettatyyppi:',
+      'Lypsyjärjestelmä:'
     ]
   },
   {
     key: 'peltoala',
-    label: 'Peltoala',
+    label: 'Peltoala:',
     nextLabels: [
-      'Luomu vai tavanomainen',
-      'Navettatyyppi',
-      'Lypsyjärjestelmä'
+      'Luomu vai tavanomainen:',
+      'Navettatyyppi:',
+      'Lypsyjärjestelmä:'
     ]
   },
   {
     key: 'tuotomanTavanomainen',
-    label: 'Luomu vai tavanomainen',
+    label: 'Luomu vai tavanomainen:',
     nextLabels: [
-      'Navettatyyppi',
-      'Lypsyjärjestelmä'
+      'Navettatyyppi:',
+      'Lypsyjärjestelmä:'
     ]
   },
   {
     key: 'navettatyyppi',
-    label: 'Navettatyyppi',
+    label: 'Navettatyyppi:',
     nextLabels: [
-      'Lypsyjärjestelmä'
+      'Lypsyjärjestelmä:'
     ]
   },
   {
     key: 'lypsyjarjestelma',
-    label: 'Lypsyjärjestelmä',
+    label: 'Lypsyjärjestelmä:',
     nextLabels: []
   },
 ];
 
-// 2. Funktio, joka parsii PDF:stä tekstit lookahead-tekniikalla
 function parsePdfText(allText) {
-  console.log('PDF-sisältö:\n', allText); // Debug: katso, mitä PDF:stä tulee
+  console.log('PDF-sisältö:\n', allText); // Debug: näytä PDF:n sisältö
 
-  // Alustetaan tyhjät arvot
   const extracted = {
     yrityksenNimi: '',
     yrittajienNimet: '',
@@ -115,34 +113,26 @@ function parsePdfText(allText) {
     lypsyjarjestelma: ''
   };
 
-  // Käydään jokainen kenttäkonfiguraatio läpi
   fieldConfigs.forEach(cfg => {
-    // Seuraavat otsikot putkeen "Otsikko1|Otsikko2|..."
     const lookahead = cfg.nextLabels.join('|');
-    // Rakennetaan regex:
-    // label + valinnainen kaksoispiste + laiska match .+? 
-    // pysähtyy lookaheadiin tai tekstin loppuun
-    // esim: /Yrityksen nimi\s*:?\s*(.+?)(?=\s(Yhtiömuoto|Tilan kokonaistyövoima)|$)/i
+    // Käytetään tarkkaa labelia, jossa on kaksoispiste, ja pysähtytään ennen seuraavaa otsikkoa tai tekstin loppua
     const re = new RegExp(
-      `${cfg.label}\\s*:?\\s*(.+?)(?=\\s(?:${lookahead})|$)`,
+      `${cfg.label}\\s*(.+?)(?=\\s*(?:${lookahead})|$)`,
       'i'
     );
-
     const match = allText.match(re);
     if (match) {
       extracted[cfg.key] = match[1].trim();
     }
   });
 
-  // 3. Esimerkki: jos "Luomu vai tavanomainen" on alasvetovalikko
-  // ja haluat muuntaa PDF-tekstin "luomu" tai "tavanomainen"
+  // Muutetaan "Luomu vai tavanomainen" -kentän arvo alasvetovalikon mukaiseen muotoon
   const val = extracted.tuotomanTavanomainen.toLowerCase();
   if (val.includes('luomu')) {
     extracted.tuotomanTavanomainen = 'luomu';
   } else if (val.includes('tav')) {
     extracted.tuotomanTavanomainen = 'tavanomainen';
   } else {
-    // jos PDF:ssä lukee jotain muuta, jätä tyhjäksi
     extracted.tuotomanTavanomainen = '';
   }
 
