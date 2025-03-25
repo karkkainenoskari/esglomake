@@ -1630,7 +1630,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <AutoResizeTextArea name="energyErityisetToimenpiteetLisatiedot" value={envData.energyErityisetToimenpiteetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-            <AutoResizeTextArea name="energyErityisetToimenpiteetTavoitteet" value={envData.energyErityisetToimenpiteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="energyErityisetToimenpiteetTavoitteet" value={envData.energyErityisetToimenpiteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
         </tbody>

@@ -173,7 +173,7 @@ const TalousJaHallintoPage = ({
       <h2>Talous ja hallinto</h2>
 
       {/* 4.1 Johtaminen */}
-      <h3>4.1 Johtaminen</h3>
+ 
       <form onSubmit={handleSubmit}>
         <table className="common-table">
           <colgroup>
@@ -228,7 +228,7 @@ const TalousJaHallintoPage = ({
         </table>
 
         {/* 4.2 Riskien hallinta */}
-        <h3>4.2 Riskien hallinta</h3>
+       
         <table className="common-table">
           <colgroup>
             <col />
@@ -282,7 +282,7 @@ const TalousJaHallintoPage = ({
         </table>
 
         {/* 4.3 Kilpailukyky ja kannattavuus */}
-        <h3>4.3 Kilpailukyky ja kannattavuus</h3>
+
         <table className="common-table">
           <colgroup>
             <col />
