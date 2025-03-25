@@ -3,36 +3,46 @@
 /* Yleiset taulukon tyylit */
 .common-table {
   width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed; /* Pakottaa sarakkeet käyttämään colgroupissa määriteltyjä leveysarvoja */
+  /* Vaihdetaan collapse -> separate */
+  border-collapse: separate;
+  /* Poistetaan ylimääräinen väli, joka syntyy separate-asetuksella */
+  border-spacing: 0;
+  /* Pyöristetään reunat */
+  border-radius: 20px;
+  /* Pakotetaan pyöristys näkymään myös taulukon reunoilla */
+  overflow: hidden;
   margin-bottom: 2rem;
+  /* Lisätään (tai siirretään) reunaviiva taulukon ulkoreunaan */
+  border: 2px solid #f0f0f0;
 }
+
 
 /* Taulukon solujen tyylit */
 .common-table th,
 .common-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
+  border: 1px solid #f0f0f0;
+  padding: 15px;
   text-align: left;
 }
 
 /* Otsikkosolujen tausta */
 .common-table th {
-  background-color: #f0f0f0;
+  background-color: #007BFF; /* Korvaa haluamallasi sinisen sävyllä */
+  color: #fff;  
 }
 
 /* Määritellään sarakkeiden leveydet kaikissa taulukoissa.
    Esimerkiksi 4 saraketta: ensimmäinen 30%, toinen 20%, kolmas 25%, neljäs 25%.
    Voit muokata näitä prosentteja tarpeen mukaan, kunhan kaikissa taulukoissa on sama määrittely. */
-.common-table col:nth-child(1) {
-  width: 30%;
-}
-.common-table col:nth-child(2) {
-  width: 20%;
-}
-.common-table col:nth-child(3) {
-  width: 25%;
-}
-.common-table col:nth-child(4) {
-  width: 25%;
-}
+   .common-table col:nth-child(1) {
+    width: 30%;  /* Otsikon sarake */
+  }
+  .common-table col:nth-child(2) {
+    width: 10%;  /* Uusin tulos, supistettu puoleen (esim. 20 % -> 10 %) */
+  }
+  .common-table col:nth-child(3) {
+    width: 30%;  /* Kuvaus */
+  }
+  .common-table col:nth-child(4) {
+    width: 30%;  /* Tavoite ja aikataulu */
+  }
