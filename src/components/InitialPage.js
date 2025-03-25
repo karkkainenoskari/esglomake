@@ -59,7 +59,8 @@ const fieldConfigs = [
   },
   {
     key: 'lypsylehmienMaara',
-    label: 'Lypsylehmien määrä:',
+    // Muutetaan label niin, että se hyväksyy joko "Lypsylehmien määrä:" tai "Lypsylehmienmäärä:"
+    label: 'Lypsylehmien\\s?määrä:',
     nextLabels: [
       'Peltoala:',
       'Luomu vai tavanomainen:',

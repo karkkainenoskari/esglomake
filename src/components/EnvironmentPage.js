@@ -274,8 +274,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
       <h2>Ympäristö</h2>
 
-   
-      <h3>2.1 Hiilijalanjälki ja tuotannon tehokkuus</h3>
       <table className="common-table">
         <colgroup>
           <col />
@@ -848,8 +846,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-
-      <h3>2.2 Monimuotoisuus</h3>
       <table className="common-table">
         <colgroup>
           <col />
@@ -1001,7 +997,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       </table>
       
        {/* */ }  
-      <h3>2.3 Peltoviljely</h3>
       <table className="common-table">
         <colgroup>
           <col />
@@ -1351,8 +1346,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-
-      <h3>2.4 Lannan käsittely ja jätehuolto</h3>
       <table className="common-table">
         <colgroup>
           <col />
@@ -1497,8 +1490,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-  
-      <h3>2.5 Energian käyttö</h3>
       <table className="common-table">
         <colgroup>
           <col />
