@@ -857,8 +857,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <th>Monimuotoisuus</th>
             <th>Uusin tulos</th>
-            <th>Lisätiedot</th>
-            <th>Tavoitteet ja aikataulut</th>
+            <th>Kuvaus</th>
+            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>
@@ -1008,8 +1008,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <th>Peltoviljely</th>
             <th>Uusin tulos</th>
-            <th>Lisätiedot</th>
-            <th>Tavoitteet ja aikataulut</th>
+            <th>Kuvaus</th>
+            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>
@@ -1357,8 +1357,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <th>Lannan käsittely ja jätehuolto</th>
             <th>Uusin tulos</th>
-            <th>Lisätiedot</th>
-            <th>Tavoitteet ja aikataulut</th>
+            <th>Kuvaus</th>
+            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>
@@ -1501,8 +1501,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <th>Energian käyttö</th>
             <th>Uusin tulos</th>
-            <th>Lisätiedot</th>
-            <th>Tavoitteet ja aikataulut</th>
+            <th>Kuvaus</th>
+            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>

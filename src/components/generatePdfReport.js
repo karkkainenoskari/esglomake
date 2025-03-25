@@ -28,7 +28,7 @@ const generatePdfReport = (initialData,environmentData) => {
   startY += 10;
 
   doc.setFontSize(12);
-  doc.text("1. Yrityksen perustiedot", 14, startY);
+  doc.text("Yrityksen perustiedot", 14, startY);
   startY += 6;
 
   // Kahden sarakkeen taulukko: [Kenttä, Arvo]
@@ -61,12 +61,10 @@ const generatePdfReport = (initialData,environmentData) => {
   }
 
   // --- 2. Ympäristö ---
-  doc.text("2. Ympäristö", 14, startY);
+  doc.text("Ympäristö", 14, startY);
   startY += 10;
 
-  // 2.1 Hiilijalanjälki ja tuotannon tehokkuus
-  doc.text("2.1 Hiilijalanjälki ja tuotannon tehokkuus", 14, startY);
-  startY += 6;
+
 
   const rows21 = [
     [
@@ -227,11 +225,6 @@ const generatePdfReport = (initialData,environmentData) => {
   startY = doc.lastAutoTable.finalY + 10;
   
 
-  //
-  // 2.2 Monimuotoisuus
-  //
-  doc.text("2.2 Monimuotoisuus", 14, startY);
-  startY += 6;
   
   const rows22 = [
     [
@@ -312,10 +305,6 @@ const generatePdfReport = (initialData,environmentData) => {
   });
   startY = doc.lastAutoTable.finalY + 10;
   
-  // --- 2.3 Peltoviljely ---
-doc.text("2.3 Peltoviljely", 14, startY);
-startY += 6;
-
 const rows23Pelto = [
   [
     "Viljelykasvien kokonaispinta-ala, ha",
@@ -400,11 +389,6 @@ autoTable(doc, {
 });
 startY = doc.lastAutoTable.finalY + 10;
 
-  //
-  // 2.4 Lannan käsittely ja jätehuolto
-  //
-  doc.text("2.4 Lannan käsittely ja jätehuolto", 14, startY);
-startY += 6;
 
 const rows23 = [
   [
@@ -479,12 +463,6 @@ autoTable(doc, {
 });
 startY = doc.lastAutoTable.finalY + 10;
 
-
-  //
-  // 2.4 Energian käyttö
-  //
-  doc.text("2.5 Energian käyttö", 14, startY);
-  startY += 6;
   
   const rows24 = [
     [
