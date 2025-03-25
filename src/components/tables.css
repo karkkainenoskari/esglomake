@@ -16,6 +16,13 @@
   border: 2px solid #f0f0f0;
 }
 
+.common-table input[type="text"],
+.common-table select,
+.common-table textarea {
+  border-radius: 5px; /* Säädä arvoa haluamasi pyöristyksen mukaan */
+  border: 1px solid #8d8d8d;
+}
+
 
 /* Taulukon solujen tyylit */
 .common-table th,
