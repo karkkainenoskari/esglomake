@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './tables.css';
 import LogoHeader from './LogoHeader'; 
+import AutoResizeTextArea from './AutoResizeTextArea';
 
 const TalousJaHallintoPage = ({
   onNext,
@@ -206,8 +207,7 @@ const TalousJaHallintoPage = ({
                 </select>
               </td>
               <td>
-                <input
-                  type="text"
+              <AutoResizeTextArea
                   name="yrityksenArvotLisatiedot"
                   value={localFinanceData.yrityksenArvotLisatiedot}
                   onChange={handleChange}
@@ -215,8 +215,7 @@ const TalousJaHallintoPage = ({
                 />
               </td>
               <td>
-                <input
-                  type="text"
+              <AutoResizeTextArea
                   name="yrityksenArvotTavoitteet"
                   value={localFinanceData.yrityksenArvotTavoitteet}
                   onChange={handleChange}
@@ -262,8 +261,7 @@ const TalousJaHallintoPage = ({
                 </select>
               </td>
               <td>
-                <input
-                  type="text"
+              <AutoResizeTextArea
                   name="riskVarautumissuunnitelmaLisatiedot"
                   value={localFinanceData.riskVarautumissuunnitelmaLisatiedot}
                   onChange={handleChange}
@@ -271,8 +269,7 @@ const TalousJaHallintoPage = ({
                 />
               </td>
               <td>
-                <input
-                  type="text"
+              <AutoResizeTextArea
                   name="riskVarautumissuunnitelmaTavoitteet"
                   value={localFinanceData.riskVarautumissuunnitelmaTavoitteet}
                   onChange={handleChange}
@@ -315,8 +312,7 @@ const TalousJaHallintoPage = ({
                 />
               </td>
               <td>
-                <input
-                  type="text"
+              <AutoResizeTextArea
                   name="talousSuunnitteluLisatiedot"
                   value={localFinanceData.talousSuunnitteluLisatiedot}
                   onChange={handleChange}
@@ -324,8 +320,7 @@ const TalousJaHallintoPage = ({
                 />
               </td>
               <td>
-                <input
-                  type="text"
+              <AutoResizeTextArea
                   name="talousSuunnitteluTavoitteet"
                   value={localFinanceData.talousSuunnitteluTavoitteet}
                   onChange={handleChange}
