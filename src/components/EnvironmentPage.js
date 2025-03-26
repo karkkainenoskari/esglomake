@@ -833,16 +833,11 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Muut mahdolliset toimenpiteet</td>
-            <td>
+            <td>Erityiset toimenpiteet</td>
+            <td colSpan="3">
               <textarea name="envMuutToimenpiteet" value={envData.envMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envMuutToimenpiteetLisatiedot" value={envData.envMuutToimenpiteetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="envMuutToimenpiteetTavoitteet" value={envData.envMuutToimenpiteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
+           
           </tr>
         </tbody>
       </table>
@@ -981,15 +976,10 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Erityiset toimenpiteet</td>
-            <td>
+            <td colSpan="3">
               <textarea name="divErityisetToimenpiteet" value={envData.divErityisetToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="divErityisetToimenpiteetLisatiedot" value={envData.divErityisetToimenpiteetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="divErityisetToimenpiteetTavoitteet" value={envData.divErityisetToimenpiteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
+           
           </tr>
           <tr>
 
@@ -1296,28 +1286,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Erityiset toimenpiteet</td>
-            <td>
+            <td colSpan="3">
               <textarea
                 name="envPeltoviljelyErityisetToimenpiteet"
                 value={envData.envPeltoviljelyErityisetToimenpiteet || ""}
                 onChange={handleChange}
                 rows={2}
-                style={{ width: '100%' }}
-              />
-            </td>
-            <td>
-            <AutoResizeTextArea
-                name="envPeltoviljelyErityisetToimenpiteetLisatiedot"
-                value={envData.envPeltoviljelyErityisetToimenpiteetLisatiedot || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
-            <td>
-            <AutoResizeTextArea
-                name="envPeltoviljelyErityisetToimenpiteetTavoitteet"
-                value={envData.envPeltoviljelyErityisetToimenpiteetTavoitteet || ""}
-                onChange={handleChange}
                 style={{ width: '100%' }}
               />
             </td>
@@ -1455,16 +1429,11 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Muut mahdolliset toimenpiteet</td>
-            <td>
+            <td>Erityiset toimenpiteet</td>
+            <td colSpan="3">
               <textarea name="lantaMuutToimenpiteet" value={envData.lantaMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="lantaMuutToimenpiteetLisatiedot" value={envData.lantaMuutToimenpiteetLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="lantaMuutToimenpiteetTavoitteet" value={envData.lantaMuutToimenpiteetTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
+           
           </tr>
         </tbody>
       </table>
@@ -1623,14 +1592,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Erityiset toimenpiteet</td>
-            <td>
+            <td colSpan="3">
               <textarea name="energyErityisetToimenpiteet" value={envData.energyErityisetToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="energyErityisetToimenpiteetLisatiedot" value={envData.energyErityisetToimenpiteetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-              <AutoResizeTextArea name="energyErityisetToimenpiteetTavoitteet" value={envData.energyErityisetToimenpiteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
         </tbody>
