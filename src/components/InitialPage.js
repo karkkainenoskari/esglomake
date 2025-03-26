@@ -266,7 +266,8 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
             flex: '1 1 0',
             minWidth: '300px',
             border: '1px solid #ccc',
-            padding: '1rem'
+            padding: '1rem',
+            borderRadius: '8px' // tai esim. '10px'
           }}
         >
           <p>
@@ -296,7 +297,8 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
             flex: '1 1 0',
             minWidth: '300px',
             border: '1px solid #ccc',
-            padding: '1rem'
+            padding: '1rem',
+            borderRadius: '8px' // tai esim. '10px'
           }}
         >
           <h3>Ohjeet lomakkeen täyttöön</h3>
@@ -319,7 +321,8 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
           border: '2px dashed #007acc',
           padding: '20px',
           textAlign: 'center',
-          marginTop: '20px'
+          marginTop: '20px',
+          borderRadius: '8px' // tai esim. '10px'
         }}
       >
         <input {...getInputProps()} />
