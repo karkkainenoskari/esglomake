@@ -310,7 +310,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
 
-            {/* Väliotsikko: Yrittäjiin liittyvää */}
+            
             <tr>
               <td colSpan="4" style={{ fontWeight: 'bold', backgroundColor: '#f7f7f7' }}>
                 Yrittäjiin liittyvää
@@ -469,7 +469,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <AutoResizeTextArea name="hoitotaVaativiaTapaturmiaTavoitteet" value={socialData.hoitotaVaativiaTapaturmiaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
               </td>
             </tr>
-            {/* Uudet rivit lisätään tässä HOITOTA VAATIVIA TAPATURMIA jälkeen ennen MUUT ERITYISET TOIMENPITEET */}
+           
             <tr>
               <td>Osaamisen kehittäminen ja lisäkouluttautuminen, pv/v</td>
               <td>

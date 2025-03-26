@@ -53,3 +53,15 @@
   .common-table col:nth-child(4) {
     width: 30%;  /* Tavoite ja aikataulu */
   }
+
+  /* Tyyli, joka kohdistuu kaikkiin input-, select- ja textarea-kenttiin etusivulla */
+.initial-page input[type="text"],
+.initial-page select,
+.initial-page textarea {
+  border-radius: 5px;
+  border: 1px solid #8d8d8d;
+}
+
+.extended-input {
+  width: 90%;   /* tai 100%, tai jokin kiinteä pikseliarvo */
+}

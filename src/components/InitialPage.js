@@ -147,16 +147,16 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     return savedData
       ? JSON.parse(savedData)
       : {
-          yrityksenNimi: '',
-          yrittajienNimet: '',
-          yhtiomuoto: '',
-          tilanKokonaistyovoima: '',
-          lypsylehmienMaara: '',
-          peltoala: '',
-          tuotomanTavanomainen: '',
-          navettatyyppi: '',
-          lypsyjarjestelma: ''
-        };
+        yrityksenNimi: '',
+        yrittajienNimet: '',
+        yhtiomuoto: '',
+        tilanKokonaistyovoima: '',
+        lypsylehmienMaara: '',
+        peltoala: '',
+        tuotomanTavanomainen: '',
+        navettatyyppi: '',
+        lypsyjarjestelma: ''
+      };
   });
 
   // Tallenna localStorageen aina kun formData muuttuu
@@ -199,7 +199,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
       navettatyyppi: '',
       lypsyjarjestelma: ''
     });
-    
+
     // Voit lisätä myös ilmoituksen, että kentät on tyhjennetty.
   };
 
@@ -249,9 +249,9 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Lisätään LogoHeader-komponentti */}
       <LogoHeader />
-      
+
       <h1 style={{ textAlign: 'center' }}>Maitotilan ESG-vastuullisuusraportti</h1>
-      
+
       {/* Kaksi tekstilaatikkoa vierekkäin */}
       <div
         style={{
@@ -270,27 +270,27 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
           }}
         >
           <p>
-            ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance. 
-            ESG raportointi termillä tarkoitetaan yrityksen ympäristö-, sosiaaliseen- 
-            ja hallinnolliseen vastuuseen liittyvien tekijöiden tunnistamista, 
-            vastuullisia toimintatapoja ja niiden raportointia. Tulevaisuudessa 
-            vastuullisuusajattelu ja raportointivaade koskee välillisesti myös 
-            maitotilayrityksiä, kun yhteiskunta, asiakkaat, rahoituslaitokset ja 
-            kuluttajat haluavat tietää koko toimitusketjun vastuullisuudesta. 
-            Vastuullisuusraportointi tulee nousemaan talousraportoinnin rinnalle 
+            ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance.
+            ESG raportointi termillä tarkoitetaan yrityksen ympäristö-, sosiaaliseen-
+            ja hallinnolliseen vastuuseen liittyvien tekijöiden tunnistamista,
+            vastuullisia toimintatapoja ja niiden raportointia. Tulevaisuudessa
+            vastuullisuusajattelu ja raportointivaade koskee välillisesti myös
+            maitotilayrityksiä, kun yhteiskunta, asiakkaat, rahoituslaitokset ja
+            kuluttajat haluavat tietää koko toimitusketjun vastuullisuudesta.
+            Vastuullisuusraportointi tulee nousemaan talousraportoinnin rinnalle
             osaksi lainoitus- ja rahoitusprosesseja.
             <br></br>
             <br></br>
-            Tämä työkalu auttaa maitotilayritystä kuvaamaan ja miettimään 
-            omalle yritykselle tärkeitä vastuullisuusasioita ja tuottaa 
-            niistä yrityksen ESG-vastuullisuusraportin. Työkalu ja raporttipohja 
-            on tuotettu osana Tulevaisuuden maatila -hanketta (1.1.2024-31.12.2025). 
-            Toteutuksesta vastasivat yhteistyössä YsAo, Savonia-amk ja 
-            Maitoyrittäjät ry. Hankkeen rahoittajana oli Pohjois-Savon Liitto 
+            Tämä työkalu auttaa maitotilayritystä kuvaamaan ja miettimään
+            omalle yritykselle tärkeitä vastuullisuusasioita ja tuottaa
+            niistä yrityksen ESG-vastuullisuusraportin. Työkalu ja raporttipohja
+            on tuotettu osana Tulevaisuuden maatila -hanketta (1.1.2024-31.12.2025).
+            Toteutuksesta vastasivat yhteistyössä YsAo, Savonia-amk ja
+            Maitoyrittäjät ry. Hankkeen rahoittajana oli Pohjois-Savon Liitto
             ja rahoituslähteenä JTF-rahasto.
           </p>
         </div>
-        
+
         <div
           style={{
             flex: '1 1 0',
@@ -299,38 +299,38 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
             padding: '1rem'
           }}
         >
-           <h3>Ohjeet lomakkeen täyttöön</h3>
-        <ul>
-          <li>Täytä kaikki kentät mahdollisimman tarkasti.</li>
-          <li>Lisää lisätietoja tarvittaessa - erityisesti tavoitteet ja aikataulut.</li>
-          <li>Voit tallentaa keskeneräisen raportin painamalla “Tallenna ja lopeta” -painiketta.</li>
-          <li>Mikäli olet täyttänyt raporttia aiemmin, voit ladata PDF-raportin “Raahaa PDF-tiedosto” -alueelle.</li>
-          <li>Muista lopuksi tallentaa muutokset, jotta tiedot eivät katoa.</li>
-        </ul>
+          <h3>Ohjeet lomakkeen täyttöön</h3>
+          <ul>
+            <li>Täytä kaikki kentät mahdollisimman tarkasti.</li>
+            <li>Lisää lisätietoja tarvittaessa - erityisesti tavoitteet ja aikataulut.</li>
+            <li>Voit tallentaa keskeneräisen raportin painamalla “Tallenna ja lopeta” -painiketta.</li>
+            <li>Mikäli olet täyttänyt raporttia aiemmin, voit ladata PDF-raportin “Raahaa PDF-tiedosto” -alueelle.</li>
+            <li>Muista lopuksi tallentaa muutokset, jotta tiedot eivät katoa.</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  
-   
 
-    {/* Drop zone PDF-tiedostolle */}
-    <div
-      {...getRootProps()}
-      style={{
-        border: '2px dashed #007acc',
-        padding: '20px',
-        textAlign: 'center',
-        marginTop: '20px'
-      }}
-    >
-      <input {...getInputProps()} />
-      {isDragActive ? (
-        <p>Pudota PDF-tiedosto tähän, niin täytämme lomakkeen tiedot automaattisesti.</p>
-      ) : (
-        <p>
-          Raahaa PDF-tiedosto tähän tai klikkaa valitaksesi tiedoston, jossa aiemmat lomaketiedot ovat.
-        </p>
-      )}
-    </div>
+
+
+      {/* Drop zone PDF-tiedostolle */}
+      <div
+        {...getRootProps()}
+        style={{
+          border: '2px dashed #007acc',
+          padding: '20px',
+          textAlign: 'center',
+          marginTop: '20px'
+        }}
+      >
+        <input {...getInputProps()} />
+        {isDragActive ? (
+          <p>Pudota PDF-tiedosto tähän, niin täytämme lomakkeen tiedot automaattisesti.</p>
+        ) : (
+          <p>
+            Raahaa PDF-tiedosto tähän tai klikkaa valitaksesi tiedoston, jossa aiemmat lomaketiedot ovat.
+          </p>
+        )}
+      </div>
       {/* Pääosa: Lomake ja ESG-kuva vierekkäin */}
       <main
         style={{
@@ -338,20 +338,11 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
           alignItems: 'flex-start'
         }}
       >
-        {/* Lomake vasemmalla */}
-        <div style={{ width: '600px', marginRight: '2rem' }}>
+
+        <div className="initial-page">
           <h2>Yrityksen perustiedot</h2>
           <form onSubmit={handleSubmit}>
-            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
-              <label style={{ width: '180px' }}>Yrityksen nimi:</label>
-              <input
-                type="text"
-                name="yrityksenNimi"
-                value={formData.yrityksenNimi}
-                onChange={handleChange}
-                style={{ flex: 1 }}
-              />
-            </div>
+          
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
               <label style={{ width: '180px' }}>Yrittäjien nimet:</label>
               <input
@@ -447,7 +438,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
               </select>
             </div>
 
-         
+
             <button type="submit">Seuraava</button>
             <button type="button" onClick={handleClearAll}>Tyhjennä</button>
 
@@ -455,19 +446,17 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
         </div>
 
 
-
-     {/* --- ESG-kuva oikealla --- */}
-<div style={{ marginTop: '6rem' }}>
-  <img
-    src="/esg.png"
-    alt="ESG"
-    style={{
-      maxWidth: '800px',
-      height: 'auto',
-      display: 'block'
-    }}
-  />
-</div>
+        <div style={{ marginTop: '4rem', marginLeft: '11rem' }}>
+          <img
+            src="/esg.png"
+            alt="ESG"
+            style={{
+              maxWidth: '800px',
+              height: 'auto',
+              display: 'block'
+            }}
+          />
+        </div>
       </main>
     </div>
   );
