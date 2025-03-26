@@ -247,7 +247,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           <thead>
             <tr>
               <th>Henkilöstö ja työolosuhteet</th>
-              <th>Uusin tulos / Arvo</th>
+              <th>Uusin tulos</th>
               <th>Kuvaus</th>
               <th>Tavoite ja aikataulu</th>
             </tr>
@@ -676,8 +676,8 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <th>Yhteistyö ja avoimuus</th>
               <th>Uusin tulos</th>
-              <th>Lisätiedot</th>
-              <th>Tavoitteet ja aikataulut</th>
+              <th>Kuvaus</th>
+              <th>Tavoite ja aikataulu</th>
             </tr>
           </thead>
           <tbody>
@@ -871,8 +871,8 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <th>Eläinten hyvinvointi</th>
               <th>Uusin tulos</th>
-              <th>Lisätiedot</th>
-              <th>Tavoitteet ja aikataulut</th>  
+              <th>Kuvaus</th>
+              <th>Tavoite ja aikataulu</th>  
             </tr>
           </thead>
           <tbody>
@@ -1186,8 +1186,8 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
     <tr>
       <th>Maidon laatu</th>
       <th>Uusin tulos</th>
-      <th>Lisätiedot</th>
-      <th>Tavoitteet ja aikataulut</th>
+      <th>Kuvaus</th>
+      <th>Tavoite ja aikataulu</th>
     </tr>
   </thead>
   <tbody>
