@@ -633,7 +633,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Muut erityiset toimenpiteet</td>
+              <td>Erityiset toimenpiteet</td>
               <td>
                 <textarea
                   name="muutErityiset"
@@ -1184,7 +1184,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
   </colgroup>
   <thead>
     <tr>
-      <th>Maidon laatu</th>
+      <th>Tuotteen laatu</th>
       <th>Uusin tulos</th>
       <th>Kuvaus</th>
       <th>Tavoite ja aikataulu</th>
