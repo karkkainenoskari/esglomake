@@ -303,11 +303,11 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
         >
           <h3>Ohjeet lomakkeen täyttöön</h3>
           <ul>
-            <li>Täytä kaikki kentät mahdollisimman tarkasti.</li>
-            <li>Lisää lisätietoja tarvittaessa - erityisesti tavoitteet ja aikataulut.</li>
-            <li>Voit tallentaa keskeneräisen raportin painamalla “Tallenna ja lopeta” -painiketta.</li>
-            <li>Mikäli olet täyttänyt raporttia aiemmin, voit ladata PDF-raportin “Raahaa PDF-tiedosto” -alueelle.</li>
-            <li>Muista lopuksi tallentaa muutokset, jotta tiedot eivät katoa.</li>
+            <li>Tähän tekstiä Tähän tekstiä Tähän tekstiä</li>
+            <li>Tähän tekstiä Tähän tekstiä Tähän tekstiä Tähän tekstiä</li>
+            <li>Tähän tekstiä Tähän tekstiä Tähän tekstiä Tähän tekstiä Tähän tekstiäTähän tekstiäTähän tekstiä Tähän tekstiä Tähän tekstiä</li>
+            <li>Tähän tekstiä Tähän tekstiä Tähän tekstiä</li>
+       
           </ul>
         </div>
       </div>

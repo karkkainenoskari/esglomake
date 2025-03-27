@@ -45,13 +45,13 @@
     width: 30%;  /* Otsikon sarake */
   }
   .common-table col:nth-child(2) {
-    width: 10%;  /* Uusin tulos, supistettu puoleen (esim. 20 % -> 10 %) */
+    width: 15%;  /* Uusin tulos, supistettu puoleen (esim. 20 % -> 10 %) */
   }
   .common-table col:nth-child(3) {
     width: 30%;  /* Kuvaus */
   }
   .common-table col:nth-child(4) {
-    width: 30%;  /* Tavoite ja aikataulu */
+    width: 25%;  /* Tavoite ja aikataulu */
   }
 
   /* Tyyli, joka kohdistuu kaikkiin input-, select- ja textarea-kenttiin etusivulla */

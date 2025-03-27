@@ -1175,11 +1175,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <td>Kuvaus rehuntuotannon toimintatavoista/strategiasta (esim. eri lohkojen käyttö, korjuukerrat, yhteistyö)</td>
             <td>
-              <textarea
+              <input
+                type='text'
                 name="envRehuntuotantoKuvaus"
                 value={envData.envRehuntuotantoKuvaus || ""}
                 onChange={handleChange}
-                rows={2}
+                
                 style={{ width: '100%' }}
               />
             </td>
@@ -1231,7 +1232,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <td>Kuvaus peltoviljelyssä käytössä olevista toimenpiteistä, jotka parantavat ympäristön tilaa</td>
             <td>
-              <textarea
+              <input
+                type='text'
                 name="envPeltoviljelyToimenpiteet"
                 value={envData.envPeltoviljelyToimenpiteet || ""}
                 onChange={handleChange}
@@ -1259,7 +1261,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <td>Kuvaus, miten peltojen vesitaloutta ylläpidetään ja kehitetään</td>
             <td>
-              <textarea
+              <input
+                type='text'
                 name="envVesitalousKuvaus"
                 value={envData.envVesitalousKuvaus || ""}
                 onChange={handleChange}

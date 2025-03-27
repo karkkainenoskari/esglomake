@@ -1160,7 +1160,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
           </thead>
           <tbody>
-            {/* 1. Sähköinen lääkekirjanpito */}
+         
             <tr>
               <td>
                 Sähköinen lääkekirjanpito käytössä, kyllä/ei <br />
@@ -1185,6 +1185,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                   onChange={handleChange}
                   style={{ width: '100%' }}
                 />
+                 
               </td>
               <td>
                 <AutoResizeTextArea
@@ -1196,7 +1197,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
 
-            {/* 2. Tankkimaidon testaaminen */}
+           
             <tr>
               <td>
                 Tankkimaidon testaaminen antibioottihoitojen yhteydessä, kyllä/ei
@@ -1231,7 +1232,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
 
-            {/* 3. E-luokan maidon osuus */}
+           
             <tr>
               <td>E-luokan maidon osuus, %</td>
               <td>
@@ -1261,7 +1262,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
 
-            {/* 4. Maidon solupitoisuus */}
+     
             <tr>
               <td>
                 Maidon solupitoisuus, tuotosseurannasta
@@ -1293,7 +1294,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
 
-            {/* 5. Erityiset toimenpiteet */}
+         
             <tr>
               <td>Erityiset toimenpiteet</td>
               <td colSpan="3">
@@ -1309,10 +1310,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           </tbody>
         </table>
 
-
-
-
-        {/* Navigointi */}
         <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center' }}>
           <button type="button" onClick={onPrevious} style={{ marginRight: '1rem' }}>
             Edellinen
