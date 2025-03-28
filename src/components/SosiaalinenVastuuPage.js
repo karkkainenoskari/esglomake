@@ -232,10 +232,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
       <h2>Sosiaalinen vastuu</h2>
 
-      {/* Ulkopuolinen otsikko */}
-
-
-      {/* Ensimmäinen yhtenäinen taulukko: Henkilöstö, Yrittäjiin ja Työntekijöihin liittyvää */}
+     
       <form onSubmit={handleSubmit}>
         <table className="common-table">
           <colgroup>
@@ -253,7 +250,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
           </thead>
           <tbody>
-            {/* 1. Henkilöstö ja työolosuhteet */}
+            
             <tr>
               <td>
                 Kirjallinen henkilöstöstrategia tehty, kyllä/ei<br />
@@ -411,7 +408,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
 
-            {/* Väliotsikko: Työntekijöihin liittyvää */}
+           
             <tr>
               <td colSpan="4" style={{ fontWeight: 'bold', backgroundColor: '#f7f7f7' }}>
                 Työntekijöihin liittyvää
@@ -649,7 +646,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           </tbody>
         </table>
 
-        {/* Erillinen taulukko: 3.2 Yhteistyö ja avoimuus */}
+
 
         <table className="common-table">
           <colgroup>
@@ -830,7 +827,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           </tbody>
         </table>
 
-        {/* Uusi taulukko: 3.2 Yhteistyö ja avoimuus on jo yllä, ja sen jälkeen uusi taulukko 3.3 Eläinten hyvinvointi */}
+       
 
         <table className="common-table">
           <colgroup>
@@ -1319,7 +1316,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           </button>
         </div>
       </form>
-    </div>
+    </div> 
   );
 };
 

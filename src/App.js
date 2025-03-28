@@ -54,7 +54,8 @@ function App() {
   };
 
   return (
-    <div style={{ paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
+
       {step === 0 && (
         <InitialPage 
           onNext={handleInitialNext} 
