@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './tables.css';
 import LogoHeader from './LogoHeader';
 import AutoResizeTextArea from './AutoResizeTextArea';
+import YesNoToggle from './YesNoToggle';
 
 const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUpdate }) => {
   // Alustetaan tila lazy initializerilla: ensin tarkistetaan localStorage.
@@ -253,15 +254,15 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             
             <tr>
               <td>
-                Kirjallinen henkilöstöstrategia tehty, kyllä/ei<br />
+                Kirjallinen henkilöstöstrategia tehty<br />
                 (kuvaa esim. henkilöstötarpeet, johtaminen, suunnitelmallisuus, vastuut, työntekijöiden määrä)
               </td>
+              
               <td>
-                <select name="henkilostoStrategia" value={socialData.henkilostoStrategia} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.henkilostoStrategia}
+                  onChange={(val) => setSocialData({ ...socialData, henkilostoStrategia: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="henkilostoStrategiaLisatiedot" value={socialData.henkilostoStrategiaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -326,13 +327,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Työterveyshuolto, kyllä/ei</td>
+              <td>Työterveyshuolto</td>
               <td>
-                <select name="tyoterveyshuolto" value={socialData.tyoterveyshuolto} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.tyoterveyshuolto}
+                  onChange={(val) => setSocialData({ ...socialData, tyoterveyshuolto: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="tyoterveyshuoltoLisatiedot" value={socialData.tyoterveyshuoltoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -355,15 +355,14 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>
-                Mahdollisuus säännöllisiin vapaapäiviin, kyllä/ei<br />
+                Mahdollisuus säännöllisiin vapaapäiviin<br />
                 (kuvaa lisätietokenttään miten)
               </td>
               <td>
-                <select name="vapaapäivat" value={socialData.vapaapäivat} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.vapaapäivat}
+                  onChange={(val) => setSocialData({ ...socialData, vapaapäivat: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="vapaapäivatLisatiedot" value={socialData.vapaapäivatLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -373,13 +372,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Vuosilomien pitäminen suunnitellusti, kyllä/ei</td>
+              <td>Vuosilomien pitäminen suunnitellusti</td>
               <td>
-                <select name="vuosilomat" value={socialData.vuosilomat} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.vuosilomat}
+                  onChange={(val) => setSocialData({ ...socialData, vuosilomat: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="vuosilomatLisatiedot" value={socialData.vuosilomatLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -390,15 +388,14 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>
-                Työajan mittaaminen, kyllä/ei<br />
+                Työajan mittaaminen<br />
                 (kuvaa lisätietokenttään miten)
               </td>
               <td>
-                <select name="tyoajanMittaaminen" value={socialData.tyoajanMittaaminen} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.tyoajanMittaaminen}
+                  onChange={(val) => setSocialData({ ...socialData, tyoajanMittaaminen: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="tyoajanMittaaminenLisatiedot" value={socialData.tyoajanMittaaminenLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -427,13 +424,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Työterveyshuolto, kyllä/ei</td>
+              <td>Työterveyshuolto</td>
               <td>
-                <select name="tyoterveyshuolto2" value={socialData.tyoterveyshuolto2} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.tyoterveyshuolto}
+                  onChange={(val) => setSocialData({ ...socialData, tyoterveyshuolto: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="tyoterveyshuolto2Lisatiedot" value={socialData.tyoterveyshuolto2Lisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -524,13 +520,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Säännölliset kehityskeskuskustelut, kyllä/ei</td>
+              <td>Säännölliset kehityskeskuskustelut</td>
               <td>
-                <select name="kehityskeskustelut" value={socialData.kehityskeskustelut} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.kehityskeskustelut}
+                  onChange={(val) => setSocialData({ ...socialData, kehityskeskustelut: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -550,13 +545,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Säännölliset palaverikäytännöt, kyllä/ei</td>
+              <td>Säännölliset palaverikäytännöt</td>
               <td>
-                <select name="palaverit" value={socialData.palaverit} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.palaverit}
+                  onChange={(val) => setSocialData({ ...socialData, palaverit: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -604,13 +598,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Työtyytyväisyyden mittaaminen käytössä, kyllä/ei</td>
+              <td>Työtyytyväisyyden mittaaminen käytössä</td>
               <td>
-                <select name="tyotyotyot" value={socialData.tyotyotyot} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.tyotyotyot}
+                  onChange={(val) => setSocialData({ ...socialData, tyotyotyot: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -846,13 +839,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           </thead>
           <tbody>
             <tr>
-              <td>Nautojen terveydenhuoltorekisteri Naseva käytössä, kyllä/ei</td>
+              <td>Nautojen terveydenhuoltorekisteri Naseva käytössä</td>
               <td>
-                <select name="nautojenTerveydenhuoltorekisteri" value={socialData.nautojenTerveydenhuoltorekisteri} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.nautojenTerveydenhuoltorekisteri}
+                  onChange={(val) => setSocialData({ ...socialData, nautojenTerveydenhuoltorekisteri: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="nautojenTerveydenhuoltorekisteriLisatiedot" value={socialData.nautojenTerveydenhuoltorekisteriLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -863,13 +855,13 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
             </tr>
             <tr>
+            
               <td>Sorkkaterveyden seuranta ja hoito säännöllisesti, kyllä/ei</td>
               <td>
-                <select name="sorkkaterveys" value={socialData.sorkkaterveys} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.sorkkaterveys}
+                  onChange={(val) => setSocialData({ ...socialData, sorkkaterveys: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="sorkkaterveysLisatiedot" value={socialData.sorkkaterveysLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -988,13 +980,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
             </tr>
             <tr>
-              <td>Laiduntaminen käytössä, kyllä/ei<br />(kuvaa mitkä eläinryhmät laiduntavat)</td>
+              <td>Laiduntaminen käytössä<br />(kuvaa mitkä eläinryhmät laiduntavat)</td>
               <td>
-                <select name="laiduntaminen" value={socialData.laiduntaminen} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.laiduntaminen}
+                  onChange={(val) => setSocialData({ ...socialData, laiduntaminen: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="laiduntaminenLisatiedot" value={socialData.laiduntaminenLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -1047,13 +1038,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
             </tr>
             <tr>
-              <td>Viilennys lypsynavetassa, kyllä/ei</td>
+              <td>Viilennys lypsynavetassa</td>
               <td>
-                <select name="viilennys" value={socialData.viilennys} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.viilennys}
+                  onChange={(val) => setSocialData({ ...socialData, viilennys: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="viilennysLisatiedot" value={socialData.viilennysLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -1064,13 +1054,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
             </tr>
             <tr>
-              <td>Lehmillä käytävämatot, kyllä/ei</td>
+              <td>Lehmillä käytävämatot</td>
               <td>
-                <select name="lehmillaKaytavat" value={socialData.lehmillaKaytavat} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.lehmillaKaytavat}
+                  onChange={(val) => setSocialData({ ...socialData, lehmillaKaytavat: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="lehmillaKaytavatLisatiedot" value={socialData.lehmillaKaytavatLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -1081,13 +1070,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
             </tr>
             <tr>
-              <td>Pidennetty vierihoito tai imettäjälehmät käytäntönä, kyllä/ei</td>
+              <td>Pidennetty vierihoito tai imettäjälehmät käytäntönä</td>
               <td>
-                <select name="vierihoito" value={socialData.vierihoito} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.vierihoito}
+                  onChange={(val) => setSocialData({ ...socialData, vierihoito: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="vierihoitoLisatiedot" value={socialData.vierihoitoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -1098,13 +1086,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
             </tr>
             <tr>
-              <td>WellFare Quality -koulutus ja sertifiointi suoritettu, kyllä/ei</td>
+              <td>WellFare Quality -koulutus ja sertifiointi suoritettu</td>
               <td>
-                <select name="wellfareQuality" value={socialData.wellfareQuality} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.wellfareQuality}
+                  onChange={(val) => setSocialData({ ...socialData, wellfareQuality: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="wellfareQualityLisatiedot" value={socialData.wellfareQualityLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -1115,13 +1102,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
             </tr>
             <tr>
-              <td>ELVI -merkki -status voimassa, kyllä/ei</td>
+              <td>ELVI -merkki -status voimassa</td>
               <td>
-                <select name="elviStatus" value={socialData.elviStatus} onChange={handleChange} style={{ width: '100%' }}>
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+              <YesNoToggle
+                  value={socialData.elviStatus}
+                  onChange={(val) => setSocialData({ ...socialData, elviStatus: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="elviStatusLisatiedot" value={socialData.elviStatusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -1160,20 +1146,14 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
          
             <tr>
               <td>
-                Sähköinen lääkekirjanpito käytössä, kyllä/ei <br />
+                Sähköinen lääkekirjanpito käytössä <br />
                 (esim. Naseva)
               </td>
               <td>
-                <select
-                  name="laakekirjanpito"
+              <YesNoToggle
                   value={socialData.laakekirjanpito}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) => setSocialData({ ...socialData, laakekirjanpito: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -1197,19 +1177,13 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
            
             <tr>
               <td>
-                Tankkimaidon testaaminen antibioottihoitojen yhteydessä, kyllä/ei
+                Tankkimaidon testaaminen antibioottihoitojen yhteydessä
               </td>
               <td>
-                <select
-                  name="tankkimaidonTestaus"
+              <YesNoToggle
                   value={socialData.tankkimaidonTestaus}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) => setSocialData({ ...socialData, tankkimaidonTestaus: val })}
+                />
               </td>
               <td>
                 <AutoResizeTextArea
