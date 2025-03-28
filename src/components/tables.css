@@ -45,7 +45,7 @@
     width: 30%;  /* Otsikon sarake */
   }
   .common-table col:nth-child(2) {
-    width: 15%;  /* Uusin tulos, supistettu puoleen (esim. 20 % -> 10 %) */
+    width: 10%;  /* Uusin tulos, supistettu puoleen (esim. 20 % -> 10 %) */
   }
   .common-table col:nth-child(3) {
     width: 30%;  /* Kuvaus */

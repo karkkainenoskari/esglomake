@@ -54,7 +54,7 @@ function App() {
   };
 
   return (
-    <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
+    <div style={{ paddingTop: '60px', paddingBottom: '80px' }}>
 
       {step === 0 && (
         <InitialPage 
@@ -99,10 +99,10 @@ function App() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: '80px', // säädä tarvittaessa
+          height: '70px', // säädä tarvittaessa
           zIndex: 9999,
           backgroundColor: '#eee',
-          boxShadow: '0 -2px 5px rgba(0,0,0,0.2)',
+          
         }}
       >
         {/* ProgressBar:lle välitetään myös onNavigate-prop */}

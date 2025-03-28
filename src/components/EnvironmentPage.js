@@ -4,6 +4,7 @@ import autoTable from 'jspdf-autotable';
 import './tables.css';
 import LogoHeader from './LogoHeader';
 import AutoResizeTextArea from './AutoResizeTextArea';
+import YesNoToggle from './YesNoToggle';
 
 const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDataUpdate }) => {
   // Alustetaan tila localStoragesta, jos dataa löytyy, muuten käytetään initialEnvData tai oletusarvoja.
@@ -406,13 +407,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Hiiliviljelykoulutus suoritettu, kyllä/ei</td>
+            <td>Hiiliviljelykoulutus suoritettu</td>
             <td>
-              <select name="envHiiliviljelykoulutus" value={envData.envHiiliviljelykoulutus} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle
+                value={envData.envHiiliviljelykoulutus}
+                onChange={(val) => setEnvData({ ...envData, envHiiliviljelykoulutus: val })}
+              />
             </td>
             <td>
               <AutoResizeTextArea name="envHiiliviljelykoulutusLisatiedot" value={envData.envHiiliviljelykoulutusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -646,7 +646,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Käytössä vähäpäästöinen kylmäaine tilasäililössä, kyllä/ei
+            <td>Käytössä vähäpäästöinen kylmäaine tilasäililössä
               <span
                 style={{
                   marginLeft: '5px',
@@ -664,11 +664,10 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               </span>
             </td>
             <td>
-              <select name="envKaytossaVahapaastoinenKylmainetilasaililossa" value={envData.envKaytossaVahapaastoinenKylmainetilasaililossa} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.envKaytossaVahapaastoinenKylmainetilasaililossa}
+                onChange={(val) => setEnvData({ ...envData, envKaytossaVahapaastoinenKylmainetilasaililossa: val })}
+              />
             </td>
             <td>
             <AutoResizeTextArea name="envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot" value={envData.envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -704,13 +703,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä, kyllä/ei</td>
+            <td>Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä</td>
             <td>
-              <select name="envPaastojaVahentavatLisaravinteet" value={envData.envPaastojaVahentavatLisaravinteet} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.envPaastojaVahentavatLisaravinteet}
+                onChange={(val) => setEnvData({ ...envData, envPaastojaVahentavatLisaravinteet: val })}
+              />
             </td>
             <td>
             <AutoResizeTextArea name="envPaastojaVahentavatLisaravinteetLisatiedot" value={envData.envPaastojaVahentavatLisaravinteetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -720,7 +718,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Ruokinnan seurantalaskelma tehty kyllä/ei  <span
+            <td>Ruokinnan seurantalaskelma tehty  <span
               style={{
                 marginLeft: '5px',
                 cursor: 'help',
@@ -736,11 +734,10 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               ?
             </span></td>
             <td>
-              <select name="envRuokinnanSeurantalaskelmiaTehty" value={envData.envRuokinnanSeurantalaskelmiaTehty} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.envRuokinnanSeurantalaskelmiaTehty}
+                onChange={(val) => setEnvData({ ...envData, envRuokinnanSeurantalaskelmiaTehty: val })}
+              />
             </td>
             <td>
             <AutoResizeTextArea name="envRuokinnanSeurantalaskelmiaTehtyLisatiedot" value={envData.envRuokinnanSeurantalaskelmiaTehtyLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -805,13 +802,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Rehun säästöindeksin huomioiminen jalostuksessa, kyllä/ei</td>
+            <td>Rehun säästöindeksin huomioiminen jalostuksessa</td>
             <td>
-              <select name="envRehunSaastoindeksi" value={envData.envRehunSaastoindeksi} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.envRehunSaastoindeksi}
+                onChange={(val) => setEnvData({ ...envData, envRehunSaastoindeksi: val })}
+              />
             </td>
             <td>
             <AutoResizeTextArea name="envRehunSaastoindeksiLisatiedot" value={envData.envRehunSaastoindeksiLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -858,14 +854,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
         </thead>
         <tbody>
+        
           <tr>
-            <td>Maatalousluonnon ja maiseman -hoitosopimus, kyllä/ei</td>
+            <td>Maatalousluonnon ja maiseman -hoitosopimus</td>
             <td>
-              <select name="divHoitosopimus" value={envData.divHoitosopimus} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.divHoitosopimus}
+                onChange={(val) => setEnvData({ ...envData, divHoitosopimus: val })}
+              />
+              
             </td>
             <td>
             <AutoResizeTextArea name="divHoitosopimusLisatiedot" value={envData.divHoitosopimusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -898,14 +895,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <AutoResizeTextArea name="divKosteikotTavoitteet" value={envData.divKosteikotTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
+          
           <tr>
-            <td>Biodiversiteettikartoitus tehty, kyllä/ei</td>
+            <td>Biodiversiteettikartoitus tehty</td>
             <td>
-              <select name="divBiodiversiteetti" value={envData.divBiodiversiteetti} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.divBiodiversiteetti} 
+                onChange={(val) => setEnvData({ ...envData, divBiodiversiteetti: val })}
+              />
+              
             </td>
             <td>
             <AutoResizeTextArea name="divBiodiversiteettiLisatiedot" value={envData.divBiodiversiteettiLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -914,14 +912,15 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <AutoResizeTextArea name="divBiodiversiteettiTavoitteet" value={envData.divBiodiversiteettiTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
+          
           <tr>
-            <td>Suomenkarjan eläinten kasvattaminen, kyllä/ei</td>
+            <td>Suomenkarjan eläinten kasvattaminen</td>
             <td>
-              <select name="divSuomenkarja" value={envData.divSuomenkarja} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.divSuomenkarja}
+                onChange={(val) => setEnvData({ ...envData, divSuomenkarja: val })}
+              />
+              
             </td>
             <td>
             <AutoResizeTextArea name="divSuomenkarjaLisatiedot" value={envData.divSuomenkarjaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -943,13 +942,13 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Soija ja GM -vapaus ruokinnassa, kyllä/ei</td>
+        
+            <td>Soija ja GM -vapaus ruokinnassa</td>
             <td>
-              <select name="divSoijaGM" value={envData.divSoijaGM} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.divSoijaGM}
+                onChange={(val) => setEnvData({ ...envData, divSoijaGM: val })}
+              />
             </td>
             <td>
             <AutoResizeTextArea name="divSoijaGMLisatiedot" value={envData.divSoijaGMLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -959,13 +958,13 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Palmuöljyttömyys ruokinnassa, kyllä/ei</td>
+       
+            <td>Palmuöljyttömyys ruokinnassa</td>
             <td>
-              <select name="divPalmu" value={envData.divPalmu} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                 value={envData.divPalmu}
+                onChange={(val) => setEnvData({ ...envData, divPalmu: val })}
+              />
             </td>
             <td>
             <AutoResizeTextArea name="divPalmuLisatiedot" value={envData.divPalmuLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -1546,13 +1545,13 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Lanta käsitellään biokaasulaitoksessa, kyllä/ei</td>
+          
+            <td>Lanta käsitellään biokaasulaitoksessa</td>
             <td>
-              <select name="energyBiokaasu" value={envData.energyBiokaasu} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.energyBiokaasu}
+                onChange={(val) => setEnvData({ ...envData, energyBiokaasu: val })}
+              />
             </td>
             <td>
             <AutoResizeTextArea name="energyBiokaasuLisatiedot" value={envData.energyBiokaasuLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -1562,13 +1561,14 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Maidon esijäähdytys, kyllä/ei</td>
+      
+            <td>Maidon esijäähdytys</td>
             <td>
-              <select name="energyEsijahdytys" value={envData.energyEsijahdytys} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.energyEsijahdytys}
+                onChange={(val) => setEnvData({ ...envData, energyEsijahdytys: val })}
+              />
+
             </td>
             <td>
             <AutoResizeTextArea name="energyEsijahdytysLisatiedot" value={envData.energyEsijahdytysLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
@@ -1578,13 +1578,13 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Lämmön talteenotto, kyllä/ei</td>
+          
+            <td>Lämmön talteenotto</td>
             <td>
-              <select name="energyLampotalteenotto" value={envData.energyLampotalteenotto} onChange={handleChange} style={{ width: '100%' }}>
-                <option value="">Valitse</option>
-                <option value="kylla">Kyllä</option>
-                <option value="ei">Ei</option>
-              </select>
+            <YesNoToggle 
+                value={envData.energyLampotalteenotto}
+                onChange={(val) => setEnvData({ ...envData, energyLampotalteenotto: val })}
+              />
             </td>
             <td>
             <AutoResizeTextArea name="energyLampotalteenottoLisatiedot" value={envData.energyLampotalteenottoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
