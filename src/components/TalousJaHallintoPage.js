@@ -182,14 +182,14 @@ return {
             <col />
             <col />
             <col />
-            <col />
+            {/* <col />*/}
           </colgroup>
           <thead>
             <tr>
               <th>Johtaminen</th>
               <th>Uusin tulos</th>
               <th>Kuvaus</th>
-              <th>Tavoite ja aikataulu</th>
+             {/* <th>Tavoite ja aikataulu</th>*/ }
             </tr>
           </thead>
           <tbody>
@@ -214,6 +214,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/* 
               <td>
                 <AutoResizeTextArea
                   name="yrityksenArvotTavoitteet"
@@ -222,6 +223,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Visio */}
@@ -244,6 +246,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="visioMaareTavoitteet"
@@ -252,6 +255,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Strategia */}
@@ -274,6 +278,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="strategiaLaadittuTavoitteet"
@@ -282,6 +287,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Liiketoimintasuunnitelma ja/tai investointisuunnitelma */}
@@ -307,6 +313,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="liiketoimintasuunnitelmaTavoitteet"
@@ -315,6 +322,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Organisaatio, omistajat ja vastuualueet */}
@@ -337,6 +345,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="organisaatioKuvattuTavoitteet"
@@ -345,6 +354,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus erityisistä johtamiskäytännöistä */}
@@ -371,6 +381,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="johtamisKaytannotTavoitteet"
@@ -379,6 +390,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus vertailutiedon hyödyntämisestä */}
@@ -401,6 +413,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="johtaminenVertailutietoTavoitteet"
@@ -409,6 +422,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus asiantuntijapalveluiden hyödyntämisestä */}
@@ -431,6 +445,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="johtaminenAsiantuntijatTavoitteet"
@@ -439,6 +454,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Erityiset toimenpiteet */}
@@ -466,14 +482,14 @@ return {
             <col />
             <col />
             <col />
-            <col />
+           {/* <col />*/}
           </colgroup>
           <thead>
             <tr>
               <th>Kilpailukyky ja talous</th>
               <th>Uusin tulos</th>
               <th>Kuvaus</th>
-              <th>Tavoite ja aikataulu</th>
+              {/* <th>Tavoite ja aikataulu</th> */}
             </tr>
           </thead>
           <tbody>
@@ -496,6 +512,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="toiminnanMittaritTavoitteet"
@@ -504,6 +521,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -525,6 +543,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="velkaLiikevaihtoTavoitteet"
@@ -533,6 +552,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -557,6 +577,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="kannattavuusLaskentaTavoitteet"
@@ -565,6 +586,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -589,6 +611,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="yrittajanVoittoTavoitteet"
@@ -597,6 +620,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -621,6 +645,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="tuotantokustannusLaskentaTavoitteet"
@@ -629,6 +654,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -650,6 +676,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="maidonTuotantokustannusTavoitteet"
@@ -658,6 +685,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -679,6 +707,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="maksuvalmiusKuvausTavoitteet"
@@ -687,6 +716,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -708,6 +738,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="budjetointiKuvausTavoitteet"
@@ -716,6 +747,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -741,14 +773,14 @@ return {
             <col />
             <col />
             <col />
-            <col />
+           {/* <col />*/}
           </colgroup>
           <thead>
             <tr>
               <th>Riskien hallinta</th>
               <th>Uusin tulos</th>
               <th>Kuvaus</th>
-              <th>Tavoite ja aikataulu</th>
+             {/* <th>Tavoite ja aikataulu</th>*/}
             </tr>
           </thead>
           <tbody>
@@ -771,6 +803,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+               {/*
               <td>
                 <AutoResizeTextArea
                   name="riskVarautumissuunnitelmaTavoitteet"
@@ -779,6 +812,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -800,6 +834,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskPelastautumissuunnitelmaTavoitteet"
@@ -808,6 +843,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             <tr>
@@ -832,6 +868,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskRiskikartoituksetTavoitteet"
@@ -840,6 +877,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus vakuutusturvasta */}
@@ -862,6 +900,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskVakuutusTavoitteet"
@@ -870,6 +909,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus henkilöriskien hallinnasta */}
@@ -895,6 +935,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskHenkiloriskitTavoitteet"
@@ -903,6 +944,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus rahoitusriskien hallinnasta */}
@@ -925,6 +967,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskRahoitusTavoitteet"
@@ -933,6 +976,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus hintariskien hallinnasta */}
@@ -955,6 +999,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskHintariskiTavoitteet"
@@ -963,6 +1008,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus varautumisesta sähkökatkoksiin */}
@@ -985,6 +1031,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskVarautuminenSahkoTavoitteet"
@@ -993,6 +1040,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus vesihuollon varajärjestelmästä */}
@@ -1015,6 +1063,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskVesihuoltoTavoitteet"
@@ -1023,6 +1072,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus eläinriskien hallinnasta */}
@@ -1048,6 +1098,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskElainriskitTavoitteet"
@@ -1056,6 +1107,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus peltoriskien hallinnasta */}
@@ -1081,6 +1133,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskPeltoriskiTavoitteet"
@@ -1089,6 +1142,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Kuvaus tietoturvariskien hallinnasta */}
@@ -1114,6 +1168,8 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              
+              {/*
               <td>
                 <AutoResizeTextArea
                   name="riskTietoturvaTavoitteet"
@@ -1122,6 +1178,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
+              */}
             </tr>
 
             {/* Erityiset toimenpiteet */}
