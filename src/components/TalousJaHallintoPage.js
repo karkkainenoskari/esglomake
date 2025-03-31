@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './tables.css';
 import LogoHeader from './LogoHeader'; 
 import AutoResizeTextArea from './AutoResizeTextArea';
+import YesNoToggle from './YesNoToggle';
 
 const TalousJaHallintoPage = ({
   onNext,
@@ -194,18 +195,14 @@ return {
           <tbody>
             {/* Yrityksen arvot */}
             <tr>
-              <td>Yrityksen arvot on määritetty, kyllä/ei</td>
+              <td>Yrityksen arvot on määritetty</td>
               <td>
-                <select
-                  name="yrityksenArvot"
+              <YesNoToggle
                   value={localFinanceData.yrityksenArvot}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, yrityksenArvot: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -227,18 +224,14 @@ return {
 
             {/* Visio */}
             <tr>
-              <td>Visio on määritetty, kyllä/ei</td>
+              <td>Visio on määritetty</td>
               <td>
-                <select
-                  name="visioMaare"
+              <YesNoToggle
                   value={localFinanceData.visioMaare}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, visioMaare: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -260,18 +253,14 @@ return {
 
             {/* Strategia */}
             <tr>
-              <td>Strategia on laadittu ja sitä päivitetään, kyllä/ei</td>
+              <td>Strategia on laadittu ja sitä päivitetään</td>
               <td>
-                <select
-                  name="strategiaLaadittu"
+              <YesNoToggle
                   value={localFinanceData.strategiaLaadittu}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, strategiaLaadittu: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -294,20 +283,16 @@ return {
             {/* Liiketoimintasuunnitelma ja/tai investointisuunnitelma */}
             <tr>
               <td>
-                Liiketoimintasuunnitelma ja/tai investointisuunnitelma on tehty,
-                kyllä/ei
+                Liiketoimintasuunnitelma ja/tai investointisuunnitelma on tehty
+        
               </td>
               <td>
-                <select
-                  name="liiketoimintasuunnitelma"
+              <YesNoToggle
                   value={localFinanceData.liiketoimintasuunnitelma}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, liiketoimintasuunnitelma: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -329,18 +314,14 @@ return {
 
             {/* Organisaatio, omistajat ja vastuualueet */}
             <tr>
-              <td>Organisaatio, omistajat ja vastuualueet on kuvattu, kyllä/ei</td>
+              <td>Organisaatio, omistajat ja vastuualueet on kuvattu</td>
               <td>
-                <select
-                  name="organisaatioKuvattu"
+              <YesNoToggle
                   value={localFinanceData.organisaatioKuvattu}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, organisaatioKuvattu: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -491,18 +472,14 @@ return {
           </thead>
           <tbody>
             <tr>
-              <td>Toiminnan tavoitteet ja mittarit on määritetty, kyllä/ei</td>
+              <td>Toiminnan tavoitteet ja mittarit on määritetty</td>
               <td>
-                <select
-                  name="toiminnanMittarit"
+              <YesNoToggle
                   value={localFinanceData.toiminnanMittarit}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, toiminnanMittarit: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -553,20 +530,16 @@ return {
 
             <tr>
               <td>
-                Koko tilan tulos- tai kannattavuuslaskelman teko säännöllisesti,
-                kyllä/ei
+                Koko tilan tulos- tai kannattavuuslaskelman teko säännöllisesti
+                
               </td>
               <td>
-                <select
-                  name="kannattavuusLaskenta"
+              <YesNoToggle
                   value={localFinanceData.kannattavuusLaskenta}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, kannattavuusLaskenta: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -620,20 +593,16 @@ return {
 
             <tr>
               <td>
-                Tuotantokustannuslaskelman teko säännöllisesti, kyllä/ei (esim.
+                Tuotantokustannuslaskelman teko säännöllisesti (esim.
                 rehu, maito)
               </td>
               <td>
-                <select
-                  name="tuotantokustannusLaskenta"
+              <YesNoToggle
                   value={localFinanceData.tuotantokustannusLaskenta}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, tuotantokustannusLaskenta: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -774,19 +743,15 @@ return {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Varautumissuunnitelma poikkeustilanteisiin tehty, kyllä/ei</td>
+            <tr> 
+              <td>Varautumissuunnitelma poikkeustilanteisiin tehty</td>
               <td>
-                <select
-                  name="riskVarautumissuunnitelma"
+              <YesNoToggle
                   value={localFinanceData.riskVarautumissuunnitelma}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, riskVarautumissuunnitelma: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -807,18 +772,14 @@ return {
             </tr>
 
             <tr>
-              <td>Pelastautumissuunnitelma tehty, kyllä/ei</td>
+              <td>Pelastautumissuunnitelma tehty</td>
               <td>
-                <select
-                  name="riskPelastautumissuunnitelma"
+              <YesNoToggle
                   value={localFinanceData.riskPelastautumissuunnitelma}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, riskPelastautumissuunnitelma: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
@@ -840,20 +801,16 @@ return {
 
             <tr>
               <td>
-                Riskikartoituksia tehty, kyllä/ei (esim. tapaturmat, eläintaudit,
+                Riskikartoituksia tehty (esim. tapaturmat, eläintaudit,
                 sähkö- ja paloturvallisuus, tietoturva)
               </td>
               <td>
-                <select
-                  name="riskRiskikartoitukset"
+              <YesNoToggle
                   value={localFinanceData.riskRiskikartoitukset}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                >
-                  <option value="">Valitse</option>
-                  <option value="kylla">Kyllä</option>
-                  <option value="ei">Ei</option>
-                </select>
+                  onChange={(val) =>
+                    setLocalFinanceData({ ...localFinanceData, riskRiskikartoitukset: val })
+                  }
+                />
               </td>
               <td>
                 <AutoResizeTextArea
