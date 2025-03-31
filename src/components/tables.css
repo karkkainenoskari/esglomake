@@ -33,10 +33,24 @@
 }
 
 /* Otsikkosolujen tausta */
-.common-table th {
-  background-color: #007BFF; /* Korvaa haluamallasi sinisen sävyllä */
-  color: #fff;  
+/* Ympäristö (vihreä otsikkorivi) */
+.environment-table th {
+  background-color: #4CAF50; /* vihreä */
+  color: #fff;
 }
+
+/* Sosiaalinen vastuu (oranssi otsikkorivi) */
+.social-table th {
+  background-color: #ec9005; /* oranssi */
+  color: #fff;
+}
+
+/* Talous ja hallinto (sininen otsikkorivi) */
+.finance-table th {
+  background-color: #d30101; /* sininen */
+  color: #fff;
+}
+
 
 /* Määritellään sarakkeiden leveydet kaikissa taulukoissa.
    Esimerkiksi 4 saraketta: ensimmäinen 30%, toinen 20%, kolmas 25%, neljäs 25%.

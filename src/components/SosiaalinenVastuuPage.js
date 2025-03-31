@@ -235,7 +235,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
      
       <form onSubmit={handleSubmit}>
-        <table className="common-table">
+      <table className="common-table social-table">
           <colgroup>
             <col />
             <col />
@@ -262,6 +262,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.henkilostoStrategia}
                   onChange={(val) => setSocialData({ ...socialData, henkilostoStrategia: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -332,6 +333,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.tyoterveyshuolto}
                   onChange={(val) => setSocialData({ ...socialData, tyoterveyshuolto: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -362,6 +364,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.vapaapäivat}
                   onChange={(val) => setSocialData({ ...socialData, vapaapäivat: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -377,6 +380,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.vuosilomat}
                   onChange={(val) => setSocialData({ ...socialData, vuosilomat: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -395,6 +399,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.tyoajanMittaaminen}
                   onChange={(val) => setSocialData({ ...socialData, tyoajanMittaaminen: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -429,6 +434,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.tyoterveyshuolto}
                   onChange={(val) => setSocialData({ ...socialData, tyoterveyshuolto: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -525,6 +531,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.kehityskeskustelut}
                   onChange={(val) => setSocialData({ ...socialData, kehityskeskustelut: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -550,6 +557,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.palaverit}
                   onChange={(val) => setSocialData({ ...socialData, palaverit: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -603,6 +611,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.tyotyotyot}
                   onChange={(val) => setSocialData({ ...socialData, tyotyotyot: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -641,7 +650,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
 
 
-        <table className="common-table">
+        <table className="common-table social-table">
           <colgroup>
             <col />
             <col />
@@ -822,7 +831,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
        
 
-        <table className="common-table">
+        <table className="common-table social-table">
           <colgroup>
             <col />
             <col />
@@ -844,6 +853,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.nautojenTerveydenhuoltorekisteri}
                   onChange={(val) => setSocialData({ ...socialData, nautojenTerveydenhuoltorekisteri: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -861,6 +871,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.sorkkaterveys}
                   onChange={(val) => setSocialData({ ...socialData, sorkkaterveys: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -985,6 +996,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.laiduntaminen}
                   onChange={(val) => setSocialData({ ...socialData, laiduntaminen: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -1043,6 +1055,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.viilennys}
                   onChange={(val) => setSocialData({ ...socialData, viilennys: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -1059,6 +1072,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.lehmillaKaytavat}
                   onChange={(val) => setSocialData({ ...socialData, lehmillaKaytavat: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -1075,6 +1089,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.vierihoito}
                   onChange={(val) => setSocialData({ ...socialData, vierihoito: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -1091,6 +1106,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.wellfareQuality}
                   onChange={(val) => setSocialData({ ...socialData, wellfareQuality: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -1107,6 +1123,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.elviStatus}
                   onChange={(val) => setSocialData({ ...socialData, elviStatus: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -1127,7 +1144,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
         </table>
 
 
-        <table className="common-table">
+        <table className="common-table social-table">
           <colgroup>
             <col />
             <col />
@@ -1153,6 +1170,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.laakekirjanpito}
                   onChange={(val) => setSocialData({ ...socialData, laakekirjanpito: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>
@@ -1183,6 +1201,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <YesNoToggle
                   value={socialData.tankkimaidonTestaus}
                   onChange={(val) => setSocialData({ ...socialData, tankkimaidonTestaus: val })}
+                  themeColor=" #ec9005"
                 />
               </td>
               <td>

@@ -1,25 +1,17 @@
 // YesNoToggle.js
 import React from 'react';
 
-const YesNoToggle = ({ value, onChange }) => {
+const YesNoToggle = ({ value, onChange, themeColor = '#007acc' }) => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        border: '1px solid #007acc',
-        borderRadius: '5px',
-        overflow: 'hidden',
-        width: '200px' // Säädä halutessasi
-      }}
-    >
+    <div style={{ display: 'flex', width: '200px', border: `1px solid ${themeColor}`, borderRadius: '5px', overflow: 'hidden' }}>
       <button
         style={{
           flex: 1,
-          padding: '10px',
-          backgroundColor: value === 'kylla' ? '#007acc' : '#fff',
-          color: value === 'kylla' ? '#fff' : '#007acc',
+          backgroundColor: value === 'kylla' ? themeColor : '#fff',
+          color: value === 'kylla' ? '#fff' : themeColor,
           border: 'none',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          padding: '10px'
         }}
         onClick={() => onChange('kylla')}
       >
@@ -28,11 +20,11 @@ const YesNoToggle = ({ value, onChange }) => {
       <button
         style={{
           flex: 1,
-          padding: '10px',
-          backgroundColor: value === 'ei' ? '#007acc' : '#fff',
-          color: value === 'ei' ? '#fff' : '#007acc',
+          backgroundColor: value === 'ei' ? themeColor : '#fff',
+          color: value === 'ei' ? '#fff' : themeColor,
           border: 'none',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          padding: '10px'
         }}
         onClick={() => onChange('ei')}
       >

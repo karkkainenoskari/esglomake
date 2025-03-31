@@ -276,7 +276,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
       <h2>Ympäristö</h2>
 
-      <table className="common-table">
+      <table className="common-table environment-table">
         <colgroup>
           <col />
           <col />
@@ -412,6 +412,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle
                 value={envData.envHiiliviljelykoulutus}
                 onChange={(val) => setEnvData({ ...envData, envHiiliviljelykoulutus: val })}
+                themeColor="#4CAF50"
               />
             </td>
             <td>
@@ -667,6 +668,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.envKaytossaVahapaastoinenKylmainetilasaililossa}
                 onChange={(val) => setEnvData({ ...envData, envKaytossaVahapaastoinenKylmainetilasaililossa: val })}
+                themeColor="#4CAF50"
               />
             </td>
             <td>
@@ -708,6 +710,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.envPaastojaVahentavatLisaravinteet}
                 onChange={(val) => setEnvData({ ...envData, envPaastojaVahentavatLisaravinteet: val })}
+                themeColor="#4CAF50"
               />
             </td>
             <td>
@@ -737,6 +740,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.envRuokinnanSeurantalaskelmiaTehty}
                 onChange={(val) => setEnvData({ ...envData, envRuokinnanSeurantalaskelmiaTehty: val })}
+                themeColor="#4CAF50"
               />
             </td>
             <td>
@@ -807,6 +811,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.envRehunSaastoindeksi}
                 onChange={(val) => setEnvData({ ...envData, envRehunSaastoindeksi: val })}
+                themeColor="#4CAF50"
               />
             </td>
             <td>
@@ -838,7 +843,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-      <table className="common-table">
+      <table className="common-table environment-table">
         <colgroup>
           <col />
           <col />
@@ -861,6 +866,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.divHoitosopimus}
                 onChange={(val) => setEnvData({ ...envData, divHoitosopimus: val })}
+                themeColor="#4CAF50"
               />
               
             </td>
@@ -902,6 +908,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.divBiodiversiteetti} 
                 onChange={(val) => setEnvData({ ...envData, divBiodiversiteetti: val })}
+                themeColor="#4CAF50"
               />
               
             </td>
@@ -919,6 +926,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.divSuomenkarja}
                 onChange={(val) => setEnvData({ ...envData, divSuomenkarja: val })}
+                themeColor="#4CAF50"
               />
               
             </td>
@@ -948,6 +956,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.divSoijaGM}
                 onChange={(val) => setEnvData({ ...envData, divSoijaGM: val })}
+                themeColor="#4CAF50"
               />
             </td>
             <td>
@@ -964,6 +973,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                  value={envData.divPalmu}
                 onChange={(val) => setEnvData({ ...envData, divPalmu: val })}
+                themeColor="#4CAF50"
               />
             </td>
             <td>
@@ -987,7 +997,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       </table>
       
        {/* */ }  
-      <table className="common-table">
+       <table className="common-table environment-table">
         <colgroup>
           <col />
           <col />
@@ -1301,7 +1311,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-      <table className="common-table">
+      <table className="common-table environment-table">
         <colgroup>
           <col />
           <col />
@@ -1440,7 +1450,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-      <table className="common-table">
+      <table className="common-table environment-table">
         <colgroup>
           <col />
           <col />
@@ -1551,6 +1561,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.energyBiokaasu}
                 onChange={(val) => setEnvData({ ...envData, energyBiokaasu: val })}
+                themeColor="#4CAF50"
               />
             </td>
             <td>
@@ -1567,6 +1578,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.energyEsijahdytys}
                 onChange={(val) => setEnvData({ ...envData, energyEsijahdytys: val })}
+                themeColor="#4CAF50"
               />
 
             </td>
@@ -1584,6 +1596,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <YesNoToggle 
                 value={envData.energyLampotalteenotto}
                 onChange={(val) => setEnvData({ ...envData, energyLampotalteenotto: val })}
+                themeColor="#4CAF50"
               />
             </td>
             <td>

@@ -177,7 +177,7 @@ return {
       {/* 4.1 Johtaminen */}
  
       <form onSubmit={handleSubmit}>
-      <table className="common-table">
+      <table className="common-table finance-table">
           <colgroup>
             <col />
             <col />
@@ -201,7 +201,9 @@ return {
                   value={localFinanceData.yrityksenArvot}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, yrityksenArvot: val })
+                    
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -231,6 +233,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, visioMaare: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -260,6 +263,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, strategiaLaadittu: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -292,6 +296,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, liiketoimintasuunnitelma: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -321,6 +326,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, organisaatioKuvattu: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -455,7 +461,7 @@ return {
         {/* ======================
             2. KILPAILUKYKY JA TALOUS
         ======================= */}
-        <table className="common-table">
+        <table className="common-table finance-table">
           <colgroup>
             <col />
             <col />
@@ -479,6 +485,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, toiminnanMittarit: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -539,6 +546,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, kannattavuusLaskenta: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -602,6 +610,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, tuotantokustannusLaskenta: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -727,7 +736,7 @@ return {
         {/* ======================
             3. RISKIEN HALLINTA
         ======================= */}
-        <table className="common-table">
+        <table className="common-table finance-table">
           <colgroup>
             <col />
             <col />
@@ -751,6 +760,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, riskVarautumissuunnitelma: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -779,6 +789,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, riskPelastautumissuunnitelma: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
@@ -810,6 +821,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, riskRiskikartoitukset: val })
                   }
+                  themeColor="  #d30101"
                 />
               </td>
               <td>
