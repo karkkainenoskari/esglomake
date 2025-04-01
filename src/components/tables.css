@@ -68,10 +68,10 @@
 
 /* Talous ja hallinto -sivun taulukko: vain 3 saraketta */
 .finance-table col:nth-child(1) {
-  width: 40%;
+  width: 45%;
 }
 .finance-table col:nth-child(2) {
-  width: 10%;
+  width: 5%;
 }
 .finance-table col:nth-child(3) {
   width: 50%; /* Jäljelle jäävä tila */
