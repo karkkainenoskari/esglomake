@@ -964,7 +964,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
             </tr>
             <tr>
-              <td>EKM kg/elinpäivä (vuosiraportti)  <span
+              <td>Poistettujen lehmien EKM kg/elinpäivä (vuosiraportti)  <span
                 style={{
                   marginLeft: '5px',
                   cursor: 'help',
@@ -1224,7 +1224,21 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
            
             <tr>
-              <td>E-luokan maidon osuus, %</td>
+              <td>E-luokan maidon osuus, % <span
+              style={{
+                marginLeft: '5px',
+                cursor: 'help',
+                color: '#333',
+                border: '1px solid #333',   // Kehyksen tyyli
+                borderRadius: '50%',        // Pyöristetty ympyrä
+                backgroundColor: '#eee',    // Taustaväri
+                padding: '2px 6px',         // Sisämarginaali
+                fontWeight: 'bold',
+              }}
+              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+            >
+              ?
+            </span></td>
               <td>
                 <input
                   type="text"
@@ -1256,7 +1270,21 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>
                 Maidon solupitoisuus, tuotosseurannasta
-              </td>
+                <span
+              style={{
+                marginLeft: '5px',
+                cursor: 'help',
+                color: '#333',
+                border: '1px solid #333',   // Kehyksen tyyli
+                borderRadius: '50%',        // Pyöristetty ympyrä
+                backgroundColor: '#eee',    // Taustaväri
+                padding: '2px 6px',         // Sisämarginaali
+                fontWeight: 'bold',
+              }}
+              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+            >
+              ?
+            </span></td>
               <td>
                 <input
                   type="text"

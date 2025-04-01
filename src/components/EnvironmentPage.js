@@ -489,7 +489,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Hiehopoikimaikä, kk  <span
+            <td>Hiehojen poikimaikä, kk  <span
               style={{
                 marginLeft: '5px',
                 cursor: 'help',
@@ -1014,7 +1014,23 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </thead>
         <tbody>
           <tr>
-            <td>Viljelykasvien kokonaispinta-ala, ha</td>
+            <td>Viljelykasvien kokonaispinta-ala, ha
+            <span
+                style={{
+                  marginLeft: '5px',
+                  cursor: 'help',
+                  color: '#333',
+                  border: '1px solid #333',   // Kehyksen tyyli
+                  borderRadius: '50%',        // Pyöristetty ympyrä
+                  backgroundColor: '#eee',    // Taustaväri
+                  padding: '2px 6px',         // Sisämarginaali
+                  fontWeight: 'bold',         // Vahvennettu fontti
+                }}
+                title="Tieto löytyy hiilijalanjälkilaskurista"
+              >
+                ?
+              </span>
+            </td>
             <td>
               <input
                 type="text"
@@ -1042,7 +1058,25 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey</td>
+            <td>Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey    <span
+                style={{
+                  marginLeft: '5px',
+                  cursor: 'help',
+                  color: '#333',
+                  border: '1px solid #333',   // Kehyksen tyyli
+                  borderRadius: '50%',        // Pyöristetty ympyrä
+                  backgroundColor: '#eee',    // Taustaväri
+                  padding: '2px 6px',         // Sisämarginaali
+                  fontWeight: 'bold',         // Vahvennettu fontti
+                }}
+                title="Tieto löytyy hiilijalanjälkilaskurista"
+              >
+                ?
+              </span>
+            </td>
+
+
+            
             <td>
               <input
                 type="text"
@@ -1070,7 +1104,22 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Turvemaiden osuus, %</td>
+            <td>Turvemaiden osuus, %    <span
+                style={{
+                  marginLeft: '5px',
+                  cursor: 'help',
+                  color: '#333',
+                  border: '1px solid #333',   // Kehyksen tyyli
+                  borderRadius: '50%',        // Pyöristetty ympyrä
+                  backgroundColor: '#eee',    // Taustaväri
+                  padding: '2px 6px',         // Sisämarginaali
+                  fontWeight: 'bold',         // Vahvennettu fontti
+                }}
+                title="Tieto löytyy hiilijalanjälkilaskurista"
+              >
+                ?
+              </span>
+            </td>
             <td>
               <input
                 type="text"
@@ -1098,7 +1147,24 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Säilörehun D-arvo keskimäärin (esim. Valman kautta)</td>
+            <td>Säilörehun D-arvo keskimäärin (esim. Valman kautta) <span
+              style={{
+                marginLeft: '5px',
+                cursor: 'help',
+                color: '#333',
+                border: '1px solid #333',   // Kehyksen tyyli
+                borderRadius: '50%',        // Pyöristetty ympyrä
+                backgroundColor: '#eee',    // Taustaväri
+                padding: '2px 6px',         // Sisämarginaali
+                fontWeight: 'bold',
+              }}
+              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+            >
+              ?
+            </span></td>
+
+
+
             <td>
               <input
                 type="text"
