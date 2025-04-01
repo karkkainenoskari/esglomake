@@ -1011,7 +1011,8 @@ return {
               */}
             </tr>
 
-            {/* Kuvaus varautumisesta sähkökatkoksiin */}
+            {localFinanceData.riskVarautumissuunnitelma !== "kylla" && (
+  <>
             <tr>
               <td>Kuvaus varautumisesta sähkökatkoksiin (esim. varavoimalähde)</td>
               <td>
@@ -1043,144 +1044,132 @@ return {
               */}
             </tr>
 
-            {/* Kuvaus vesihuollon varajärjestelmästä */}
-            <tr>
-              <td>Kuvaus vesihuollon varajärjestelmästä</td>
-              <td>
-                <input
-                  type="text"
-                  name="riskVesihuolto"
-                  value={localFinanceData.riskVesihuolto}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              <td>
-                <AutoResizeTextArea
-                  name="riskVesihuoltoLisatiedot"
-                  value={localFinanceData.riskVesihuoltoLisatiedot}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskVesihuoltoTavoitteet"
-                  value={localFinanceData.riskVesihuoltoTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
-            </tr>
+  
+    <tr>
+      <td>Kuvaus vesihuollon varajärjestelmästä</td>
+      <td>
+        <input
+          type="text"
+          name="riskVesihuolto"
+          value={localFinanceData.riskVesihuolto}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <AutoResizeTextArea
+          name="riskVesihuoltoLisatiedot"
+          value={localFinanceData.riskVesihuoltoLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      {/*
+      <td>
+        <AutoResizeTextArea
+          name="riskVesihuoltoTavoitteet"
+          value={localFinanceData.riskVesihuoltoTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      */}
+    </tr>
+    <tr>
+      <td>Kuvaus eläinriskien hallinnasta (esim. salmonella, Biocheck, tautiluokitukset)</td>
+      <td>
+        <input
+          type="text"
+          name="riskElainriskit"
+          value={localFinanceData.riskElainriskit}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <AutoResizeTextArea
+          name="riskElainriskitLisatiedot"
+          value={localFinanceData.riskElainriskitLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      {/*
+      <td>
+        <AutoResizeTextArea
+          name="riskElainriskitTavoitteet"
+          value={localFinanceData.riskElainriskitTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      */}
+    </tr>
+    <tr>
+      <td>Kuvaus peltoriskien hallinnasta (esim. vuokrasopimukset, oman pellon osuus, pellon riittävyys ja laatu)</td>
+      <td>
+        <input
+          type="text"
+          name="riskPeltoriski"
+          value={localFinanceData.riskPeltoriski}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <AutoResizeTextArea
+          name="riskPeltoriskiLisatiedot"
+          value={localFinanceData.riskPeltoriskiLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      {/*
+      <td>
+        <AutoResizeTextArea
+          name="riskPeltoriskiTavoitteet"
+          value={localFinanceData.riskPeltoriskiTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      */}
+    </tr>
+    <tr>
+      <td>Kuvaus tietoturvariskien hallinnasta (esim. etävalvonta, maatalouden ja yksityistalouden eriyttäminen)</td>
+      <td>
+        <input
+          type="text"
+          name="riskTietoturva"
+          value={localFinanceData.riskTietoturva}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      <td>
+        <AutoResizeTextArea
+          name="riskTietoturvaLisatiedot"
+          value={localFinanceData.riskTietoturvaLisatiedot}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      {/*
+      <td>
+        <AutoResizeTextArea
+          name="riskTietoturvaTavoitteet"
+          value={localFinanceData.riskTietoturvaTavoitteet}
+          onChange={handleChange}
+          style={{ width: '100%' }}
+        />
+      </td>
+      */}
+    </tr>
+  </>
+)}
+           
 
-            {/* Kuvaus eläinriskien hallinnasta */}
-            <tr>
-              <td>
-                Kuvaus eläinriskien hallinnasta (esim. salmonella, Biocheck,
-                tautiluokitukset)
-              </td>
-              <td>
-                <input
-                  type="text"
-                  name="riskElainriskit"
-                  value={localFinanceData.riskElainriskit}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              <td>
-                <AutoResizeTextArea
-                  name="riskElainriskitLisatiedot"
-                  value={localFinanceData.riskElainriskitLisatiedot}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskElainriskitTavoitteet"
-                  value={localFinanceData.riskElainriskitTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
-            </tr>
-
-            {/* Kuvaus peltoriskien hallinnasta */}
-            <tr>
-              <td>
-              Kuvaus peltoriskien hallinnasta (esim. vuokrasopimukset, oman pellon osuus, pellon riittävyys ja laatu)
-              </td>
-              <td>
-                <input
-                  type="text"
-                  name="riskPeltoriski"
-                  value={localFinanceData.riskPeltoriski}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              <td>
-                <AutoResizeTextArea
-                  name="riskPeltoriskiLisatiedot"
-                  value={localFinanceData.riskPeltoriskiLisatiedot}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskPeltoriskiTavoitteet"
-                  value={localFinanceData.riskPeltoriskiTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
-            </tr>
-
-            {/* Kuvaus tietoturvariskien hallinnasta */}
-            <tr>
-              <td>
-                Kuvaus tietoturvariskien hallinnasta (esim. etävalvonta,
-                maatalouden ja yksityistalouden eriyttäminen)
-              </td>
-              <td>
-                <input
-                  type="text"
-                  name="riskTietoturva"
-                  value={localFinanceData.riskTietoturva}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              <td>
-                <AutoResizeTextArea
-                  name="riskTietoturvaLisatiedot"
-                  value={localFinanceData.riskTietoturvaLisatiedot}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskTietoturvaTavoitteet"
-                  value={localFinanceData.riskTietoturvaTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
-            </tr>
-
-            {/* Erityiset toimenpiteet */}
+     
             <tr>
               <td>Erityiset toimenpiteet</td>
               <td colSpan="3">
