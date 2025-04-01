@@ -1113,8 +1113,7 @@ return {
             {/* Kuvaus peltoriskien hallinnasta */}
             <tr>
               <td>
-                Kuvaus peltoriskien hallinnasta (esim. vuokrasopimukset, oman
-                pellon osuus...)
+              Kuvaus peltoriskien hallinnasta (esim. vuokrasopimukset, oman pellon osuus, pellon riittävyys ja laatu)
               </td>
               <td>
                 <input
