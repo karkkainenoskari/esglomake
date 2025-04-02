@@ -203,7 +203,7 @@ return {
                     setLocalFinanceData({ ...localFinanceData, yrityksenArvot: val })
                     
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -235,7 +235,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, visioMaare: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -267,7 +267,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, strategiaLaadittu: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -302,7 +302,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, liiketoimintasuunnitelma: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -334,7 +334,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, organisaatioKuvattu: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -501,7 +501,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, toiminnanMittarit: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -566,7 +566,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, kannattavuusLaskenta: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -634,7 +634,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, tuotantokustannusLaskenta: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -792,7 +792,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, riskVarautumissuunnitelma: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -823,7 +823,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, riskPelastautumissuunnitelma: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -857,7 +857,7 @@ return {
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, riskRiskikartoitukset: val })
                   }
-                  themeColor="  #d30101"
+                  themeColor="  #0345fa"
                 />
               </td>
               <td>
@@ -1168,8 +1168,10 @@ return {
   </>
 )}
            
+
+     
             <tr>
-              <td>Kuvaus muista mahdollisista toimenpiteistä</td>
+              <td>Kuvaus muista mahdollista toimenpiteistä</td>
               <td colSpan="3">
                 <AutoResizeTextArea
                   name="riskErityisetToimenpiteet"
