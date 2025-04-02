@@ -834,7 +834,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Erityiset toimenpiteet</td>
+            <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
               <textarea name="envMuutToimenpiteet" value={envData.envMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
@@ -984,7 +984,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Erityiset toimenpiteet</td>
+            <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
               <textarea name="divErityisetToimenpiteet" value={envData.divErityisetToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
@@ -1363,7 +1363,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Erityiset toimenpiteet</td>
+            <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
               <textarea
                 name="envPeltoviljelyErityisetToimenpiteet"
@@ -1507,7 +1507,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Erityiset toimenpiteet</td>
+            <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
               <textarea name="lantaMuutToimenpiteet" value={envData.lantaMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
@@ -1673,7 +1673,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Erityiset toimenpiteet</td>
+            <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
               <textarea name="energyErityisetToimenpiteet" value={envData.energyErityisetToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>

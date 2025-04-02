@@ -632,7 +632,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Erityiset toimenpiteet</td>
+              <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
                 <textarea
                   name="muutErityiset"
@@ -813,7 +813,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Erityiset toimenpiteet</td>
+              <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
               <textarea
                   type="text"
@@ -1135,7 +1135,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
             </tr>
             <tr>
-              <td>Erityiset toimenpiteet</td>
+              <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
               <textarea type="text" name="erityisetToimenpiteet" value={socialData.erityisetToimenpiteet} onChange={handleChange} style={{ width: '100%' }} />
               </td>
@@ -1314,7 +1314,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
          
             <tr>
-              <td>Erityiset toimenpiteet</td>
+              <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
               <textarea
                   type="text"

@@ -459,7 +459,7 @@ return {
 
             {/* Erityiset toimenpiteet */}
             <tr>
-              <td>Erityiset toimenpiteet</td>
+              <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               {/* Voit yhdistää 3 saraketta jos haluat enemmän tilaa */}
               <td colSpan="3">
                 <AutoResizeTextArea
@@ -751,7 +751,7 @@ return {
             </tr>
 
             <tr>
-              <td>Erityiset toimenpiteet</td>
+              <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
                 <AutoResizeTextArea
                   name="kilpailuErityisetToimenpiteet"
@@ -1168,10 +1168,8 @@ return {
   </>
 )}
            
-
-     
             <tr>
-              <td>Erityiset toimenpiteet</td>
+              <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
                 <AutoResizeTextArea
                   name="riskErityisetToimenpiteet"
