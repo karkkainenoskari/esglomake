@@ -360,8 +360,7 @@ return {
             {/* Kuvaus erityisistä johtamiskäytännöistä */}
             <tr>
               <td>
-                Kuvaus erityisistä johtamiskäytännöistä (esim. hallituspalaverit,
-                asiantuntijatiimit, discussion group, monikantayhteistyö)
+                Kuvaus erityisistä johtamiskäytännöistä
               </td>
               <td>
                 {/* "Uusin tulos" -sarake voi olla esim. tyhjä text */}
@@ -379,6 +378,7 @@ return {
                   value={localFinanceData.johtamisKaytannotLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                   placeholder="Esim. hallituspalaverit, asiantuntijatiimit, discussion group, monikantayhteistyö"
                 />
               </td>
               {/*
@@ -617,8 +617,7 @@ return {
 
             <tr>
               <td>
-                Yrittäjän voitto, snt/maito kg (esim. tuloslaskelmasta,
-                kannattavuuskirjanpidosta)
+                Yrittäjän voitto, snt/maito kg 
               </td>
               <td>
                 <input
@@ -635,6 +634,7 @@ return {
                   value={localFinanceData.yrittajanVoittoLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder="Esim. tuloslaskelmasta, kannattavuuskirjanpidosta"
                 />
               </td>
               {/*
@@ -651,8 +651,7 @@ return {
 
             <tr>
               <td>
-                Tuotantokustannuslaskelman teko säännöllisesti (esim.
-                rehu, maito)
+                Tuotantokustannuslaskelman teko säännöllisesti 
               </td>
               <td style={{ textAlign: 'center' }}>
               <YesNoToggle
@@ -669,6 +668,7 @@ return {
                   value={localFinanceData.tuotantokustannusLaskentaLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder="Esim. rehu, maito"
                 />
               </td>
               {/*
@@ -899,8 +899,7 @@ return {
 
             <tr>
               <td>
-                Riskikartoituksia tehty (esim. tapaturmat, eläintaudit,
-                sähkö- ja paloturvallisuus, tietoturva)
+                Riskikartoituksia tehty 
               </td>
               <td style={{ textAlign: 'center' }}>
               <YesNoToggle
@@ -917,6 +916,7 @@ return {
                   value={localFinanceData.riskRiskikartoituksetLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder="Esim. tapaturmat, eläintaudit, sähkö- ja paloturvallisuus, tietoturva"
                 />
               </td>
               {/*
@@ -933,7 +933,7 @@ return {
 
             {/* Kuvaus vakuutusturvasta */}
             <tr>
-              <td>Kuvaus vakuutusturvasta (esim. omaisuus, toiminta, eläimet...)</td>
+              <td>Kuvaus vakuutusturvasta </td>
               <td>
                 <input
                   type="text"
@@ -949,6 +949,7 @@ return {
                   value={localFinanceData.riskVakuutusLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder="Esim. omaisuus, toiminta, eläimet..."
                 />
               </td>
               {/*
@@ -966,8 +967,7 @@ return {
             {/* Kuvaus henkilöriskien hallinnasta */}
             <tr>
               <td>
-                Kuvaus henkilöriskien hallinnasta (esim. edunvalvontavaltuutukset,
-                testamentit, avioehto, varahenkilösuunnitelma)
+                Kuvaus henkilöriskien hallinnasta 
               </td>
               <td>
                 <input
@@ -984,6 +984,7 @@ return {
                   value={localFinanceData.riskHenkiloriskitLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder="Esim. edunvalvontavaltuutukset, testamentit, avioehto, varahenkilösuunnitelma"
                 />
               </td>
               {/*
@@ -1000,7 +1001,7 @@ return {
 
             {/* Kuvaus rahoitusriskien hallinnasta */}
             <tr>
-              <td>Kuvaus rahoitusriskien hallinnasta (esim. korkosuojaus)</td>
+              <td>Kuvaus rahoitusriskien hallinnasta </td>
               <td>
                 <input
                   type="text"
@@ -1016,6 +1017,7 @@ return {
                   value={localFinanceData.riskRahoitusLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder="Esim. korkosuojaus"
                 />
               </td>
               {/*
@@ -1065,7 +1067,7 @@ return {
             {localFinanceData.riskVarautumissuunnitelma !== "kylla" && (
   <>
             <tr>
-              <td>Kuvaus varautumisesta sähkökatkoksiin (esim. varavoimalähde)</td>
+              <td>Kuvaus varautumisesta sähkökatkoksiin </td>
               <td>
                 <input
                   type="text"
@@ -1081,6 +1083,7 @@ return {
                   value={localFinanceData.riskVarautuminenSahkoLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder="Esim. varavoimalähde"
                 />
               </td>
               {/*
@@ -1127,7 +1130,7 @@ return {
       */}
     </tr>
     <tr>
-      <td>Kuvaus eläinriskien hallinnasta (esim. salmonella, Biocheck, tautiluokitukset)</td>
+      <td>Kuvaus eläinriskien hallinnasta </td>
       <td>
         <input
           type="text"
@@ -1143,6 +1146,7 @@ return {
           value={localFinanceData.riskElainriskitLisatiedot}
           onChange={handleChange}
           style={{ width: '100%' }}
+          placeholder="Esim. salmonella, Biocheck, tautiluokitukset"
         />
       </td>
       {/*
@@ -1157,7 +1161,7 @@ return {
       */}
     </tr>
     <tr>
-      <td>Kuvaus peltoriskien hallinnasta (esim. vuokrasopimukset, oman pellon osuus, pellon riittävyys ja laatu)</td>
+      <td>Kuvaus peltoriskien hallinnasta </td>
       <td>
         <input
           type="text"
@@ -1173,6 +1177,7 @@ return {
           value={localFinanceData.riskPeltoriskiLisatiedot}
           onChange={handleChange}
           style={{ width: '100%' }}
+          placeholder="Esim. vuokrasopimukset, oman pellon osuus, pellon riittävyys ja laatu"
         />
       </td>
       {/*
@@ -1187,7 +1192,7 @@ return {
       */}
     </tr>
     <tr>
-      <td>Kuvaus tietoturvariskien hallinnasta (esim. etävalvonta, maatalouden ja yksityistalouden eriyttäminen)</td>
+      <td>Kuvaus tietoturvariskien hallinnasta </td>
       <td>
         <input
           type="text"
@@ -1203,6 +1208,7 @@ return {
           value={localFinanceData.riskTietoturvaLisatiedot}
           onChange={handleChange}
           style={{ width: '100%' }}
+          placeholder="Esim. etävalvonta, maatalouden ja yksityistalouden eriyttäminen"
         />
       </td>
       {/*

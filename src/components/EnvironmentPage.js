@@ -663,7 +663,7 @@ divErityisetTavoiteTeksti: '',
           </tr>
           <tr>
             <td>Kuiva-ainekiloa rehua/EKM kg
-              (kaikki rehut yhteensä, esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista)
+              
               <span
                 style={{
                   marginLeft: '5px',
@@ -683,11 +683,12 @@ divErityisetTavoiteTeksti: '',
               <input type="text" name="envKuivaAinekiloa" value={envData.envKuivaAinekiloa} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-            <AutoResizeTextArea name="envKuivaAinekiloaLisatiedot" value={envData.envKuivaAinekiloaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+            <AutoResizeTextArea name="envKuivaAinekiloaLisatiedot" value={envData.envKuivaAinekiloaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Kaikki rehut yhteensä, esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista" />
             </td>
           </tr>
           <tr>
-            <td>Typen hyväksikäyttö % ruokinnassa (esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista)
+            <td>Typen hyväksikäyttö % ruokinnassa 
+            
               <span
                 style={{
                   marginLeft: '5px',
@@ -707,7 +708,7 @@ divErityisetTavoiteTeksti: '',
               <input type="text" name="envTypenHyvaksykaytto" value={envData.envTypenHyvaksykaytto} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-            <AutoResizeTextArea name="envTypenHyvaksykayttoLisatiedot" value={envData.envTypenHyvaksykayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+            <AutoResizeTextArea name="envTypenHyvaksykayttoLisatiedot" value={envData.envTypenHyvaksykayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista" />
             </td>
           </tr>
           <tr>
@@ -724,12 +725,12 @@ divErityisetTavoiteTeksti: '',
             </td>
           </tr>
           <tr>
-            <td>Ruokinnan omavaraisuusaste % (kaikki rehut yhteensä)</td>
+            <td>Ruokinnan omavaraisuusaste % </td>
             <td>
               <input type="text" name="envRuokinnanOmavaraisuusaste" value={envData.envRuokinnanOmavaraisuusaste} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-            <AutoResizeTextArea name="envRuokinnanOmavaraisuusasteLisatiedot" value={envData.envRuokinnanOmavaraisuusasteLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+            <AutoResizeTextArea name="envRuokinnanOmavaraisuusasteLisatiedot" value={envData.envRuokinnanOmavaraisuusasteLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Kaikki rehut yhteensä" />
             </td>
           </tr>
           <tr>
@@ -792,12 +793,12 @@ divErityisetTavoiteTeksti: '',
             </td>
           </tr>
           <tr>
-            <td>Monimuotoisuutta edistävä pinta-ala yhteensä, ha (esim. perinnebiotoopit, luonnonlaitumet, riistapellot, peltojen reuna-alueet, pölyttäjäkasvit)</td>
+            <td>Monimuotoisuutta edistävä pinta-ala yhteensä, ha </td>
             <td>
               <input type="text" name="divPintaAla" value={envData.divPintaAla} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-            <AutoResizeTextArea name="divPintaAlaLisatiedot" value={envData.divPintaAlaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+            <AutoResizeTextArea name="divPintaAlaLisatiedot" value={envData.divPintaAlaLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Esim. perinnebiotoopit, luonnonlaitumet, riistapellot, peltojen reuna-alueet, pölyttäjäkasvit" />
             </td>
           </tr>
           <tr>
@@ -1105,7 +1106,7 @@ divErityisetTavoiteTeksti: '',
             </td>
           </tr>
           <tr>
-            <td>Kuvaus rehuntuotannon toimintatavoista/strategiasta (esim. eri lohkojen käyttö, korjuukerrat, yhteistyö)</td>
+            <td>Kuvaus rehuntuotannon toimintatavoista/strategiasta</td>
             <td>
               <input
                 type='text'
@@ -1122,6 +1123,7 @@ divErityisetTavoiteTeksti: '',
                 value={envData.envRehuntuotantoKuvausLisatiedot || ""}
                 onChange={handleChange}
                 style={{ width: '100%' }}
+                placeholder=" Esim. eri lohkojen käyttö, korjuukerrat, yhteistyö"
               />
             </td>
           </tr>
@@ -1271,16 +1273,17 @@ divErityisetTavoiteTeksti: '',
             </td>
           </tr>
           <tr>
-            <td>Lannan levitysmenetelmä (kerro lisätiedoissa)</td>
+            <td>Lannan levitysmenetelmä </td>
             <td>
               <input type="text" name="lantaLevitysmenetelma" value={envData.lantaLevitysmenetelma} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-            <AutoResizeTextArea name="lantaLevitysmenetelmaLisatiedot" value={envData.lantaLevitysmenetelmaLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
+            <AutoResizeTextArea name="lantaLevitysmenetelmaLisatiedot" value={envData.lantaLevitysmenetelmaLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }}
+            placeholder="Kerro tarkempi kuvaus..." />
             </td>
           </tr>
           <tr>
-            <td>Pääasiallinen kuivikemateriaali (kerro lisätiedoissa)</td>
+            <td>Pääasiallinen kuivikemateriaali</td>
             <td>
               <input type="text" name="lantaKuivikemateriaali" value={envData.lantaKuivikemateriaali} onChange={handleChange} style={{ width: '100%' }} />
             </td>
@@ -1300,13 +1303,13 @@ divErityisetTavoiteTeksti: '',
           <tr>
             <td>
               Kuvaus vaarallisten aineiden ja kemikaalien varastoinnista ja hävittämisestä<br />
-              (esim. akut, saliontaaineet, hapot, kasvinsuojelu-aineet)
+              
             </td>
             <td>
               <input type="text" name="lantaVaarallisetAineet" value={envData.lantaVaarallisetAineet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-            <AutoResizeTextArea name="lantaVaarallisetAineetLisatiedot" value={envData.lantaVaarallisetAineetLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
+            <AutoResizeTextArea name="lantaVaarallisetAineetLisatiedot" value={envData.lantaVaarallisetAineetLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }}placeholder="Esim. akut, saliontaaineet, hapot, kasvinsuojelu-aineet" />
             </td>
           </tr>
           <tr>
@@ -1406,12 +1409,12 @@ divErityisetTavoiteTeksti: '',
             </td>
           </tr>
           <tr>
-            <td>Oman sähkön tuotanto, kWh/v (esim. aurinko- tai tuulivoimala)</td>
+            <td>Oman sähkön tuotanto, kWh/v </td>
             <td>
               <input type="text" name="energyOmaSahkotuotanto" value={envData.energyOmaSahkotuotanto} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-            <AutoResizeTextArea name="energyOmaSahkotuotantoLisatiedot" value={envData.energyOmaSahkotuotantoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+            <AutoResizeTextArea name="energyOmaSahkotuotantoLisatiedot" value={envData.energyOmaSahkotuotantoLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Esim. aurinko- tai tuulivoimala" />
             </td>
           </tr>
           <tr>
