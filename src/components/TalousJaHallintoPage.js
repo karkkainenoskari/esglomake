@@ -3,6 +3,7 @@ import './tables.css';
 import LogoHeader from './LogoHeader'; 
 import AutoResizeTextArea from './AutoResizeTextArea';
 import YesNoToggle from './YesNoToggle';
+import YearToggle from './YearToggle';
 
 const TalousJaHallintoPage = ({
   onNext,
@@ -56,6 +57,8 @@ return {
   johtaminenAsiantuntijatTavoitteet: '',
 
   johtaminenErityisetToimenpiteet: '',
+  johtaminenErityisetToimenpiteetVuodet: '',
+  johtaminenErityisetToimenpiteetTavoiteTeksti: '',
 
   // KILPAILUKYKY JA TALOUS
   toiminnanMittarit: '',
@@ -91,6 +94,8 @@ return {
   budjetointiKuvausTavoitteet: '',
 
   kilpailuErityisetToimenpiteet: '',
+  kilpailuErityisetToimenpiteetVuodet: '',
+  kilpailuErityisetToimenpiteetTavoiteTeksti: '',
 
   // RISKIT
   riskVarautumissuunnitelma: '',
@@ -142,6 +147,8 @@ return {
   riskTietoturvaTavoitteet: '',
 
   riskErityisetToimenpiteet: '',
+  riskErityisetToimenpiteetVuodet: '',
+  riskErityisetToimenpiteetTavoiteTeksti: '',
 };
 
 
@@ -464,6 +471,32 @@ return {
                 />
               </td>
             </tr>
+            <tr>
+  <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+  {/* Voit halutessasi jakaa sarakkeet eri tavalla, tässä käytetään colSpan="3" jotta saadaan lisää tilaa */}
+  <td colSpan="3">
+    <div style={{ marginBottom: '0.5rem' }}>
+      <YearToggle
+        value={localFinanceData.johtaminenErityisetToimenpiteetVuodet}
+        onChange={(val) =>
+          setLocalFinanceData({
+            ...localFinanceData,
+            johtaminenErityisetToimenpiteetVuodet: val
+          })
+        }
+        themeColor="#0345fa"
+      />
+    </div>
+    <AutoResizeTextArea
+      name="johtaminenErityisetToimenpiteetTavoiteTeksti"
+      value={localFinanceData.johtaminenErityisetToimenpiteetTavoiteTeksti}
+      onChange={handleChange}
+      rows={2}
+      placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+      style={{ width: '100%' }}
+    />
+  </td>
+</tr>
           </tbody>
         </table>
 
@@ -755,6 +788,31 @@ return {
                 />
               </td>
             </tr>
+            <tr>
+  <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+  <td colSpan="3">
+    <div style={{ marginBottom: '0.5rem' }}>
+      <YearToggle
+        value={localFinanceData.kilpailuErityisetToimenpiteetVuodet}
+        onChange={(val) =>
+          setLocalFinanceData({
+            ...localFinanceData,
+            kilpailuErityisetToimenpiteetVuodet: val
+          })
+        }
+        themeColor="#0345fa"
+      />
+    </div>
+    <AutoResizeTextArea
+      name="kilpailuErityisetToimenpiteetTavoiteTeksti"
+      value={localFinanceData.kilpailuErityisetToimenpiteetTavoiteTeksti}
+      onChange={handleChange}
+      rows={2}
+      placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+      style={{ width: '100%' }}
+    />
+  </td>
+</tr>
           </tbody>
         </table>
 
@@ -1159,10 +1217,7 @@ return {
       */}
     </tr>
   </>
-)}
-           
-
-     
+)}     
             <tr>
               <td>Kuvaus muista mahdollista toimenpiteistä</td>
               <td colSpan="3">
@@ -1175,6 +1230,31 @@ return {
                 />
               </td>
             </tr>
+            <tr>
+  <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+  <td colSpan="3">
+    <div style={{ marginBottom: '0.5rem' }}>
+      <YearToggle
+        value={localFinanceData.riskErityisetToimenpiteetVuodet}
+        onChange={(val) =>
+          setLocalFinanceData({
+            ...localFinanceData,
+            riskErityisetToimenpiteetVuodet: val
+          })
+        }
+        themeColor="#0345fa"
+      />
+    </div>
+    <AutoResizeTextArea
+      name="riskErityisetToimenpiteetTavoiteTeksti"
+      value={localFinanceData.riskErityisetToimenpiteetTavoiteTeksti}
+      onChange={handleChange}
+      rows={2}
+      placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+      style={{ width: '100%' }}
+    />
+  </td>
+</tr>
           </tbody>
         </table>
 

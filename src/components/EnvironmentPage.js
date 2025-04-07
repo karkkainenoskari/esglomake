@@ -5,6 +5,7 @@ import './tables.css';
 import LogoHeader from './LogoHeader';
 import AutoResizeTextArea from './AutoResizeTextArea';
 import YesNoToggle from './YesNoToggle';
+import YearToggle from './YearToggle'; 
 
 const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDataUpdate }) => {
   // Alustetaan tila localStoragesta, jos dataa löytyy, muuten käytetään initialEnvData tai oletusarvoja.
@@ -14,234 +15,200 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       return JSON.parse(savedData);
     }
     return initialEnvData || {
-    // === 2.1 Hiilijalanjälki ja tuotannon tehokkuus (environment) ===
-    envMaidonHiilijalanjalki: '',
-    envMaidonHiilijalanjalkiLisatiedot: '',
-    envMaidonHiilijalanjalkiTavoitteet: '',
+  // === 2.1 Hiilijalanjälki ja tuotannon tehokkuus (environment) ===
+  envMaidonHiilijalanjalki: '',
+  envMaidonHiilijalanjalkiLisatiedot: '',
+  envMaidonHiilijalanjalkiTavoitteet: '',
+  envScope1: '',
+  envScope1Lisatiedot: '',
+  envScope1Tavoitteet: '',
+  envScope2: '',
+  envScope2Lisatiedot: '',
+  envScope2Tavoitteet: '',
+  envScope3: '',
+  envScope3Lisatiedot: '',
+  envScope3Tavoitteet: '',
+  envHiiliviljelykoulutus: '',
+  envHiiliviljelykoulutusLisatiedot: '',
+  envHiiliviljelykoulutusTavoitteet: '',
+  envHiiliviljelytoimenpiteet: '',
+  envHiiliviljelytoimenpiteetLisatiedot: '',
+  envHiiliviljelytoimenpiteetTavoitteet: '',
+  envKeskilehmaluku: '',
+  envKeskilehmalukuLisatiedot: '',
+  envKeskilehmalukuTavoitteet: '',
+  envPoikimavali: '',
+  envPoikimavaliLisatiedot: '',
+  envPoikimavaliTavoitteet: '',
+  envHiehopoikimaika: '',
+  envHiehopoikimaikaLisatiedot: '',
+  envHiehopoikimaikaTavoitteet: '',
+  envKeskituotos: '',
+  envKeskituotosLisatiedot: '',
+  envKeskituotosTavoitteet: '',
+  envTuotosRasva: '',
+  envTuotosRasvaLisatiedot: '',
+  envTuotosRasvaTavoitteet: '',
+  envTuotosValkuainen: '',
+  envTuotosValkuainenLisatiedot: '',
+  envTuotosValkuainenTavoitteet: '',
+  envMaidonUrea: '',
+  envMaidonUreaLisatiedot: '',
+  envMaidonUreaTavoitteet: '',
+  envMeijerimaidonOsuus: '',
+  envMeijerimaidonOsuusLisatiedot: '',
+  envMeijerimaidonOsuusTavoitteet: '',
+  envKaytossaVahapaastoinenKylmainetilasaililossa: '',
+  envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot: '',
+  envKaytossaVahapaastoinenKylmainetilasaililossaTavoitteet: '',
+  envKarkearehunOsuus: '',
+  envKarkearehunOsuusLisatiedot: '',
+  envKarkearehunOsuusTavoitteet: '',
+  envPaastojaVahentavatLisaravinteet: '',
+  envPaastojaVahentavatLisaravinteetLisatiedot: '',
+  envPaastojaVahentavatLisaravinteetTavoitteet: '',
+  envRuokinnanSeurantalaskelmiaTehty: '',
+  envRuokinnanSeurantalaskelmiaTehtyLisatiedot: '',
+  envRuokinnanSeurantalaskelmiaTehtyTavoitteet: '',
+  envKuivaAinekiloa: '',
+  envKuivaAinekiloaLisatiedot: '',
+  envKuivaAinekiloaTavoitteet: '',
+  envTypenHyvaksykaytto: '',
+  envTypenHyvaksykayttoLisatiedot: '',
+  envTypenHyvaksykayttoTavoitteet: '',
+  envRehunSaastoindeksi: '',
+  envRehunSaastoindeksiLisatiedot: '',
+  envRehunSaastoindeksiTavoitteet: '',
+  envRuokinnanOmavaraisuusaste: '',
+  envRuokinnanOmavaraisuusasteLisatiedot: '',
+  envRuokinnanOmavaraisuusasteTavoitteet: '',
+  envMuutToimenpiteet: '',
+  envMuutToimenpiteetLisatiedot: '',
+  envMuutToimenpiteetTavoitteet: '',
+  envToimenpiteetVuodet: '',
+envToimenpiteetTavoiteTeksti: '',
 
-    envScope1: '',
-    envScope1Lisatiedot: '',
-    envScope1Tavoitteet: '',
+  // === 2.2 Monimuotoisuus (diversity) ===
+  divHoitosopimus: '',
+  divHoitosopimusLisatiedot: '',
+  divHoitosopimusTavoitteet: '',
+  divPintaAla: '',
+  divPintaAlaLisatiedot: '',
+  divPintaAlaTavoitteet: '',
+  divKosteikot: '',
+  divKosteikotLisatiedot: '',
+  divKosteikotTavoitteet: '',
+  divBiodiversiteetti: '',
+  divBiodiversiteettiLisatiedot: '',
+  divBiodiversiteettiTavoitteet: '',
+  divSuomenkarja: '',
+  divSuomenkarjaLisatiedot: '',
+  divSuomenkarjaTavoitteet: '',
+  divRisteytys: '',
+  divRisteytysLisatiedot: '',
+  divRisteytysTavoitteet: '',
+  divSoijaGM: '',
+  divSoijaGMLisatiedot: '',
+  divSoijaGMTavoitteet: '',
+  divPalmu: '',
+  divPalmuLisatiedot: '',
+  divPalmuTavoitteet: '',
+  divErityisetToimenpiteet: '',
+  divErityisetToimenpiteetLisatiedot: '',
+  divErityisetToimenpiteetTavoitteet: '',
+  divErityisetToimenpiteet2: '',
+  divErityisetToimenpiteet2Lisatiedot: '',
+  divErityisetToimenpiteet2Tavoitteet: '',
+  divErityisetVuodet: '',
+divErityisetTavoiteTeksti: '',
 
-    envScope2: '',
-    envScope2Lisatiedot: '',
-    envScope2Tavoitteet: '',
+  // === 2.3 Peltoviljely
+  envPeltoviljelyKokonaispintaAla: '',
+  envPeltoviljelyKokonaispintaAlaLisatiedot: '',
+  envPeltoviljelyKokonaispintaAlaTavoitteet: '',
+  envPeltoviljelySuhdeElainmaara: '',
+  envPeltoviljelySuhdeElainmaaraLisatiedot: '',
+  envPeltoviljelySuhdeElainmaaraTavoitteet: '',
+  envTurvemaidenOsuus: '',
+  envTurvemaidenOsuusLisatiedot: '',
+  envTurvemaidenOsuusTavoitteet: '',
+  envSaileRehunDArvo: '',
+  envSaileRehunDArvoLisatiedot: '',
+  envSaileRehunDArvoTavoitteet: '',
+  envNurmisato: '',
+  envNurmisatoLisatiedot: '',
+  envNurmisatoTavoitteet: '',
+  envViljasato: '',
+  envViljasatoLisatiedot: '',
+  envViljasatoTavoitteet: '',
+  envRehuntuotantoKuvaus: '',
+  envRehuntuotantoKuvausLisatiedot: '',
+  envRehuntuotantoKuvausTavoitteet: '',
+  envLohkoetaisyys: '',
+  envLohkoetaisyysLisatiedot: '',
+  envLohkoetaisyysTavoitteet: '',
+  envPeltoviljelyToimenpiteet: '',
+  envPeltoviljelyToimenpiteetLisatiedot: '',
+  envPeltoviljelyToimenpiteetTavoitteet: '',
+  // Uudet kentät Peltoviljely -osuudelle
+  envPeltoviljelyErityisetToimenpiteetVuodet: '',
+  envPeltoviljelyErityisetToimenpiteetTavoiteTeksti: '',
 
-    envScope3: '',
-    envScope3Lisatiedot: '',
-    envScope3Tavoitteet: '',
+  envVesitalousKuvaus: '',
+  envVesitalousKuvausLisatiedot: '',
+  envVesitalousKuvausTavoitteet: '',
 
-    envHiiliviljelykoulutus: '',
-    envHiiliviljelykoulutusLisatiedot: '',
-    envHiiliviljelykoulutusTavoitteet: '',
+  envPeltoviljelyErityisetToimenpiteet: '',
+  // Tässä alkuperäinen "Kuvaus muista mahdollisista toimenpiteistä" -kenttä Peltoviljelyssä
+  // Uudet kentät lisäykseen:
+  envPeltoviljelyErityisetToimenpiteetVuodet: '', // jos tätä kenttää ei ole jo, varmista ettei duplikoidu
+  envPeltoviljelyErityisetToimenpiteetTavoiteTeksti: '',
 
-    envHiiliviljelytoimenpiteet: '',
-    envHiiliviljelytoimenpiteetLisatiedot: '',
-    envHiiliviljelytoimenpiteetTavoitteet: '',
+  // === 2.4 Lannan käsittely ja jätehuolto (lanta) ===
+  lantaYmparistolupa: '',
+  lantaLietelannanOsuus: '',
+  lantaLevitysmenetelma: '',
+  lantaKuivikemateriaali: '',
+  lantaJatemuovit: '',
+  lantaVaarallisetAineet: '',
+  lantaJateoljy: '',
+  lantaPuristeneste: '',
+  lantaMuutToimenpiteet: '',
+  // Uudet kentät Lanta-osuudelle
+  lantaMuutToimenpiteetVuodet: '',
+  lantaMuutToimenpiteetTavoiteTeksti: '',
 
-    envKeskilehmaluku: '',
-    envKeskilehmalukuLisatiedot: '',
-    envKeskilehmalukuTavoitteet: '',
-
-    envPoikimavali: '',
-    envPoikimavaliLisatiedot: '',
-    envPoikimavaliTavoitteet: '',
-
-    envHiehopoikimaika: '',
-    envHiehopoikimaikaLisatiedot: '',
-    envHiehopoikimaikaTavoitteet: '',
-
-    envKeskituotos: '',
-    envKeskituotosLisatiedot: '',
-    envKeskituotosTavoitteet: '',
-
-    envTuotosRasva: '',
-    envTuotosRasvaLisatiedot: '',
-    envTuotosRasvaTavoitteet: '',
-
-    envTuotosValkuainen: '',
-    envTuotosValkuainenLisatiedot: '',
-    envTuotosValkuainenTavoitteet: '',
-
-    envMaidonUrea: '',
-    envMaidonUreaLisatiedot: '',
-    envMaidonUreaTavoitteet: '',
-
-    envMeijerimaidonOsuus: '',
-    envMeijerimaidonOsuusLisatiedot: '',
-    envMeijerimaidonOsuusTavoitteet: '',
-
-    envKaytossaVahapaastoinenKylmainetilasaililossa: '',
-    envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot: '',
-    envKaytossaVahapaastoinenKylmainetilasaililossaTavoitteet: '',
-
-    envKarkearehunOsuus: '',
-    envKarkearehunOsuusLisatiedot: '',
-    envKarkearehunOsuusTavoitteet: '',
-
-    envPaastojaVahentavatLisaravinteet: '',
-    envPaastojaVahentavatLisaravinteetLisatiedot: '',
-    envPaastojaVahentavatLisaravinteetTavoitteet: '',
-
-    envRuokinnanSeurantalaskelmiaTehty: '',
-    envRuokinnanSeurantalaskelmiaTehtyLisatiedot: '',
-    envRuokinnanSeurantalaskelmiaTehtyTavoitteet: '',
-
-    envKuivaAinekiloa: '',
-    envKuivaAinekiloaLisatiedot: '',
-    envKuivaAinekiloaTavoitteet: '',
-
-    envTypenHyvaksykaytto: '',
-    envTypenHyvaksykayttoLisatiedot: '',
-    envTypenHyvaksykayttoTavoitteet: '',
-
-    envRehunSaastoindeksi: '',
-    envRehunSaastoindeksiLisatiedot: '',
-    envRehunSaastoindeksiTavoitteet: '',
-
-    envRuokinnanOmavaraisuusaste: '',
-    envRuokinnanOmavaraisuusasteLisatiedot: '',
-    envRuokinnanOmavaraisuusasteTavoitteet: '',
-
-    envMuutToimenpiteet: '',
-    envMuutToimenpiteetLisatiedot: '',
-    envMuutToimenpiteetTavoitteet: '',
-
-    // === 2.2 Monimuotoisuus (diversity) ===
-    divHoitosopimus: '',
-    divHoitosopimusLisatiedot: '',
-    divHoitosopimusTavoitteet: '',
-
-    divPintaAla: '',
-    divPintaAlaLisatiedot: '',
-    divPintaAlaTavoitteet: '',
-
-    divKosteikot: '',
-    divKosteikotLisatiedot: '',
-    divKosteikotTavoitteet: '',
-
-    divBiodiversiteetti: '',
-    divBiodiversiteettiLisatiedot: '',
-    divBiodiversiteettiTavoitteet: '',
-
-    divSuomenkarja: '',
-    divSuomenkarjaLisatiedot: '',
-    divSuomenkarjaTavoitteet: '',
-
-    divRisteytys: '',
-    divRisteytysLisatiedot: '',
-    divRisteytysTavoitteet: '',
-
-    divSoijaGM: '',
-    divSoijaGMLisatiedot: '',
-    divSoijaGMTavoitteet: '',
-
-    divPalmu: '',
-    divPalmuLisatiedot: '',
-    divPalmuTavoitteet: '',
-
-    divErityisetToimenpiteet: '',
-    divErityisetToimenpiteetLisatiedot: '',
-    divErityisetToimenpiteetTavoitteet: '',
-
-    divErityisetToimenpiteet2: '',
-    divErityisetToimenpiteet2Lisatiedot: '',
-    divErityisetToimenpiteet2Tavoitteet: '',
-
-    // === 2.3 Peltoviljely
-
-    envPeltoviljelyKokonaispintaAla: '',
-    envPeltoviljelyKokonaispintaAlaLisatiedot: '',
-    envPeltoviljelyKokonaispintaAlaTavoitteet: '',
-
-    envPeltoviljelySuhdeElainmaara: '',
-    envPeltoviljelySuhdeElainmaaraLisatiedot: '',
-    envPeltoviljelySuhdeElainmaaraTavoitteet: '',
-
-    envTurvemaidenOsuus: '',
-    envTurvemaidenOsuusLisatiedot: '',
-    envTurvemaidenOsuusTavoitteet: '',
-
-    envSaileRehunDArvo: '',
-    envSaileRehunDArvoLisatiedot: '',
-    envSaileRehunDArvoTavoitteet: '',
-
-    envNurmisato: '',
-    envNurmisatoLisatiedot: '',
-    envNurmisatoTavoitteet: '',
-
-    envViljasato: '',
-    envViljasatoLisatiedot: '',
-    envViljasatoTavoitteet: '',
-
-    envRehuntuotantoKuvaus: '',
-    envRehuntuotantoKuvausLisatiedot: '',
-    envRehuntuotantoKuvausTavoitteet: '',
-
-    envLohkoetaisyys: '',
-    envLohkoetaisyysLisatiedot: '',
-    envLohkoetaisyysTavoitteet: '',
-
-    envPeltoviljelyToimenpiteet: '',
-    envPeltoviljelyToimenpiteetLisatiedot: '',
-    envPeltoviljelyToimenpiteetTavoitteet: '',
-
-    envVesitalousKuvaus: '',
-    envVesitalousKuvausLisatiedot: '',
-    envVesitalousKuvausTavoitteet: '',
-
-    envPeltoviljelyErityisetToimenpiteet: '',
-    envPeltoviljelyErityisetToimenpiteetLisatiedot: '',
-    envPeltoviljelyErityisetToimenpiteetTavoitteet: '',
-    // === 2.4 Lannan käsittely ja jätehuolto (lanta) ===
-    lantaYmparistolupa: '',
-    lantaLietelannanOsuus: '',
-    lantaLevitysmenetelma: '',
-    lantaKuivikemateriaali: '',
-    lantaJatemuovit: '',
-    lantaVaarallisetAineet: '',
-    lantaJateoljy: '',
-    lantaPuristeneste: '',
-    lantaMuutToimenpiteet: '',
-
-    // === 2.5 Energian käyttö (energy) ===
-    energySahkonKayttomaara: '',
-    energySahkonKayttomaaraLisatiedot: '',
-    energySahkonKayttomaaraTavoitteet: '',
-
-    energySahkonKayttomaaraSuhteessa: '',
-    energySahkonKayttomaaraSuhteessaLisatiedot: '',
-    energySahkonKayttomaaraSuhteessaTavoitteet: '',
-
-    energyOmaSahkotuotanto: '',
-    energyOmaSahkotuotantoLisatiedot: '',
-    energyOmaSahkotuotantoTavoitteet: '',
-
-    energyPolttoaineenKaytto: '',
-    energyPolttoaineenKayttoLisatiedot: '',
-    energyPolttoaineenKayttoTavoitteet: '',
-
-    energyPolttoaineenKayttoSuhteessa: '',
-    energyPolttoaineenKayttoSuhteessaLisatiedot: '',
-    energyPolttoaineenKayttoSuhteessaTavoitteet: '',
-
-    energyBiokaasu: '',
-    energyBiokaasuLisatiedot: '',
-    energyBiokaasuTavoitteet: '',
-
-    energyEsijahdytys: '',
-    energyEsijahdytysLisatiedot: '',
-    energyEsijahdytysTavoitteet: '',
-
-    energyLampotalteenotto: '',
-    energyLampotalteenottoLisatiedot: '',
-    energyLampotalteenottoTavoitteet: '',
-
-    energyErityisetToimenpiteet: '',
-    energyErityisetToimenpiteetLisatiedot: '',
-    energyErityisetToimenpiteetTavoitteet: ''
-  };
-  });
+  // === 2.5 Energian käyttö (energy) ===
+  energySahkonKayttomaara: '',
+  energySahkonKayttomaaraLisatiedot: '',
+  energySahkonKayttomaaraTavoitteet: '',
+  energySahkonKayttomaaraSuhteessa: '',
+  energySahkonKayttomaaraSuhteessaLisatiedot: '',
+  energySahkonKayttomaaraSuhteessaTavoitteet: '',
+  energyOmaSahkotuotanto: '',
+  energyOmaSahkotuotantoLisatiedot: '',
+  energyOmaSahkotuotantoTavoitteet: '',
+  energyPolttoaineenKaytto: '',
+  energyPolttoaineenKayttoLisatiedot: '',
+  energyPolttoaineenKayttoTavoitteet: '',
+  energyPolttoaineenKayttoSuhteessa: '',
+  energyPolttoaineenKayttoSuhteessaLisatiedot: '',
+  energyPolttoaineenKayttoSuhteessaTavoitteet: '',
+  energyBiokaasu: '',
+  energyBiokaasuLisatiedot: '',
+  energyBiokaasuTavoitteet: '',
+  energyEsijahdytys: '',
+  energyEsijahdytysLisatiedot: '',
+  energyEsijahdytysTavoitteet: '',
+  energyLampotalteenotto: '',
+  energyLampotalteenottoLisatiedot: '',
+  energyLampotalteenottoTavoitteet: '',
+  energyErityisetToimenpiteet: '',
+  // Uudet kentät Energian käyttö -osuudelle
+  energyErityisetToimenpiteetVuodet: '',
+  energyErityisetToimenpiteetTavoiteTeksti: ''
+};
+});
 
   
   useEffect(() => {
@@ -772,6 +739,26 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
            
           </tr>
+          <tr>
+  <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+  <td colSpan="3">
+    <div style={{ marginBottom: '0.5rem' }}>
+      <YearToggle
+        value={envData.envToimenpiteetVuodet}
+        onChange={(val) => setEnvData({ ...envData, envToimenpiteetVuodet: val })}
+        themeColor="#4CAF50"
+      />
+    </div>
+    <AutoResizeTextArea
+      name="envToimenpiteetTavoiteTeksti"
+      value={envData.envToimenpiteetTavoiteTeksti || ""}
+      onChange={handleChange}
+      rows={2}
+      placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+      style={{ width: '100%' }}
+    />
+  </td>
+</tr>
         </tbody>
       </table>
 
@@ -899,6 +886,26 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
 
           </tr>
+          <tr>
+  <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+  <td colSpan="3">
+    <div style={{ marginBottom: '0.5rem' }}>
+      <YearToggle
+        value={envData.divErityisetVuodet}
+        onChange={(val) => setEnvData({ ...envData, divErityisetVuodet: val })}
+        themeColor="#4CAF50"
+      />
+    </div>
+    <AutoResizeTextArea
+      name="divErityisetTavoiteTeksti"
+      value={envData.divErityisetTavoiteTeksti || ""}
+      onChange={handleChange}
+      rows={2}
+      placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+      style={{ width: '100%' }}
+    />
+  </td>
+</tr>
         </tbody>
       </table>
       
@@ -1192,6 +1199,28 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               />
             </td>
           </tr>
+          <tr>
+            <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+            <td colSpan="3">
+              <div style={{ marginBottom: '0.5rem' }}>
+                <YearToggle
+                  value={envData.envPeltoviljelyErityisetToimenpiteetVuodet}
+                  onChange={(val) =>
+                    setEnvData({ ...envData, envPeltoviljelyErityisetToimenpiteetVuodet: val })
+                  }
+                  themeColor="#4CAF50"
+                />
+              </div>
+              <AutoResizeTextArea
+                name="envPeltoviljelyErityisetToimenpiteetTavoiteTeksti"
+                value={envData.envPeltoviljelyErityisetToimenpiteetTavoiteTeksti || ""}
+                onChange={handleChange}
+                rows={2}
+                placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+                style={{ width: '100%' }}
+              />
+            </td>
+          </tr>
         </tbody>
       </table>
 
@@ -1304,6 +1333,28 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <textarea name="lantaMuutToimenpiteet" value={envData.lantaMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
            
+          </tr>
+          <tr>
+            <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+            <td colSpan="3">
+              <div style={{ marginBottom: '0.5rem' }}>
+                <YearToggle
+                  value={envData.lantaMuutToimenpiteetVuodet}
+                  onChange={(val) =>
+                    setEnvData({ ...envData, lantaMuutToimenpiteetVuodet: val })
+                  }
+                  themeColor="#4CAF50"
+                />
+              </div>
+              <AutoResizeTextArea
+                name="lantaMuutToimenpiteetTavoiteTeksti"
+                value={envData.lantaMuutToimenpiteetTavoiteTeksti || ""}
+                onChange={handleChange}
+                rows={2}
+                placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+                style={{ width: '100%' }}
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -1441,6 +1492,28 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
               <textarea name="energyErityisetToimenpiteet" value={envData.energyErityisetToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
+            </td>
+          </tr>
+          <tr>
+            <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+            <td colSpan="3">
+              <div style={{ marginBottom: '0.5rem' }}>
+                <YearToggle
+                  value={envData.energyErityisetToimenpiteetVuodet}
+                  onChange={(val) =>
+                    setEnvData({ ...envData, energyErityisetToimenpiteetVuodet: val })
+                  }
+                  themeColor="#4CAF50"
+                />
+              </div>
+              <AutoResizeTextArea
+                name="energyErityisetToimenpiteetTavoiteTeksti"
+                value={envData.energyErityisetToimenpiteetTavoiteTeksti || ""}
+                onChange={handleChange}
+                rows={2}
+                placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+                style={{ width: '100%' }}
+              />
             </td>
           </tr>
         </tbody>

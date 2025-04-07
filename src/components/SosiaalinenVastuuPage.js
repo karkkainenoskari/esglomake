@@ -4,6 +4,7 @@ import './tables.css';
 import LogoHeader from './LogoHeader';
 import AutoResizeTextArea from './AutoResizeTextArea';
 import YesNoToggle from './YesNoToggle';
+import YearToggle from './YearToggle';
 
 const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUpdate }) => {
   // Alustetaan tila lazy initializerilla: ensin tarkistetaan localStorage.
@@ -26,6 +27,9 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       tyotaHelpottavatRatkaisut: '',
       tyotaHelpottavatRatkaisutLisatiedot: '',
       tyotaHelpottavatRatkaisutTavoitteet: '',
+      // Uudet kentät henkilöstö-osion tavoitekuvaukselle
+      henkilostoTavoiteVuodet: '',
+      henkilostoTavoiteTeksti: '',
 
       // 2. Yrittäjiin liittyvää
       osaamisenKehittaminen: '',
@@ -60,7 +64,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       hoitotaVaativiaTapaturmia: '',
       hoitotaVaativiaTapaturmiaLisatiedot: '',
       hoitotaVaativiaTapaturmiaTavoitteet: '',
-      // Uudet kentät – lisätään HOITOTA VAATIVIA TAPATURMIA jälkeen ennen "Muut erityiset toimenpiteet"
       osaamisenKehittaminenJaLisakouluttautuminen: '',
       osaamisenKehittaminenJaLisakouluttautuminenLisatiedot: '',
       osaamisenKehittaminenJaLisakouluttautuminenTavoitteet: '',
@@ -102,106 +105,90 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       yhteistyoErityiset: '',
       yhteistyoErityisetLisatiedot: '',
       yhteistyoErityisetTavoitteet: '',
+      yhteistyoErityisetVuodet: '',
+      yhteistyoErityisetTavoiteTeksti: '',
 
       // 3.3 Eläinten hyvinvointi
       nautojenTerveydenhuoltorekisteri: '',
       nautojenTerveydenhuoltorekisteriLisatiedot: '',
       nautojenTerveydenhuoltorekisteriTavoitteet: '',
       nautojenTerveydenhuoltorekisteriErityiset: '',
-
       sorkkaterveys: '',
       sorkkaterveysLisatiedot: '',
       sorkkaterveysTavoitteet: '',
       sorkkaterveysErityiset: '',
-
       vasikkakuolleisuus: '',
       vasikkakuolleisuusLisatiedot: '',
       vasikkakuolleisuusTavoitteet: '',
       vasikkakuolleisuusErityiset: '',
-
       lehmienKeskipoikimakerta: '',
       lehmienKeskipoikimakertaLisatiedot: '',
       lehmienKeskipoikimakertaTavoitteet: '',
       lehmienKeskipoikimakertaErityiset: '',
-
       poistettujenLehmienElinikaiTuotos: '',
       poistettujenLehmienElinikaiTuotosLisatiedot: '',
       poistettujenLehmienElinikaiTuotosTavoitteet: '',
       poistettujenLehmienElinikaiTuotosErityiset: '',
-
       ekmPerElinpiva: '',
       ekmPerElinpivaLisatiedot: '',
       ekmPerElinpivaTavoitteet: '',
       ekmPerElinpivaErityiset: '',
-
       laiduntaminen: '',
       laiduntaminenLisatiedot: '',
       laiduntaminenTavoitteet: '',
       laiduntaminenErityiset: '',
-
       jaloittelu: '',
       jaloitteluLisatiedot: '',
       jaloitteluTavoitteet: '',
       jaloitteluErityiset: '',
-
       ymparivuotinenJaloittelu: '',
       ymparivuotinenJaloitteluLisatiedot: '',
       ymparivuotinenJaloitteluTavoitteet: '',
       ymparivuotinenJaloitteluErityiset: '',
-
       lehmienMakuupaikka: '',
       lehmienMakuupaikkaLisatiedot: '',
       lehmienMakuupaikkaTavoitteet: '',
       lehmienMakuupaikkaErityiset: '',
-
       viilennys: '',
       viilennysLisatiedot: '',
       viilennysTavoitteet: '',
       viilennysErityiset: '',
-
       lehmillaKaytavat: '',
       lehmillaKaytavatLisatiedot: '',
       lehmillaKaytavatTavoitteet: '',
       lehmillaKaytavatErityiset: '',
-
       vierihoito: '',
       vierihoitoLisatiedot: '',
       vierihoitoTavoitteet: '',
       vierihoitoErityiset: '',
-
       wellfareQuality: '',
       wellfareQualityLisatiedot: '',
       wellfareQualityTavoitteet: '',
       wellfareQualityErityiset: '',
-
       elviStatus: '',
       elviStatusLisatiedot: '',
       elviStatusTavoitteet: '',
       elviStatusErityiset: '',
-
       // 3.4 Maidon laatu
       laakekirjanpito: '',
       laakekirjanpitoLisatiedot: '',
       laakekirjanpitoTavoitteet: '',
-
       tankkimaidonTestaus: '',
       tankkimaidonTestausLisatiedot: '',
       tankkimaidonTestausTavoitteet: '',
-
       eLuokanOsuus: '',
       eLuokanOsuusLisatiedot: '',
       eLuokanOsuusTavoitteet: '',
-
       maidonSolupitoisuus: '',
       maidonSolupitoisuusLisatiedot: '',
       maidonSolupitoisuusTavoitteet: '',
-
       maitoErityisetToimenpiteet: '',
       maitoErityisetToimenpiteetLisatiedot: '',
-      maitoErityisetToimenpiteetTavoitteet: ''
+      maitoErityisetToimenpiteetTavoitteet: '',
+      // Uudet kentät Eläinten hyvinvointi -osuudelle
+      maitoErityisetToimenpiteetVuodet: '',
+      maitoErityisetToimenpiteetTavoiteTeksti: ''
     };
-
-    
   });
 
   useEffect(() => {
@@ -550,6 +537,28 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
               
             </tr>
+            <tr>
+              <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+              <td colSpan="3">
+                <div style={{ marginBottom: '0.5rem' }}>
+                  <YearToggle
+                    value={socialData.henkilostoTavoiteVuodet}
+                    onChange={(val) =>
+                      setSocialData({ ...socialData, henkilostoTavoiteVuodet: val })
+                    }
+                    themeColor="#ec9005"
+                  />
+                </div>
+                <AutoResizeTextArea
+                  name="henkilostoTavoiteTeksti"
+                  value={socialData.henkilostoTavoiteTeksti}
+                  onChange={handleChange}
+                  rows={2}
+                  placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+                  style={{ width: '100%' }}
+                />
+              </td>
+            </tr>
 
           </tbody>
         </table>
@@ -688,7 +697,28 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                   style={{ width: '100%' }}
                 />
               </td>
-              
+            </tr>
+            <tr>
+              <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+              <td colSpan="3">
+                <div style={{ marginBottom: '0.5rem' }}>
+                  <YearToggle
+                    value={socialData.yhteistyoErityisetVuodet}
+                    onChange={(val) =>
+                      setSocialData({ ...socialData, yhteistyoErityisetVuodet: val })
+                    }
+                    themeColor="#ec9005"
+                  />
+                </div>
+                <textarea
+                  name="yhteistyoErityisetTavoiteTeksti"
+                  value={socialData.yhteistyoErityisetTavoiteTeksti}
+                  onChange={handleChange}
+                  rows={2}
+                  placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+                  style={{ width: '100%' }}
+                />
+              </td>
             </tr>
           </tbody>
         </table>
@@ -942,6 +972,29 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <textarea type="text" name="erityisetToimenpiteet" value={socialData.erityisetToimenpiteet} onChange={handleChange} style={{ width: '100%' }} />
               </td>
             </tr>
+            <tr>
+              <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+              <td colSpan="3">
+                <div style={{ marginBottom: '0.5rem' }}>
+                  <YearToggle
+                    value={socialData.erityisetToimenpiteetVuodet}
+                    onChange={(val) =>
+                      setSocialData({ ...socialData, erityisetToimenpiteetVuodet: val })
+                    }
+                    themeColor="#ec9005"
+                  />
+                </div>
+                <textarea
+                  name="erityisetToimenpiteetTavoiteTeksti"
+                  value={socialData.erityisetToimenpiteetTavoiteTeksti}
+                  onChange={handleChange}
+                  rows={2}
+                  placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
+                  style={{ width: '100%' }}
+                />
+              </td>
+            </tr>
+
           </tbody>
         </table>
 
@@ -1081,6 +1134,29 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                   name="maitoErityisetToimenpiteet"
                   value={socialData.maitoErityisetToimenpiteet}
                   onChange={handleChange}
+                  style={{ width: '100%' }}
+                />
+              </td>
+              </tr>
+            {/* Uusi rivi eläinten hyvinvointi -osuudelle: vuosisyklin valinta + tavoitekenttä */}
+            <tr>
+              <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+              <td colSpan="3">
+                <div style={{ marginBottom: '0.5rem' }}>
+                  <YearToggle
+                    value={socialData.maitoErityisetToimenpiteetVuodet}
+                    onChange={(val) =>
+                      setSocialData({ ...socialData, maitoErityisetToimenpiteetVuodet: val })
+                    }
+                    themeColor="#ec9005"
+                  />
+                </div>
+                <textarea
+                  name="maitoErityisetToimenpiteetTavoiteTeksti"
+                  value={socialData.maitoErityisetToimenpiteetTavoiteTeksti}
+                  onChange={handleChange}
+                  rows={2}
+                  placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
                   style={{ width: '100%' }}
                 />
               </td>
