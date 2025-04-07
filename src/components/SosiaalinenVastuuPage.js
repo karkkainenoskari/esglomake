@@ -200,6 +200,8 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       maitoErityisetToimenpiteetLisatiedot: '',
       maitoErityisetToimenpiteetTavoitteet: ''
     };
+
+    
   });
 
   useEffect(() => {
