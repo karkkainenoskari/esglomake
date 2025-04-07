@@ -281,14 +281,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <col />
           <col />
           <col />
-          <col />
         </colgroup>
         <thead>
           <tr>
             <th>Hiilijalanjälki ja tuotannon tehokkuus</th>
             <th>Uusin tulos</th>
             <th>Kuvaus</th>
-            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>
@@ -316,9 +314,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envMaidonHiilijalanjalkiLisatiedot" value={envData.envMaidonHiilijalanjalkiLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envMaidonHiilijalanjalkiTavoitteet" value={envData.envMaidonHiilijalanjalkiTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Scope 1 päästö, tCO2e, %
@@ -343,9 +338,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="envScope1Lisatiedot" value={envData.envScope1Lisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="envScope1Tavoitteet" value={envData.envScope1Tavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -373,9 +365,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envScope2Lisatiedot" value={envData.envScope2Lisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envScope2Tavoitteet" value={envData.envScope2Tavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Scope 3 päästö, tCO2e, %
@@ -402,9 +391,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envScope3Lisatiedot" value={envData.envScope3Lisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envScope3Tavoitteet" value={envData.envScope3Tavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Hiiliviljelykoulutus suoritettu</td>
@@ -418,9 +404,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
               <AutoResizeTextArea name="envHiiliviljelykoulutusLisatiedot" value={envData.envHiiliviljelykoulutusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envHiiliviljelykoulutusTavoitteet" value={envData.envHiiliviljelykoulutusTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Hiiliviljelytoimenpiteet rehuntuotannossa, ha</td>
@@ -429,9 +412,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="envHiiliviljelytoimenpiteetLisatiedot" value={envData.envHiiliviljelytoimenpiteetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="envHiiliviljelytoimenpiteetTavoitteet" value={envData.envHiiliviljelytoimenpiteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -458,9 +438,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envKeskilehmalukuLisatiedot" value={envData.envKeskilehmalukuLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envKeskilehmalukuTavoitteet" value={envData.envKeskilehmalukuTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Poikimaväli, vrk  <span
@@ -483,9 +460,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="envPoikimavaliLisatiedot" value={envData.envPoikimavaliLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="envPoikimavaliTavoitteet" value={envData.envPoikimavaliTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -510,9 +484,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envHiehopoikimaikaLisatiedot" value={envData.envHiehopoikimaikaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envHiehopoikimaikaTavoitteet" value={envData.envHiehopoikimaikaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Keskituotos, EKM kg/lehmä  <span
@@ -535,9 +506,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="envKeskituotosLisatiedot" value={envData.envKeskituotosLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="envKeskituotosTavoitteet" value={envData.envKeskituotosTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -562,9 +530,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envTuotosRasvaLisatiedot" value={envData.envTuotosRasvaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envTuotosRasvaTavoitteet" value={envData.envTuotosRasvaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Tuotosseurannan valkuais-%, vuoden keskiarvo <span
@@ -587,9 +552,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="envTuotosValkuainenLisatiedot" value={envData.envTuotosValkuainenLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="envTuotosValkuainenTavoitteet" value={envData.envTuotosValkuainenTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -616,9 +578,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envMaidonUreaLisatiedot" value={envData.envMaidonUreaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envMaidonUreaTavoitteet" value={envData.envMaidonUreaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Meijerimaidon osuus, %  <span
@@ -641,9 +600,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="envMeijerimaidonOsuusLisatiedot" value={envData.envMeijerimaidonOsuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="envMeijerimaidonOsuusTavoitteet" value={envData.envMeijerimaidonOsuusTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -674,9 +630,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot" value={envData.envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envKaytossaVahapaastoinenKylmainetilasaililossaTavoitteet" value={envData.envKaytossaVahapaastoinenKylmainetilasaililossaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Karkearehun osuus lypsylehmien ruokinnassa, %  <span
@@ -700,9 +653,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envKarkearehunOsuusLisatiedot" value={envData.envKarkearehunOsuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envKarkearehunOsuusTavoitteet" value={envData.envKarkearehunOsuusTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä</td>
@@ -715,9 +665,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="envPaastojaVahentavatLisaravinteetLisatiedot" value={envData.envPaastojaVahentavatLisaravinteetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="envPaastojaVahentavatLisaravinteetTavoitteet" value={envData.envPaastojaVahentavatLisaravinteetTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -746,9 +693,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envRuokinnanSeurantalaskelmiaTehtyLisatiedot" value={envData.envRuokinnanSeurantalaskelmiaTehtyLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envRuokinnanSeurantalaskelmiaTehtyTavoitteet" value={envData.envRuokinnanSeurantalaskelmiaTehtyTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Kuiva-ainekiloa rehua/EKM kg
@@ -774,9 +718,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envKuivaAinekiloaLisatiedot" value={envData.envKuivaAinekiloaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envKuivaAinekiloaTavoitteet" value={envData.envKuivaAinekiloaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Typen hyväksikäyttö % ruokinnassa (esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista)
@@ -801,9 +742,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envTypenHyvaksykayttoLisatiedot" value={envData.envTypenHyvaksykayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envTypenHyvaksykayttoTavoitteet" value={envData.envTypenHyvaksykayttoTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Rehun säästöindeksin huomioiminen jalostuksessa</td>
@@ -817,9 +755,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="envRehunSaastoindeksiLisatiedot" value={envData.envRehunSaastoindeksiLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="envRehunSaastoindeksiTavoitteet" value={envData.envRehunSaastoindeksiTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Ruokinnan omavaraisuusaste % (kaikki rehut yhteensä)</td>
@@ -828,9 +763,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="envRuokinnanOmavaraisuusasteLisatiedot" value={envData.envRuokinnanOmavaraisuusasteLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="envRuokinnanOmavaraisuusasteTavoitteet" value={envData.envRuokinnanOmavaraisuusasteTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -848,14 +780,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <col />
           <col />
           <col />
-          <col />
         </colgroup>
         <thead>
           <tr>
             <th>Monimuotoisuus</th>
             <th>Uusin tulos</th>
             <th>Kuvaus</th>
-            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>
@@ -873,9 +803,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="divHoitosopimusLisatiedot" value={envData.divHoitosopimusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="divHoitosopimusTavoitteet" value={envData.divHoitosopimusTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Monimuotoisuutta edistävä pinta-ala yhteensä, ha (esim. perinnebiotoopit, luonnonlaitumet, riistapellot, peltojen reuna-alueet, pölyttäjäkasvit)</td>
@@ -885,9 +812,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="divPintaAlaLisatiedot" value={envData.divPintaAlaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="divPintaAlaTavoitteet" value={envData.divPintaAlaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Kosteikot, ha</td>
@@ -896,9 +820,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="divKosteikotLisatiedot" value={envData.divKosteikotLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="divKosteikotTavoitteet" value={envData.divKosteikotTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           
@@ -915,9 +836,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="divBiodiversiteettiLisatiedot" value={envData.divBiodiversiteettiLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="divBiodiversiteettiTavoitteet" value={envData.divBiodiversiteettiTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           
           <tr>
@@ -933,9 +851,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="divSuomenkarjaLisatiedot" value={envData.divSuomenkarjaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="divSuomenkarjaTavoitteet" value={envData.divSuomenkarjaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Risteytyseläinten osuus lypsylehmistä, %</td>
@@ -944,9 +859,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="divRisteytysLisatiedot" value={envData.divRisteytysLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="divRisteytysTavoitteet" value={envData.divRisteytysTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -962,9 +874,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="divSoijaGMLisatiedot" value={envData.divSoijaGMLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="divSoijaGMTavoitteet" value={envData.divSoijaGMTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
        
@@ -978,9 +887,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="divPalmuLisatiedot" value={envData.divPalmuLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="divPalmuTavoitteet" value={envData.divPalmuTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -1002,14 +908,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <col />
           <col />
           <col />
-          <col />
         </colgroup>
         <thead>
           <tr>
             <th>Peltoviljely</th>
             <th>Uusin tulos</th>
             <th>Kuvaus</th>
-            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>
@@ -1048,14 +952,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 style={{ width: '100%' }}
               />
             </td>
-            <td>
-            <AutoResizeTextArea
-                name="envPeltoviljelyKokonaispintaAlaTavoitteet"
-                value={envData.envPeltoviljelyKokonaispintaAlaTavoitteet || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
           </tr>
           <tr>
             <td>Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey    <span
@@ -1073,10 +969,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               >
                 ?
               </span>
-            </td>
-
-
-            
+            </td> 
             <td>
               <input
                 type="text"
@@ -1090,14 +983,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <AutoResizeTextArea
                 name="envPeltoviljelySuhdeElainmaaraLisatiedot"
                 value={envData.envPeltoviljelySuhdeElainmaaraLisatiedot || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
-            <td>
-            <AutoResizeTextArea
-                name="envPeltoviljelySuhdeElainmaaraTavoitteet"
-                value={envData.envPeltoviljelySuhdeElainmaaraTavoitteet || ""}
                 onChange={handleChange}
                 style={{ width: '100%' }}
               />
@@ -1137,14 +1022,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 style={{ width: '100%' }}
               />
             </td>
-            <td>
-            <AutoResizeTextArea
-                name="envTurvemaidenOsuusTavoitteet"
-                value={envData.envTurvemaidenOsuusTavoitteet || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
           </tr>
           <tr>
             <td>Säilörehun D-arvo keskimäärin (esim. Valman kautta) <span
@@ -1162,9 +1039,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             >
               ?
             </span></td>
-
-
-
             <td>
               <input
                 type="text"
@@ -1178,14 +1052,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <AutoResizeTextArea
                 name="envSaileRehunDArvoLisatiedot"
                 value={envData.envSaileRehunDArvoLisatiedot || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
-            <td>
-            <AutoResizeTextArea
-                name="envSaileRehunDArvoTavoitteet"
-                value={envData.envSaileRehunDArvoTavoitteet || ""}
                 onChange={handleChange}
                 style={{ width: '100%' }}
               />
@@ -1210,14 +1076,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 style={{ width: '100%' }}
               />
             </td>
-            <td>
-            <AutoResizeTextArea
-                name="envNurmisatoTavoitteet"
-                value={envData.envNurmisatoTavoitteet || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
           </tr>
           <tr>
             <td>Viljasato keskimäärin, kg/ha</td>
@@ -1234,14 +1092,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <AutoResizeTextArea
                 name="envViljasatoLisatiedot"
                 value={envData.envViljasatoLisatiedot || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
-            <td>
-            <AutoResizeTextArea
-                name="envViljasatoTavoitteet"
-                value={envData.envViljasatoTavoitteet || ""}
                 onChange={handleChange}
                 style={{ width: '100%' }}
               />
@@ -1267,14 +1117,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 style={{ width: '100%' }}
               />
             </td>
-            <td>
-            <AutoResizeTextArea
-                name="envRehuntuotantoKuvausTavoitteet"
-                value={envData.envRehuntuotantoKuvausTavoitteet || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
           </tr>
           <tr>
             <td>Keskimääräinen lohkoetäisyys, km</td>
@@ -1291,14 +1133,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <AutoResizeTextArea
                 name="envLohkoetaisyysLisatiedot"
                 value={envData.envLohkoetaisyysLisatiedot || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
-            <td>
-            <AutoResizeTextArea
-                name="envLohkoetaisyysTavoitteet"
-                value={envData.envLohkoetaisyysTavoitteet || ""}
                 onChange={handleChange}
                 style={{ width: '100%' }}
               />
@@ -1324,14 +1158,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 style={{ width: '100%' }}
               />
             </td>
-            <td>
-            <AutoResizeTextArea
-                name="envPeltoviljelyToimenpiteetTavoitteet"
-                value={envData.envPeltoviljelyToimenpiteetTavoitteet || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
           </tr>
           <tr>
             <td>Kuvaus, miten peltojen vesitaloutta ylläpidetään ja kehitetään</td>
@@ -1349,14 +1175,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <AutoResizeTextArea
                 name="envVesitalousKuvausLisatiedot"
                 value={envData.envVesitalousKuvausLisatiedot || ""}
-                onChange={handleChange}
-                style={{ width: '100%' }}
-              />
-            </td>
-            <td>
-            <AutoResizeTextArea
-                name="envVesitalousKuvausTavoitteet"
-                value={envData.envVesitalousKuvausTavoitteet || ""}
                 onChange={handleChange}
                 style={{ width: '100%' }}
               />
@@ -1382,14 +1200,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <col />
           <col />
           <col />
-          <col />
         </colgroup>
         <thead>
           <tr>
             <th>Lannan käsittely ja jätehuolto</th>
             <th>Uusin tulos</th>
             <th>Kuvaus</th>
-            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>
@@ -1400,9 +1216,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="lantaYmparistolupaLisatiedot" value={envData.lantaYmparistolupaLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="lantaYmparistolupaTavoitteet" value={envData.lantaYmparistolupaTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -1427,9 +1240,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="lantaLietelannanOsuusLisatiedot" value={envData.lantaLietelannanOsuusLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="lantaLietelannanOsuusTavoitteet" value={envData.lantaLietelannanOsuusTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Lannan levitysmenetelmä (kerro lisätiedoissa)</td>
@@ -1438,9 +1248,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="lantaLevitysmenetelmaLisatiedot" value={envData.lantaLevitysmenetelmaLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="lantaLevitysmenetelmaTavoitteet" value={envData.lantaLevitysmenetelmaTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -1451,9 +1258,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="lantaKuivikemateriaaliLisatiedot" value={envData.lantaKuivikemateriaaliLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="lantaKuivikemateriaaliTavoitteet" value={envData.lantaKuivikemateriaaliTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Kuvaus jätemuovien varastoinnista ja hävittämisestä</td>
@@ -1462,9 +1266,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="lantaJatemuovitLisatiedot" value={envData.lantaJatemuovitLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="lantaJatemuovitTavoitteet" value={envData.lantaJatemuovitTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -1478,9 +1279,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="lantaVaarallisetAineetLisatiedot" value={envData.lantaVaarallisetAineetLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="lantaVaarallisetAineetTavoitteet" value={envData.lantaVaarallisetAineetTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Kuvaus jäteöljyn varastoinnista ja hävittämisestä</td>
@@ -1490,9 +1288,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="lantaJateoljyLisatiedot" value={envData.lantaJateoljyLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="lantaJateoljyTavoitteet" value={envData.lantaJateoljyTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Kuvaus puristenesteiden käsittelytavasta</td>
@@ -1501,9 +1296,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="lantaPuristenesteLisatiedot" value={envData.lantaPuristenesteLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="lantaPuristenesteTavoitteet" value={envData.lantaPuristenesteTavoitteet || ''} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -1521,14 +1313,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <col />
           <col />
           <col />
-          <col />
         </colgroup>
         <thead>
           <tr>
             <th>Energian käyttö</th>
             <th>Uusin tulos</th>
             <th>Kuvaus</th>
-            <th>Tavoite ja aikataulu</th>
           </tr>
         </thead>
         <tbody>
@@ -1554,9 +1344,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="energySahkonKayttomaaraLisatiedot" value={envData.energySahkonKayttomaaraLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="energySahkonKayttomaaraTavoitteet" value={envData.energySahkonKayttomaaraTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Sähkön käyttömäärä suhteessa tuotantoon, kWh/kg maitoa/v</td>
@@ -1566,9 +1353,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="energySahkonKayttomaaraSuhteessaLisatiedot" value={envData.energySahkonKayttomaaraSuhteessaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="energySahkonKayttomaaraSuhteessaTavoitteet" value={envData.energySahkonKayttomaaraSuhteessaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Oman sähkön tuotanto, kWh/v (esim. aurinko- tai tuulivoimala)</td>
@@ -1577,9 +1361,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="energyOmaSahkotuotantoLisatiedot" value={envData.energyOmaSahkotuotantoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="energyOmaSahkotuotantoTavoitteet" value={envData.energyOmaSahkotuotantoTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -1604,9 +1385,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="energyPolttoaineenKayttoLisatiedot" value={envData.energyPolttoaineenKayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="energyPolttoaineenKayttoTavoitteet" value={envData.energyPolttoaineenKayttoTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Polttoaineiden käyttömäärä suhteessa tuotantoon, l/kg maitoa</td>
@@ -1615,9 +1393,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
             <td>
             <AutoResizeTextArea name="energyPolttoaineenKayttoSuhteessaLisatiedot" value={envData.energyPolttoaineenKayttoSuhteessaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="energyPolttoaineenKayttoSuhteessaTavoitteet" value={envData.energyPolttoaineenKayttoSuhteessaTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -1633,9 +1408,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="energyBiokaasuLisatiedot" value={envData.energyBiokaasuLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="energyBiokaasuTavoitteet" value={envData.energyBiokaasuTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
       
@@ -1646,13 +1418,9 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 onChange={(val) => setEnvData({ ...envData, energyEsijahdytys: val })}
                 themeColor="#4CAF50"
               />
-
             </td>
             <td>
             <AutoResizeTextArea name="energyEsijahdytysLisatiedot" value={envData.energyEsijahdytysLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
-            <td>
-            <AutoResizeTextArea name="energyEsijahdytysTavoitteet" value={envData.energyEsijahdytysTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
@@ -1668,9 +1436,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td>
             <AutoResizeTextArea name="energyLampotalteenottoLisatiedot" value={envData.energyLampotalteenottoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
             </td>
-            <td>
-            <AutoResizeTextArea name="energyLampotalteenottoTavoitteet" value={envData.energyLampotalteenottoTavoitteet} onChange={handleChange} style={{ width: '100%' }} />
-            </td>
           </tr>
           <tr>
             <td>Kuvaus muista mahdollisista toimenpiteistä</td>
@@ -1681,7 +1446,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </tbody>
       </table>
 
-      
       <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center' }}>
         <button type="button" onClick={onPrevious} style={{ marginRight: '1rem' }}>
           Edellinen

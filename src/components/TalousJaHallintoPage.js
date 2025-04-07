@@ -169,28 +169,20 @@ return {
   
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Lisätään logot yläosaan */}
       <LogoHeader />
-      
-
       <h2>Talous ja hallinto</h2>
-
-      {/* 4.1 Johtaminen */}
- 
       <form onSubmit={handleSubmit}>
       <table className="common-table finance-table">
           <colgroup>
             <col />
             <col />
             <col />
-            {/* <col />*/}
           </colgroup>
           <thead>
             <tr>
               <th>Johtaminen</th>
               <th>Uusin tulos</th>
               <th>Kuvaus</th>
-             {/* <th>Tavoite ja aikataulu</th>*/ }
             </tr>
           </thead>
           <tbody>

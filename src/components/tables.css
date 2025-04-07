@@ -54,27 +54,25 @@
 
 /* Muut taulukot käyttävät edelleen neljää saraketta */
 .common-table col:nth-child(1) {
-  width: 35%;
-}
-.common-table col:nth-child(2) {
-  width: 10%;
-}
-.common-table col:nth-child(3) {
-  width: 35%;
-}
-.common-table col:nth-child(4) {
   width: 30%;
 }
+.common-table col:nth-child(2) {
+  width: 9%;
+}
+.common-table col:nth-child(3) {
+  width: 49%;
+}
+
 
 /* Talous ja hallinto -sivun taulukko: vain 3 saraketta */
 .finance-table col:nth-child(1) {
-  width: 45%;
+  width: 30%;
 }
 .finance-table col:nth-child(2) {
-  width: 5%;
+  width: 9%;
 }
 .finance-table col:nth-child(3) {
-  width: 45%; /* Jäljelle jäävä tila */
+  width: 49%; /* Jäljelle jäävä tila */
 }
 
 
