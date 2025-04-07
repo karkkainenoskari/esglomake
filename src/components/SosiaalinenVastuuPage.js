@@ -255,7 +255,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 (kuvaa esim. henkilöstötarpeet, johtaminen, suunnitelmallisuus, vastuut, työntekijöiden määrä)
               </td>
               
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.henkilostoStrategia}
                   onChange={(val) => setSocialData({ ...socialData, henkilostoStrategia: val })}
@@ -312,7 +312,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Työterveyshuolto</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.tyoterveyshuolto}
                   onChange={(val) => setSocialData({ ...socialData, tyoterveyshuolto: val })}
@@ -337,7 +337,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 Mahdollisuus säännöllisiin vapaapäiviin<br />
                 (kuvaa lisätietokenttään miten)
               </td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.vapaapäivat}
                   onChange={(val) => setSocialData({ ...socialData, vapaapäivat: val })}
@@ -350,7 +350,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Vuosilomien pitäminen suunnitellusti</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.vuosilomat}
                   onChange={(val) => setSocialData({ ...socialData, vuosilomat: val })}
@@ -366,7 +366,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 Työajan mittaaminen<br />
                 (kuvaa lisätietokenttään miten)
               </td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.tyoajanMittaaminen}
                   onChange={(val) => setSocialData({ ...socialData, tyoajanMittaaminen: val })}
@@ -393,7 +393,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Työterveyshuolto</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.tyoterveyshuolto}
                   onChange={(val) => setSocialData({ ...socialData, tyoterveyshuolto: val })}
@@ -465,7 +465,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Säännölliset kehityskeskuskustelut</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.kehityskeskustelut}
                   onChange={(val) => setSocialData({ ...socialData, kehityskeskustelut: val })}
@@ -483,7 +483,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Säännölliset palaverikäytännöt</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.palaverit}
                   onChange={(val) => setSocialData({ ...socialData, palaverit: val })}
@@ -521,7 +521,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Työtyytyväisyyden mittaaminen käytössä</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.tyotyotyot}
                   onChange={(val) => setSocialData({ ...socialData, tyotyotyot: val })}
@@ -711,7 +711,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           <tbody>
             <tr>
               <td>Nautojen terveydenhuoltorekisteri Naseva käytössä</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.nautojenTerveydenhuoltorekisteri}
                   onChange={(val) => setSocialData({ ...socialData, nautojenTerveydenhuoltorekisteri: val })}
@@ -725,7 +725,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
             
               <td>Sorkkaterveyden seuranta ja hoito säännöllisesti, kyllä/ei</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.sorkkaterveys}
                   onChange={(val) => setSocialData({ ...socialData, sorkkaterveys: val })}
@@ -830,7 +830,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Laiduntaminen käytössä<br />(kuvaa mitkä eläinryhmät laiduntavat)</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.laiduntaminen}
                   onChange={(val) => setSocialData({ ...socialData, laiduntaminen: val })}
@@ -873,7 +873,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Viilennys lypsynavetassa</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.viilennys}
                   onChange={(val) => setSocialData({ ...socialData, viilennys: val })}
@@ -886,7 +886,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Lehmillä käytävämatot</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.lehmillaKaytavat}
                   onChange={(val) => setSocialData({ ...socialData, lehmillaKaytavat: val })}
@@ -899,7 +899,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Pidennetty vierihoito tai imettäjälehmät käytäntönä</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.vierihoito}
                   onChange={(val) => setSocialData({ ...socialData, vierihoito: val })}
@@ -912,7 +912,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>WellFare Quality -koulutus ja sertifiointi suoritettu</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.wellfareQuality}
                   onChange={(val) => setSocialData({ ...socialData, wellfareQuality: val })}
@@ -925,7 +925,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>ELVI -merkki -status voimassa</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.elviStatus}
                   onChange={(val) => setSocialData({ ...socialData, elviStatus: val })}
@@ -966,7 +966,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 Sähköinen lääkekirjanpito käytössä <br />
                 (esim. Naseva)
               </td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.laakekirjanpito}
                   onChange={(val) => setSocialData({ ...socialData, laakekirjanpito: val })}
@@ -987,7 +987,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <td>
                 Tankkimaidon testaaminen antibioottihoitojen yhteydessä
               </td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={socialData.tankkimaidonTestaus}
                   onChange={(val) => setSocialData({ ...socialData, tankkimaidonTestaus: val })}

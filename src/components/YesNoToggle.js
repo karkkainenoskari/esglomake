@@ -4,8 +4,9 @@ const YesNoToggle = ({ value, onChange, themeColor = '#007acc' }) => {
   return (
     <div
       style={{
-        display: 'flex',
-        width: '95px',
+        display: 'inline-flex',
+        margin: '0 auto',
+        width: '100px',
         border: `2px solid ${themeColor}`,
         borderRadius: '5px',
         overflow: 'hidden'

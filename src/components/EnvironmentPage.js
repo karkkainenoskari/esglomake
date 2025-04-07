@@ -394,7 +394,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Hiiliviljelykoulutus suoritettu</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle
                 value={envData.envHiiliviljelykoulutus}
                 onChange={(val) => setEnvData({ ...envData, envHiiliviljelykoulutus: val })}
@@ -620,7 +620,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 ?
               </span>
             </td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.envKaytossaVahapaastoinenKylmainetilasaililossa}
                 onChange={(val) => setEnvData({ ...envData, envKaytossaVahapaastoinenKylmainetilasaililossa: val })}
@@ -656,7 +656,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.envPaastojaVahentavatLisaravinteet}
                 onChange={(val) => setEnvData({ ...envData, envPaastojaVahentavatLisaravinteet: val })}
@@ -683,7 +683,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             >
               ?
             </span></td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.envRuokinnanSeurantalaskelmiaTehty}
                 onChange={(val) => setEnvData({ ...envData, envRuokinnanSeurantalaskelmiaTehty: val })}
@@ -745,7 +745,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Rehun säästöindeksin huomioiminen jalostuksessa</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.envRehunSaastoindeksi}
                 onChange={(val) => setEnvData({ ...envData, envRehunSaastoindeksi: val })}
@@ -792,7 +792,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         
           <tr>
             <td>Maatalousluonnon ja maiseman -hoitosopimus</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.divHoitosopimus}
                 onChange={(val) => setEnvData({ ...envData, divHoitosopimus: val })}
@@ -825,7 +825,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           
           <tr>
             <td>Biodiversiteettikartoitus tehty</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.divBiodiversiteetti} 
                 onChange={(val) => setEnvData({ ...envData, divBiodiversiteetti: val })}
@@ -840,7 +840,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           
           <tr>
             <td>Suomenkarjan eläinten kasvattaminen</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.divSuomenkarja}
                 onChange={(val) => setEnvData({ ...envData, divSuomenkarja: val })}
@@ -864,7 +864,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
         
             <td>Soija ja GM -vapaus ruokinnassa</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.divSoijaGM}
                 onChange={(val) => setEnvData({ ...envData, divSoijaGM: val })}
@@ -878,7 +878,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
        
             <td>Palmuöljyttömyys ruokinnassa</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                  value={envData.divPalmu}
                 onChange={(val) => setEnvData({ ...envData, divPalmu: val })}
@@ -1398,7 +1398,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
           
             <td>Lanta käsitellään biokaasulaitoksessa</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.energyBiokaasu}
                 onChange={(val) => setEnvData({ ...envData, energyBiokaasu: val })}
@@ -1412,7 +1412,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
       
             <td>Maidon esijäähdytys</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.energyEsijahdytys}
                 onChange={(val) => setEnvData({ ...envData, energyEsijahdytys: val })}
@@ -1426,7 +1426,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
           
             <td>Lämmön talteenotto</td>
-            <td>
+            <td style={{ textAlign: 'center' }}>
             <YesNoToggle 
                 value={envData.energyLampotalteenotto}
                 onChange={(val) => setEnvData({ ...envData, energyLampotalteenotto: val })}

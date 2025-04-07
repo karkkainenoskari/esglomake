@@ -189,7 +189,7 @@ return {
             {/* Yrityksen arvot */}
             <tr>
               <td>Yrityksen arvot on määritetty</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.yrityksenArvot}
                   onChange={(val) =>
@@ -222,7 +222,7 @@ return {
             {/* Visio */}
             <tr>
               <td>Visio on määritetty</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.visioMaare}
                   onChange={(val) =>
@@ -254,7 +254,7 @@ return {
             {/* Strategia */}
             <tr>
               <td>Strategia on laadittu ja sitä päivitetään</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.strategiaLaadittu}
                   onChange={(val) =>
@@ -289,7 +289,7 @@ return {
                 Liiketoimintasuunnitelma ja/tai investointisuunnitelma on tehty
         
               </td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.liiketoimintasuunnitelma}
                   onChange={(val) =>
@@ -321,7 +321,7 @@ return {
             {/* Organisaatio, omistajat ja vastuualueet */}
             <tr>
               <td>Organisaatio, omistajat ja vastuualueet on kuvattu</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.organisaatioKuvattu}
                   onChange={(val) =>
@@ -488,7 +488,7 @@ return {
           <tbody>
             <tr>
               <td>Toiminnan tavoitteet ja mittarit on määritetty</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.toiminnanMittarit}
                   onChange={(val) =>
@@ -553,7 +553,7 @@ return {
                 Koko tilan tulos- tai kannattavuuslaskelman teko säännöllisesti
                 
               </td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.kannattavuusLaskenta}
                   onChange={(val) =>
@@ -621,7 +621,7 @@ return {
                 Tuotantokustannuslaskelman teko säännöllisesti (esim.
                 rehu, maito)
               </td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.tuotantokustannusLaskenta}
                   onChange={(val) =>
@@ -779,7 +779,7 @@ return {
           <tbody>
             <tr> 
               <td>Varautumissuunnitelma poikkeustilanteisiin tehty</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.riskVarautumissuunnitelma}
                   onChange={(val) =>
@@ -810,7 +810,7 @@ return {
 
             <tr>
               <td>Pelastautumissuunnitelma tehty</td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.riskPelastautumissuunnitelma}
                   onChange={(val) =>
@@ -844,7 +844,7 @@ return {
                 Riskikartoituksia tehty (esim. tapaturmat, eläintaudit,
                 sähkö- ja paloturvallisuus, tietoturva)
               </td>
-              <td>
+              <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                   value={localFinanceData.riskRiskikartoitukset}
                   onChange={(val) =>
