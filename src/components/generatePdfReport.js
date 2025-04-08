@@ -198,11 +198,18 @@ const generatePdfReport = (initialData,environmentData) => {
       environmentData.envRuokinnanOmavaraisuusasteTavoitteet || ""
     ],
     [
-      "Muut mahdolliset toimenpiteet",
+      "Kuvaus muista mahdollisista toimenpiteistä",
       environmentData.envMuutToimenpiteet || "",
       environmentData.envMuutToimenpiteetLisatiedot || "",
       environmentData.envMuutToimenpiteetTavoitteet || ""
+    ],
+    [
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      environmentData.envToimenpiteetVuodet || "",
+      environmentData.envToimenpiteetTavoiteTeksti || "",
+      ""
     ]
+   
   ];
 
   const filteredRows21 = rows21.filter(row => {
@@ -214,7 +221,7 @@ const generatePdfReport = (initialData,environmentData) => {
 
   autoTable(doc, {
     startY,
-    head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos","Kuvaus"]],
+    head: [["Monimuotoisuus", "Uusin tulos","Kuvaus"]],
     body: filteredRows21,
     theme: 'striped',
     headStyles: { fillColor: '#4CAF50' },
@@ -228,66 +235,56 @@ const generatePdfReport = (initialData,environmentData) => {
   const rows22 = [
     [
       "Maatalousluonnon ja maiseman -hoitosopimus",
-      environmentData.divHoitosopimus || "",
-      environmentData.divHoitosopimusLisatiedot || "",
-      environmentData.divHoitosopimusTavoitteet || ""
+      environmentData.divHoitosopimus || "", 
+      environmentData.divHoitosopimusLisatiedot || ""
     ],
     [
       "Monimuotoisuutta edistävä pinta-ala yhteensä, ha",
       environmentData.divPintaAla || "",
-      environmentData.divPintaAlaLisatiedot || "",
-      environmentData.divPintaAlaTavoitteet || ""
+      environmentData.divPintaAlaLisatiedot || ""
     ],
     [
       "Kosteikot, ha",
       environmentData.divKosteikot || "",
-      environmentData.divKosteikotLisatiedot || "",
-      environmentData.divKosteikotTavoitteet || ""
+      environmentData.divKosteikotLisatiedot || ""
     ],
     [
       "Biodiversiteettikartoitus tehty",
       environmentData.divBiodiversiteetti || "",
-      environmentData.divBiodiversiteettiLisatiedot || "",
-      environmentData.divBiodiversiteettiTavoitteet || ""
+      environmentData.divBiodiversiteettiLisatiedot || ""
     ],
     [
       "Suomenkarjan eläinten kasvattaminen",
       environmentData.divSuomenkarja || "",
-      environmentData.divSuomenkarjaLisatiedot || "",
-      environmentData.divSuomenkarjaTavoitteet || ""
+      environmentData.divSuomenkarjaLisatiedot || ""
     ],
     [
       "Risteytyseläinten osuus lypsylehmistä, %",
       environmentData.divRisteytys || "",
-      environmentData.divRisteytysLisatiedot || "",
-      environmentData.divRisteytysTavoitteet || ""
+      environmentData.divRisteytysLisatiedot || ""
     ],
     [
       "Soija ja GM -vapaus ruokinnassa",
       environmentData.divSoijaGM || "",
-      environmentData.divSoijaGMLisatiedot || "",
-      environmentData.divSoijaGMTavoitteet || ""
+      environmentData.divSoijaGMLisatiedot || ""
     ],
     [
       "Palmuöljyttömyys ruokinnassa",
       environmentData.divPalmu || "",
-      environmentData.divPalmuLisatiedot || "",
-      environmentData.divPalmuTavoitteet || ""
+      environmentData.divPalmuLisatiedot || ""
     ],
     [
-      "Erityiset toimenpiteet",
+      "Kuvaus muista mahdollisista toimenpiteistä",
       environmentData.divErityisetToimenpiteet || "",
-      environmentData.divErityisetToimenpiteetLisatiedot || "",
-      environmentData.divErityisetToimenpiteetTavoitteet || ""
+      "" // Tässä rivissä ei välttämättä ole erillistä lisätietokenttää
     ],
-   
     [
-      "Erityiset toimenpiteet",
-      environmentData.divErityisetToimenpiteet2 || "",
-      environmentData.divErityisetToimenpiteet2Lisatiedot || "",
-      environmentData.divErityisetToimenpiteet2Tavoitteet || ""
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      environmentData.divErityisetVuodet || "",
+      environmentData.divErityisetTavoiteTeksti || ""
     ]
   ];
+   
   
   const filteredRows22 = rows22.filter(row => {
     const [, result, details, targets] = row;
@@ -296,7 +293,7 @@ const generatePdfReport = (initialData,environmentData) => {
   
   autoTable(doc, {
     startY,
-    head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
+    head: [["Peltoviljely", "Uusin tulos", "Kuvaus"]],
     body: filteredRows22,
     theme: 'striped',
     margin: { left: 14, right: 14 },
@@ -381,7 +378,7 @@ const filteredRows23Pelto = rows23Pelto.filter(row => {
 
 autoTable(doc, {
   startY,
-  head: [["Peltoviljely", "Uusin tulos", "Kuvaus"]],
+  head: [["Lannan ksäittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
   body: filteredRows23Pelto,
   theme: 'striped',
   margin: { left: 14, right: 14 },
@@ -456,7 +453,7 @@ const filteredRows23 = rows23.filter(row => {
 
 autoTable(doc, {
   startY,
-  head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
+  head: [["Energian käyttö", "Uusin tulos", "Kuvaus"]],
   body: filteredRows23,
   theme: 'striped',
   margin: { left: 14, right: 14 },
