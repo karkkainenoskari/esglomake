@@ -221,7 +221,7 @@ const generatePdfReport = (initialData,environmentData) => {
 
   autoTable(doc, {
     startY,
-    head: [["Monimuotoisuus", "Uusin tulos","Kuvaus"]],
+    head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos","Kuvaus"]],
     body: filteredRows21,
     theme: 'striped',
     headStyles: { fillColor: '#4CAF50' },
@@ -293,7 +293,7 @@ const generatePdfReport = (initialData,environmentData) => {
   
   autoTable(doc, {
     startY,
-    head: [["Peltoviljely", "Uusin tulos", "Kuvaus"]],
+    head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
     body: filteredRows22,
     theme: 'striped',
     margin: { left: 14, right: 14 },
@@ -378,7 +378,7 @@ const filteredRows23Pelto = rows23Pelto.filter(row => {
 
 autoTable(doc, {
   startY,
-  head: [["Lannan ksäittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
+  head: [["Pelto viljely", "Uusin tulos", "Kuvaus"]],
   body: filteredRows23Pelto,
   theme: 'striped',
   margin: { left: 14, right: 14 },
@@ -453,7 +453,7 @@ const filteredRows23 = rows23.filter(row => {
 
 autoTable(doc, {
   startY,
-  head: [["Energian käyttö", "Uusin tulos", "Kuvaus"]],
+  head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
   body: filteredRows23,
   theme: 'striped',
   margin: { left: 14, right: 14 },
