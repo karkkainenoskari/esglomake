@@ -365,9 +365,9 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
                 style={{ flex: 1 }}
               >
                 <option value="">Valitse</option>
-                <option value="yhtymä">Yhtymä</option>
-                <option value="yhtiö">Yhtiö</option>
-                <option value="toiminimi">Toiminimi</option>
+                <option value="Yhtymä">Yhtymä</option>
+                <option value="Yhtiö">Yhtiö</option>
+                <option value="Toiminimi">Toiminimi</option>
               </select>
             </div>
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
@@ -409,8 +409,8 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
                 style={{ flex: 1 }}
               >
                 <option value="">Valitse</option>
-                <option value="luomu">Luomu</option>
-                <option value="tavanomainen">Tavanomainen</option>
+                <option value="Luomu">Luomu</option>
+                <option value="Tavanomainen">Tavanomainen</option>
               </select>
             </div>
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
@@ -422,8 +422,8 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
                 style={{ flex: 1 }}
               >
                 <option value="">Valitse</option>
-                <option value="pihatto">Pihatto</option>
-                <option value="parsinavetta">Parsinavetta</option>
+                <option value="Pihatto">Pihatto</option>
+                <option value="Parsinavetta">Parsinavetta</option>
               </select>
             </div>
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
@@ -435,9 +435,9 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
                 style={{ flex: 1 }}
               >
                 <option value="">Valitse</option>
-                <option value="automaattilypsy">Automaattilypsy</option>
-                <option value="lypsyasema">Lypsyasema</option>
-                <option value="parsilypsy">Parsilypsy</option>
+                <option value="Automaattilypsy">Automaattilypsy</option>
+                <option value="Lypsyasema">Lypsyasema</option>
+                <option value="Parsilypsy">Parsilypsy</option>
               </select>
             </div>
 

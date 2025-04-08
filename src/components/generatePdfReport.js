@@ -27,18 +27,16 @@ const generatePdfReport = (initialData,environmentData) => {
   doc.text("ESG Vastuullisuusraportti", 14, startY);
   startY += 10;
 
-  doc.setFontSize(12);
-  doc.text("Yrityksen perustiedot", 14, startY);
-  startY += 6;
+  
 
   // Kahden sarakkeen taulukko: [Kenttä, Arvo]
   const initialRows = [
     ["Yrityksen nimi:", initialData.yrityksenNimi || ""],
     ["Yrittäjien nimet:", initialData.yrittajienNimet || ""],
     ["Yhtiömuoto:", initialData.yhtiomuoto || ""],
-    ["Tilan kokonaistyövoima:", initialData.tilanKokonaistyovoima || ""],
-    ["Lypsylehmien määrä:", initialData.lypsylehmienMaara || ""],
-    ["Peltoala:", initialData.peltoala || ""],
+    ["Tilan kokonaistyövoima (hlö):", initialData.tilanKokonaistyovoima || ""],
+    ["Lypsylehmien määrä (kpl):", initialData.lypsylehmienMaara || ""],
+    ["Peltoala (ha):", initialData.peltoala || ""],
     ["Luomu vai tavanomainen:", initialData.tuotomanTavanomainen || ""],
     ["Navettatyyppi:", initialData.navettatyyppi || ""],
     ["Lypsyjärjestelmä:", initialData.lypsyjarjestelma || ""],
@@ -68,31 +66,31 @@ const generatePdfReport = (initialData,environmentData) => {
 
   const rows21 = [
     [
-      "Maidon hiilijalanjälki, Co2/kg maitoa?",
+      "Maidon hiilijalanjälki, Co2/kg maitoa",
       environmentData.envMaidonHiilijalanjalki || "",
       environmentData.envMaidonHiilijalanjalkiLisatiedot || "",
       environmentData.envMaidonHiilijalanjalkiTavoitteet || ""
     ],
     [
-      "Scope 1 päästö, tCO2e, %?",
+      "Scope 1 päästö, tCO2e, %",
       environmentData.envScope1 || "",
       environmentData.envScope1Lisatiedot || "",
       environmentData.envScope1Tavoitteet || ""
     ],
     [
-      "Scope 2 päästö, tCO2e, %?",
+      "Scope 2 päästö, tCO2e, %",
       environmentData.envScope2 || "",
       environmentData.envScope2Lisatiedot || "",
       environmentData.envScope2Tavoitteet || ""
     ],
     [
-      "Scope 3 päästö, tCO2e, %?",
+      "Scope 3 päästö, tCO2e, %",
       environmentData.envScope3 || "",
       environmentData.envScope3Lisatiedot || "",
       environmentData.envScope3Tavoitteet || ""
     ],
     [
-      "Hiiliviljelykoulutus suoritettu, kyllä/ei",
+      "Hiiliviljelykoulutus suoritettu",
       environmentData.envHiiliviljelykoulutus || "",
       environmentData.envHiiliviljelykoulutusLisatiedot || "",
       environmentData.envHiiliviljelykoulutusTavoitteet || ""
@@ -104,25 +102,25 @@ const generatePdfReport = (initialData,environmentData) => {
       environmentData.envHiiliviljelytoimenpiteetTavoitteet || ""
     ],
     [
-      "Keskilehmäluku, kpl?",
+      "Keskilehmäluku, kpl",
       environmentData.envKeskilehmaluku || "",
       environmentData.envKeskilehmalukuLisatiedot || "",
       environmentData.envKeskilehmalukuTavoitteet || ""
     ],
     [
-      "Poikimaväli, vrk ?",
+      "Poikimaväli, vrk ",
       environmentData.envPoikimavali || "",
       environmentData.envPoikimavaliLisatiedot || "",
       environmentData.envPoikimavaliTavoitteet || ""
     ],
     [
-      "Hiehopoikimaikä, kk ?",
+      "Hiehopoikimaikä, kk ",
       environmentData.envHiehopoikimaika || "",
       environmentData.envHiehopoikimaikaLisatiedot || "",
       environmentData.envHiehopoikimaikaTavoitteet || ""
     ],
     [
-      "Keskituotos, EKM kg/lehmä ?",
+      "Keskituotos, EKM kg/lehmä ",
       environmentData.envKeskituotos || "",
       environmentData.envKeskituotosLisatiedot || "",
       environmentData.envKeskituotosTavoitteet || ""
@@ -140,43 +138,43 @@ const generatePdfReport = (initialData,environmentData) => {
       environmentData.envTuotosValkuainenTavoitteet || ""
     ],
     [
-      "Maidon ureapitoisuus, mg/100 ml?",
+      "Maidon ureapitoisuus, mg/100 ml",
       environmentData.envMaidonUrea || "",
       environmentData.envMaidonUreaLisatiedot || "",
       environmentData.envMaidonUreaTavoitteet || ""
     ],
     [
-      "Meijerimaidon osuus, % ?",
+      "Meijerimaidon osuus, %",
       environmentData.envMeijerimaidonOsuus || "",
       environmentData.envMeijerimaidonOsuusLisatiedot || "",
       environmentData.envMeijerimaidonOsuusTavoitteet || ""
     ],
     [
-      "Käytössä vähäpäästöinen kylmäaine tilasäililössä, kyllä/ei?",
+      "Käytössä vähäpäästöinen kylmäaine tilasäililössä",
       environmentData.envKaytossaVahapaastoinenKylmainetilasaililossa || "",
       environmentData.envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot || "",
       environmentData.envKaytossaVahapaastoinenKylmainetilasaililossaTavoitteet || ""
     ],
     [
-      "Karkearehun osuus lypsylehmien ruokinnassa, % ?",
+      "Karkearehun osuus lypsylehmien ruokinnassa",
       environmentData.envKarkearehunOsuus || "",
       environmentData.envKarkearehunOsuusLisatiedot || "",
       environmentData.envKarkearehunOsuusTavoitteet || ""
     ],
     [
-      "Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä, kyllä/ei ?",
+      "Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä",
       environmentData.envPaastojaVahentavatLisaravinteet || "",
       environmentData.envPaastojaVahentavatLisaravinteetLisatiedot || "",
       environmentData.envPaastojaVahentavatLisaravinteetTavoitteet || ""
     ],
     [
-      "Ruokinnan seurantalaskelmia tehty, kyllä/ei",
+      "Ruokinnan seurantalaskelmia tehty",
       environmentData.envRuokinnanSeurantalaskelmiaTehty || "",
       environmentData.envRuokinnanSeurantalaskelmiaTehtyLisatiedot || "",
       environmentData.envRuokinnanSeurantalaskelmiaTehtyTavoitteet || ""
     ],
     [
-      "Kuiva-ainekiloa rehua/EKM kg (kaikki rehut yhteensä)",
+      "Kuiva-ainekiloa rehua/EKM kg",
       environmentData.envKuivaAinekiloa || "",
       environmentData.envKuivaAinekiloaLisatiedot || "",
       environmentData.envKuivaAinekiloaTavoitteet || ""
@@ -188,13 +186,13 @@ const generatePdfReport = (initialData,environmentData) => {
       environmentData.envTypenHyvaksykayttoTavoitteet || ""
     ],
     [
-      "Rehun säästöindeksin huomioiminen jalostuksessa, kyllä/ei",
+      "Rehun säästöindeksin huomioiminen jalostuksessa",
       environmentData.envRehunSaastoindeksi || "",
       environmentData.envRehunSaastoindeksiLisatiedot || "",
       environmentData.envRehunSaastoindeksiTavoitteet || ""
     ],
     [
-      "Ruokinnan omavaraisuusaste % (kaikki rehut yhteensä)",
+      "Ruokinnan omavaraisuusaste %",
       environmentData.envRuokinnanOmavaraisuusaste || "",
       environmentData.envRuokinnanOmavaraisuusasteLisatiedot || "",
       environmentData.envRuokinnanOmavaraisuusasteTavoitteet || ""
@@ -216,9 +214,10 @@ const generatePdfReport = (initialData,environmentData) => {
 
   autoTable(doc, {
     startY,
-    head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos", "Lisätiedot", "Tavoitteet ja aikataulut"]],
+    head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos","Kuvaus"]],
     body: filteredRows21,
     theme: 'striped',
+    headStyles: { fillColor: '#4CAF50' },
     margin: { left: 14, right: 14 },
     styles: { fontSize: 10 }
   });
@@ -228,7 +227,7 @@ const generatePdfReport = (initialData,environmentData) => {
   
   const rows22 = [
     [
-      "Maatalousluonnon ja maiseman -hoitosopimus, kyllä/ei",
+      "Maatalousluonnon ja maiseman -hoitosopimus",
       environmentData.divHoitosopimus || "",
       environmentData.divHoitosopimusLisatiedot || "",
       environmentData.divHoitosopimusTavoitteet || ""
@@ -246,13 +245,13 @@ const generatePdfReport = (initialData,environmentData) => {
       environmentData.divKosteikotTavoitteet || ""
     ],
     [
-      "Biodiversiteettikartoitus tehty, kyllä/ei",
+      "Biodiversiteettikartoitus tehty",
       environmentData.divBiodiversiteetti || "",
       environmentData.divBiodiversiteettiLisatiedot || "",
       environmentData.divBiodiversiteettiTavoitteet || ""
     ],
     [
-      "Suomenkarjan eläinten kasvattaminen, kyllä/ei",
+      "Suomenkarjan eläinten kasvattaminen",
       environmentData.divSuomenkarja || "",
       environmentData.divSuomenkarjaLisatiedot || "",
       environmentData.divSuomenkarjaTavoitteet || ""
@@ -264,13 +263,13 @@ const generatePdfReport = (initialData,environmentData) => {
       environmentData.divRisteytysTavoitteet || ""
     ],
     [
-      "Soija ja GM -vapaus ruokinnassa, kyllä/ei",
+      "Soija ja GM -vapaus ruokinnassa",
       environmentData.divSoijaGM || "",
       environmentData.divSoijaGMLisatiedot || "",
       environmentData.divSoijaGMTavoitteet || ""
     ],
     [
-      "Palmuöljyttömyys ruokinnassa, kyllä/ei",
+      "Palmuöljyttömyys ruokinnassa",
       environmentData.divPalmu || "",
       environmentData.divPalmuLisatiedot || "",
       environmentData.divPalmuTavoitteet || ""
@@ -283,7 +282,7 @@ const generatePdfReport = (initialData,environmentData) => {
     ],
    
     [
-      "Erityiset toimenpiteet (lisäkenttä)",
+      "Erityiset toimenpiteet",
       environmentData.divErityisetToimenpiteet2 || "",
       environmentData.divErityisetToimenpiteet2Lisatiedot || "",
       environmentData.divErityisetToimenpiteet2Tavoitteet || ""
@@ -297,10 +296,11 @@ const generatePdfReport = (initialData,environmentData) => {
   
   autoTable(doc, {
     startY,
-    head: [["Monimuotoisuus", "Uusin tulos", "Lisätiedot", "Tavoitteet ja aikataulut"]],
+    head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
     body: filteredRows22,
     theme: 'striped',
     margin: { left: 14, right: 14 },
+    headStyles: { fillColor: '#4CAF50' },
     styles: { fontSize: 10 }
   });
   startY = doc.lastAutoTable.finalY + 10;
@@ -381,10 +381,11 @@ const filteredRows23Pelto = rows23Pelto.filter(row => {
 
 autoTable(doc, {
   startY,
-  head: [["Peltoviljely", "Uusin tulos", "Lisätiedot", "Tavoitteet ja aikataulut"]],
+  head: [["Peltoviljely", "Uusin tulos", "Kuvaus"]],
   body: filteredRows23Pelto,
   theme: 'striped',
   margin: { left: 14, right: 14 },
+  headStyles: { fillColor: '#4CAF50' },
   styles: { fontSize: 10 }
 });
 startY = doc.lastAutoTable.finalY + 10;
@@ -398,19 +399,19 @@ const rows23 = [
     ""  // Tavoitteet
   ],
   [
-    "Lietelannan osuus, % ?",
+    "Lietelannan osuus, %",
     environmentData.lantaLietelannanOsuus || "",
     "",
     ""
   ],
   [
-    "Lannan levitysmenetelmä (kerro lisätiedoissa)",
+    "Lannan levitysmenetelmä",
     environmentData.lantaLevitysmenetelma || "",
     "",
     ""
   ],
   [
-    "Pääasiallinen kuivikemateriaali (kerro lisätiedoissa)",
+    "Pääasiallinen kuivikemateriaali",
     environmentData.lantaKuivikemateriaali || "",
     "",
     ""
@@ -455,10 +456,11 @@ const filteredRows23 = rows23.filter(row => {
 
 autoTable(doc, {
   startY,
-  head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Lisätiedot", "Tavoitteet ja aikataulut"]],
+  head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
   body: filteredRows23,
   theme: 'striped',
   margin: { left: 14, right: 14 },
+  headStyles: { fillColor: '#4CAF50' },
   styles: { fontSize: 10 }
 });
 startY = doc.lastAutoTable.finalY + 10;
@@ -466,7 +468,7 @@ startY = doc.lastAutoTable.finalY + 10;
   
   const rows24 = [
     [
-      "Sähkön käyttömäärä, kWh/v ?",
+      "Sähkön käyttömäärä, kWh/v",
       environmentData.energySahkonKayttomaara || "",
       environmentData.energySahkonKayttomaaraLisatiedot || "",
       environmentData.energySahkonKayttomaaraTavoitteet || ""
@@ -478,13 +480,13 @@ startY = doc.lastAutoTable.finalY + 10;
       environmentData.energySahkonKayttomaaraSuhteessaTavoitteet || ""
     ],
     [
-      "Oman sähkön tuotanto, kWh/v (esim. aurinko- tai tuulivoimala)",
+      "Oman sähkön tuotanto, kWh/v",
       environmentData.energyOmaSahkotuotanto || "",
       environmentData.energyOmaSahkotuotantoLisatiedot || "",
       environmentData.energyOmaSahkotuotantoTavoitteet || ""
     ],
     [
-      "Polttoaineiden kokonaiskäyttömäärä, l/v ?",
+      "Polttoaineiden kokonaiskäyttömäärä, l/v",
       environmentData.energyPolttoaineenKaytto || "",
       environmentData.energyPolttoaineenKayttoLisatiedot || "",
       environmentData.energyPolttoaineenKayttoTavoitteet || ""
@@ -496,19 +498,19 @@ startY = doc.lastAutoTable.finalY + 10;
       environmentData.energyPolttoaineenKayttoSuhteessaTavoitteet || ""
     ],
     [
-      "Lanta käsitellään biokaasulaitoksessa, kyllä/ei",
+      "Lanta käsitellään biokaasulaitoksessa",
       environmentData.energyBiokaasu || "",
       environmentData.energyBiokaasuLisatiedot || "",
       environmentData.energyBiokaasuTavoitteet || ""
     ],
     [
-      "Maidon esijäähdytys, kyllä/ei",
+      "Maidon esijäähdytys",
       environmentData.energyEsijahdytys || "",
       environmentData.energyEsijahdytysLisatiedot || "",
       environmentData.energyEsijahdytysTavoitteet || ""
     ],
     [
-      "Lämmön talteenotto, kyllä/ei",
+      "Lämmön talteenotto",
       environmentData.energyLampotalteenotto || "",
       environmentData.energyLampotalteenottoLisatiedot || "",
       environmentData.energyLampotalteenottoTavoitteet || ""
@@ -528,16 +530,27 @@ startY = doc.lastAutoTable.finalY + 10;
   
   autoTable(doc, {
     startY,
-    head: [["Energian käyttö", "Uusin tulos", "Lisätiedot", "Tavoitteet ja aikataulut"]],
+    head: [["Energian käyttö", "Uusin tulos", "Kuvaus"]],
     body: filteredRows24,
     theme: 'striped',
     margin: { left: 14, right: 14 },
+    headStyles: { fillColor: '#4CAF50' },
     styles: { fontSize: 10 }
   });
   startY = doc.lastAutoTable.finalY + 10;
   
 
-  doc.save("ESG_raportti_ymparisto.pdf");
+  const now = new Date();
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
+  
+  // Muotoile päivämäärä muodossa MM-DD-YYYY
+  const dateStr = `${day}-${month}-${year}`;
+  
+  doc.save(`ESG_raportti_${dateStr}.pdf`);
+  
+
 };
 
 export default generatePdfReport;
