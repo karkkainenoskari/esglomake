@@ -17,12 +17,12 @@ const YesNoToggle = ({ value, onChange, themeColor = '#007acc' }) => {
         style={{
           flex: 1,
           padding: '10px',
-          backgroundColor: value === 'kylla' ? themeColor : '#fff',
-          color: value === 'kylla' ? '#fff' : themeColor,
+          backgroundColor: value === 'Kyllä' ? themeColor : '#fff',
+          color: value === 'Kyllä' ? '#fff' : themeColor,
           border: 'none',
           cursor: 'pointer'
         }}
-        onClick={() => onChange('kylla')}
+        onClick={() => onChange('Kyllä')}
       >
         Kyllä
       </button>
@@ -31,12 +31,12 @@ const YesNoToggle = ({ value, onChange, themeColor = '#007acc' }) => {
         style={{
           flex: 1,
           padding: '10px',
-          backgroundColor: value === 'ei' ? themeColor : '#fff',
-          color: value === 'ei' ? '#fff' : themeColor,
+          backgroundColor: value === 'Ei' ? themeColor : '#fff',
+          color: value === 'Ei' ? '#fff' : themeColor,
           border: 'none',
           cursor: 'pointer'
         }}
-        onClick={() => onChange('ei')}
+        onClick={() => onChange('Ei')}
       >
         Ei
       </button>

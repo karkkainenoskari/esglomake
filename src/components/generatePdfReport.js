@@ -62,6 +62,14 @@ const generatePdfReport = (initialData,environmentData) => {
   doc.text("Ympäristö", 14, startY);
   startY += 10;
 
+  const vuosiTextMap = {
+    "1": "1-vuosi",
+    "2": "2-vuotta",
+    "3": "3-vuotta"
+  };
+  // Käytetään muunnettua arvoa, jos se löytyy, muuten säilytetään alkuperäinen arvo.
+  const convertedVuodet = vuosiTextMap[environmentData.envToimenpiteetVuodet] || environmentData.envToimenpiteetVuodet || "";
+
 
 
   const rows21 = [
@@ -69,143 +77,143 @@ const generatePdfReport = (initialData,environmentData) => {
       "Maidon hiilijalanjälki, Co2/kg maitoa",
       environmentData.envMaidonHiilijalanjalki || "",
       environmentData.envMaidonHiilijalanjalkiLisatiedot || "",
-      environmentData.envMaidonHiilijalanjalkiTavoitteet || ""
+     
     ],
     [
       "Scope 1 päästö, tCO2e, %",
       environmentData.envScope1 || "",
       environmentData.envScope1Lisatiedot || "",
-      environmentData.envScope1Tavoitteet || ""
+  
     ],
     [
       "Scope 2 päästö, tCO2e, %",
       environmentData.envScope2 || "",
       environmentData.envScope2Lisatiedot || "",
-      environmentData.envScope2Tavoitteet || ""
+
     ],
     [
       "Scope 3 päästö, tCO2e, %",
       environmentData.envScope3 || "",
       environmentData.envScope3Lisatiedot || "",
-      environmentData.envScope3Tavoitteet || ""
+
     ],
     [
       "Hiiliviljelykoulutus suoritettu",
       environmentData.envHiiliviljelykoulutus || "",
       environmentData.envHiiliviljelykoulutusLisatiedot || "",
-      environmentData.envHiiliviljelykoulutusTavoitteet || ""
+
     ],
     [
       "Hiiliviljelytoimenpiteet rehuntuotannossa, ha",
       environmentData.envHiiliviljelytoimenpiteet || "",
       environmentData.envHiiliviljelytoimenpiteetLisatiedot || "",
-      environmentData.envHiiliviljelytoimenpiteetTavoitteet || ""
+
     ],
     [
       "Keskilehmäluku, kpl",
       environmentData.envKeskilehmaluku || "",
       environmentData.envKeskilehmalukuLisatiedot || "",
-      environmentData.envKeskilehmalukuTavoitteet || ""
+  
     ],
     [
       "Poikimaväli, vrk ",
       environmentData.envPoikimavali || "",
       environmentData.envPoikimavaliLisatiedot || "",
-      environmentData.envPoikimavaliTavoitteet || ""
+    
     ],
     [
       "Hiehopoikimaikä, kk ",
       environmentData.envHiehopoikimaika || "",
       environmentData.envHiehopoikimaikaLisatiedot || "",
-      environmentData.envHiehopoikimaikaTavoitteet || ""
+
     ],
     [
       "Keskituotos, EKM kg/lehmä ",
       environmentData.envKeskituotos || "",
       environmentData.envKeskituotosLisatiedot || "",
-      environmentData.envKeskituotosTavoitteet || ""
+ 
     ],
     [
       "Tuotosseurannan rasva%, vuoden keskiarvo",
       environmentData.envTuotosRasva || "",
       environmentData.envTuotosRasvaLisatiedot || "",
-      environmentData.envTuotosRasvaTavoitteet || ""
+    
     ],
     [
       "Tuotosseurannan valkuais%, vuoden keskiarvo",
       environmentData.envTuotosValkuainen || "",
       environmentData.envTuotosValkuainenLisatiedot || "",
-      environmentData.envTuotosValkuainenTavoitteet || ""
+   
     ],
     [
       "Maidon ureapitoisuus, mg/100 ml",
       environmentData.envMaidonUrea || "",
       environmentData.envMaidonUreaLisatiedot || "",
-      environmentData.envMaidonUreaTavoitteet || ""
+  
     ],
     [
       "Meijerimaidon osuus, %",
       environmentData.envMeijerimaidonOsuus || "",
       environmentData.envMeijerimaidonOsuusLisatiedot || "",
-      environmentData.envMeijerimaidonOsuusTavoitteet || ""
+  
     ],
     [
       "Käytössä vähäpäästöinen kylmäaine tilasäililössä",
       environmentData.envKaytossaVahapaastoinenKylmainetilasaililossa || "",
       environmentData.envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot || "",
-      environmentData.envKaytossaVahapaastoinenKylmainetilasaililossaTavoitteet || ""
+      
     ],
     [
       "Karkearehun osuus lypsylehmien ruokinnassa",
       environmentData.envKarkearehunOsuus || "",
       environmentData.envKarkearehunOsuusLisatiedot || "",
-      environmentData.envKarkearehunOsuusTavoitteet || ""
+  
     ],
     [
       "Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä",
       environmentData.envPaastojaVahentavatLisaravinteet || "",
       environmentData.envPaastojaVahentavatLisaravinteetLisatiedot || "",
-      environmentData.envPaastojaVahentavatLisaravinteetTavoitteet || ""
+   
     ],
     [
       "Ruokinnan seurantalaskelmia tehty",
       environmentData.envRuokinnanSeurantalaskelmiaTehty || "",
       environmentData.envRuokinnanSeurantalaskelmiaTehtyLisatiedot || "",
-      environmentData.envRuokinnanSeurantalaskelmiaTehtyTavoitteet || ""
+    
     ],
     [
       "Kuiva-ainekiloa rehua/EKM kg",
       environmentData.envKuivaAinekiloa || "",
       environmentData.envKuivaAinekiloaLisatiedot || "",
-      environmentData.envKuivaAinekiloaTavoitteet || ""
+   
     ],
     [
       "Typen hyväksikäyttö % ruokinnassa",
       environmentData.envTypenHyvaksykaytto || "",
       environmentData.envTypenHyvaksykayttoLisatiedot || "",
-      environmentData.envTypenHyvaksykayttoTavoitteet || ""
+   
     ],
     [
       "Rehun säästöindeksin huomioiminen jalostuksessa",
       environmentData.envRehunSaastoindeksi || "",
       environmentData.envRehunSaastoindeksiLisatiedot || "",
-      environmentData.envRehunSaastoindeksiTavoitteet || ""
+
     ],
     [
       "Ruokinnan omavaraisuusaste %",
       environmentData.envRuokinnanOmavaraisuusaste || "",
       environmentData.envRuokinnanOmavaraisuusasteLisatiedot || "",
-      environmentData.envRuokinnanOmavaraisuusasteTavoitteet || ""
+
     ],
     [
       "Kuvaus muista mahdollisista toimenpiteistä",
       environmentData.envMuutToimenpiteet || "",
       environmentData.envMuutToimenpiteetLisatiedot || "",
-      environmentData.envMuutToimenpiteetTavoitteet || ""
+
     ],
     [
       "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-      environmentData.envToimenpiteetVuodet || "",
+      convertedVuodet,
       environmentData.envToimenpiteetTavoiteTeksti || "",
       ""
     ]
@@ -218,19 +226,19 @@ const generatePdfReport = (initialData,environmentData) => {
     return (result.trim() !== "" || details.trim() !== "" || targets.trim() !== "");
   });
   
-
   autoTable(doc, {
     startY,
-    head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos","Kuvaus"]],
+    head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos", "Kuvaus"]],
     body: filteredRows21,
     theme: 'striped',
     headStyles: { fillColor: '#4CAF50' },
     margin: { left: 14, right: 14 },
-    styles: { fontSize: 10 }
+    styles: { fontSize: 10 },
+    showHead: 'firstPage' // Näytetään header vain ensimmäisellä sivulla
   });
   startY = doc.lastAutoTable.finalY + 10;
-  
 
+  const convertedDivVuodet = vuosiTextMap[environmentData.divErityisetVuodet] || environmentData.divErityisetVuodet || "";
   
   const rows22 = [
     [
@@ -280,7 +288,7 @@ const generatePdfReport = (initialData,environmentData) => {
     ],
     [
       "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-      environmentData.divErityisetVuodet || "",
+      convertedDivVuodet,
       environmentData.divErityisetTavoiteTeksti || ""
     ]
   ];
@@ -298,150 +306,152 @@ const generatePdfReport = (initialData,environmentData) => {
     theme: 'striped',
     margin: { left: 14, right: 14 },
     headStyles: { fillColor: '#4CAF50' },
-    styles: { fontSize: 10 }
+    styles: { fontSize: 10 },
+    showHead: 'firstPage'
   });
   startY = doc.lastAutoTable.finalY + 10;
+
+  const convertedPeltoviljelyVuodet = vuosiTextMap[environmentData.envPeltoviljelyErityisetToimenpiteetVuodet] ||
+  environmentData.envPeltoviljelyErityisetToimenpiteetVuodet || "";
   
 const rows23Pelto = [
+
   [
     "Viljelykasvien kokonaispinta-ala, ha",
     environmentData.envPeltoviljelyKokonaispintaAla || "",
-    environmentData.envPeltoviljelyKokonaispintaAlaLisatiedot || "",
-    environmentData.envPeltoviljelyKokonaispintaAlaTavoitteet || ""
+    environmentData.envPeltoviljelyKokonaispintaAlaLisatiedot || ""
   ],
   [
     "Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey",
     environmentData.envPeltoviljelySuhdeElainmaara || "",
-    environmentData.envPeltoviljelySuhdeElainmaaraLisatiedot || "",
-    environmentData.envPeltoviljelySuhdeElainmaaraTavoitteet || ""
+    environmentData.envPeltoviljelySuhdeElainmaaraLisatiedot || ""
   ],
   [
     "Turvemaiden osuus, %",
     environmentData.envTurvemaidenOsuus || "",
-    environmentData.envTurvemaidenOsuusLisatiedot || "",
-    environmentData.envTurvemaidenOsuusTavoitteet || ""
+    environmentData.envTurvemaidenOsuusLisatiedot || ""
   ],
   [
     "Säilörehun D-arvo, keskimäärin",
     environmentData.envSaileRehunDArvo || "",
-    environmentData.envSaileRehunDArvoLisatiedot || "",
-    environmentData.envSaileRehunDArvoTavoitteet || ""
+    environmentData.envSaileRehunDArvoLisatiedot || ""
   ],
   [
-    "Nurmisato, kg/ha",
+    "Nurmisato keskimäärin, kg ka/ha",
     environmentData.envNurmisato || "",
-    environmentData.envNurmisatoLisatiedot || "",
-    environmentData.envNurmisatoTavoitteet || ""
+    environmentData.envNurmisatoLisatiedot || ""
   ],
   [
-    "Viljasato, kg/ha",
+    "Viljasato keskimäärin, kg/ha",
     environmentData.envViljasato || "",
-    environmentData.envViljasatoLisatiedot || "",
-    environmentData.envViljasatoTavoitteet || ""
+    environmentData.envViljasatoLisatiedot || ""
   ],
   [
     "Kuvaus rehuntuotannon toimintatavoista/strategiasta",
     environmentData.envRehuntuotantoKuvaus || "",
-    environmentData.envRehuntuotantoKuvausLisatiedot || "",
-    environmentData.envRehuntuotantoKuvausTavoitteet || ""
+    environmentData.envRehuntuotantoKuvausLisatiedot || ""
   ],
   [
     "Keskimääräinen lohkoetäisyys, km",
     environmentData.envLohkoetaisyys || "",
-    environmentData.envLohkoetaisyysLisatiedot || "",
-    environmentData.envLohkoetaisyysTavoitteet || ""
+    environmentData.envLohkoetaisyysLisatiedot || ""
   ],
   [
     "Kuvaus peltoviljelyssä käytössä olevista toimenpiteistä",
     environmentData.envPeltoviljelyToimenpiteet || "",
-    environmentData.envPeltoviljelyToimenpiteetLisatiedot || "",
-    environmentData.envPeltoviljelyToimenpiteetTavoitteet || ""
+    environmentData.envPeltoviljelyToimenpiteetLisatiedot || ""
   ],
   [
-    "Kuvaus peltojen vesitalouden ylläpidosta ja kehittämisestä",
+    "Kuvaus, miten peltojen vesitaloutta ylläpidetään ja kehitetään",
     environmentData.envVesitalousKuvaus || "",
-    environmentData.envVesitalousKuvausLisatiedot || "",
-    environmentData.envVesitalousKuvausTavoitteet || ""
+    environmentData.envVesitalousKuvausLisatiedot || ""
   ],
   [
-    "Erityiset toimenpiteet",
+    "Kuvaus muista mahdollisista toimenpiteistä",
     environmentData.envPeltoviljelyErityisetToimenpiteet || "",
-    environmentData.envPeltoviljelyErityisetToimenpiteetLisatiedot || "",
-    environmentData.envPeltoviljelyErityisetToimenpiteetTavoitteet || ""
+    "" 
+  ],
+  [
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    convertedPeltoviljelyVuodet,
+    environmentData.envPeltoviljelyErityisetToimenpiteetTavoiteTeksti || ""
   ]
 ];
+ 
 
 const filteredRows23Pelto = rows23Pelto.filter(row => {
-  const [label, result, details, targets] = row;
-  return (result.trim() !== "" || details.trim() !== "" || targets.trim() !== "");
+  const [ , col2, col3 ] = row;
+  return (col2.trim() !== "" || col3.trim() !== "");
 });
+if (filteredRows23Pelto.length > 0) {
+  autoTable(doc, {
+    startY,
+    head: [["Peltoviljely", "Uusin tulos", "Kuvaus"]],
+    body: filteredRows23Pelto,
+    theme: 'striped',
+    headStyles: { fillColor: '#4CAF50' },
+    margin: { left: 14, right: 14 },
+    styles: { fontSize: 10 },
+    // Jos haluat, ettei otsikko toistu jokaisella sivulla, lisää:
+    // showHead: 'firstPage'
+  });
+  startY = doc.lastAutoTable.finalY + 10;
+}
 
-autoTable(doc, {
-  startY,
-  head: [["Pelto viljely", "Uusin tulos", "Kuvaus"]],
-  body: filteredRows23Pelto,
-  theme: 'striped',
-  margin: { left: 14, right: 14 },
-  headStyles: { fillColor: '#4CAF50' },
-  styles: { fontSize: 10 }
-});
-startY = doc.lastAutoTable.finalY + 10;
+const convertedLantaVuodet = vuosiTextMap[environmentData.lantaMuutToimenpiteetVuodet] ||
+environmentData.lantaMuutToimenpiteetVuodet || "";
 
 
 const rows23 = [
   [
     "Viimeisin ympäristölupa, pvm",
     environmentData.lantaYmparistolupa || "",
-    "", // Lisätiedot
-    ""  // Tavoitteet
+    environmentData.lantaYmparistolupaLisatiedot || ""
   ],
   [
     "Lietelannan osuus, %",
     environmentData.lantaLietelannanOsuus || "",
-    "",
-    ""
+    environmentData.lantaLietelannanOsuusLisatiedot || ""
   ],
   [
     "Lannan levitysmenetelmä",
     environmentData.lantaLevitysmenetelma || "",
-    "",
-    ""
+    environmentData.lantaLevitysmenetelmaLisatiedot || ""
   ],
   [
     "Pääasiallinen kuivikemateriaali",
     environmentData.lantaKuivikemateriaali || "",
-    "",
-    ""
+    environmentData.lantaKuivikemateriaaliLisatiedot || ""
   ],
   [
     "Kuvaus jätemuovien varastoinnista ja hävittämisestä",
     environmentData.lantaJatemuovit || "",
-    "",
-    ""
+    environmentData.lantaJatemuovitLisatiedot || ""
   ],
   [
     "Kuvaus vaarallisten aineiden ja kemikaalien varastoinnista ja hävittämisestä",
     environmentData.lantaVaarallisetAineet || "",
-    "",
-    ""
+    environmentData.lantaVaarallisetAineetLisatiedot || ""
   ],
   [
     "Kuvaus jäteöljyn varastoinnista ja hävittämisestä",
     environmentData.lantaJateoljy || "",
-    "",
-    ""
+    environmentData.lantaJateoljyLisatiedot || ""
   ],
   [
     "Kuvaus puristenesteiden käsittelytavasta",
     environmentData.lantaPuristeneste || "",
-    "",
+    environmentData.lantaPuristenesteLisatiedot || ""
+  ],
+  [
+    "Kuvaus muista mahdollisista toimenpiteistä",
+    environmentData.lantaMuutToimenpiteet || "",
     ""
   ],
   [
-    "Muut mahdolliset toimenpiteet",
-    environmentData.lantaMuutToimenpiteet || "",
-    "",
-    ""
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    convertedLantaVuodet,
+    environmentData.lantaMuutToimenpiteetTavoiteTeksti || ""
   ]
 ];
 
@@ -458,9 +468,13 @@ autoTable(doc, {
   theme: 'striped',
   margin: { left: 14, right: 14 },
   headStyles: { fillColor: '#4CAF50' },
-  styles: { fontSize: 10 }
+  styles: { fontSize: 10 },
+  showHead: 'firstPage'
 });
 startY = doc.lastAutoTable.finalY + 10;
+
+const convertedEnergyVuodet = vuosiTextMap[environmentData.energyErityisetToimenpiteetVuodet] ||
+environmentData.energyErityisetToimenpiteetVuodet || "";
 
   
   const rows24 = [
@@ -468,55 +482,60 @@ startY = doc.lastAutoTable.finalY + 10;
       "Sähkön käyttömäärä, kWh/v",
       environmentData.energySahkonKayttomaara || "",
       environmentData.energySahkonKayttomaaraLisatiedot || "",
-      environmentData.energySahkonKayttomaaraTavoitteet || ""
+
     ],
     [
       "Sähkön käyttömäärä suhteessa tuotantoon, kWh/kg maitoa/v",
       environmentData.energySahkonKayttomaaraSuhteessa || "",
       environmentData.energySahkonKayttomaaraSuhteessaLisatiedot || "",
-      environmentData.energySahkonKayttomaaraSuhteessaTavoitteet || ""
+
     ],
     [
       "Oman sähkön tuotanto, kWh/v",
       environmentData.energyOmaSahkotuotanto || "",
       environmentData.energyOmaSahkotuotantoLisatiedot || "",
-      environmentData.energyOmaSahkotuotantoTavoitteet || ""
+
     ],
     [
       "Polttoaineiden kokonaiskäyttömäärä, l/v",
       environmentData.energyPolttoaineenKaytto || "",
       environmentData.energyPolttoaineenKayttoLisatiedot || "",
-      environmentData.energyPolttoaineenKayttoTavoitteet || ""
+
     ],
     [
       "Polttoaineiden käyttömäärä suhteessa tuotantoon, l/kg maitoa",
       environmentData.energyPolttoaineenKayttoSuhteessa || "",
       environmentData.energyPolttoaineenKayttoSuhteessaLisatiedot || "",
-      environmentData.energyPolttoaineenKayttoSuhteessaTavoitteet || ""
+
     ],
     [
       "Lanta käsitellään biokaasulaitoksessa",
       environmentData.energyBiokaasu || "",
       environmentData.energyBiokaasuLisatiedot || "",
-      environmentData.energyBiokaasuTavoitteet || ""
+
     ],
     [
       "Maidon esijäähdytys",
       environmentData.energyEsijahdytys || "",
       environmentData.energyEsijahdytysLisatiedot || "",
-      environmentData.energyEsijahdytysTavoitteet || ""
+
     ],
     [
       "Lämmön talteenotto",
       environmentData.energyLampotalteenotto || "",
       environmentData.energyLampotalteenottoLisatiedot || "",
-      environmentData.energyLampotalteenottoTavoitteet || ""
+
     ],
     [
-      "Erityiset toimenpiteet",
+      "Kuvaus muista mahdollisista toimenpiteistä",
       environmentData.energyErityisetToimenpiteet || "",
-      environmentData.energyErityisetToimenpiteetLisatiedot || "",
-      environmentData.energyErityisetToimenpiteetTavoitteet || ""
+      ""
+    ],
+    [
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      convertedEnergyVuodet,
+      environmentData.energyErityisetToimenpiteetTavoiteTeksti || "",
+      ""
     ]
   ];
   
@@ -532,7 +551,8 @@ startY = doc.lastAutoTable.finalY + 10;
     theme: 'striped',
     margin: { left: 14, right: 14 },
     headStyles: { fillColor: '#4CAF50' },
-    styles: { fontSize: 10 }
+    styles: { fontSize: 10 },
+    showHead: 'firstPage'
   });
   startY = doc.lastAutoTable.finalY + 10;
   
