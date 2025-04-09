@@ -214,17 +214,12 @@ const generatePdfReport = (initialData,environmentData) => {
     [
       "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
       convertedVuodet,
-      environmentData.envToimenpiteetTavoiteTeksti || "",
-      ""
+      environmentData.envToimenpiteetTavoiteTeksti || ""
     ]
    
   ];
 
-  const filteredRows21 = rows21.filter(row => {
-    // Oletetaan, että row on [kentän kuvaus, uusin tulos, lisätiedot, tavoitteet]
-    const [ , result, details, targets ] = row;
-    return (result.trim() !== "" || details.trim() !== "" || targets.trim() !== "");
-  });
+  const filteredRows21 = rows21.filter(row => row.some(cell => cell && cell.toString().trim() !== ""));
   
   autoTable(doc, {
     startY,
@@ -294,10 +289,7 @@ const generatePdfReport = (initialData,environmentData) => {
   ];
    
   
-  const filteredRows22 = rows22.filter(row => {
-    const [, result, details, targets] = row;
-    return (result.trim() !== "" || details.trim() !== "" || targets.trim() !== "");
-  });
+  const filteredRows22 = rows22.filter(row => row.some(cell => cell && cell.toString().trim() !== ""));
   
   autoTable(doc, {
     startY,
@@ -455,11 +447,7 @@ const rows23 = [
   ]
 ];
 
-const filteredRows23 = rows23.filter(row => {
-  // Jos kaikki sarakkeet 2-4 ovat tyhjiä, poistetaan rivi
-  const [, col2, col3, col4] = row;
-  return (col2.trim() !== "" || col3.trim() !== "" || col4.trim() !== "");
-});
+const filteredRows23 = rows23.filter(row => row.some(cell => cell && cell.toString().trim() !== ""));
 
 autoTable(doc, {
   startY,
@@ -539,10 +527,7 @@ environmentData.energyErityisetToimenpiteetVuodet || "";
     ]
   ];
   
-  const filteredRows24 = rows24.filter(row => {
-    const [, col2, col3, col4] = row;
-    return (col2.trim() !== "" || col3.trim() !== "" || col4.trim() !== "");
-  });
+  const filteredRows24 = rows24.filter(row => row.some(cell => cell && cell.toString().trim() !== ""));
   
   autoTable(doc, {
     startY,
