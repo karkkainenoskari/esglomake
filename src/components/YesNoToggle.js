@@ -13,21 +13,22 @@ const YesNoToggle = ({ value, onChange, themeColor = '#007acc' }) => {
       }}
     >
       <button
-        type="button" // Määritetään, ettei laukaise submitia
+        type="button"
         style={{
           flex: 1,
           padding: '10px',
           backgroundColor: value === 'Kyllä' ? themeColor : '#fff',
           color: value === 'Kyllä' ? '#fff' : themeColor,
           border: 'none',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          borderRight: `2px solid ${themeColor}` // Lisätty väliviiva napin jaon erottamiseksi
         }}
         onClick={() => onChange('Kyllä')}
       >
         Kyllä
       </button>
       <button
-        type="button" // Määritetään, ettei laukaise submitia
+        type="button"
         style={{
           flex: 1,
           padding: '10px',
