@@ -21,13 +21,7 @@ const ProgressBar = ({ currentPage, pageTitles, onNavigate, onSaveAndFinish }) =
         );
       })}
 
-      {/* Sijoitetaan nappi sivujen 1 ja 2 (slice(0,2)) JA sivujen 3 ja 4 (slice(2)) väliin */}
-      <button
-        onClick={onSaveAndFinish}
-        style={styles.button}
-      >
-        Tallenna ja lopeta
-      </button>
+  
 
       {/* Renderöidään sivut 3 ja 4 */}
       {pageTitles.slice(2).map((title, index) => {

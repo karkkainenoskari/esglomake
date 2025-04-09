@@ -63,7 +63,7 @@ function App() {
     setEnvironmentData({});
     setSocialData({});
     setFinanceData({});
-    
+
     localStorage.removeItem('initialFormData');
     localStorage.removeItem('environmentData');
     localStorage.removeItem('socialData');
@@ -77,11 +77,11 @@ function App() {
   return (
     <div style={{ paddingTop: '60px', paddingBottom: '80px' }}>
       {step === 0 && (
-        <InitialPage 
-          key={resetKey} 
-          onNext={handleInitialNext} 
-          initialData={initialData} 
-          onDataUpdate={setInitialData} 
+        <InitialPage
+          key={resetKey}
+          onNext={handleInitialNext}
+          initialData={initialData}
+          onDataUpdate={setInitialData}
         />
       )}
       {step === 1 && (
@@ -115,7 +115,7 @@ function App() {
           onDataUpdate={setFinanceData}
         />
       )}
-  
+
       {/* Kiinteä kontti, jossa progress bar, Tallenna ja lopeta - sekä Tyhjennä kaikki -napit */}
       <div
         style={{
@@ -126,6 +126,10 @@ function App() {
           height: '60px',
           zIndex: 9999,
           backgroundColor: '#eee',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '1rem'  // Asettaa pienen tilan nappien väliin
         }}
       >
         <ProgressBar
@@ -136,17 +140,13 @@ function App() {
         <button
           onClick={handleSaveAndFinish}
           style={{
-            position: 'absolute',
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            fontSize: '20px',
-            padding: '12px 24px',
+            fontSize: '16px',
+            padding: '6px 8px',
             borderRadius: '8px',
             backgroundColor: '#007acc',
             color: 'white',
             border: 'none',
-            zIndex: 10000,
+            zIndex: 10000
           }}
         >
           Tallenna ja lopeta
@@ -154,17 +154,13 @@ function App() {
         <button
           onClick={handleClearAll}
           style={{
-            position: 'absolute',
-            right: '2rem',
-            top: '50%',
-            transform: 'translateY(-50%)',
             fontSize: '16px',
-            padding: '8px 16px',
+            padding: '6px 8px',
             borderRadius: '8px',
             backgroundColor: '#e53935',
             color: 'white',
             border: 'none',
-            zIndex: 10000,
+            zIndex: 10000
           }}
         >
           Tyhjennä kaikki
