@@ -53,7 +53,7 @@ const styles = {
     backgroundColor: '#eee',
     position: 'fixed',
     bottom: 0,
-    width: '100%',
+    width: '110%',
     boxShadow: '0 -2px 5px rgba(0,0,0,0.2)',
     zIndex: 1000
   },
