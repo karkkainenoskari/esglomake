@@ -219,7 +219,12 @@ const generatePdfReport = (initialData,environmentData) => {
    
   ];
 
-  const filteredRows21 = rows21.filter(row => row.some(cell => cell && cell.toString().trim() !== ""));
+  const filteredRows21 = rows21.filter(([_, col2, col3]) => {
+    const second = (col2 ?? "").trim();
+    const third = (col3 ?? "").trim();
+    // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
+    return second !== "" || third !== "";
+  });
   
   autoTable(doc, {
     startY,
@@ -289,7 +294,12 @@ const generatePdfReport = (initialData,environmentData) => {
   ];
    
   
-  const filteredRows22 = rows22.filter(row => row.some(cell => cell && cell.toString().trim() !== ""));
+  const filteredRows22 = rows22.filter(([_, col2, col3]) => {
+    const second = (col2 ?? "").trim();
+    const third = (col3 ?? "").trim();
+    // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
+    return second !== "" || third !== "";
+  });
   
   autoTable(doc, {
     startY,
@@ -371,10 +381,14 @@ const rows23Pelto = [
 ];
  
 
-const filteredRows23Pelto = rows23Pelto.filter(row => {
-  const [ , col2, col3 ] = row;
-  return (col2.trim() !== "" || col3.trim() !== "");
+const filteredRows23Pelto = rows23Pelto.filter(([_, col2, col3]) => {
+  const second = (col2 ?? "").trim();
+  const third = (col3 ?? "").trim();
+  // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
+  return second !== "" || third !== "";
 });
+
+
 if (filteredRows23Pelto.length > 0) {
   autoTable(doc, {
     startY,
@@ -447,7 +461,12 @@ const rows23 = [
   ]
 ];
 
-const filteredRows23 = rows23.filter(row => row.some(cell => cell && cell.toString().trim() !== ""));
+const filteredRows23 = rows23.filter(([_, col2, col3]) => {
+  const second = (col2 ?? "").trim();
+  const third = (col3 ?? "").trim();
+  // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
+  return second !== "" || third !== "";
+});
 
 autoTable(doc, {
   startY,
@@ -527,7 +546,12 @@ environmentData.energyErityisetToimenpiteetVuodet || "";
     ]
   ];
   
-  const filteredRows24 = rows24.filter(row => row.some(cell => cell && cell.toString().trim() !== ""));
+  const filteredRows24 = rows24.filter(([_, col2, col3]) => {
+    const second = (col2 ?? "").trim();
+    const third = (col3 ?? "").trim();
+    // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
+    return second !== "" || third !== "";
+  });
   
   autoTable(doc, {
     startY,
