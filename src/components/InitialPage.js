@@ -181,28 +181,6 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     }
   };
 
-  const handleClearAll = () => {
-    // Poista kaikki lomaketietoja localStoragesta
-    localStorage.removeItem('initialFormData');
-    localStorage.removeItem('environmentData');
-    localStorage.removeItem('socialData');
-    localStorage.removeItem('financeData');
-
-    setFormData({
-      yrityksenNimi: '',
-      yrittajienNimet: '',
-      yhtiomuoto: '',
-      tilanKokonaistyovoima: '',
-      lypsylehmienMaara: '',
-      peltoala: '',
-      tuotomanTavanomainen: '',
-      navettatyyppi: '',
-      lypsyjarjestelma: ''
-    });
-
-    // Voit lisätä myös ilmoituksen, että kentät on tyhjennetty.
-  };
-
   // 4. Dropzone-funktio: luetaan PDF
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -443,7 +421,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
 
 
             <button type="submit">Seuraava</button>
-            <button type="button" onClick={handleClearAll}>Tyhjennä</button>
+         
 
           </form>
         </div>

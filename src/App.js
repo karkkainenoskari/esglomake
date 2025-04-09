@@ -4,7 +4,7 @@ import EnvironmentPage from './components/EnvironmentPage';
 import SosiaalinenVastuuPage from './components/SosiaalinenVastuuPage';
 import TalousJaHallintoPage from './components/TalousJaHallintoPage';
 import ProgressBar from './components/ProgressBar';
-import generatePdfReport from './components/generatePdfReport'; // varmista, että tämä tiedosto on olemassa
+import generatePdfReport from './components/generatePdfReport';
 
 function App() {
   const [step, setStep] = useState(0);
@@ -44,7 +44,7 @@ function App() {
     alert('PDF tallennus onnistui ja data tallennettu.');
   };
 
-  // Tämä funktio kutsuu PDF-generointifunktiota ja välittää App-komponentin tallentamat tiedot
+  // PDF generointifunktio
   const handleSaveAndFinish = () => {
     generatePdfReport(initialData, environmentData, socialData, financeData);
   };
@@ -53,9 +53,23 @@ function App() {
     setStep(targetStep);
   };
 
+  // Tämä funktio nollaa kerralla kaikkien lomakkeiden tiedot ja poistaa niihin liittyvät localStorage avaimet
+  const handleClearAll = () => {
+    setInitialData({});
+    setEnvironmentData({});
+    setSocialData({});
+    setFinanceData({});
+    
+    localStorage.removeItem('initialFormData');
+    localStorage.removeItem('environmentData');
+    localStorage.removeItem('socialData');
+    localStorage.removeItem('financeData');
+    
+    alert("Kaikki tiedot on tyhjennetty!");
+  };
+
   return (
     <div style={{ paddingTop: '60px', paddingBottom: '80px' }}>
-
       {step === 0 && (
         <InitialPage 
           onNext={handleInitialNext} 
@@ -92,26 +106,23 @@ function App() {
         />
       )}
   
-      {/* Yhdistetty progress bar ja nappi samassa kiinteässä kontissa */}
+      {/* Kiinteä kontti, jossa progress bar, Tallenna ja lopeta - ja Tyhjennä kaikki -napit */}
       <div
         style={{
           position: 'fixed',
           bottom: 0,
           left: 0,
           right: 0,
-          height: '70px', // säädä tarvittaessa
+          height: '60px',
           zIndex: 9999,
           backgroundColor: '#eee',
-          
         }}
       >
-        {/* ProgressBar:lle välitetään myös onNavigate-prop */}
         <ProgressBar
           currentPage={step + 1}
           pageTitles={pageTitles}
           onNavigate={handleNavigate}
         />
-        {/* Tallenna ja lopeta -nappi sijoitetaan absoluuttisesti keskelle */}
         <button
           onClick={handleSaveAndFinish}
           style={{
@@ -125,10 +136,28 @@ function App() {
             backgroundColor: '#007acc',
             color: 'white',
             border: 'none',
-            zIndex: 10000, // varmistetaan, että nappi on päällimmäisenä
+            zIndex: 10000,
           }}
         >
           Tallenna ja lopeta
+        </button>
+        <button
+          onClick={handleClearAll}
+          style={{
+            position: 'absolute',
+            right: '2rem',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            fontSize: '16px',
+            padding: '8px 16px',
+            borderRadius: '8px',
+            backgroundColor: '#e53935',
+            color: 'white',
+            border: 'none',
+            zIndex: 10000,
+          }}
+        >
+          Tyhjennä kaikki
         </button>
       </div>
       <ProgressBar
