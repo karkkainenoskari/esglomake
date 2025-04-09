@@ -1,3 +1,4 @@
+// App.js
 import React, { useState, useEffect } from 'react';
 import InitialPage from './components/InitialPage';
 import EnvironmentPage from './components/EnvironmentPage';
@@ -12,6 +13,9 @@ function App() {
   const [environmentData, setEnvironmentData] = useState({});
   const [socialData, setSocialData] = useState({});
   const [financeData, setFinanceData] = useState({});
+
+  // resetKey -tila pakottaa lapsikomponentit remountaamaan, jolloin ne alustavat tilansa uudestaan.
+  const [resetKey, setResetKey] = useState(0);
 
   const pageTitles = [
     "Yrityksen perustiedot",
@@ -53,7 +57,7 @@ function App() {
     setStep(targetStep);
   };
 
-  // Tämä funktio nollaa kerralla kaikkien lomakkeiden tiedot ja poistaa niihin liittyvät localStorage avaimet
+  // Päivitetty handleClearAll: tyhjennetään kaikki tilat, localStorage ja päivitetään resetKey
   const handleClearAll = () => {
     setInitialData({});
     setEnvironmentData({});
@@ -64,7 +68,9 @@ function App() {
     localStorage.removeItem('environmentData');
     localStorage.removeItem('socialData');
     localStorage.removeItem('financeData');
-    
+
+    // Kasvatetaan resetKey:tä, jolloin kaikki lapsikomponentit remountautuvat
+    setResetKey(prev => prev + 1);
     alert("Kaikki tiedot on tyhjennetty!");
   };
 
@@ -72,6 +78,7 @@ function App() {
     <div style={{ paddingTop: '60px', paddingBottom: '80px' }}>
       {step === 0 && (
         <InitialPage 
+          key={resetKey} 
           onNext={handleInitialNext} 
           initialData={initialData} 
           onDataUpdate={setInitialData} 
@@ -79,6 +86,7 @@ function App() {
       )}
       {step === 1 && (
         <EnvironmentPage
+          key={resetKey}
           onNext={handleEnvironmentNext}
           onPrevious={() => setStep(0)}
           companyData={initialData}
@@ -88,6 +96,7 @@ function App() {
       )}
       {step === 2 && (
         <SosiaalinenVastuuPage
+          key={resetKey}
           onNext={handleSocialNext}
           onPrevious={() => setStep(1)}
           initialSocialData={socialData}
@@ -96,6 +105,7 @@ function App() {
       )}
       {step === 3 && (
         <TalousJaHallintoPage
+          key={resetKey}
           onNext={handleFinanceNext}
           onPrevious={() => setStep(2)}
           initialData={initialData}
@@ -106,7 +116,7 @@ function App() {
         />
       )}
   
-      {/* Kiinteä kontti, jossa progress bar, Tallenna ja lopeta - ja Tyhjennä kaikki -napit */}
+      {/* Kiinteä kontti, jossa progress bar, Tallenna ja lopeta - sekä Tyhjennä kaikki -napit */}
       <div
         style={{
           position: 'fixed',
