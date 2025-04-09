@@ -233,9 +233,20 @@ const generatePdfReport = (initialData,environmentData) => {
     theme: 'striped',
     headStyles: { fillColor: '#4CAF50' },
     margin: { left: 14, right: 14 },
-    styles: { fontSize: 10 },
-    showHead: 'firstPage' // Näytetään header vain ensimmäisellä sivulla
+    styles: { 
+      fontSize: 10,
+      cellPadding: 3,         // lisää sisämarginaalia
+      overflow: 'linebreak'   // rivit katkaistaan automaattisesti
+    },
+    showHead: 'firstPage',
+    // Sarakekohtaiset tyylit:
+    columnStyles: {
+      0: { cellWidth: 60 },   // ensimmäinen sarake (esim. 60 mm)
+      1: { cellWidth: 30 },   // toinen sarake 
+      2: { cellWidth: 92 }    // kolmas sarake (Kuvaus)
+    }
   });
+  
   startY = doc.lastAutoTable.finalY + 10;
 
   const convertedDivVuodet = vuosiTextMap[environmentData.divErityisetVuodet] || environmentData.divErityisetVuodet || "";
@@ -306,11 +317,23 @@ const generatePdfReport = (initialData,environmentData) => {
     head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
     body: filteredRows22,
     theme: 'striped',
-    margin: { left: 14, right: 14 },
     headStyles: { fillColor: '#4CAF50' },
-    styles: { fontSize: 10 },
-    showHead: 'firstPage'
+    margin: { left: 14, right: 14 },
+    styles: { 
+      fontSize: 10,
+      cellPadding: 3,         // lisää sisämarginaalia
+      overflow: 'linebreak'   // rivit katkaistaan automaattisesti
+    },
+    showHead: 'firstPage',
+    // Sarakekohtaiset tyylit:
+    columnStyles: {
+      0: { cellWidth: 60 },   // ensimmäinen sarake (esim. 60 mm)
+      1: { cellWidth: 30 },   // toinen sarake 
+      2: { cellWidth: 92 }    // kolmas sarake (Kuvaus)
+    }
   });
+
+  
   startY = doc.lastAutoTable.finalY + 10;
 
   const convertedPeltoviljelyVuodet = vuosiTextMap[environmentData.envPeltoviljelyErityisetToimenpiteetVuodet] ||
@@ -397,9 +420,13 @@ if (filteredRows23Pelto.length > 0) {
     theme: 'striped',
     headStyles: { fillColor: '#4CAF50' },
     margin: { left: 14, right: 14 },
-    styles: { fontSize: 10 },
-    // Jos haluat, ettei otsikko toistu jokaisella sivulla, lisää:
-    // showHead: 'firstPage'
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    columnStyles: {
+      0: { cellWidth: 60 },
+      1: { cellWidth: 30 },
+      2: { cellWidth: 92 }
+    },
+    showHead: 'firstPage'
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
@@ -468,6 +495,8 @@ const filteredRows23 = rows23.filter(([_, col2, col3]) => {
   return second !== "" || third !== "";
 });
 
+
+
 autoTable(doc, {
   startY,
   head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
@@ -475,9 +504,16 @@ autoTable(doc, {
   theme: 'striped',
   margin: { left: 14, right: 14 },
   headStyles: { fillColor: '#4CAF50' },
-  styles: { fontSize: 10 },
-  showHead: 'firstPage'
+  styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+  showHead: 'firstPage',
+  // Sarakekohtaiset asetukset:
+  columnStyles: {
+    0: { cellWidth: 60 },  // 1. sarake
+    1: { cellWidth: 30 },  // 2. sarake
+    2: { cellWidth: 92 }   // 3. sarake
+  }
 });
+
 startY = doc.lastAutoTable.finalY + 10;
 
 const convertedEnergyVuodet = vuosiTextMap[environmentData.energyErityisetToimenpiteetVuodet] ||
@@ -560,8 +596,14 @@ environmentData.energyErityisetToimenpiteetVuodet || "";
     theme: 'striped',
     margin: { left: 14, right: 14 },
     headStyles: { fillColor: '#4CAF50' },
-    styles: { fontSize: 10 },
-    showHead: 'firstPage'
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    showHead: 'firstPage',
+    // Sarakekohtaiset asetukset:
+    columnStyles: {
+      0: { cellWidth: 60 },  // 1. sarake
+      1: { cellWidth: 30 },  // 2. sarake
+      2: { cellWidth: 92 }   // 3. sarake
+    }
   });
   startY = doc.lastAutoTable.finalY + 10;
   
