@@ -239,30 +239,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
           marginBottom: '2rem'
         }}
       >
-  <div
-  style={{
-    flex: '1 1 0',
-    minWidth: '300px',
-    border: '1px solid #ccc',
-    padding: '1rem',
-    borderRadius: '8px'
-  }}
->
-  <h3>ESG:</h3>
-  <p>
-    ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance. ESG-raportointi tarkoittaa yrityksen 
-    ympäristö-, sosiaaliseen ja hallinnolliseen vastuuseen liittyvien tekijöiden tunnistamista, vastuullisia toimintatapoja 
-    ja niiden raportointia. Tulevaisuudessa vastuullisuusajattelu ja raportointivaade koskevat myös maitotilayrityksiä, kun 
-    yhteiskunta, asiakkaat, rahoituslaitokset ja kuluttajat haluavat tietää koko toimitusketjun vastuullisuudesta. Vastuullisuusraportointi 
-    nousee talousraportoinnin rinnalle osana lainoitus- ja rahoitusprosesseja.
-  </p>
-  <p>
-    Tämä työkalu auttaa maitotilayritystä kuvaamaan ja miettimään omalle yritykselle tärkeitä vastuullisuusasioita ja 
-    tuottaa niistä yrityksen ESG-vastuullisuusraportin. Työkalu ja raporttipohja on tuotettu osana Tulevaisuuden maatila -hanketta 
-    (1.1.2024–31.12.2025). Toteutuksesta vastasivat yhteistyössä YsAo, Savonia-amk ja Maitoyrittäjät ry. Hankkeen rahoittajana oli 
-    Pohjois-Savon Liitto ja rahoituslähteenä JTF-rahasto.
-  </p>
-</div>
+
 
         <div
   style={{
@@ -432,17 +409,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
         </div>
 
 
-        <div style={{ marginTop: '4rem', marginLeft: '11rem' }}>
-          <img
-            src="/esg.png"
-            alt="ESG"
-            style={{
-              maxWidth: '800px',
-              height: 'auto',
-              display: 'block'
-            }}
-          />
-        </div>
+       
       </main>
     </div>
   );
