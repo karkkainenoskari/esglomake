@@ -6,6 +6,7 @@ import SosiaalinenVastuuPage from './components/SosiaalinenVastuuPage';
 import TalousJaHallintoPage from './components/TalousJaHallintoPage';
 import ProgressBar from './components/ProgressBar';
 import generatePdfReport from './components/generatePdfReport';
+import Johdanto from './components/Johdanto';
 
 function App() {
   const [step, setStep] = useState(0);
@@ -14,10 +15,12 @@ function App() {
   const [socialData, setSocialData] = useState({});
   const [financeData, setFinanceData] = useState({});
 
+
   // resetKey -tila pakottaa lapsikomponentit remountaamaan, jolloin ne alustavat tilansa uudestaan.
   const [resetKey, setResetKey] = useState(0);
 
   const pageTitles = [
+    "Johdanto",
     "Yrityksen perustiedot",
     "Ympäristö",
     "Sosiaalinen vastuu",
@@ -27,6 +30,10 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [step]);
+
+  const handleJohdantoNext = () => {
+    setStep(0);
+  };
 
   const handleInitialNext = (data) => {
     setInitialData(data);
@@ -76,46 +83,53 @@ function App() {
 
   return (
     <div style={{ paddingTop: '60px', paddingBottom: '80px' }}>
-      {step === 0 && (
-        <InitialPage
-          key={resetKey}
-          onNext={handleInitialNext}
-          initialData={initialData}
-          onDataUpdate={setInitialData}
-        />
-      )}
-      {step === 1 && (
-        <EnvironmentPage
-          key={resetKey}
-          onNext={handleEnvironmentNext}
-          onPrevious={() => setStep(0)}
-          companyData={initialData}
-          initialEnvData={environmentData}
-          onDataUpdate={setEnvironmentData}
-        />
-      )}
-      {step === 2 && (
-        <SosiaalinenVastuuPage
-          key={resetKey}
-          onNext={handleSocialNext}
-          onPrevious={() => setStep(1)}
-          initialSocialData={socialData}
-          onDataUpdate={setSocialData}
-        />
-      )}
-      {step === 3 && (
-        <TalousJaHallintoPage
-          key={resetKey}
-          onNext={handleFinanceNext}
-          onPrevious={() => setStep(2)}
-          initialData={initialData}
-          environmentData={environmentData}
-          socialData={socialData}
-          initialFinanceData={financeData}
-          onDataUpdate={setFinanceData}
-        />
-      )}
 
+       {step === 0 && (
+    <Johdanto onNext={handleJohdantoNext} />
+  )}
+  
+  {step === 1 && (
+    <InitialPage
+      key={resetKey}
+      onNext={handleInitialNext}
+      initialData={initialData}
+      onDataUpdate={setInitialData}
+    />
+  )}
+  
+  {step === 2 && (
+    <EnvironmentPage
+      key={resetKey}
+      onNext={handleEnvironmentNext}
+      onPrevious={() => setStep(1)}
+      companyData={initialData}
+      initialEnvData={environmentData}
+      onDataUpdate={setEnvironmentData}
+    />
+  )}
+  
+  {step === 3 && (
+    <SosiaalinenVastuuPage
+      key={resetKey}
+      onNext={handleSocialNext}
+      onPrevious={() => setStep(2)}
+      initialSocialData={socialData}
+      onDataUpdate={setSocialData}
+    />
+  )}
+  
+  {step === 4 && (
+    <TalousJaHallintoPage
+      key={resetKey}
+      onNext={handleFinanceNext}
+      onPrevious={() => setStep(3)}
+      initialData={initialData}
+      environmentData={environmentData}
+      socialData={socialData}
+      initialFinanceData={financeData}
+      onDataUpdate={setFinanceData}
+    />
+  )}
       {/* Kiinteä kontti, jossa progress bar, Tallenna ja lopeta - sekä Tyhjennä kaikki -napit */}
       <div
         style={{
