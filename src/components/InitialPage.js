@@ -271,23 +271,34 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
         </div>
 
         <div
-          style={{
-            flex: '1 1 0',
-            minWidth: '300px',
-            border: '1px solid #ccc',
-            padding: '1rem',
-            borderRadius: '8px' // tai esim. '10px'
-          }}
-        >
-          <h3>Ohjeet lomakkeen täyttöön</h3>
-          <ul>
-            <li>Tähän tekstiä Tähän tekstiä Tähän tekstiä</li>
-            <li>Tähän tekstiä Tähän tekstiä Tähän tekstiä Tähän tekstiä</li>
-            <li>Tähän tekstiä Tähän tekstiä Tähän tekstiä Tähän tekstiä Tähän tekstiäTähän tekstiäTähän tekstiä Tähän tekstiä Tähän tekstiä</li>
-            <li>Tähän tekstiä Tähän tekstiä Tähän tekstiä</li>
-       
-          </ul>
-        </div>
+  style={{
+    flex: '1 1 0',
+    minWidth: '300px',
+    border: '1px solid #ccc',
+    padding: '1rem',
+    borderRadius: '8px'
+  }}
+>
+  <h3>Ohjeet lomakkeen täyttöön</h3>
+  <ul>
+    <li>
+      <strong>Tallentaminen ja jatkaminen:</strong> Kun lopetat lomakkeen täyttämisen, paina aina <em>Tallenna ja lopeta</em> -painiketta. Tämä luo PDF-tiedoston, joka tallentaa syöttämäsi tiedot, jolloin voit jatkaa lomakkeen täyttämistä siitä, mihin viimeksi jäit.
+    </li>
+    <li>
+      <strong>Tyhjennys:</strong> Jos haluat aloittaa lomakkeen täyttämisen alusta, käytä <em>Tyhjennä kaikki</em> -painiketta, joka poistaa kaikki syötetyt tiedot.
+    </li>
+    <li>
+      <strong>Navigointi:</strong> Voit liikkua lomakkeen eri osioiden välillä progress barin avulla, jolloin pääset helposti muokkaamaan aiemmin täytettyjä tietoja.
+    </li>
+    <li>
+      <strong>PDF-raportti:</strong> PDF-tiedoston avulla voit helposti tulostaa tai tallentaa lopullisen raportin, jota voit tarvittaessa jakaa eteenpäin.
+    </li>
+    <li>
+      <strong>Yleiset vinkit:</strong> Täytä kentät huolellisesti ja tarkista, että kaikki tarvittavat tiedot ovat oikein. Jätä kentät tyhjiksi, mikäli ne eivät koske sinua. Tyhjät kentät eivät näy lopullisessa PDF-raportissa.
+    </li>
+  </ul>
+</div>
+
       </div>
 
 
