@@ -206,28 +206,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
       <LogoHeader />
       <h1 style={{ textAlign: 'center' }}>Maitotilan ESG-vastuullisuusraportti</h1>
 
-      {/* Drop zone -laatikko */}
-      <div
-        {...getRootProps()}
-        style={{
-          border: '2px dashed #007acc',
-          padding: '20px',
-          textAlign: 'center',
-          borderRadius: '8px',
-          marginBottom: '2rem'
-        }}
-      >
-        <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Pudota PDF-tiedosto tähän, niin täytämme lomakkeen tiedot automaattisesti.</p>
-        ) : (
-          <p>
-            Raahaa PDF-tiedosto tähän tai klikkaa valitaksesi tiedoston, jossa aiemmat lomaketiedot ovat.
-          </p>
-        )}
-      </div>
-
-      {/* Flex-kontti, jossa alkuperäinen "Yrityksen perustiedot" -lomake säilyy ennallaan ja ohjeet-laatikko sijoitetaan sen oikealle puolelle */}
+      {/* Flex-kontti, jossa alkuperäinen "Yrityksen perustiedot" -lomake ja ohjeet-laatikko vierekkäin pysyvät ennallaan */}
       <main style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem' }}>
         <div className="initial-page">
           <h2>Yrityksen perustiedot</h2>
@@ -330,7 +309,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
           </form>
         </div>
 
-        {/* Ohjeiden laatikko – ohjeet lomakkeen täyttöön, sijoitettu lomakkeen oikealle puolelle */}
+        {/* Ohjeiden laatikko – pysyy samana ennallaan */}
         <div
           style={{
             flexShrink: 0,
@@ -363,6 +342,25 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
           </ul>
         </div>
       </main>
+
+      {/* PDF-tiedoston pudotusalue siirretty flex-laatikon alapuolelle ja lisätty enemmän tilaa marginTop: '2rem' */}
+      <div
+        {...getRootProps()}
+        style={{
+          border: '2px dashed #007acc',
+          padding: '20px',
+          textAlign: 'center',
+          borderRadius: '8px',
+          marginTop: '2rem'
+        }}
+      >
+        <input {...getInputProps()} />
+        {isDragActive ? (
+          <p>Pudota PDF-tiedosto tähän, niin täytämme lomakkeen tiedot automaattisesti.</p>
+        ) : (
+          <p>Raahaa PDF-tiedosto tähän tai klikkaa valitaksesi tiedoston, jossa aiemmat lomaketiedot ovat.</p>
+        )}
+      </div>
     </div>
   );
 };
