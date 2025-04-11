@@ -1,3 +1,4 @@
+// components/InitialPage.js
 import React, { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import * as pdfjsLib from 'pdfjs-dist';
@@ -5,7 +6,7 @@ import LogoHeader from './LogoHeader'; // logo
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
-// 1. Määritellään kenttien otsikot, avaimet ja "seuraavat otsikot" lookaheadia varten
+// Kenttien konfiguraatiot
 const fieldConfigs = [
   {
     key: 'yrityksenNimi',
@@ -59,7 +60,7 @@ const fieldConfigs = [
   },
   {
     key: 'lypsylehmienMaara',
-    // Muutetaan label niin, että se hyväksyy joko "Lypsylehmien määrä:" tai "Lypsylehmienmäärä:"
+    // Hyväksytään sekä "Lypsylehmien määrä:" että "Lypsylehmienmäärä:"
     label: 'Lypsylehmien\\s?määrä:',
     nextLabels: [
       'Peltoala:',
@@ -100,8 +101,7 @@ const fieldConfigs = [
 ];
 
 function parsePdfText(allText) {
-  console.log('PDF-sisältö:\n', allText); // Debug: näytä PDF:n sisältö
-
+  console.log('PDF-sisältö:\n', allText);
   const extracted = {
     yrityksenNimi: '',
     yrittajienNimet: '',
@@ -116,18 +116,13 @@ function parsePdfText(allText) {
 
   fieldConfigs.forEach(cfg => {
     const lookahead = cfg.nextLabels.join('|');
-    // Käytetään tarkkaa labelia, jossa on kaksoispiste, ja pysähtytään ennen seuraavaa otsikkoa tai tekstin loppua
-    const re = new RegExp(
-      `${cfg.label}\\s*(.+?)(?=\\s*(?:${lookahead})|$)`,
-      'i'
-    );
+    const re = new RegExp(`${cfg.label}\\s*(.+?)(?=\\s*(?:${lookahead})|$)`, 'i');
     const match = allText.match(re);
     if (match) {
       extracted[cfg.key] = match[1].trim();
     }
   });
 
-  // Muutetaan "Luomu vai tavanomainen" -kentän arvo alasvetovalikon mukaiseen muotoon
   const val = extracted.tuotomanTavanomainen.toLowerCase();
   if (val.includes('luomu')) {
     extracted.tuotomanTavanomainen = 'luomu';
@@ -141,25 +136,23 @@ function parsePdfText(allText) {
 }
 
 const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
-  // Lomaketila
   const [formData, setFormData] = useState(() => {
     const savedData = localStorage.getItem('initialFormData');
     return savedData
       ? JSON.parse(savedData)
       : {
-        yrityksenNimi: '',
-        yrittajienNimet: '',
-        yhtiomuoto: '',
-        tilanKokonaistyovoima: '',
-        lypsylehmienMaara: '',
-        peltoala: '',
-        tuotomanTavanomainen: '',
-        navettatyyppi: '',
-        lypsyjarjestelma: ''
-      };
+          yrityksenNimi: '',
+          yrittajienNimet: '',
+          yhtiomuoto: '',
+          tilanKokonaistyovoima: '',
+          lypsylehmienMaara: '',
+          peltoala: '',
+          tuotomanTavanomainen: '',
+          navettatyyppi: '',
+          lypsyjarjestelma: ''
+        };
   });
 
-  // Tallenna localStorageen aina kun formData muuttuu
   useEffect(() => {
     localStorage.setItem('initialFormData', JSON.stringify(formData));
     if (onDataUpdate) {
@@ -167,13 +160,11 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     }
   }, [formData, onDataUpdate]);
 
-  // Kentän vaihto
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Seuraava-nappi
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onNext) {
@@ -181,7 +172,6 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     }
   };
 
-  // 4. Dropzone-funktio: luetaan PDF
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
     if (file && file.type === 'application/pdf') {
@@ -190,26 +180,15 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
         try {
           const typedarray = new Uint8Array(e.target.result);
           const pdf = await pdfjsLib.getDocument(typedarray).promise;
-
-          // Lue jokainen sivu
           let allText = '';
           for (let pageIndex = 1; pageIndex <= pdf.numPages; pageIndex++) {
             const page = await pdf.getPage(pageIndex);
             const textContent = await page.getTextContent();
             const strings = textContent.items.map(item => item.str);
-            // Erotellaan rivinvaihdolla
             allText += strings.join(' ') + '\n';
           }
-
-          // Parsitaan
           const parsedData = parsePdfText(allText);
-
-          // Päivitetään lomake
-          setFormData(prev => ({
-            ...prev,
-            ...parsedData
-          }));
-
+          setFormData(prev => ({ ...prev, ...parsedData }));
         } catch (error) {
           console.error('PDF:n lukeminen epäonnistui:', error);
         }
@@ -220,69 +199,22 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
     }
   };
 
-  // react-dropzone
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Lisätään LogoHeader-komponentti */}
       <LogoHeader />
-
       <h1 style={{ textAlign: 'center' }}>Maitotilan ESG-vastuullisuusraportti</h1>
 
-      {/* Kaksi tekstilaatikkoa vierekkäin */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '2rem',         // Välit laatikoiden välille
-          flexWrap: 'wrap',    // Teksti siirtyy uudelle riville kapeilla näytöillä
-          marginBottom: '2rem'
-        }}
-      >
-
-
-        <div
-  style={{
-    flex: '1 1 0',
-    minWidth: '300px',
-    border: '1px solid #ccc',
-    padding: '1rem',
-    borderRadius: '8px'
-  }}
->
-  <h3>Ohjeet lomakkeen täyttöön:</h3>
-  <ul>
-    <li>
-      <strong>Tallentaminen ja jatkaminen:</strong> Kun lopetat lomakkeen täyttämisen, paina aina <em>Tallenna ja lopeta</em> -painiketta. Tämä luo PDF-tiedoston, joka tallentaa syöttämäsi tiedot, jolloin voit jatkaa lomakkeen täyttämistä siitä, mihin viimeksi jäit.
-    </li>
-    <li>
-      <strong>Tyhjennys:</strong> Jos haluat aloittaa lomakkeen täyttämisen alusta, käytä <em>Tyhjennä kaikki</em> -painiketta, joka poistaa kaikki syötetyt tiedot.
-    </li>
-    <li>
-      <strong>Navigointi:</strong> Voit liikkua lomakkeen eri osioiden välillä progress barin avulla, jolloin pääset helposti muokkaamaan aiemmin täytettyjä tietoja.
-    </li>
-    <li>
-      <strong>PDF-raportti:</strong> PDF-tiedoston avulla voit helposti tulostaa tai tallentaa lopullisen raportin, jota voit tarvittaessa jakaa eteenpäin.
-    </li>
-    <li>
-      <strong>Yleiset vinkit:</strong> Täytä kentät huolellisesti ja tarkista, että kaikki tarvittavat tiedot ovat oikein. Jätä kentät tyhjiksi, mikäli ne eivät koske sinua. Tyhjät kentät eivät näy lopullisessa PDF-raportissa.
-    </li>
-  </ul>
-</div>
-
-      </div>
-
-
-
-      {/* Drop zone PDF-tiedostolle */}
+      {/* Drop zone -laatikko */}
       <div
         {...getRootProps()}
         style={{
           border: '2px dashed #007acc',
           padding: '20px',
           textAlign: 'center',
-          marginTop: '20px',
-          borderRadius: '8px' // tai esim. '10px'
+          borderRadius: '8px',
+          marginBottom: '2rem'
         }}
       >
         <input {...getInputProps()} />
@@ -294,18 +226,12 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
           </p>
         )}
       </div>
-      {/* Pääosa: Lomake ja ESG-kuva vierekkäin */}
-      <main
-        style={{
-          display: 'flex',
-          alignItems: 'flex-start'
-        }}
-      >
 
+      {/* Flex-kontti, jossa alkuperäinen "Yrityksen perustiedot" -lomake säilyy ennallaan ja ohjeet-laatikko sijoitetaan sen oikealle puolelle */}
+      <main style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem' }}>
         <div className="initial-page">
           <h2>Yrityksen perustiedot</h2>
           <form onSubmit={handleSubmit}>
-          
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
               <label style={{ width: '180px' }}>Yrittäjien nimet:</label>
               <input
@@ -400,16 +326,42 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
                 <option value="Parsilypsy">Parsilypsy</option>
               </select>
             </div>
-
-
             <button type="submit">Seuraava</button>
-         
-
           </form>
         </div>
 
-
-       
+        {/* Ohjeiden laatikko – ohjeet lomakkeen täyttöön, sijoitettu lomakkeen oikealle puolelle */}
+        <div
+          style={{
+            flexShrink: 0,
+            marginTop: '4rem',
+            height: '360px',
+            marginLeft: '2rem',
+            maxWidth: '720px',
+            border: '1px solid #ccc',
+            padding: '1rem',
+            borderRadius: '8px'
+          }}
+        >
+          <h3>Ohjeet lomakkeen täyttöön:</h3>
+          <ul>
+            <li>
+              <strong>Tallentaminen ja jatkaminen:</strong> Kun lopetat lomakkeen täyttämisen, paina aina <em>Tallenna ja lopeta</em>-painiketta.
+            </li>
+            <li>
+              <strong>Tyhjennys:</strong> Käytä <em>Tyhjennä kaikki</em>-painiketta aloittaaksesi lomakkeen alusta.
+            </li>
+            <li>
+              <strong>Navigointi:</strong> Voit liikkua eri osioiden välillä progress barin avulla.
+            </li>
+            <li>
+              <strong>PDF-raportti:</strong> PDF-tiedoston avulla voit tallentaa tai tulostaa raportin.
+            </li>
+            <li>
+              <strong>Yleiset vinkit:</strong> Täytä kentät huolellisesti; tyhjät kentät eivät näy PDF-raportissa.
+            </li>
+          </ul>
+        </div>
       </main>
     </div>
   );

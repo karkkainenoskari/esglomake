@@ -21,7 +21,7 @@ function App() {
 
   const pageTitles = [
     "Johdanto",
-    "Yrityksen perustiedot",
+    "Yrityksen perustiedot / ohjeet",
     "Ympäristö",
     "Sosiaalinen vastuu",
     "Talous ja hallinto"
@@ -143,7 +143,7 @@ function App() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          gap: '1rem'  // Asettaa pienen tilan nappien väliin
+          gap: '10rem'  // Asettaa pienen tilan nappien väliin
         }}
       >
         <ProgressBar
