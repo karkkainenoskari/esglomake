@@ -2,31 +2,32 @@ import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
 import { 
-    savoniaLogo, 
-    maitoyrittajatLogo, 
-    valioLogo, 
-    ysaoLogo, 
-    euLogo 
+  savoniaLogo, 
+  maitoyrittajatLogo, 
+  valioLogo, 
+  ysaoLogo, 
+  euLogo 
 } from './logos.js';
 
 const generatePdfReport = (initialData, environmentData) => {
   const doc = new jsPDF();
- 
-  doc.addImage(savoniaLogo, 'PNG', 14, 10, 30, 20);         // x=14, y=10, leveys=30, korkeus=20
-  doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 30, 20);  
+
+  // Lisää logot
+  doc.addImage(savoniaLogo, 'PNG', 14, 10, 30, 20);
+  doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 30, 20);
   doc.addImage(valioLogo, 'PNG', 86, 10, 30, 20);
   doc.addImage(ysaoLogo, 'PNG', 122, 10, 30, 20);
   doc.addImage(euLogo, 'PNG', 158, 10, 30, 20);
 
-  // Nostetaan startY:tä, ettei otsikot mene logojen päälle
+  // Aloituskoordinaatti jotta otsikot eivät mene logojen päälle
   let startY = 40;
-  
-  // Otsikko
+
+  // PDF-raportin otsikko
   doc.setFontSize(16);
   doc.text("ESG Vastuullisuusraportti", 14, startY);
   startY += 10;
 
-  // Yrityksen perustiedot ------------------------------------------
+  // Yrityksen perustiedot
   const initialRows = [
     ["Yrityksen nimi:", initialData.yrityksenNimi || ""],
     ["Yrittäjien nimet:", initialData.yrittajienNimet || ""],
@@ -38,9 +39,8 @@ const generatePdfReport = (initialData, environmentData) => {
     ["Navettatyyppi:", initialData.navettatyyppi || ""],
     ["Lypsyjärjestelmä:", initialData.lypsyjarjestelma || ""],
   ];
-  
-  // Suodatetaan pois rivit, joissa arvo on tyhjä
-  const filteredInitialRows = initialRows.filter(([label, value]) => value.trim() !== "");
+
+  const filteredInitialRows = initialRows.filter(([_, value]) => value.trim() !== "");
 
   if (filteredInitialRows.length > 0) {
     autoTable(doc, {
@@ -55,14 +55,7 @@ const generatePdfReport = (initialData, environmentData) => {
   }
 
   // --- Ympäristö ---
-  // Määritellään vuosiTextMap ja muunnetaan tarvittaessa
-  const vuosiTextMap = {
-    "1": "1-vuosi",
-    "2": "2-vuotta",
-    "3": "3-vuotta"
-  };
-  const convertedVuodet = vuosiTextMap[environmentData.envToimenpiteetVuodet] || environmentData.envToimenpiteetVuodet || "";
-
+  // Ympäristön sisällössä lisätään myös monivuotisten tavoitteiden rivi
   const rows21 = [
     [
       "Maidon hiilijalanjälki, Co2/kg maitoa",
@@ -179,16 +172,19 @@ const generatePdfReport = (initialData, environmentData) => {
       environmentData.envMuutToimenpiteet || "",
       environmentData.envMuutToimenpiteetLisatiedot || "",
     ],
+    // Uusi rivi: Ympäristön tavoitteet
     [
       "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-      convertedVuodet,
-      environmentData.envToimenpiteetTavoiteTeksti || ""
+      "",
+      "Vuosi-1: " + (environmentData.envTavoitteetVuosi1 || "") +
+      "\nVuosi-2: " + (environmentData.envTavoitteetVuosi2 || "") +
+      "\nVuosi-3: " + (environmentData.envTavoitteetVuosi3 || "")
     ]
   ];
 
   const filteredRows21 = rows21.filter(([_, col2, col3]) => {
-    const second = (col2 ?? "").trim();
-    const third = (col3 ?? "").trim();
+    const second = (col2 || "").trim();
+    const third = (col3 || "").trim();
     return second !== "" || third !== "";
   });
 
@@ -205,17 +201,12 @@ const generatePdfReport = (initialData, environmentData) => {
       margin: { left: 14, right: 14 },
       styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
       showHead: 'firstPage',
-      columnStyles: {
-        0: { cellWidth: 60 },
-        1: { cellWidth: 30 },
-        2: { cellWidth: 92 }
-      }
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
     });
     startY = doc.lastAutoTable.finalY + 10;
   }
 
-  const convertedDivVuodet = vuosiTextMap[environmentData.divErityisetVuodet] || environmentData.divErityisetVuodet || "";
-  
+  // --- Monimuotoisuus ---
   const rows22 = [
     [
       "Maatalousluonnon ja maiseman -hoitosopimus",
@@ -260,24 +251,25 @@ const generatePdfReport = (initialData, environmentData) => {
     [
       "Kuvaus muista mahdollisista toimenpiteistä",
       environmentData.divErityisetToimenpiteet || "",
-      "" // Tässä rivissä ei välttämättä ole erillistä lisätietokenttää
+      ""
     ],
+    // Uusi rivi: Monimuotoisuuden tavoitteet
     [
       "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-      convertedDivVuodet,
-      environmentData.divErityisetTavoiteTeksti || ""
+      "",
+      "Vuosi-1: " + (environmentData.divTavoitteetVuosi1 || "") +
+      "\nVuosi-2: " + (environmentData.divTavoitteetVuosi2 || "") +
+      "\nVuosi-3: " + (environmentData.divTavoitteetVuosi3 || "")
     ]
   ];
-   
-  
+
   const filteredRows22 = rows22.filter(([_, col2, col3]) => {
-    const second = (col2 ?? "").trim();
-    const third = (col3 ?? "").trim();
+    const second = (col2 || "").trim();
+    const third = (col3 || "").trim();
     return second !== "" || third !== "";
   });
-  
+
   if (filteredRows22.length > 0) {
-  
     autoTable(doc, {
       startY,
       head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
@@ -291,257 +283,236 @@ const generatePdfReport = (initialData, environmentData) => {
     });
     startY = doc.lastAutoTable.finalY + 10;
   }
-  
 
-  const convertedPeltoviljelyVuodet = vuosiTextMap[environmentData.envPeltoviljelyErityisetToimenpiteetVuodet] ||
-  environmentData.envPeltoviljelyErityisetToimenpiteetVuodet || "";
-  
-const rows23Pelto = [
+  // --- Peltoviljely ---
+  const rows23Pelto = [
+    [
+      "Viljelykasvien kokonaispinta-ala, ha",
+      environmentData.envPeltoviljelyKokonaispintaAla || "",
+      environmentData.envPeltoviljelyKokonaispintaAlaLisatiedot || ""
+    ],
+    [
+      "Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey",
+      environmentData.envPeltoviljelySuhdeElainmaara || "",
+      environmentData.envPeltoviljelySuhdeElainmaaraLisatiedot || ""
+    ],
+    [
+      "Turvemaiden osuus, %",
+      environmentData.envTurvemaidenOsuus || "",
+      environmentData.envTurvemaidenOsuusLisatiedot || ""
+    ],
+    [
+      "Säilörehun D-arvo, keskimäärin",
+      environmentData.envSaileRehunDArvo || "",
+      environmentData.envSaileRehunDArvoLisatiedot || ""
+    ],
+    [
+      "Nurmisato keskimäärin, kg ka/ha",
+      environmentData.envNurmisato || "",
+      environmentData.envNurmisatoLisatiedot || ""
+    ],
+    [
+      "Viljasato keskimäärin, kg/ha",
+      environmentData.envViljasato || "",
+      environmentData.envViljasatoLisatiedot || ""
+    ],
+    [
+      "Kuvaus rehuntuotannon toimintatavoista/strategiasta",
+      environmentData.envRehuntuotantoKuvaus || "",
+      environmentData.envRehuntuotantoKuvausLisatiedot || ""
+    ],
+    [
+      "Keskimääräinen lohkoetäisyys, km",
+      environmentData.envLohkoetaisyys || "",
+      environmentData.envLohkoetaisyysLisatiedot || ""
+    ],
+    [
+      "Kuvaus peltoviljelyssä käytössä olevista toimenpiteistä",
+      environmentData.envPeltoviljelyToimenpiteet || "",
+      environmentData.envPeltoviljelyToimenpiteetLisatiedot || ""
+    ],
+    [
+      "Kuvaus, miten peltojen vesitaloutta ylläpidetään ja kehitetään",
+      environmentData.envVesitalousKuvaus || "",
+      environmentData.envVesitalousKuvausLisatiedot || ""
+    ],
+    [
+      "Kuvaus muista mahdollisista toimenpiteistä",
+      environmentData.envPeltoviljelyErityisetToimenpiteet || "",
+      ""
+    ],
+    // Uusi rivi: Peltoviljelyn tavoitteet
+    [
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      "Vuosi-1: " + (environmentData.envPeltoviljelyTavoitteetVuosi1 || "") +
+      "\nVuosi-2: " + (environmentData.envPeltoviljelyTavoitteetVuosi2 || "") +
+      "\nVuosi-3: " + (environmentData.envPeltoviljelyTavoitteetVuosi3 || "")
+    ]
+  ];
 
-  [
-    "Viljelykasvien kokonaispinta-ala, ha",
-    environmentData.envPeltoviljelyKokonaispintaAla || "",
-    environmentData.envPeltoviljelyKokonaispintaAlaLisatiedot || ""
-  ],
-  [
-    "Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey",
-    environmentData.envPeltoviljelySuhdeElainmaara || "",
-    environmentData.envPeltoviljelySuhdeElainmaaraLisatiedot || ""
-  ],
-  [
-    "Turvemaiden osuus, %",
-    environmentData.envTurvemaidenOsuus || "",
-    environmentData.envTurvemaidenOsuusLisatiedot || ""
-  ],
-  [
-    "Säilörehun D-arvo, keskimäärin",
-    environmentData.envSaileRehunDArvo || "",
-    environmentData.envSaileRehunDArvoLisatiedot || ""
-  ],
-  [
-    "Nurmisato keskimäärin, kg ka/ha",
-    environmentData.envNurmisato || "",
-    environmentData.envNurmisatoLisatiedot || ""
-  ],
-  [
-    "Viljasato keskimäärin, kg/ha",
-    environmentData.envViljasato || "",
-    environmentData.envViljasatoLisatiedot || ""
-  ],
-  [
-    "Kuvaus rehuntuotannon toimintatavoista/strategiasta",
-    environmentData.envRehuntuotantoKuvaus || "",
-    environmentData.envRehuntuotantoKuvausLisatiedot || ""
-  ],
-  [
-    "Keskimääräinen lohkoetäisyys, km",
-    environmentData.envLohkoetaisyys || "",
-    environmentData.envLohkoetaisyysLisatiedot || ""
-  ],
-  [
-    "Kuvaus peltoviljelyssä käytössä olevista toimenpiteistä",
-    environmentData.envPeltoviljelyToimenpiteet || "",
-    environmentData.envPeltoviljelyToimenpiteetLisatiedot || ""
-  ],
-  [
-    "Kuvaus, miten peltojen vesitaloutta ylläpidetään ja kehitetään",
-    environmentData.envVesitalousKuvaus || "",
-    environmentData.envVesitalousKuvausLisatiedot || ""
-  ],
-  [
-    "Kuvaus muista mahdollisista toimenpiteistä",
-    environmentData.envPeltoviljelyErityisetToimenpiteet || "",
-    "" 
-  ],
-  [
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    convertedPeltoviljelyVuodet,
-    environmentData.envPeltoviljelyErityisetToimenpiteetTavoiteTeksti || ""
-  ]
-];
- 
-
-const filteredRows23Pelto = rows23Pelto.filter(([_, col2, col3]) => {
-  const second = (col2 ?? "").trim();
-  const third = (col3 ?? "").trim();
-  // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
-  return second !== "" || third !== "";
-});
-
-
-if (filteredRows23Pelto.length > 0) {
-  autoTable(doc, {
-    startY,
-    head: [["Peltoviljely", "Uusin tulos", "Kuvaus"]],
-    body: filteredRows23Pelto,
-    theme: 'striped',
-    headStyles: { fillColor: '#4CAF50' },
-    margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-    columnStyles: {
-      0: { cellWidth: 60 },
-      1: { cellWidth: 30 },
-      2: { cellWidth: 92 }
-    },
-    showHead: 'firstPage'
+  const filteredRows23Pelto = rows23Pelto.filter(([_, col2, col3]) => {
+    const second = (col2 || "").trim();
+    const third = (col3 || "").trim();
+    return second !== "" || third !== "";
   });
-  startY = doc.lastAutoTable.finalY + 10;
-}
 
-const convertedLantaVuodet = vuosiTextMap[environmentData.lantaMuutToimenpiteetVuodet] ||
-environmentData.lantaMuutToimenpiteetVuodet || "";
+  if (filteredRows23Pelto.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Peltoviljely", "Uusin tulos", "Kuvaus"]],
+      body: filteredRows23Pelto,
+      theme: 'striped',
+      headStyles: { fillColor: '#4CAF50' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
+      showHead: 'firstPage'
+    });
+    startY = doc.lastAutoTable.finalY + 10;
+  }
 
+  // --- Lannan käsittely ja jätehuolto ---
+  const rows23 = [
+    [
+      "Viimeisin ympäristölupa, pvm",
+      environmentData.lantaYmparistolupa || "",
+      environmentData.lantaYmparistolupaLisatiedot || ""
+    ],
+    [
+      "Lietelannan osuus, %",
+      environmentData.lantaLietelannanOsuus || "",
+      environmentData.lantaLietelannanOsuusLisatiedot || ""
+    ],
+    [
+      "Lannan levitysmenetelmä",
+      environmentData.lantaLevitysmenetelma || "",
+      environmentData.lantaLevitysmenetelmaLisatiedot || ""
+    ],
+    [
+      "Pääasiallinen kuivikemateriaali",
+      environmentData.lantaKuivikemateriaali || "",
+      environmentData.lantaKuivikemateriaaliLisatiedot || ""
+    ],
+    [
+      "Kuvaus jätemuovien varastoinnista ja hävittämisestä",
+      environmentData.lantaJatemuovit || "",
+      environmentData.lantaJatemuovitLisatiedot || ""
+    ],
+    [
+      "Kuvaus vaarallisten aineiden ja kemikaalien varastoinnista ja hävittämisestä",
+      environmentData.lantaVaarallisetAineet || "",
+      environmentData.lantaVaarallisetAineetLisatiedot || ""
+    ],
+    [
+      "Kuvaus jäteöljyn varastoinnista ja hävittämisestä",
+      environmentData.lantaJateoljy || "",
+      environmentData.lantaJateoljyLisatiedot || ""
+    ],
+    [
+      "Kuvaus puristenesteiden käsittelytavasta",
+      environmentData.lantaPuristeneste || "",
+      environmentData.lantaPuristenesteLisatiedot || ""
+    ],
+    [
+      "Kuvaus muista mahdollisista toimenpiteistä",
+      environmentData.lantaMuutToimenpiteet || "",
+      ""
+    ],
+    // Uusi rivi: Lannan käsittelyn tavoitteet
+    [
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      "Vuosi-1: " + (environmentData.lantaTavoitteetVuosi1 || "") +
+      "\nVuosi-2: " + (environmentData.lantaTavoitteetVuosi2 || "") +
+      "\nVuosi-3: " + (environmentData.lantaTavoitteetVuosi3 || "")
+    ]
+  ];
 
-const rows23 = [
-  [
-    "Viimeisin ympäristölupa, pvm",
-    environmentData.lantaYmparistolupa || "",
-    environmentData.lantaYmparistolupaLisatiedot || ""
-  ],
-  [
-    "Lietelannan osuus, %",
-    environmentData.lantaLietelannanOsuus || "",
-    environmentData.lantaLietelannanOsuusLisatiedot || ""
-  ],
-  [
-    "Lannan levitysmenetelmä",
-    environmentData.lantaLevitysmenetelma || "",
-    environmentData.lantaLevitysmenetelmaLisatiedot || ""
-  ],
-  [
-    "Pääasiallinen kuivikemateriaali",
-    environmentData.lantaKuivikemateriaali || "",
-    environmentData.lantaKuivikemateriaaliLisatiedot || ""
-  ],
-  [
-    "Kuvaus jätemuovien varastoinnista ja hävittämisestä",
-    environmentData.lantaJatemuovit || "",
-    environmentData.lantaJatemuovitLisatiedot || ""
-  ],
-  [
-    "Kuvaus vaarallisten aineiden ja kemikaalien varastoinnista ja hävittämisestä",
-    environmentData.lantaVaarallisetAineet || "",
-    environmentData.lantaVaarallisetAineetLisatiedot || ""
-  ],
-  [
-    "Kuvaus jäteöljyn varastoinnista ja hävittämisestä",
-    environmentData.lantaJateoljy || "",
-    environmentData.lantaJateoljyLisatiedot || ""
-  ],
-  [
-    "Kuvaus puristenesteiden käsittelytavasta",
-    environmentData.lantaPuristeneste || "",
-    environmentData.lantaPuristenesteLisatiedot || ""
-  ],
-  [
-    "Kuvaus muista mahdollisista toimenpiteistä",
-    environmentData.lantaMuutToimenpiteet || "",
-    ""
-  ],
-  [
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    convertedLantaVuodet,
-    environmentData.lantaMuutToimenpiteetTavoiteTeksti || ""
-  ]
-];
-
-const filteredRows23 = rows23.filter(([_, col2, col3]) => {
-  const second = (col2 ?? "").trim();
-  const third = (col3 ?? "").trim();
-  // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
-  return second !== "" || third !== "";
-});
-
-
-if (filteredRows23.length > 0) {
-
-  autoTable(doc, {
-    startY,
-    head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
-    body: filteredRows23,
-    theme: 'striped',
-    margin: { left: 14, right: 14 },
-    headStyles: { fillColor: '#4CAF50' },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
-    showHead: 'firstPage'
+  const filteredRows23 = rows23.filter(([_, col2, col3]) => {
+    const second = (col2 || "").trim();
+    const third = (col3 || "").trim();
+    return second !== "" || third !== "";
   });
-  startY = doc.lastAutoTable.finalY + 10;
-}
 
-const convertedEnergyVuodet = vuosiTextMap[environmentData.energyErityisetToimenpiteetVuodet] ||
-environmentData.energyErityisetToimenpiteetVuodet || "";
+  if (filteredRows23.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
+      body: filteredRows23,
+      theme: 'striped',
+      headStyles: { fillColor: '#4CAF50' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
+      showHead: 'firstPage'
+    });
+    startY = doc.lastAutoTable.finalY + 10;
+  }
 
-  
+  // --- Energian käyttö ---
   const rows24 = [
     [
       "Sähkön käyttömäärä, kWh/v",
       environmentData.energySahkonKayttomaara || "",
       environmentData.energySahkonKayttomaaraLisatiedot || "",
-
     ],
     [
       "Sähkön käyttömäärä suhteessa tuotantoon, kWh/kg maitoa/v",
       environmentData.energySahkonKayttomaaraSuhteessa || "",
       environmentData.energySahkonKayttomaaraSuhteessaLisatiedot || "",
-
     ],
     [
       "Oman sähkön tuotanto, kWh/v",
       environmentData.energyOmaSahkotuotanto || "",
       environmentData.energyOmaSahkotuotantoLisatiedot || "",
-
     ],
     [
       "Polttoaineiden kokonaiskäyttömäärä, l/v",
       environmentData.energyPolttoaineenKaytto || "",
       environmentData.energyPolttoaineenKayttoLisatiedot || "",
-
     ],
     [
       "Polttoaineiden käyttömäärä suhteessa tuotantoon, l/kg maitoa",
       environmentData.energyPolttoaineenKayttoSuhteessa || "",
       environmentData.energyPolttoaineenKayttoSuhteessaLisatiedot || "",
-
     ],
     [
       "Lanta käsitellään biokaasulaitoksessa",
       environmentData.energyBiokaasu || "",
       environmentData.energyBiokaasuLisatiedot || "",
-
     ],
     [
       "Maidon esijäähdytys",
       environmentData.energyEsijahdytys || "",
       environmentData.energyEsijahdytysLisatiedot || "",
-
     ],
     [
       "Lämmön talteenotto",
       environmentData.energyLampotalteenotto || "",
       environmentData.energyLampotalteenottoLisatiedot || "",
-
     ],
     [
       "Kuvaus muista mahdollisista toimenpiteistä",
       environmentData.energyErityisetToimenpiteet || "",
       ""
     ],
+    // Uusi rivi: Energian käytön tavoitteet
     [
       "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-      convertedEnergyVuodet,
-      environmentData.energyErityisetToimenpiteetTavoiteTeksti || "",
-      ""
+      "",
+      "Vuosi-1: " + (environmentData.energyTavoitteetVuosi1 || "") +
+      "\nVuosi-2: " + (environmentData.energyTavoitteetVuosi2 || "") +
+      "\nVuosi-3: " + (environmentData.energyTavoitteetVuosi3 || "")
     ]
   ];
-  
+
   const filteredRows24 = rows24.filter(([_, col2, col3]) => {
-    const second = (col2 ?? "").trim();
-    const third = (col3 ?? "").trim();
-    // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
+    const second = (col2 || "").trim();
+    const third = (col3 || "").trim();
     return second !== "" || third !== "";
   });
-  
+
   if (filteredRows24.length > 0) {
     autoTable(doc, {
       startY,
@@ -556,19 +527,15 @@ environmentData.energyErityisetToimenpiteetVuodet || "";
     });
     startY = doc.lastAutoTable.finalY + 10;
   }
-  
 
+  // Lopuksi lisätään päivämäärä ja tallennetaan PDF
   const now = new Date();
   const day = String(now.getDate()).padStart(2, '0');
   const month = String(now.getMonth() + 1).padStart(2, '0');
   const year = now.getFullYear();
-  
-  // Muotoile päivämäärä muodossa MM-DD-YYYY
   const dateStr = `${day}-${month}-${year}`;
-  
-  doc.save(`ESG_raportti_${dateStr}.pdf`);
-  
 
+  doc.save(`ESG_raportti_${dateStr}.pdf`);
 };
 
 export default generatePdfReport;
