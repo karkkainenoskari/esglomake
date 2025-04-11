@@ -273,33 +273,25 @@ const generatePdfReport = (initialData, environmentData) => {
   const filteredRows22 = rows22.filter(([_, col2, col3]) => {
     const second = (col2 ?? "").trim();
     const third = (col3 ?? "").trim();
-    // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
     return second !== "" || third !== "";
   });
   
-  autoTable(doc, {
-    startY,
-    head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
-    body: filteredRows22,
-    theme: 'striped',
-    headStyles: { fillColor: '#4CAF50' },
-    margin: { left: 14, right: 14 },
-    styles: { 
-      fontSize: 10,
-      cellPadding: 3,         // lisää sisämarginaalia
-      overflow: 'linebreak'   // rivit katkaistaan automaattisesti
-    },
-    showHead: 'firstPage',
-    // Sarakekohtaiset tyylit:
-    columnStyles: {
-      0: { cellWidth: 60 },   // ensimmäinen sarake (esim. 60 mm)
-      1: { cellWidth: 30 },   // toinen sarake 
-      2: { cellWidth: 92 }    // kolmas sarake (Kuvaus)
-    }
-  });
-
+  if (filteredRows22.length > 0) {
   
-  startY = doc.lastAutoTable.finalY + 10;
+    autoTable(doc, {
+      startY,
+      head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
+      body: filteredRows22,
+      theme: 'striped',
+      headStyles: { fillColor: '#4CAF50' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
+      showHead: 'firstPage'
+    });
+    startY = doc.lastAutoTable.finalY + 10;
+  }
+  
 
   const convertedPeltoviljelyVuodet = vuosiTextMap[environmentData.envPeltoviljelyErityisetToimenpiteetVuodet] ||
   environmentData.envPeltoviljelyErityisetToimenpiteetVuodet || "";
@@ -461,25 +453,21 @@ const filteredRows23 = rows23.filter(([_, col2, col3]) => {
 });
 
 
+if (filteredRows23.length > 0) {
 
-autoTable(doc, {
-  startY,
-  head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
-  body: filteredRows23,
-  theme: 'striped',
-  margin: { left: 14, right: 14 },
-  headStyles: { fillColor: '#4CAF50' },
-  styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-  showHead: 'firstPage',
-  // Sarakekohtaiset asetukset:
-  columnStyles: {
-    0: { cellWidth: 60 },  // 1. sarake
-    1: { cellWidth: 30 },  // 2. sarake
-    2: { cellWidth: 92 }   // 3. sarake
-  }
-});
-
-startY = doc.lastAutoTable.finalY + 10;
+  autoTable(doc, {
+    startY,
+    head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
+    body: filteredRows23,
+    theme: 'striped',
+    margin: { left: 14, right: 14 },
+    headStyles: { fillColor: '#4CAF50' },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
+    showHead: 'firstPage'
+  });
+  startY = doc.lastAutoTable.finalY + 10;
+}
 
 const convertedEnergyVuodet = vuosiTextMap[environmentData.energyErityisetToimenpiteetVuodet] ||
 environmentData.energyErityisetToimenpiteetVuodet || "";
@@ -554,23 +542,20 @@ environmentData.energyErityisetToimenpiteetVuodet || "";
     return second !== "" || third !== "";
   });
   
-  autoTable(doc, {
-    startY,
-    head: [["Energian käyttö", "Uusin tulos", "Kuvaus"]],
-    body: filteredRows24,
-    theme: 'striped',
-    margin: { left: 14, right: 14 },
-    headStyles: { fillColor: '#4CAF50' },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-    showHead: 'firstPage',
-    // Sarakekohtaiset asetukset:
-    columnStyles: {
-      0: { cellWidth: 60 },  // 1. sarake
-      1: { cellWidth: 30 },  // 2. sarake
-      2: { cellWidth: 92 }   // 3. sarake
-    }
-  });
-  startY = doc.lastAutoTable.finalY + 10;
+  if (filteredRows24.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Energian käyttö", "Uusin tulos", "Kuvaus"]],
+      body: filteredRows24,
+      theme: 'striped',
+      margin: { left: 14, right: 14 },
+      headStyles: { fillColor: '#4CAF50' },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
+      showHead: 'firstPage'
+    });
+    startY = doc.lastAutoTable.finalY + 10;
+  }
   
 
   const now = new Date();
