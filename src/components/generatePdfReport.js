@@ -7,29 +7,26 @@ import {
     valioLogo, 
     ysaoLogo, 
     euLogo 
-  } from './logos.js';
+} from './logos.js';
 
-const generatePdfReport = (initialData,environmentData) => {
+const generatePdfReport = (initialData, environmentData) => {
   const doc = new jsPDF();
  
   doc.addImage(savoniaLogo, 'PNG', 14, 10, 30, 20);         // x=14, y=10, leveys=30, korkeus=20
-  doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 30, 20);  // säädä arvoja tarpeen mukaan
+  doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 30, 20);  
   doc.addImage(valioLogo, 'PNG', 86, 10, 30, 20);
   doc.addImage(ysaoLogo, 'PNG', 122, 10, 30, 20);
   doc.addImage(euLogo, 'PNG', 158, 10, 30, 20);
 
-  // Nostetaan startY:tä sen verran, etteivät otsikot mene logojen päälle
+  // Nostetaan startY:tä, ettei otsikot mene logojen päälle
   let startY = 40;
   
-
   // Otsikko
   doc.setFontSize(16);
   doc.text("ESG Vastuullisuusraportti", 14, startY);
   startY += 10;
 
-  
-
-  // Kahden sarakkeen taulukko: [Kenttä, Arvo]
+  // Yrityksen perustiedot ------------------------------------------
   const initialRows = [
     ["Yrityksen nimi:", initialData.yrityksenNimi || ""],
     ["Yrittäjien nimet:", initialData.yrittajienNimet || ""],
@@ -42,8 +39,7 @@ const generatePdfReport = (initialData,environmentData) => {
     ["Lypsyjärjestelmä:", initialData.lypsyjarjestelma || ""],
   ];
   
-
-  // Suodatetaan pois ne rivit, joissa Arvo on tyhjä
+  // Suodatetaan pois rivit, joissa arvo on tyhjä
   const filteredInitialRows = initialRows.filter(([label, value]) => value.trim() !== "");
 
   if (filteredInitialRows.length > 0) {
@@ -58,196 +54,165 @@ const generatePdfReport = (initialData,environmentData) => {
     startY = doc.lastAutoTable.finalY + 10;
   }
 
-  // --- 2. Ympäristö ---
-  doc.text("Ympäristö", 14, startY);
-  startY += 10;
-
+  // --- Ympäristö ---
+  // Määritellään vuosiTextMap ja muunnetaan tarvittaessa
   const vuosiTextMap = {
     "1": "1-vuosi",
     "2": "2-vuotta",
     "3": "3-vuotta"
   };
-  // Käytetään muunnettua arvoa, jos se löytyy, muuten säilytetään alkuperäinen arvo.
   const convertedVuodet = vuosiTextMap[environmentData.envToimenpiteetVuodet] || environmentData.envToimenpiteetVuodet || "";
-
-
 
   const rows21 = [
     [
       "Maidon hiilijalanjälki, Co2/kg maitoa",
       environmentData.envMaidonHiilijalanjalki || "",
       environmentData.envMaidonHiilijalanjalkiLisatiedot || "",
-     
     ],
     [
       "Scope 1 päästö, tCO2e, %",
       environmentData.envScope1 || "",
       environmentData.envScope1Lisatiedot || "",
-  
     ],
     [
       "Scope 2 päästö, tCO2e, %",
       environmentData.envScope2 || "",
       environmentData.envScope2Lisatiedot || "",
-
     ],
     [
       "Scope 3 päästö, tCO2e, %",
       environmentData.envScope3 || "",
       environmentData.envScope3Lisatiedot || "",
-
     ],
     [
       "Hiiliviljelykoulutus suoritettu",
       environmentData.envHiiliviljelykoulutus || "",
       environmentData.envHiiliviljelykoulutusLisatiedot || "",
-
     ],
     [
       "Hiiliviljelytoimenpiteet rehuntuotannossa, ha",
       environmentData.envHiiliviljelytoimenpiteet || "",
       environmentData.envHiiliviljelytoimenpiteetLisatiedot || "",
-
     ],
     [
       "Keskilehmäluku, kpl",
       environmentData.envKeskilehmaluku || "",
       environmentData.envKeskilehmalukuLisatiedot || "",
-  
     ],
     [
-      "Poikimaväli, vrk ",
+      "Poikimaväli, vrk",
       environmentData.envPoikimavali || "",
       environmentData.envPoikimavaliLisatiedot || "",
-    
     ],
     [
-      "Hiehopoikimaikä, kk ",
+      "Hiehopoikimaikä, kk",
       environmentData.envHiehopoikimaika || "",
       environmentData.envHiehopoikimaikaLisatiedot || "",
-
     ],
     [
-      "Keskituotos, EKM kg/lehmä ",
+      "Keskituotos, EKM kg/lehmä",
       environmentData.envKeskituotos || "",
       environmentData.envKeskituotosLisatiedot || "",
- 
     ],
     [
       "Tuotosseurannan rasva%, vuoden keskiarvo",
       environmentData.envTuotosRasva || "",
       environmentData.envTuotosRasvaLisatiedot || "",
-    
     ],
     [
       "Tuotosseurannan valkuais%, vuoden keskiarvo",
       environmentData.envTuotosValkuainen || "",
       environmentData.envTuotosValkuainenLisatiedot || "",
-   
     ],
     [
       "Maidon ureapitoisuus, mg/100 ml",
       environmentData.envMaidonUrea || "",
       environmentData.envMaidonUreaLisatiedot || "",
-  
     ],
     [
       "Meijerimaidon osuus, %",
       environmentData.envMeijerimaidonOsuus || "",
       environmentData.envMeijerimaidonOsuusLisatiedot || "",
-  
     ],
     [
       "Käytössä vähäpäästöinen kylmäaine tilasäililössä",
       environmentData.envKaytossaVahapaastoinenKylmainetilasaililossa || "",
       environmentData.envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot || "",
-      
     ],
     [
       "Karkearehun osuus lypsylehmien ruokinnassa",
       environmentData.envKarkearehunOsuus || "",
       environmentData.envKarkearehunOsuusLisatiedot || "",
-  
     ],
     [
       "Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä",
       environmentData.envPaastojaVahentavatLisaravinteet || "",
       environmentData.envPaastojaVahentavatLisaravinteetLisatiedot || "",
-   
     ],
     [
       "Ruokinnan seurantalaskelmia tehty",
       environmentData.envRuokinnanSeurantalaskelmiaTehty || "",
       environmentData.envRuokinnanSeurantalaskelmiaTehtyLisatiedot || "",
-    
     ],
     [
       "Kuiva-ainekiloa rehua/EKM kg",
       environmentData.envKuivaAinekiloa || "",
       environmentData.envKuivaAinekiloaLisatiedot || "",
-   
     ],
     [
       "Typen hyväksikäyttö % ruokinnassa",
       environmentData.envTypenHyvaksykaytto || "",
       environmentData.envTypenHyvaksykayttoLisatiedot || "",
-   
     ],
     [
       "Rehun säästöindeksin huomioiminen jalostuksessa",
       environmentData.envRehunSaastoindeksi || "",
       environmentData.envRehunSaastoindeksiLisatiedot || "",
-
     ],
     [
       "Ruokinnan omavaraisuusaste %",
       environmentData.envRuokinnanOmavaraisuusaste || "",
       environmentData.envRuokinnanOmavaraisuusasteLisatiedot || "",
-
     ],
     [
       "Kuvaus muista mahdollisista toimenpiteistä",
       environmentData.envMuutToimenpiteet || "",
       environmentData.envMuutToimenpiteetLisatiedot || "",
-
     ],
     [
       "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
       convertedVuodet,
       environmentData.envToimenpiteetTavoiteTeksti || ""
     ]
-   
   ];
 
   const filteredRows21 = rows21.filter(([_, col2, col3]) => {
     const second = (col2 ?? "").trim();
     const third = (col3 ?? "").trim();
-    // Rivi otetaan mukaan jos jompikumpi (tai molemmat) soluista on ei-tyhjä
     return second !== "" || third !== "";
   });
-  
-  autoTable(doc, {
-    startY,
-    head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos", "Kuvaus"]],
-    body: filteredRows21,
-    theme: 'striped',
-    headStyles: { fillColor: '#4CAF50' },
-    margin: { left: 14, right: 14 },
-    styles: { 
-      fontSize: 10,
-      cellPadding: 3,         // lisää sisämarginaalia
-      overflow: 'linebreak'   // rivit katkaistaan automaattisesti
-    },
-    showHead: 'firstPage',
-    // Sarakekohtaiset tyylit:
-    columnStyles: {
-      0: { cellWidth: 60 },   // ensimmäinen sarake (esim. 60 mm)
-      1: { cellWidth: 30 },   // toinen sarake 
-      2: { cellWidth: 92 }    // kolmas sarake (Kuvaus)
-    }
-  });
-  
-  startY = doc.lastAutoTable.finalY + 10;
+
+  if (filteredRows21.length > 0) {
+    doc.setFontSize(14);
+    doc.text("Ympäristö", 14, startY);
+    startY += 10;
+    autoTable(doc, {
+      startY,
+      head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos", "Kuvaus"]],
+      body: filteredRows21,
+      theme: 'striped',
+      headStyles: { fillColor: '#4CAF50' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+      showHead: 'firstPage',
+      columnStyles: {
+        0: { cellWidth: 60 },
+        1: { cellWidth: 30 },
+        2: { cellWidth: 92 }
+      }
+    });
+    startY = doc.lastAutoTable.finalY + 10;
+  }
 
   const convertedDivVuodet = vuosiTextMap[environmentData.divErityisetVuodet] || environmentData.divErityisetVuodet || "";
   

@@ -206,8 +206,9 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
       <LogoHeader />
       <h1 style={{ textAlign: 'center' }}>Maitotilan ESG-vastuullisuusraportti</h1>
 
-      {/* Flex-kontti, jossa alkuperäinen "Yrityksen perustiedot" -lomake ja ohjeet-laatikko vierekkäin pysyvät ennallaan */}
+      {/* Flex-kontti, jossa "Yrityksen perustiedot" ja "Ohjeet lomakkeen täyttöön" laatikot näkyvät vierekkäin. */}
       <main style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem' }}>
+        {/* Yrityksen perustiedot -lomake */}
         <div className="initial-page">
           <h2>Yrityksen perustiedot</h2>
           <form onSubmit={handleSubmit}>
@@ -309,7 +310,8 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
           </form>
         </div>
 
-        {/* Ohjeiden laatikko – pysyy samana ennallaan */}
+        {/* Ohjeiden laatikko – pysyy samana ennallaan, sisältäen uudet ohjetiedot. 
+             Lisätty overflowY: 'auto' jotta laatikossa näkyy scrollauspalkki. */}
         <div
           style={{
             flexShrink: 0,
@@ -319,31 +321,52 @@ const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
             maxWidth: '720px',
             border: '1px solid #ccc',
             padding: '1rem',
-            borderRadius: '8px'
+            borderRadius: '8px',
+            overflowY: 'auto'
           }}
         >
-          <h3>Ohjeet lomakkeen täyttöön:</h3>
-          <ul>
+         <h3>Ohjeet lomakkeen täyttöön:</h3>
+          <ol style={{ paddingLeft: '1.2rem' }}>
+           
             <li>
-              <strong>Tallentaminen ja jatkaminen:</strong> Kun lopetat lomakkeen täyttämisen, paina aina <em>Tallenna ja lopeta</em>-painiketta.
+              <strong>Lomakkeen täyttäminen</strong>
+              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+                <li>Täytä kentät huolellisesti ja mahdollisimman kattavasti.</li>
+                <li>Jos jokin kenttä jää tyhjäksi, sitä ei näytetä PDF-raportissa.</li>
+                <li>Useimmilla sivuilla on myös tekstikenttiä (“Kuvaus”), joihin voit kirjoittaa tarkentavia tietoja tai selityksiä.</li>
+              </ul>
             </li>
+
             <li>
-              <strong>Tyhjennys:</strong> Käytä <em>Tyhjennä kaikki</em>-painiketta aloittaaksesi lomakkeen alusta.
+              <strong>Tallentaminen ja jatkaminen</strong>
+              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+                <li>Painamalla <em>Tallenna ja lopeta</em> -painiketta tallennat kaikki tähän mennessä täyttämäsi tiedot PDF-raporttiin.</li>
+                <li>Lomake tallentaa automaattisesti edistymisesi selaimen muistiin myös kesken täyttämisen, joten jos poistut sivulta ja palaat myöhemmin, työhösi pitäisi päästä jatkamaan samasta kohdasta.</li>
+                <li>Huomaa, että jos tyhjennät tiedot (ks. seuraava kohta), aiemmin syöttämäsi tiedot poistuvat.</li>
+              </ul>
             </li>
+
             <li>
-              <strong>Navigointi:</strong> Voit liikkua eri osioiden välillä progress barin avulla.
+              <strong>Tietojen tyhjentäminen</strong>
+              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+                <li>Jos haluat aloittaa alusta, voit käyttää <em>Tyhjennä kaikki</em> -painiketta. Tämä avaa ensin varmistusikkunan, jossa voit vielä perua, jos painoit painiketta vahingossa.</li>
+                <li>Hyväksyessäsi tyhjennyksen kaikki antamasi lomaketiedot tyhjennetään.</li>
+              </ul>
             </li>
+
             <li>
-              <strong>PDF-raportti:</strong> PDF-tiedoston avulla voit tallentaa tai tulostaa raportin.
+              <strong>PDF-raportti</strong>
+              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+                <li>Kun painat <em>Tallenna ja lopeta</em> -painiketta, järjestelmä koostaa täytetyistä tiedoista PDF-tiedoston.</li>
+                <li>Voit tallentaa PDF-raportin omalle koneellesi tai tulostaa sen tarvittaessa.</li>
+                <li>Raportti sisältää vain ne tiedot, jotka olet lomakkeelle syöttänyt.</li>
+              </ul>
             </li>
-            <li>
-              <strong>Yleiset vinkit:</strong> Täytä kentät huolellisesti; tyhjät kentät eivät näy PDF-raportissa.
-            </li>
-          </ul>
+          </ol>
         </div>
       </main>
 
-      {/* PDF-tiedoston pudotusalue siirretty flex-laatikon alapuolelle ja lisätty enemmän tilaa marginTop: '2rem' */}
+      {/* PDF-tiedoston pudotusalue, jossa lisää tilaa PDF-drop zone:n ja muun sisällön väliin (marginTop: '2rem') */}
       <div
         {...getRootProps()}
         style={{
