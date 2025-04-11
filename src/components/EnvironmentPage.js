@@ -272,104 +272,44 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         <tbody>
           <tr>
             <td>Maidon hiilijalanjälki, Co2/kg maitoa
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',   // Kehyksen tyyli
-                  borderRadius: '50%',        // Pyöristetty ympyrä
-                  backgroundColor: '#eee',    // Taustaväri
-                  padding: '2px 6px',         // Sisämarginaali
-                  fontWeight: 'bold',         // Vahvennettu fontti
-                }}
-                title="Tieto löytyy hiilijalanjälkilaskurista"
-              >
-                ?
-              </span>
+              
             </td>
             <td>
               <input type="text" name="envMaidonHiilijalanjalki" value={envData.envMaidonHiilijalanjalki} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envMaidonHiilijalanjalkiLisatiedot" value={envData.envMaidonHiilijalanjalkiLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envMaidonHiilijalanjalkiLisatiedot" value={envData.envMaidonHiilijalanjalkiLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälki laskurista" />
             </td>
           </tr>
           <tr>
             <td>Scope 1 päästö, tCO2e, %
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',   // Kehyksen tyyli
-                  borderRadius: '50%',        // Pyöristetty ympyrä
-                  backgroundColor: '#eee',    // Taustaväri
-                  padding: '2px 6px',         // Sisämarginaali
-                  fontWeight: 'bold',         // Vahvennettu fontti
-                }}
-                title="Tieto löytyy hiilijalanjälkilaskurista"
-              >
-                ?
-              </span>
+              
             </td>
             <td>
               <input type="text" name="envScope1" value={envData.envScope1} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envScope1Lisatiedot" value={envData.envScope1Lisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envScope1Lisatiedot" value={envData.envScope1Lisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälki laskurista" />
             </td>
           </tr>
           <tr>
             <td>Scope 2 päästö, tCO2e, %
-
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',   // Kehyksen tyyli
-                  borderRadius: '50%',        // Pyöristetty ympyrä
-                  backgroundColor: '#eee',    // Taustaväri
-                  padding: '2px 6px',         // Sisämarginaali
-                  fontWeight: 'bold',
-                }}
-                title="Tieto löytyy hiilijalanjälkilaskurista"
-              >
-                ?
-              </span>
             </td>
             <td>
               <input type="text" name="envScope2" value={envData.envScope2} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envScope2Lisatiedot" value={envData.envScope2Lisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envScope2Lisatiedot" value={envData.envScope2Lisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälki laskurista" />
             </td>
           </tr>
           <tr>
             <td>Scope 3 päästö, tCO2e, %
-
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',   // Kehyksen tyyli
-                  borderRadius: '50%',        // Pyöristetty ympyrä
-                  backgroundColor: '#eee',    // Taustaväri
-                  padding: '2px 6px',         // Sisämarginaali
-                  fontWeight: 'bold',
-                }}
-                title="Tieto löytyy hiilijalanjälkilaskurista"
-              >
-                ?
-              </span>
             </td>
             <td>
               <input type="text" name="envScope3" value={envData.envScope3} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envScope3Lisatiedot" value={envData.envScope3Lisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envScope3Lisatiedot" value={envData.envScope3Lisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälki laskurista" />
             </td>
           </tr>
           <tr>
@@ -396,209 +336,82 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Keskilehmäluku, kpl
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',
-                  borderRadius: '50%',
-                  backgroundColor: '#eee',
-                  padding: '2px 6px',
-                  fontWeight: 'bold'
-                }}
-                title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-              >
-                ?
-              </span>
             </td>
             <td>
               <input type="text" name="envKeskilehmaluku" value={envData.envKeskilehmaluku} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envKeskilehmalukuLisatiedot" value={envData.envKeskilehmalukuLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envKeskilehmalukuLisatiedot" value={envData.envKeskilehmalukuLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
-            <td>Poikimaväli, vrk  <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',
-                borderRadius: '50%',
-                backgroundColor: '#eee',
-                padding: '2px 6px',
-                fontWeight: 'bold'
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Poikimaväli, vrk  </td>
             <td>
               <input type="text" name="envPoikimavali" value={envData.envPoikimavali} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envPoikimavaliLisatiedot" value={envData.envPoikimavaliLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envPoikimavaliLisatiedot" value={envData.envPoikimavaliLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
-            <td>Hiehojen poikimaikä, kk  <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',
-                borderRadius: '50%',
-                backgroundColor: '#eee',
-                padding: '2px 6px',
-                fontWeight: 'bold'
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Hiehojen poikimaikä, kk  </td>
             <td>
               <input type="text" name="envHiehopoikimaika" value={envData.envHiehopoikimaika} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envHiehopoikimaikaLisatiedot" value={envData.envHiehopoikimaikaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envHiehopoikimaikaLisatiedot" value={envData.envHiehopoikimaikaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
-            <td>Keskituotos, EKM kg/lehmä  <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',
-                borderRadius: '50%',
-                backgroundColor: '#eee',
-                padding: '2px 6px',
-                fontWeight: 'bold'
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Keskituotos, EKM kg/lehmä  </td>
             <td>
               <input type="text" name="envKeskituotos" value={envData.envKeskituotos} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envKeskituotosLisatiedot" value={envData.envKeskituotosLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envKeskituotosLisatiedot" value={envData.envKeskituotosLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
-            <td>Tuotosseurannan rasva-%, vuoden keskiarvo <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',
-                borderRadius: '50%',
-                backgroundColor: '#eee',
-                padding: '2px 6px',
-                fontWeight: 'bold'
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Tuotosseurannan rasva-%, vuoden keskiarvo </td>
             <td>
               <input type="text" name="envTuotosRasva" value={envData.envTuotosRasva} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envTuotosRasvaLisatiedot" value={envData.envTuotosRasvaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envTuotosRasvaLisatiedot" value={envData.envTuotosRasvaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
-            <td>Tuotosseurannan valkuais-%, vuoden keskiarvo <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',
-                borderRadius: '50%',
-                backgroundColor: '#eee',
-                padding: '2px 6px',
-                fontWeight: 'bold'
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Tuotosseurannan valkuais-%, vuoden keskiarvo </td>
             <td>
               <input type="text" name="envTuotosValkuainen" value={envData.envTuotosValkuainen} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envTuotosValkuainenLisatiedot" value={envData.envTuotosValkuainenLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envTuotosValkuainenLisatiedot" value={envData.envTuotosValkuainenLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
             <td>Maidon ureapitoisuus, mg/100 ml
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',
-                  borderRadius: '50%',
-                  backgroundColor: '#eee',
-                  padding: '2px 6px',
-                  fontWeight: 'bold'
-                }}
-                title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-              >
-                ?
-              </span>
+              
             </td>
             <td>
               <input type="text" name="envMaidonUrea" value={envData.envMaidonUrea} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envMaidonUreaLisatiedot" value={envData.envMaidonUreaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envMaidonUreaLisatiedot" value={envData.envMaidonUreaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
-            <td>Meijerimaidon osuus, %  <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',
-                borderRadius: '50%',
-                backgroundColor: '#eee',
-                padding: '2px 6px',
-                fontWeight: 'bold'
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Meijerimaidon osuus, %  </td>
             <td>
               <input type="text" name="envMeijerimaidonOsuus" value={envData.envMeijerimaidonOsuus} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envMeijerimaidonOsuusLisatiedot" value={envData.envMeijerimaidonOsuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envMeijerimaidonOsuusLisatiedot" value={envData.envMeijerimaidonOsuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
             <td>Käytössä vähäpäästöinen kylmäaine tilasäililössä
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',   // Kehyksen tyyli
-                  borderRadius: '50%',        // Pyöristetty ympyrä
-                  backgroundColor: '#eee',    // Taustaväri
-                  padding: '2px 6px',         // Sisämarginaali
-                  fontWeight: 'bold',
-                }}
-                title="Tieto löytyy hiilijalanjälkilaskurista"
-              >
-                ?
-              </span>
+              
             </td>
             <td style={{ textAlign: 'center' }}>
               <YesNoToggle
@@ -608,30 +421,16 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               />
             </td>
             <td>
-              <AutoResizeTextArea name="envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot" value={envData.envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot" value={envData.envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
-            <td>Karkearehun osuus lypsylehmien ruokinnassa, %  <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',
-                borderRadius: '50%',
-                backgroundColor: '#eee',
-                padding: '2px 6px',
-                fontWeight: 'bold'
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Karkearehun osuus lypsylehmien ruokinnassa, % </td>
             <td>
               <input type="text" name="envKarkearehunOsuus" value={envData.envKarkearehunOsuus} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envKarkearehunOsuusLisatiedot" value={envData.envKarkearehunOsuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envKarkearehunOsuusLisatiedot" value={envData.envKarkearehunOsuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
@@ -648,21 +447,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Ruokinnan seurantalaskelma tehty  <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',
-                borderRadius: '50%',
-                backgroundColor: '#eee',
-                padding: '2px 6px',
-                fontWeight: 'bold'
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Ruokinnan seurantalaskelma tehty  </td>
             <td style={{ textAlign: 'center' }}>
               <YesNoToggle
                 value={envData.envRuokinnanSeurantalaskelmiaTehty}
@@ -671,57 +456,28 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               />
             </td>
             <td>
-              <AutoResizeTextArea name="envRuokinnanSeurantalaskelmiaTehtyLisatiedot" value={envData.envRuokinnanSeurantalaskelmiaTehtyLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envRuokinnanSeurantalaskelmiaTehtyLisatiedot" value={envData.envRuokinnanSeurantalaskelmiaTehtyLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
             <td>Kuiva-ainekiloa rehua/EKM kg
-
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',
-                  borderRadius: '50%',
-                  backgroundColor: '#eee',
-                  padding: '2px 6px',
-                  fontWeight: 'bold'
-                }}
-                title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-              >
-                ?
-              </span></td>
+              </td>
             <td>
               <input type="text" name="envKuivaAinekiloa" value={envData.envKuivaAinekiloa} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envKuivaAinekiloaLisatiedot" value={envData.envKuivaAinekiloaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Kaikki rehut yhteensä, esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista" />
+              <AutoResizeTextArea name="envKuivaAinekiloaLisatiedot" value={envData.envKuivaAinekiloaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Kaikki rehut yhteensä, esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista (tieto löytyy tuotosseurannasta tai meijerin tiedoista)" />
             </td>
           </tr>
           <tr>
             <td>Typen hyväksikäyttö % ruokinnassa
 
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',
-                  borderRadius: '50%',
-                  backgroundColor: '#eee',
-                  padding: '2px 6px',
-                  fontWeight: 'bold'
-                }}
-                title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-              >
-                ?
-              </span></td>
+          </td>
             <td>
               <input type="text" name="envTypenHyvaksykaytto" value={envData.envTypenHyvaksykaytto} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envTypenHyvaksykayttoLisatiedot" value={envData.envTypenHyvaksykayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista" />
+              <AutoResizeTextArea name="envTypenHyvaksykayttoLisatiedot" value={envData.envTypenHyvaksykayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Esim. ruokinnan seurantalaskelmista tai resurssiviisas maatila -raportista (tieto löytyy tuotosseurannasta tai meijerin tiedoista)" />
             </td>
           </tr>
           <tr>
@@ -985,21 +741,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         <tbody>
           <tr>
             <td>Viljelykasvien kokonaispinta-ala, ha
-              <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',   // Kehyksen tyyli
-                  borderRadius: '50%',        // Pyöristetty ympyrä
-                  backgroundColor: '#eee',    // Taustaväri
-                  padding: '2px 6px',         // Sisämarginaali
-                  fontWeight: 'bold',         // Vahvennettu fontti
-                }}
-                title="Tieto löytyy hiilijalanjälkilaskurista"
-              >
-                ?
-              </span>
+             
             </td>
             <td>
               <input
@@ -1015,26 +757,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 name="envPeltoviljelyKokonaispintaAlaLisatiedot"
                 value={envData.envPeltoviljelyKokonaispintaAlaLisatiedot || ""}
                 onChange={handleChange}
-                style={{ width: '100%' }}
+                style={{ width: '100%' }}  placeholder="Tieto löytyy hiilijalanjälkilaskurista"
               />
             </td>
           </tr>
           <tr>
-            <td>Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey    <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',   // Kehyksen tyyli
-                borderRadius: '50%',        // Pyöristetty ympyrä
-                backgroundColor: '#eee',    // Taustaväri
-                padding: '2px 6px',         // Sisämarginaali
-                fontWeight: 'bold',         // Vahvennettu fontti
-              }}
-              title="Tieto löytyy hiilijalanjälkilaskurista"
-            >
-              ?
-            </span>
+            <td>Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey   
             </td>
             <td>
               <input
@@ -1050,26 +778,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 name="envPeltoviljelySuhdeElainmaaraLisatiedot"
                 value={envData.envPeltoviljelySuhdeElainmaaraLisatiedot || ""}
                 onChange={handleChange}
-                style={{ width: '100%' }}
+                style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälkilaskurista"
               />
             </td>
           </tr>
           <tr>
-            <td>Turvemaiden osuus, %    <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',   // Kehyksen tyyli
-                borderRadius: '50%',        // Pyöristetty ympyrä
-                backgroundColor: '#eee',    // Taustaväri
-                padding: '2px 6px',         // Sisämarginaali
-                fontWeight: 'bold',         // Vahvennettu fontti
-              }}
-              title="Tieto löytyy hiilijalanjälkilaskurista"
-            >
-              ?
-            </span>
+            <td>Turvemaiden osuus, %   
             </td>
             <td>
               <input
@@ -1085,26 +799,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 name="envTurvemaidenOsuusLisatiedot"
                 value={envData.envTurvemaidenOsuusLisatiedot || ""}
                 onChange={handleChange}
-                style={{ width: '100%' }}
+                style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälkilaskurista"
               />
             </td>
           </tr>
           <tr>
-            <td>Säilörehun D-arvo keskimäärin (esim. Valman kautta) <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',   // Kehyksen tyyli
-                borderRadius: '50%',        // Pyöristetty ympyrä
-                backgroundColor: '#eee',    // Taustaväri
-                padding: '2px 6px',         // Sisämarginaali
-                fontWeight: 'bold',
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Säilörehun D-arvo keskimäärin (esim. Valman kautta) </td>
             <td>
               <input
                 type="text"
@@ -1119,7 +819,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 name="envSaileRehunDArvoLisatiedot"
                 value={envData.envSaileRehunDArvoLisatiedot || ""}
                 onChange={handleChange}
-                style={{ width: '100%' }}
+                style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
               />
             </td>
           </tr>
@@ -1326,26 +1026,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Lietelannan osuus, % <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',   // Kehyksen tyyli
-                borderRadius: '50%',        // Pyöristetty ympyrä
-                backgroundColor: '#eee',    // Taustaväri
-                padding: '2px 6px',         // Sisämarginaali
-                fontWeight: 'bold',
-              }}
-              title="Tieto löytyy hiilijalanjälkilaskurista"
-            >
-              ?
-            </span></td>
+            <td>Lietelannan osuus, % </td>
             <td>
               <input type="text" name="lantaLietelannanOsuus" value={envData.lantaLietelannanOsuus} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="lantaLietelannanOsuusLisatiedot" value={envData.lantaLietelannanOsuusLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="lantaLietelannanOsuusLisatiedot" value={envData.lantaLietelannanOsuusLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy hiilijalanjälkilaskurista" />
             </td>
           </tr>
           <tr>
@@ -1471,26 +1157,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         </thead>
         <tbody>
           <tr>
-            <td>Sähkön käyttömäärä, kWh/v <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',   // Kehyksen tyyli
-                borderRadius: '50%',        // Pyöristetty ympyrä
-                backgroundColor: '#eee',    // Taustaväri
-                padding: '2px 6px',         // Sisämarginaali
-                fontWeight: 'bold',
-              }}
-              title="Tieto löytyy hiilijalanjälkilaskurista"
-            >
-              ?
-            </span></td>
+            <td>Sähkön käyttömäärä, kWh/v </td>
             <td>
               <input type="text" name="energySahkonKayttomaara" value={envData.energySahkonKayttomaara} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="energySahkonKayttomaaraLisatiedot" value={envData.energySahkonKayttomaaraLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="energySahkonKayttomaaraLisatiedot" value={envData.energySahkonKayttomaaraLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy hiilijalanjälkilaskurista" />
             </td>
           </tr>
           <tr>
@@ -1512,26 +1184,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Polttoaineiden kokonaiskäyttömäärä, l/v <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',   // Kehyksen tyyli
-                borderRadius: '50%',        // Pyöristetty ympyrä
-                backgroundColor: '#eee',    // Taustaväri
-                padding: '2px 6px',         // Sisämarginaali
-                fontWeight: 'bold',
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+            <td>Polttoaineiden kokonaiskäyttömäärä, l/v </td>
             <td>
               <input type="text" name="energyPolttoaineenKaytto" value={envData.energyPolttoaineenKaytto} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="energyPolttoaineenKayttoLisatiedot" value={envData.energyPolttoaineenKayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="energyPolttoaineenKayttoLisatiedot" value={envData.energyPolttoaineenKayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
