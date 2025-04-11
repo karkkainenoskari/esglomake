@@ -771,96 +771,40 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Vasikkakuolleisuus %  <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',
-                  borderRadius: '50%',
-                  backgroundColor: '#eee',
-                  padding: '2px 6px',
-                  fontWeight: 'bold'
-                }}
-                title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-              >
-                ?
-              </span></td>
+              <td>Vasikkakuolleisuus %  </td>
               <td>
                 <input type="text" name="vasikkakuolleisuus" value={socialData.vasikkakuolleisuus} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="vasikkakuolleisuusLisatiedot" value={socialData.vasikkakuolleisuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+                <AutoResizeTextArea name="vasikkakuolleisuusLisatiedot" value={socialData.vasikkakuolleisuusLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
               </td>
             </tr>
             <tr>
-              <td>Lehmien keskipoikimakerta  <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',
-                  borderRadius: '50%',
-                  backgroundColor: '#eee',
-                  padding: '2px 6px',
-                  fontWeight: 'bold'
-                }}
-                title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-              >
-                ?
-              </span></td>
+              <td>Lehmien keskipoikimakerta  </td>
               <td>
                 <input type="text" name="lehmienKeskipoikimakerta" value={socialData.lehmienKeskipoikimakerta} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="lehmienKeskipoikimakertaLisatiedot" value={socialData.lehmienKeskipoikimakertaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+                <AutoResizeTextArea name="lehmienKeskipoikimakertaLisatiedot" value={socialData.lehmienKeskipoikimakertaLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
               </td>
             </tr>
             <tr>
-              <td>Poistettujen lehmien elinikäistuotos, kg  <span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',
-                  borderRadius: '50%',
-                  backgroundColor: '#eee',
-                  padding: '2px 6px',
-                  fontWeight: 'bold'
-                }}
-                title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-              >
-                ?
-              </span></td>
+              <td>Poistettujen lehmien elinikäistuotos, kg </td>
               <td>
                 <input type="text" name="poistettujenLehmienElinikaiTuotos" value={socialData.poistettujenLehmienElinikaiTuotos} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="poistettujenLehmienElinikaiTuotosLisatiedot" value={socialData.poistettujenLehmienElinikaiTuotosLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+                <AutoResizeTextArea name="poistettujenLehmienElinikaiTuotosLisatiedot" value={socialData.poistettujenLehmienElinikaiTuotosLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
               </td>
             </tr>
             <tr>
-              <td>Poistettujen lehmien EKM kg/elinpäivä<span
-                style={{
-                  marginLeft: '5px',
-                  cursor: 'help',
-                  color: '#333',
-                  border: '1px solid #333',
-                  borderRadius: '50%',
-                  backgroundColor: '#eee',
-                  padding: '2px 6px',
-                  fontWeight: 'bold'
-                }}
-                title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-              >
-                ?
-              </span></td>
+              <td>Poistettujen lehmien EKM kg/elinpäivä</td>
               <td>
                 <input type="text" name="ekmPerElinpiva" value={socialData.ekmPerElinpiva} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
                 <AutoResizeTextArea name="ekmPerElinpivaLisatiedot" value={socialData.ekmPerElinpivaLisatiedot} onChange={handleChange} style={{ width: '100%' }}
-                placeholder="Vuosiraportti" />
+                placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista (vuosiraportti)" />
               </td>
             </tr>
             <tr>
@@ -1064,21 +1008,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>      
             <tr>
-              <td>E-luokan maidon osuus, % <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',   // Kehyksen tyyli
-                borderRadius: '50%',        // Pyöristetty ympyrä
-                backgroundColor: '#eee',    // Taustaväri
-                padding: '2px 6px',         // Sisämarginaali
-                fontWeight: 'bold',
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+              <td>E-luokan maidon osuus, % </td>
               <td>
                 <input
                   type="text"
@@ -1094,27 +1024,14 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                   value={socialData.eLuokanOsuusLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
                 />
               </td>
             </tr>
             <tr>
               <td>
                 Maidon solupitoisuus, tuotosseurannasta
-                <span
-              style={{
-                marginLeft: '5px',
-                cursor: 'help',
-                color: '#333',
-                border: '1px solid #333',   // Kehyksen tyyli
-                borderRadius: '50%',        // Pyöristetty ympyrä
-                backgroundColor: '#eee',    // Taustaväri
-                padding: '2px 6px',         // Sisämarginaali
-                fontWeight: 'bold',
-              }}
-              title="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
-            >
-              ?
-            </span></td>
+               </td>
               <td>
                 <input
                   type="text"
@@ -1130,6 +1047,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                   value={socialData.maidonSolupitoisuusLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
                 />
               </td>
             </tr>
