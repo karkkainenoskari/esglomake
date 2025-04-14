@@ -63,35 +63,30 @@ return {
   // KILPAILUKYKY JA TALOUS
   toiminnanMittarit: '',
   toiminnanMittaritLisatiedot: '',
-  toiminnanMittaritTavoitteet: '',
 
   velkaLiikevaihto: '',
   velkaLiikevaihtoLisatiedot: '',
-  velkaLiikevaihtoTavoitteet: '',
 
+  velkaKayttokate: '',
+  velkaKayttokateLisatiedot: '',
+ 
   kannattavuusLaskenta: '',
   kannattavuusLaskentaLisatiedot: '',
-  kannattavuusLaskentaTavoitteet: '',
 
   yrittajanVoitto: '',
   yrittajanVoittoLisatiedot: '',
-  yrittajanVoittoTavoitteet: '',
 
   tuotantokustannusLaskenta: '',
   tuotantokustannusLaskentaLisatiedot: '',
-  tuotantokustannusLaskentaTavoitteet: '',
 
   maidonTuotantokustannus: '',
   maidonTuotantokustannusLisatiedot: '',
-  maidonTuotantokustannusTavoitteet: '',
 
   maksuvalmiusKuvaus: '',
   maksuvalmiusKuvausLisatiedot: '',
-  maksuvalmiusKuvausTavoitteet: '',
 
   budjetointiKuvaus: '',
   budjetointiKuvausLisatiedot: '',
-  budjetointiKuvausTavoitteet: '',
 
   kilpailuErityisetToimenpiteet: '',
   kilpailuErityisetToimenpiteetVuodet: '',
@@ -357,42 +352,6 @@ return {
               */}
             </tr>
 
-            {/* Kuvaus erityisistä johtamiskäytännöistä */}
-            <tr>
-              <td>
-                Kuvaus erityisistä johtamiskäytännöistä
-              </td>
-              <td>
-                {/* "Uusin tulos" -sarake voi olla esim. tyhjä text */}
-                <input
-                  type="text"
-                  name="johtamisKaytannot"
-                  value={localFinanceData.johtamisKaytannot}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              <td>
-                <AutoResizeTextArea
-                  name="johtamisKaytannotLisatiedot"
-                  value={localFinanceData.johtamisKaytannotLisatiedot}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                   placeholder="Esim. hallituspalaverit, asiantuntijatiimit, discussion group, monikantayhteistyö"
-                />
-              </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="johtamisKaytannotTavoitteet"
-                  value={localFinanceData.johtamisKaytannotTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
-            </tr>
-
             {/* Kuvaus vertailutiedon hyödyntämisestä */}
             <tr>
               <td>Kuvaus vertailutiedon hyödyntämisestä</td>
@@ -411,6 +370,7 @@ return {
                   value={localFinanceData.johtaminenVertailutietoLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                  placeholder ="Esim. pienryhmätoiminta"
                 />
               </td>
               {/*
@@ -443,6 +403,7 @@ return {
                   value={localFinanceData.johtaminenAsiantuntijatLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
+                   placeholder="(Esim. johtaminen ja hallinto, eläimet, pelto, talous) "
                 />
               </td>
               {/*
@@ -569,16 +530,27 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
+            </tr>
+
+            <tr>
+              <td>Velan määrä suhteessa käyttökatteeseen, %</td>
               <td>
-                <AutoResizeTextArea
-                  name="velkaLiikevaihtoTavoitteet"
-                  value={localFinanceData.velkaLiikevaihtoTavoitteet}
+                <input
+                  type="text"
+                  name="velkaKayttokate"
+                  value={localFinanceData.velkaKayttokate}
                   onChange={handleChange}
                   style={{ width: '100%' }}
                 />
               </td>
-              */}
+              <td>
+                <AutoResizeTextArea
+                  name="velkaKayttokateLisatiedot"
+                  value={localFinanceData.velkaKayttokateLisatiedot}
+                  onChange={handleChange}
+                  style={{ width: '100%' }}
+                />
+              </td>
             </tr>
 
             <tr>
@@ -967,7 +939,7 @@ return {
             {/* Kuvaus henkilöriskien hallinnasta */}
             <tr>
               <td>
-                Kuvaus henkilöriskien hallinnasta 
+                Kuvaus henkilöriskien hallinnasta ja dokumentaatiosta
               </td>
               <td>
                 <input
@@ -1083,19 +1055,10 @@ return {
                   value={localFinanceData.riskVarautuminenSahkoLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
-                  placeholder="Esim. varavoimalähde"
+                  placeholder="Esim. tilalla on varavoimalähde"
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskVarautuminenSahkoTavoitteet"
-                  value={localFinanceData.riskVarautuminenSahkoTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
+            
             </tr>
 
   
