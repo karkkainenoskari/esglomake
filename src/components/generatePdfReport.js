@@ -653,9 +653,11 @@ if (henkiloTavoitteet) {
 }
 
 // Suodatetaan rivit, joista ainakin toinen kentistä ei ole tyhjä
-const filteredRowsSocial = rowsSocial.filter((row) => {
-  return row.some(cell => (cell || "").toString().trim() !== "");
+// Oletetaan että rivisi on [otsikko, col2, col3]
+const filteredRowsSocial = rowsSocial.filter(([_, col2, col3]) => {
+  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
 });
+
 if (filteredRowsSocial.length > 0) {
   doc.setFontSize(14);
 doc.text("Sosiaalinen vastuu", 14, startY);
@@ -720,9 +722,11 @@ if (coopTavoitteet) {
   rowsCoop.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", coopTavoitteet]);
 }
 
-const filteredRowsCoop = rowsCoop.filter(row =>
-  row.some(cell => (cell || "").toString().trim() !== "")
-);
+// Oletetaan että rivisi on [otsikko, col2, col3]
+const filteredRowsCoop = rowsCoop.filter(([_, col2, col3]) => {
+  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+});
+
 if (filteredRowsCoop.length > 0) {
   autoTable(doc, {
     startY,
@@ -843,9 +847,11 @@ if (animalWelfareGoals) {
 }
 
 
-const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(row =>
-  row.some(cell => (cell || "").toString().trim() !== "")
-);
+// Oletetaan että rivisi on [otsikko, col2, col3]
+const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(([_, col2, col3]) => {
+  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+});
+
 
 if (filteredRowsAnimalWelfare.length > 0) {
   autoTable(doc, {
@@ -902,9 +908,11 @@ if (qualityTavoitteet) {
 }
 
 
-const filteredRowsQuality = rowsQuality.filter(row =>
-  row.some(cell => (cell || "").toString().trim() !== "")
-);
+// Oletetaan että rivisi on [otsikko, col2, col3]
+const filteredRowsQuality = rowsQuality.filter(([_, col2, col3]) => {
+  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+});
+
 
 if (filteredRowsQuality.length > 0) {
   autoTable(doc, {
