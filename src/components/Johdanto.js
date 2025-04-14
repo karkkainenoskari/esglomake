@@ -12,7 +12,7 @@ const Johdanto = ({ onNext }) => {
           </h1>
           {/* Pienempi otsikko */}
           <h3 style={{ textAlign: 'center', marginBottom: '2rem', fontWeight: 'normal' }}>
-            Johdanto
+        
           </h3>
     
           <div

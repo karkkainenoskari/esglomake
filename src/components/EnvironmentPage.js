@@ -136,6 +136,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       envTurvemaidenOsuus: '',
       envTurvemaidenOsuusLisatiedot: '',
       envTurvemaidenOsuusTavoitteet: '',
+      envRavinnelaskelma: '',
+      envRavinnelaskelmaLisatiedot: '',
       envSaileRehunDArvo: '',
       envSaileRehunDArvoLisatiedot: '',
       envSaileRehunDArvoTavoitteet: '',
@@ -421,7 +423,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               />
             </td>
             <td>
-              <AutoResizeTextArea name="envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot" value={envData.envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
+              <AutoResizeTextArea name="envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot" value={envData.envKaytossaVahapaastoinenKylmainetilasaililossaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälki laskurista" />
             </td>
           </tr>
           <tr>
@@ -803,6 +805,21 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               />
             </td>
           </tr>
+
+          <tr>
+
+            <td>Ravinnetaselaskelma tehty</td>
+            <td style={{ textAlign: 'center' }}>
+              <YesNoToggle
+                value={envData.envRavinnelaskelma}
+                onChange={(val) => setEnvData({ ...envData, envRavinnelaskelma: val })}
+                themeColor="#4CAF50"
+              />
+            </td>
+            <td>
+              <AutoResizeTextArea name="envRavinnelaskelmaLisatiedot" value={envData.envRavinnelaskelmaLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+            </td>
+          </tr>
           <tr>
             <td>Säilörehun D-arvo keskimäärin (esim. Valman kautta) </td>
             <td>
@@ -1035,7 +1052,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Lannan levitysmenetelmä </td>
+            <td>Kuvaus lannan levitysmenetelmästä </td>
             <td>
               <input type="text" name="lantaLevitysmenetelma" value={envData.lantaLevitysmenetelma} onChange={handleChange} style={{ width: '100%' }} />
             </td>
@@ -1189,7 +1206,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="energyPolttoaineenKaytto" value={envData.energyPolttoaineenKaytto} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="energyPolttoaineenKayttoLisatiedot" value={envData.energyPolttoaineenKayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
+              <AutoResizeTextArea name="energyPolttoaineenKayttoLisatiedot" value={envData.energyPolttoaineenKayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy hiilijalanjälki laskurista" />
             </td>
           </tr>
           <tr>

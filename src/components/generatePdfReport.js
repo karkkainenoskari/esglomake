@@ -303,6 +303,11 @@ const generatePdfReport = (initialData, environmentData) => {
       environmentData.envTurvemaidenOsuusLisatiedot || ""
     ],
     [
+      "Ravinnetaselaskelma tehty",
+      environmentData.envRavinnelaskelma || "",
+      environmentData.envRavinnelaskelmaLisatiedot || ""
+    ],
+    [
       "Säilörehun D-arvo, keskimäärin",
       environmentData.envSaileRehunDArvo || "",
       environmentData.envSaileRehunDArvoLisatiedot || ""
