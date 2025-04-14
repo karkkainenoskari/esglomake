@@ -657,8 +657,12 @@ const filteredRowsSocial = rowsSocial.filter((row) => {
   return row.some(cell => (cell || "").toString().trim() !== "");
 });
 if (filteredRowsSocial.length > 0) {
+  doc.setFontSize(14);
+doc.text("Sosiaalinen vastuu", 14, startY);
+startY += 10;
 
   autoTable(doc, {
+    
     startY,
     head: [["Henkilöstö ja työolosuhteet", "Uusin tulos", "Kuvaus"]],
     body: filteredRowsSocial,
