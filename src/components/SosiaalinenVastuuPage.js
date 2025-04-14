@@ -17,21 +17,24 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       // 1. Henkilöstö ja työolosuhteet
       henkilostoStrategia: '',
       henkilostoStrategiaLisatiedot: '',
-     
+
       HenkilostoStrategiaSisalto: '',
       HenkilostoStrategiaSisaltoLisatiedot: '',
 
       tyotuottavuus: '',
       tyotuottavuusLisatiedot: '',
-     
+
       tasaArvo: '',
       tasaArvoLisatiedot: '',
- 
+
       tyotaHelpottavatRatkaisut: '',
       tyotaHelpottavatRatkaisutLisatiedot: '',
-   
+
       henkilostoTavoiteVuodet: '',
       henkilostoTavoiteTeksti: '',
+      henkilostoTavoitteetVuosi1: '',
+      henkilostoTavoitteetVuosi2: '',
+      henkilostoTavoitteetVuosi3: '',
 
       // 2. Yrittäjiin liittyvää
       osaamisenKehittaminen: '',
@@ -87,6 +90,19 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       muutErityiset: '',
       muutErityisetLisatiedot: '',
       muutErityisetTavoitteet: '',
+      yhteistyoErityisetVuosi1: '',
+      yhteistyoErityisetVuosi2: '',
+      yhteistyoErityisetVuosi3: '',
+
+      erityisetToimenpiteetVuosi1: '',
+      erityisetToimenpiteetVuosi2: '',
+      erityisetToimenpiteetVuosi3: '',
+
+      maitoErityisetToimenpiteetVuosi1: '',
+      maitoErityisetToimenpiteetVuosi2: '',
+      maitoErityisetToimenpiteetVuosi3: '',
+     
+
 
       // 3.2 Yhteistyö ja avoimuus (omaksi taulukoksi)
       yhteistyoMuidenYrittajien: '',
@@ -226,11 +242,11 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
 
       <h2>Sosiaalinen vastuu</h2>
       <form onSubmit={handleSubmit}>
-      <table className="common-table social-table">
+        <table className="common-table social-table">
           <colgroup>
             <col />
             <col />
-            <col />  
+            <col />
           </colgroup>
           <thead>
             <tr>
@@ -239,14 +255,14 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <th>Kuvaus</th>
             </tr>
           </thead>
-          <tbody> 
+          <tbody>
             <tr>
               <td>
                 Kirjallinen henkilöstöstrategia tehty<br />
               </td>
-              
+
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.henkilostoStrategia}
                   onChange={(val) => setSocialData({ ...socialData, HenkilostoStrategia: val })}
                   themeColor=" #ec9005"
@@ -254,9 +270,9 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
               <td>
                 <AutoResizeTextArea name="henkilostoStrategiaLisatiedot" value={socialData.henkilostoStrategiaLisatiedot} onChange={handleChange} style={{ width: '100%' }}
-                 />
+                />
               </td>
-             
+
             </tr>
 
             <tr>
@@ -265,7 +281,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 <input type="text" name="HenkilostoStrategiaSisalto" value={socialData.HenkilostoStrategiaSisalto} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="HenkilostoStrategiaSisaltoLisatiedot" value={socialData.HenkilostoStrategiaSisaltoLisatiedot} onChange={handleChange} style={{ width: '100%' }}  placeholder="Esim. henkilöstötarpeet, johtaminen, suunnitelmallisuus, vastuut, työntekijöiden määrä" />
+                <AutoResizeTextArea name="HenkilostoStrategiaSisaltoLisatiedot" value={socialData.HenkilostoStrategiaSisaltoLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Esim. henkilöstötarpeet, johtaminen, suunnitelmallisuus, vastuut, työntekijöiden määrä" />
               </td>
             </tr>
             <tr>
@@ -314,7 +330,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Oma työterveyshuolto</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.tyoterveyshuolto}
                   onChange={(val) => setSocialData({ ...socialData, tyoterveyshuolto: val })}
                   themeColor=" #ec9005"
@@ -336,10 +352,10 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>
                 Mahdollisuus säännöllisiin vapaapäiviin<br />
-                
+
               </td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.vapaapäivat}
                   onChange={(val) => setSocialData({ ...socialData, vapaapäivat: val })}
                   themeColor=" #ec9005"
@@ -347,13 +363,13 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
               <td>
                 <AutoResizeTextArea name="vapaapäivatLisatiedot" value={socialData.vapaapäivatLisatiedot} onChange={handleChange} style={{ width: '100%' }}
-                placeholder="Kuvaa miten..." />
+                  placeholder="Kuvaa miten..." />
               </td>
             </tr>
             <tr>
               <td>Vuosilomien pitäminen suunnitellusti</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.vuosilomat}
                   onChange={(val) => setSocialData({ ...socialData, vuosilomat: val })}
                   themeColor=" #ec9005"
@@ -366,10 +382,10 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>
                 Työajan mittaaminen<br />
-                
+
               </td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.tyoajanMittaaminen}
                   onChange={(val) => setSocialData({ ...socialData, tyoajanMittaaminen: val })}
                   themeColor=" #ec9005"
@@ -377,7 +393,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
               <td>
                 <AutoResizeTextArea name="tyoajanMittaaminenLisatiedot" value={socialData.tyoajanMittaaminenLisatiedot} onChange={handleChange} style={{ width: '100%' }}
-                placeholder="Kuvaa miten..." />
+                  placeholder="Kuvaa miten..." />
               </td>
             </tr>
             <tr>
@@ -392,13 +408,13 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
               <td>
                 <AutoResizeTextArea name="palkkausLisatiedot" value={socialData.palkkausLisatiedot} onChange={handleChange} style={{ width: '100%' }}
-                placeholder="Esim. TES, lisät, bonukset" />
+                  placeholder="Esim. TES, lisät, bonukset" />
               </td>
             </tr>
             <tr>
               <td>Työterveyshuolto</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.tyoterveyshuolto}
                   onChange={(val) => setSocialData({ ...socialData, tyoterveyshuolto: val })}
                   themeColor=" #ec9005"
@@ -470,7 +486,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Säännölliset kehityskeskuskustelut</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.kehityskeskustelut}
                   onChange={(val) => setSocialData({ ...socialData, kehityskeskustelut: val })}
                   themeColor=" #ec9005"
@@ -488,7 +504,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Kuvaus säännöllisistä palaverikäytännöistä</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.palaverit}
                   onChange={(val) => setSocialData({ ...socialData, palaverit: val })}
                   themeColor=" #ec9005"
@@ -526,7 +542,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Työtyytyväisyyden mittaaminen käytössä</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.tyotyotyot}
                   onChange={(val) => setSocialData({ ...socialData, tyotyotyot: val })}
                   themeColor=" #ec9005"
@@ -552,30 +568,49 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                   style={{ width: '100%' }}
                 />
               </td>
-              
+
             </tr>
             <tr>
               <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
               <td colSpan="3">
-                <div style={{ marginBottom: '0.5rem' }}>
-                  <YearToggle
-                    value={socialData.henkilostoTavoiteVuodet}
-                    onChange={(val) =>
-                      setSocialData({ ...socialData, henkilostoTavoiteVuodet: val })
-                    }
-                    themeColor="#ec9005"
-                  />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                    <AutoResizeTextArea
+                      name="henkilostoTavoitteetVuosi1"
+                      value={socialData.henkilostoTavoitteetVuosi1 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 1..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                    <AutoResizeTextArea
+                      name="henkilostoTavoitteetVuosi2"
+                      value={socialData.henkilostoTavoitteetVuosi2 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 2..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                    <AutoResizeTextArea
+                      name="henkilostoTavoitteetVuosi3"
+                      value={socialData.henkilostoTavoitteetVuosi3 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 3..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
                 </div>
-                <AutoResizeTextArea
-                  name="henkilostoTavoiteTeksti"
-                  value={socialData.henkilostoTavoiteTeksti}
-                  onChange={handleChange}
-                  rows={2}
-                  placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
-                  style={{ width: '100%' }}
-                />
               </td>
             </tr>
+
 
           </tbody>
         </table>
@@ -599,7 +634,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>
                 Kuvaa yhteistyötä muiden yrittäjien kanssa<br />
-               
+
               </td>
               <td>
                 <input
@@ -682,7 +717,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>
-              Kuvaus yrityksen avoimuudesta ja imagon kehittämisestä<br />
+                Kuvaus yrityksen avoimuudesta ja imagon kehittämisestä<br />
               </td>
               <td>
                 <input
@@ -706,7 +741,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
-              <textarea
+                <textarea
                   type="text"
                   name="yhteistyoErityiset"
                   value={socialData.yhteistyoErityiset}
@@ -719,29 +754,47 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
               <td colSpan="3">
-                <div style={{ marginBottom: '0.5rem' }}>
-                  <YearToggle
-                    value={socialData.yhteistyoErityisetVuodet}
-                    onChange={(val) =>
-                      setSocialData({ ...socialData, yhteistyoErityisetVuodet: val })
-                    }
-                    themeColor="#ec9005"
-                  />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                    <AutoResizeTextArea
+                      name="yhteistyoErityisetVuosi1"
+                      value={socialData.yhteistyoErityisetVuosi1 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 1..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                    <AutoResizeTextArea
+                      name="yhteistyoErityisetVuosi2"
+                      value={socialData.yhteistyoErityisetVuosi2 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 2..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                    <AutoResizeTextArea
+                      name="yhteistyoErityisetVuosi3"
+                      value={socialData.yhteistyoErityisetVuosi3 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 3..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
                 </div>
-                <textarea
-                  name="yhteistyoErityisetTavoiteTeksti"
-                  value={socialData.yhteistyoErityisetTavoiteTeksti}
-                  onChange={handleChange}
-                  rows={2}
-                  placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
-                  style={{ width: '100%' }}
-                />
               </td>
             </tr>
           </tbody>
         </table>
 
-       
+
 
         <table className="common-table social-table">
           <colgroup>
@@ -760,7 +813,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Nautojen terveydenhuoltorekisteri Naseva käytössä</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.nautojenTerveydenhuoltorekisteri}
                   onChange={(val) => setSocialData({ ...socialData, nautojenTerveydenhuoltorekisteri: val })}
                   themeColor=" #ec9005"
@@ -771,10 +824,10 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-            
+
               <td>Sorkkaterveyden seuranta ja hoito säännöllisesti, kyllä/ei</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.sorkkaterveys}
                   onChange={(val) => setSocialData({ ...socialData, sorkkaterveys: val })}
                   themeColor=" #ec9005"
@@ -790,7 +843,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 <input type="text" name="lehmienpoisto" value={socialData.lehmienpoisto} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="lehminepoistoLisatiedot" value={socialData.lehmienpoistoLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
+                <AutoResizeTextArea name="lehminepoistoLisatiedot" value={socialData.lehmienpoistoLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
               </td>
             </tr>
             <tr>
@@ -799,7 +852,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 <input type="text" name="vasikkakuolleisuus" value={socialData.vasikkakuolleisuus} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="vasikkakuolleisuusLisatiedot" value={socialData.vasikkakuolleisuusLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tuotosseurannan luku" />
+                <AutoResizeTextArea name="vasikkakuolleisuusLisatiedot" value={socialData.vasikkakuolleisuusLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tuotosseurannan luku" />
               </td>
             </tr>
             <tr>
@@ -808,7 +861,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 <input type="text" name="lehmienKeskipoikimakerta" value={socialData.lehmienKeskipoikimakerta} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="lehmienKeskipoikimakertaLisatiedot" value={socialData.lehmienKeskipoikimakertaLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
+                <AutoResizeTextArea name="lehmienKeskipoikimakertaLisatiedot" value={socialData.lehmienKeskipoikimakertaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
               </td>
             </tr>
             <tr>
@@ -817,7 +870,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 <input type="text" name="poistettujenLehmienElinikaiTuotos" value={socialData.poistettujenLehmienElinikaiTuotos} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="poistettujenLehmienElinikaiTuotosLisatiedot" value={socialData.poistettujenLehmienElinikaiTuotosLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
+                <AutoResizeTextArea name="poistettujenLehmienElinikaiTuotosLisatiedot" value={socialData.poistettujenLehmienElinikaiTuotosLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
               </td>
             </tr>
             <tr>
@@ -827,13 +880,13 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
               <td>
                 <AutoResizeTextArea name="ekmPerElinpivaLisatiedot" value={socialData.ekmPerElinpivaLisatiedot} onChange={handleChange} style={{ width: '100%' }}
-                placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista (vuosiraportti)" />
+                  placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista (vuosiraportti)" />
               </td>
             </tr>
             <tr>
               <td>Laiduntaminen käytössä<br /></td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.laiduntaminen}
                   onChange={(val) => setSocialData({ ...socialData, laiduntaminen: val })}
                   themeColor=" #ec9005"
@@ -841,7 +894,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
               <td>
                 <AutoResizeTextArea name="laiduntaminenLisatiedot" value={socialData.laiduntaminenLisatiedot} onChange={handleChange} style={{ width: '100%' }}
-                placeholder="Kuvaa mitkä eläinryhmät laiduntavat" />
+                  placeholder="Kuvaa mitkä eläinryhmät laiduntavat" />
               </td>
             </tr>
             <tr>
@@ -850,7 +903,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 <input type="text" name="jaloittelu" value={socialData.jaloittelu} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="jaloitteluLisatiedot" value={socialData.jaloitteluLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Kuvaa mitkä eläinryhmät jaloittelevat" />
+                <AutoResizeTextArea name="jaloitteluLisatiedot" value={socialData.jaloitteluLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Kuvaa mitkä eläinryhmät jaloittelevat" />
               </td>
             </tr>
             <tr>
@@ -859,25 +912,25 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 <input type="text" name="ymparivuotinenJaloittelu" value={socialData.ymparivuotinenJaloittelu} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="ymparivuotinenJaloitteluLisatiedot" value={socialData.ymparivuotinenJaloitteluLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Kuvaa mitkä eläinryhmät jaloittelevat ympärivuotisesti" />
+                <AutoResizeTextArea name="ymparivuotinenJaloitteluLisatiedot" value={socialData.ymparivuotinenJaloitteluLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Kuvaa mitkä eläinryhmät jaloittelevat ympärivuotisesti" />
               </td>
             </tr>
             <tr>
               <td>
                 Kuvaus lehmien makuupaikasta<br />
-                
+
               </td>
               <td>
                 <input type="text" name="lehmienMakuupaikka" value={socialData.lehmienMakuupaikka} onChange={handleChange} style={{ width: '100%' }} />
               </td>
               <td>
-                <AutoResizeTextArea name="lehmienMakuupaikkaLisatiedot" value={socialData.lehmienMakuupaikkaLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Esim. parsipeti, syväkuivikeparsi, syväkuivitettu makuualue" />
+                <AutoResizeTextArea name="lehmienMakuupaikkaLisatiedot" value={socialData.lehmienMakuupaikkaLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Esim. parsipeti, syväkuivikeparsi, syväkuivitettu makuualue" />
               </td>
             </tr>
             <tr>
               <td>Viilennys lypsynavetassa</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.viilennys}
                   onChange={(val) => setSocialData({ ...socialData, viilennys: val })}
                   themeColor=" #ec9005"
@@ -890,7 +943,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Lehmillä käytävämatot</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.lehmillaKaytavat}
                   onChange={(val) => setSocialData({ ...socialData, lehmillaKaytavat: val })}
                   themeColor=" #ec9005"
@@ -903,7 +956,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Pidennetty vierihoito tai imettäjälehmät käytäntönä</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.vierihoito}
                   onChange={(val) => setSocialData({ ...socialData, vierihoito: val })}
                   themeColor=" #ec9005"
@@ -916,7 +969,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>WellFare Quality -koulutus ja sertifiointi suoritettu</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.wellfareQuality}
                   onChange={(val) => setSocialData({ ...socialData, wellfareQuality: val })}
                   themeColor=" #ec9005"
@@ -929,7 +982,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>ELVI -merkki -status voimassa</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.elviStatus}
                   onChange={(val) => setSocialData({ ...socialData, elviStatus: val })}
                   themeColor=" #ec9005"
@@ -942,29 +995,47 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
-              <textarea type="text" name="erityisetToimenpiteet" value={socialData.erityisetToimenpiteet} onChange={handleChange} style={{ width: '100%' }} />
+                <textarea type="text" name="erityisetToimenpiteet" value={socialData.erityisetToimenpiteet} onChange={handleChange} style={{ width: '100%' }} />
               </td>
             </tr>
             <tr>
               <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
               <td colSpan="3">
-                <div style={{ marginBottom: '0.5rem' }}>
-                  <YearToggle
-                    value={socialData.erityisetToimenpiteetVuodet}
-                    onChange={(val) =>
-                      setSocialData({ ...socialData, erityisetToimenpiteetVuodet: val })
-                    }
-                    themeColor="#ec9005"
-                  />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                    <AutoResizeTextArea
+                      name="erityisetToimenpiteetVuosi1"
+                      value={socialData.erityisetToimenpiteetVuosi1 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 1..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                    <AutoResizeTextArea
+                      name="erityisetToimenpiteetVuosi2"
+                      value={socialData.erityisetToimenpiteetVuosi2 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 2..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                    <AutoResizeTextArea
+                      name="erityisetToimenpiteetVuosi3"
+                      value={socialData.erityisetToimenpiteetVuosi3 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 3..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
                 </div>
-                <textarea
-                  name="erityisetToimenpiteetTavoiteTeksti"
-                  value={socialData.erityisetToimenpiteetTavoiteTeksti}
-                  onChange={handleChange}
-                  rows={2}
-                  placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
-                  style={{ width: '100%' }}
-                />
               </td>
             </tr>
 
@@ -986,14 +1057,14 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
           </thead>
           <tbody>
-         
+
             <tr>
               <td>
                 Sähköinen lääkekirjanpito käytössä <br />
-                
+
               </td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.laakekirjanpito}
                   onChange={(val) => setSocialData({ ...socialData, laakekirjanpito: val })}
                   themeColor=" #ec9005"
@@ -1007,7 +1078,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                   style={{ width: '100%' }}
                   placeholder="Esim. Naseva"
                 />
-                 
+
               </td>
             </tr>
             <tr>
@@ -1015,7 +1086,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 Tankkimaidon testaaminen antibioottihoitojen yhteydessä
               </td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={socialData.tankkimaidonTestaus}
                   onChange={(val) => setSocialData({ ...socialData, tankkimaidonTestaus: val })}
                   themeColor=" #ec9005"
@@ -1029,7 +1100,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                   style={{ width: '100%' }}
                 />
               </td>
-            </tr>      
+            </tr>
             <tr>
               <td>Montako vuotta tuotettu E-luokan maitoa</td>
               <td>
@@ -1054,7 +1125,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>
                 Maidon solupitoisuus
-               </td>
+              </td>
               <td>
                 <input
                   type="text"
@@ -1077,7 +1148,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
-              <textarea
+                <textarea
                   type="text"
                   name="maitoErityisetToimenpiteet"
                   value={socialData.maitoErityisetToimenpiteet}
@@ -1085,28 +1156,46 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                   style={{ width: '100%' }}
                 />
               </td>
-              </tr>
+            </tr>
             {/* Uusi rivi eläinten hyvinvointi -osuudelle: vuosisyklin valinta + tavoitekenttä */}
             <tr>
               <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
               <td colSpan="3">
-                <div style={{ marginBottom: '0.5rem' }}>
-                  <YearToggle
-                    value={socialData.maitoErityisetToimenpiteetVuodet}
-                    onChange={(val) =>
-                      setSocialData({ ...socialData, maitoErityisetToimenpiteetVuodet: val })
-                    }
-                    themeColor="#ec9005"
-                  />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                    <AutoResizeTextArea
+                      name="maitoErityisetToimenpiteetVuosi1"
+                      value={socialData.maitoErityisetToimenpiteetVuosi1 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 1..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                    <AutoResizeTextArea
+                      name="maitoErityisetToimenpiteetVuosi2"
+                      value={socialData.maitoErityisetToimenpiteetVuosi2 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 2..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                    <AutoResizeTextArea
+                      name="maitoErityisetToimenpiteetVuosi3"
+                      value={socialData.maitoErityisetToimenpiteetVuosi3 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 3..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
                 </div>
-                <textarea
-                  name="maitoErityisetToimenpiteetTavoiteTeksti"
-                  value={socialData.maitoErityisetToimenpiteetTavoiteTeksti}
-                  onChange={handleChange}
-                  rows={2}
-                  placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
-                  style={{ width: '100%' }}
-                />
               </td>
             </tr>
           </tbody>
@@ -1121,7 +1210,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           </button>
         </div>
       </form>
-    </div> 
+    </div>
   );
 };
 
