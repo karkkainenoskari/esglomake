@@ -522,7 +522,149 @@ const generatePdfReport = (initialData, environmentData, socialData, financeData
     startY = doc.lastAutoTable.finalY + 10;
   }
 
+// 3. Sosiaalinen vastuu: Henkilöstö ja työolosuhteet
+const rowsSocial = [
+  // Ensimmäinen osa: peruskentät
+  [
+    "Kirjallinen henkilöstöstrategia tehty",
+    socialData.henkilostoStrategia || "",
+    socialData.henkilostoStrategiaLisatiedot || ""
+  ],
+  [
+    "Kuvaus henkilöstöstrategian sisällöstä",
+    socialData.HenkilostoStrategiaSisalto || "",
+    socialData.HenkilostoStrategiaSisaltoLisatiedot || ""
+  ],
+  [
+    "Työn tuottavuus, maitokg/navettatyöt h",
+    socialData.tyotuottavuus || "",
+    socialData.tyotuottavuusLisatiedot || ""
+  ],
+  [
+    "Tasa-arvon huomiointi",
+    socialData.tasaArvo || "",
+    socialData.tasaArvoLisatiedot || ""
+  ],
+  [
+    "Kuvaus töitä helpottavista ja keventävistä ratkaisuista",
+    socialData.tyotaHelpottavatRatkaisut || "",
+    socialData.tyotaHelpottavatRatkaisutLisatiedot || ""
+  ],
 
+  ["Yrittäjiin liittyvää", "", ""],
+  [
+    "Oman osaamisen kehittäminen ja lisäkouluttautuminen, pv/v",
+    socialData.osaamisenKehittaminen || "",
+    socialData.osaamisenKehittaminenLisatiedot || ""
+  ],
+  [
+    "Oma työterveyshuolto",
+    socialData.tyoterveyshuolto || "",
+    socialData.tyoterveyshuoltoLisatiedot || ""
+  ],
+  [
+    "Kuvaus oman hyvinvoinnin ja jaksamisen ylläpidosta",
+    socialData.jaksaminen || "",
+    socialData.jaksaminenLisatiedot || ""
+  ],
+  [
+    "Mahdollisuus säännöllisiin vapaapäiviin",
+    socialData.vapaapäivat || "",
+    socialData.vapaapäivatLisatiedot || ""
+  ],
+  [
+    "Vuosilomien pitäminen suunnitellusti",
+    socialData.vuosilomat || "",
+    socialData.vuosilomatLisatiedot || ""
+  ],
+ 
+  [
+    "Työajan mittaaminen",
+    socialData.tyoajanMittaaminen || "",
+    socialData.tyoajanMittaaminenLisatiedot || ""
+  ],
+  // Ryhmittely: Työntekijöihin liittyvää
+  ["Työntekijöihin liittyvää", "", ""],
+  [
+    "Kuvaus työntekijöiden palkkauksesta",
+    socialData.palkkaus || "",
+    socialData.palkkausLisatiedot || ""
+  ],
+  [
+    "Työterveyshuolto",
+    socialData.tyoterveyshuolto || "",
+    socialData.tyoterveyshuolto2Lisatiedot || ""
+  ],
+  [
+    "Sairauspoissaolot, pv/v",
+    socialData.sairauspoissaolot || "",
+    socialData.sairauspoissaolotLisatiedot || ""
+  ],
+  [
+    "Hoitota vaativia tapaturmia keskimäärin, kpl/v",
+    socialData.hoitotaVaativiaTapaturmia || "",
+    socialData.hoitotaVaativiaTapaturmiaLisatiedot || ""
+  ],
+  [
+    "Osaamisen kehittäminen ja lisäkouluttautuminen, pv/v",
+    socialData.osaamisenKehittaminenJaLisakouluttautuminen || "",
+    socialData.osaamisenKehittaminenJaLisakouluttautuminenLisatiedot || ""
+  ],
+  [
+    "Kuvaus yrityksen tyhy -toiminnasta",
+    socialData.tyhy || "",
+    socialData.tyhyLisatiedot || ""
+  ],
+  [
+    "Säännölliset kehityskeskuskustelut",
+    socialData.kehityskeskustelut || "",
+    socialData.kehityskeskustelutLisatiedot || ""
+  ],
+  [
+    "Kuvaus säännöllisistä palaverikäytännöistä",
+    socialData.palaverit || "",
+    socialData.palaveritLisatiedot || ""
+  ],
+  [
+    "Työsuhteiden kesto keskimäärin, työvuosia/hlö",
+    socialData.tyosuhteidenKesto || "",
+    socialData.tyosuhteidenKestoLisatiedot || ""
+  ],
+  [
+    "Työtyytyväisyyden mittaaminen käytössä",
+    socialData.tyotyotyot || "",
+    socialData.tyotyotyotLisatiedot || ""
+  ],
+  [
+    "Kuvaus muista mahdollisista toimenpiteistä",
+    socialData.muutErityiset || "",
+    ""
+  ],
+  [
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    socialData.henkilostoTavoiteVuodet || "",
+    socialData.henkilostoTavoiteTeksti || ""
+  ]
+];
+// Suodatetaan rivit, joista ainakin toinen kentistä ei ole tyhjä
+const filteredRowsSocial = rowsSocial.filter((row) => {
+  return row.some(cell => (cell || "").toString().trim() !== "");
+});
+if (filteredRowsSocial.length > 0) {
+
+  autoTable(doc, {
+    startY,
+    head: [["Henkilöstö ja työolosuhteet", "Uusin tulos", "Kuvaus"]],
+    body: filteredRowsSocial,
+    theme: 'striped',
+    headStyles: { fillColor: '#FFA500' },
+    margin: { left: 14, right: 14 },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    showHead: 'firstPage',
+    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+  });
+  startY = doc.lastAutoTable.finalY + 10;
+}
 
   
 

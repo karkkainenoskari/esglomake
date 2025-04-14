@@ -20,16 +20,16 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
      
       HenkilostoStrategiaSisalto: '',
       HenkilostoStrategiaSisaltoLisatiedot: '',
+
       tyotuottavuus: '',
       tyotuottavuusLisatiedot: '',
      
       tasaArvo: '',
       tasaArvoLisatiedot: '',
-      tasaArvoTavoitteet: '',
+ 
       tyotaHelpottavatRatkaisut: '',
       tyotaHelpottavatRatkaisutLisatiedot: '',
-      tyotaHelpottavatRatkaisutTavoitteet: '',
-      // Uudet kentät henkilöstö-osion tavoitekuvaukselle
+   
       henkilostoTavoiteVuodet: '',
       henkilostoTavoiteTeksti: '',
 
