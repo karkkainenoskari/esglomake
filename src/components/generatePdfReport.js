@@ -21,7 +21,7 @@ function getGoalsText(goal1, goal2, goal3) {
   return `Vuosi-1: ${t1}\nVuosi-2: ${t2}\nVuosi-3: ${t3}`;
 }
 
-const generatePdfReport = (initialData, environmentData) => {
+const generatePdfReport = (initialData, environmentData, socialData, financeData) => {
   const doc = new jsPDF();
 
   // Lisää logot
@@ -521,6 +521,10 @@ const generatePdfReport = (initialData, environmentData) => {
     });
     startY = doc.lastAutoTable.finalY + 10;
   }
+
+
+
+  
 
   // Lopuksi lisätään päivämäärä ja tallennetaan PDF
   const now = new Date();

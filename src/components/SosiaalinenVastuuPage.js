@@ -17,12 +17,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       // 1. Henkilöstö ja työolosuhteet
       henkilostoStrategia: '',
       henkilostoStrategiaLisatiedot: '',
-      henkilostoStrategiaTavoitteet: '',
+     
       HenkilostoStrategiaSisalto: '',
       HenkilostoStrategiaSisaltoLisatiedot: '',
       tyotuottavuus: '',
       tyotuottavuusLisatiedot: '',
-      tyotuottavuusTavoitteet: '',
+     
       tasaArvo: '',
       tasaArvoLisatiedot: '',
       tasaArvoTavoitteet: '',
