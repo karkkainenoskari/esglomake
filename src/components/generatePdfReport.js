@@ -666,6 +666,227 @@ if (filteredRowsSocial.length > 0) {
   startY = doc.lastAutoTable.finalY + 10;
 }
 
+// 4. Yhteistyö ja avoimuus
+const rowsCoop = [
+  [
+    "Kuvaa yhteistyötä muiden yrittäjien kanssa",
+    socialData.yhteistyoMuidenYrittajien || "",
+    socialData.yhteistyoMuidenYrittajienLisatiedot || ""
+  ],
+  [
+    "Kuvaus yhteistyöstä kyläyhteisön kanssa",
+    socialData.yhteistyoKylayhteisyo || "",
+    socialData.yhteistyoKylayhteisyoLisatiedot || ""
+  ],
+  [
+    "Kuvaus merkittävimmistä yhteistyökumppaneista",
+    socialData.yhteistyoMerkittavat || "",
+    socialData.yhteistyoMerkittavatLisatiedot || ""
+  ],
+  [
+    "Kuvaus yrittäjien luottamustoimista",
+    socialData.yhteistyoLuottamustoimet || "",
+    socialData.yhteistyoLuottamustoimetLisatiedot || ""
+  ],
+  [
+    "Kuvaus yrityksen avoimuudesta ja imagon kehittämisestä",
+    socialData.avoimuusImago || "",
+    socialData.avoimuusImagoLisatiedot || ""
+  ],
+  [
+    "Kuvaus muista mahdollisista toimenpiteistä",
+    socialData.yhteistyoErityiset || "",
+    ""
+  ],
+  [
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    socialData.yhteistyoErityisetVuodet || "",
+    socialData.yhteistyoErityisetTavoiteTeksti || ""
+  ]
+];
+const filteredRowsCoop = rowsCoop.filter(row =>
+  row.some(cell => (cell || "").toString().trim() !== "")
+);
+if (filteredRowsCoop.length > 0) {
+  autoTable(doc, {
+    startY,
+    head: [["Yhteistyö ja avoimuus", "Uusin tulos", "Kuvaus"]],
+    body: filteredRowsCoop,
+    theme: 'striped',
+    headStyles: { fillColor: '#FFA500' },
+    margin: { left: 14, right: 14 },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    showHead: 'firstPage',
+    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+  });
+  startY = doc.lastAutoTable.finalY + 10;
+}
+
+// 7. Eläinten hyvinvointi
+const rowsAnimalWelfare = [
+  [
+    "Nautojen terveydenhuoltorekisteri Naseva käytössä",
+    socialData.nautojenTerveydenhuoltorekisteri || "",
+    socialData.nautojenTerveydenhuoltorekisteriLisatiedot || ""
+  ],
+  [
+    "Sorkkaterveyden seuranta ja hoito säännöllisesti, kyllä/ei",
+    socialData.sorkkaterveys || "",
+    socialData.sorkkaterveysLisatiedot || ""
+  ],
+  [
+    "Lehmien poisto %",
+    socialData.lehmienpoisto || "",
+    socialData.lehminepoistoLisatiedot || ""
+  ],
+  [
+    "Vasikkakuolleisuus %",
+    socialData.vasikkakuolleisuus || "",
+    socialData.vasikkakuolleisuusLisatiedot || ""
+  ],
+  [
+    "Lehmien keskipoikimakerta",
+    socialData.lehmienKeskipoikimakerta || "",
+    socialData.lehmienKeskipoikimakertaLisatiedot || ""
+  ],
+  [
+    "Poistettujen lehmien elinikäistuotos, kg",
+    socialData.poistettujenLehmienElinikaiTuotos || "",
+    socialData.poistettujenLehmienElinikaiTuotosLisatiedot || ""
+  ],
+  [
+    "Poistettujen lehmien EKM kg/elinpäivä",
+    socialData.ekmPerElinpiva || "",
+    socialData.ekmPerElinpivaLisatiedot || ""
+  ],
+  [
+    "Laiduntaminen käytössä",
+    socialData.laiduntaminen || "",
+    socialData.laiduntaminenLisatiedot || ""
+  ],
+  [
+    "Jaloittelu käytössä",
+    socialData.jaloittelu || "",
+    socialData.jaloitteluLisatiedot || ""
+  ],
+  [
+    "Ympärivuotinen jaloittelu käytössä",
+    socialData.ymparivuotinenJaloittelu || "",
+    socialData.ymparivuotinenJaloitteluLisatiedot || ""
+  ],
+  [
+    "Kuvaus lehmien makuupaikasta",
+    socialData.lehmienMakuupaikka || "",
+    socialData.lehmienMakuupaikkaLisatiedot || ""
+  ],
+  [
+    "Viilennys lypsynavetassa",
+    socialData.viilennys || "",
+    socialData.viilennysLisatiedot || ""
+  ],
+  [
+    "Lehmillä käytävämatot",
+    socialData.lehmillaKaytavat || "",
+    socialData.lehmillaKaytavatLisatiedot || ""
+  ],
+  [
+    "Pidennetty vierihoito tai imettäjälehmät käytäntönä",
+    socialData.vierihoito || "",
+    socialData.vierihoitoLisatiedot || ""
+  ],
+  [
+    "WellFare Quality -koulutus ja sertifiointi suoritettu",
+    socialData.wellfareQuality || "",
+    socialData.wellfareQualityLisatiedot || ""
+  ],
+  [
+    "ELVI -merkki -status voimassa",
+    socialData.elviStatus || "",
+    socialData.elviStatusLisatiedot || ""
+  ],
+  [
+    "Kuvaus muista mahdollisista toimenpiteistä",
+    socialData.erityisetToimenpiteet || "",
+    ""
+  ],
+  [
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    socialData.erityisetToimenpiteetVuodet || "",
+    socialData.erityisetToimenpiteetTavoiteTeksti || ""
+  ]
+];
+
+const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(row =>
+  row.some(cell => (cell || "").toString().trim() !== "")
+);
+
+if (filteredRowsAnimalWelfare.length > 0) {
+  autoTable(doc, {
+    startY,
+    head: [["Eläinten hyvinvointi", "Uusin tulos", "Kuvaus"]],
+    body: filteredRowsAnimalWelfare,
+    theme: 'striped',
+    headStyles: { fillColor: '#FFA500' },
+    margin: { left: 14, right: 14 },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    showHead: 'firstPage',
+    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+  });
+  startY = doc.lastAutoTable.finalY + 10;
+}
+
+// 4. Tuotteen laatu
+const rowsQuality = [
+  [
+    "Sähköinen lääkekirjanpito käytössä",
+    socialData.laakekirjanpito || "",
+    socialData.laakekirjanpitoLisatiedot || ""
+  ],
+  [
+    "Tankkimaidon testaaminen antibioottihoitojen yhteydessä",
+    socialData.tankkimaidonTestaus || "",
+    socialData.tankkimaidonTestausLisatiedot || ""
+  ],
+  [
+    "Montako vuotta tuotettu E-luokan maitoa",
+    socialData.eLuokanOsuus || "",
+    socialData.eLuokanOsuusLisatiedot || ""
+  ],
+  [
+    "Maidon solupitoisuus",
+    socialData.maidonSolupitoisuus || "",
+    socialData.maidonSolupitoisuusLisatiedot || ""
+  ],
+  [
+    "Kuvaus muista mahdollisista toimenpiteistä",
+    socialData.maitoErityisetToimenpiteet || "",
+    ""
+  ],
+  [
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    socialData.maitoErityisetToimenpiteetVuodet || "",
+    socialData.maitoErityisetToimenpiteetTavoiteTeksti || ""
+  ]
+];
+
+const filteredRowsQuality = rowsQuality.filter(row =>
+  row.some(cell => (cell || "").toString().trim() !== "")
+);
+
+if (filteredRowsQuality.length > 0) {
+  autoTable(doc, {
+    startY,
+    head: [["Tuotteen laatu", "Uusin tulos", "Kuvaus"]],
+    body: filteredRowsQuality,
+    theme: 'striped',
+    headStyles: { fillColor: '#FFA500' },
+    margin: { left: 14, right: 14 },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    showHead: 'firstPage',
+    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+  });
+  startY = doc.lastAutoTable.finalY + 10;
+}
   
 
   // Lopuksi lisätään päivämäärä ja tallennetaan PDF
