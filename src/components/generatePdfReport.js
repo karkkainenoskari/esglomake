@@ -640,12 +640,18 @@ const rowsSocial = [
     socialData.muutErityiset || "",
     ""
   ],
-  [
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    socialData.henkilostoTavoiteVuodet || "",
-    socialData.henkilostoTavoiteTeksti || ""
-  ]
 ];
+
+// Henkilöstö ja työolosuhteet: yhdistetään kolmen vuoden tavoitteet
+const henkiloTavoitteet = getGoalsText(
+  socialData.henkilostoTavoitteetVuosi1,
+  socialData.henkilostoTavoitteetVuosi2,
+  socialData.henkilostoTavoitteetVuosi3
+);
+if (henkiloTavoitteet) {
+  rowsSocial.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", henkiloTavoitteet]);
+}
+
 // Suodatetaan rivit, joista ainakin toinen kentistä ei ole tyhjä
 const filteredRowsSocial = rowsSocial.filter((row) => {
   return row.some(cell => (cell || "").toString().trim() !== "");
@@ -698,12 +704,18 @@ const rowsCoop = [
     socialData.yhteistyoErityiset || "",
     ""
   ],
-  [
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    socialData.yhteistyoErityisetVuodet || "",
-    socialData.yhteistyoErityisetTavoiteTeksti || ""
-  ]
 ];
+
+// Yhteistyö ja avoimuus: yhdistetään kolmen vuoden tavoitteet
+const coopTavoitteet = getGoalsText(
+  socialData.yhteistyoErityisetVuosi1,
+  socialData.yhteistyoErityisetVuosi2,
+  socialData.yhteistyoErityisetVuosi3
+);
+if (coopTavoitteet) {
+  rowsCoop.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", coopTavoitteet]);
+}
+
 const filteredRowsCoop = rowsCoop.filter(row =>
   row.some(cell => (cell || "").toString().trim() !== "")
 );
@@ -809,12 +821,23 @@ const rowsAnimalWelfare = [
     socialData.erityisetToimenpiteet || "",
     ""
   ],
-  [
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    socialData.erityisetToimenpiteetVuodet || "",
-    socialData.erityisetToimenpiteetTavoiteTeksti || ""
-  ]
+  
 ];
+
+const animalWelfareGoals = getGoalsText(
+  socialData.animalTavoitteetVuosi1,
+  socialData.animalTavoitteetVuosi2,
+  socialData.animalTavoitteetVuosi3
+);
+if (animalWelfareGoals) {
+  // Lisätään uusi rivi, jossa yhdistetään kolmen vuoden tavoitteet
+  rowsAnimalWelfare.push([
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    "",
+    animalWelfareGoals
+  ]);
+}
+
 
 const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(row =>
   row.some(cell => (cell || "").toString().trim() !== "")
@@ -862,12 +885,18 @@ const rowsQuality = [
     socialData.maitoErityisetToimenpiteet || "",
     ""
   ],
-  [
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    socialData.maitoErityisetToimenpiteetVuodet || "",
-    socialData.maitoErityisetToimenpiteetTavoiteTeksti || ""
-  ]
 ];
+
+// Tuotteen laatu: yhdistetään kolmen vuoden tavoitteet
+const qualityTavoitteet = getGoalsText(
+  socialData.maitoErityisetToimenpiteetVuosi1,
+  socialData.maitoErityisetToimenpiteetVuosi2,
+  socialData.maitoErityisetToimenpiteetVuosi3
+);
+if (qualityTavoitteet) {
+  rowsQuality.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", qualityTavoitteet]);
+}
+
 
 const filteredRowsQuality = rowsQuality.filter(row =>
   row.some(cell => (cell || "").toString().trim() !== "")
