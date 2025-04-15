@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './tables.css';
-import LogoHeader from './LogoHeader'; 
+import LogoHeader from './LogoHeader';
 import AutoResizeTextArea from './AutoResizeTextArea';
 import YesNoToggle from './YesNoToggle';
-import YearToggle from './YearToggle';
 
 const TalousJaHallintoPage = ({
   onNext,
@@ -22,133 +21,124 @@ const TalousJaHallintoPage = ({
     }
     // Palauta laajennettu oletusdata:
     // Ota talteen alla olevat avaimet ja lisää localFinanceData:n sisälle
-return {
-  // JOHTAMINEN
-  yrityksenArvot: '',
-  yrityksenArvotLisatiedot: '',
-  yrityksenArvotTavoitteet: '',
+    return {
+      // JOHTAMINEN
+      yrityksenArvot: '',
+      yrityksenArvotLisatiedot: '',
 
-  visioMaare: '',
-  visioMaareLisatiedot: '',
-  visioMaareTavoitteet: '',
+      visioMaare: '',
+      visioMaareLisatiedot: '',
+    
+      strategiaLaadittu: '',
+      strategiaLaadittuLisatiedot: '',
 
-  strategiaLaadittu: '',
-  strategiaLaadittuLisatiedot: '',
-  strategiaLaadittuTavoitteet: '',
+      liiketoimintasuunnitelma: '',
+      liiketoimintasuunnitelmaLisatiedot: '',
 
-  liiketoimintasuunnitelma: '',
-  liiketoimintasuunnitelmaLisatiedot: '',
-  liiketoimintasuunnitelmaTavoitteet: '',
-
-  organisaatioKuvattu: '',
-  organisaatioKuvattuLisatiedot: '',
-  organisaatioKuvattuTavoitteet: '',
-
-  johtamisKaytannot: '',
-  johtamisKaytannotLisatiedot: '',
-  johtamisKaytannotTavoitteet: '',
-
-  johtaminenVertailutieto: '',
-  johtaminenVertailutietoLisatiedot: '',
-  johtaminenVertailutietoTavoitteet: '',
-
-  johtaminenAsiantuntijat: '',
-  johtaminenAsiantuntijatLisatiedot: '',
-  johtaminenAsiantuntijatTavoitteet: '',
-
-  johtaminenErityisetToimenpiteet: '',
-  johtaminenErityisetToimenpiteetVuodet: '',
-  johtaminenErityisetToimenpiteetTavoiteTeksti: '',
-
-  // KILPAILUKYKY JA TALOUS
-  toiminnanMittarit: '',
-  toiminnanMittaritLisatiedot: '',
-
-  velkaLiikevaihto: '',
-  velkaLiikevaihtoLisatiedot: '',
-
-  velkaKayttokate: '',
-  velkaKayttokateLisatiedot: '',
+      organisaatioKuvattu: '',
+      organisaatioKuvattuLisatiedot: '',
+      
+      johtamisKaytannot: '',
+      johtamisKaytannotLisatiedot: '',
  
-  kannattavuusLaskenta: '',
-  kannattavuusLaskentaLisatiedot: '',
+      johtaminenVertailutieto: '',
+      johtaminenVertailutietoLisatiedot: '',
 
-  yrittajanVoitto: '',
-  yrittajanVoittoLisatiedot: '',
+      johtaminenAsiantuntijat: '',
+      johtaminenAsiantuntijatLisatiedot: '',
+   
+      johtaminenErityisetToimenpiteet: '',
+      johtaminenErityisetToimenpiteetVuodet: '',
 
-  tuotantokustannusLaskenta: '',
-  tuotantokustannusLaskentaLisatiedot: '',
+      johtaminenErityisetToimenpiteetVuosi1: '',
+      johtaminenErityisetToimenpiteetVuosi2: '',
+      johtaminenErityisetToimenpiteetVuosi3: '',
 
-  maidonTuotantokustannus: '',
-  maidonTuotantokustannusLisatiedot: '',
 
-  maksuvalmiusKuvaus: '',
-  maksuvalmiusKuvausLisatiedot: '',
+      // KILPAILUKYKY JA TALOUS
+      toiminnanMittarit: '',
+      toiminnanMittaritLisatiedot: '',
 
-  budjetointiKuvaus: '',
-  budjetointiKuvausLisatiedot: '',
+      velkaLiikevaihto: '',
+      velkaLiikevaihtoLisatiedot: '',
 
-  kilpailuErityisetToimenpiteet: '',
-  kilpailuErityisetToimenpiteetVuodet: '',
-  kilpailuErityisetToimenpiteetTavoiteTeksti: '',
+      velkaKayttokate: '',
+      velkaKayttokateLisatiedot: '',
 
-  // RISKIT
-  riskVarautumissuunnitelma: '',
-  riskVarautumissuunnitelmaLisatiedot: '',
-  riskVarautumissuunnitelmaTavoitteet: '',
+      kannattavuusLaskenta: '',
+      kannattavuusLaskentaLisatiedot: '',
 
-  riskPelastautumissuunnitelma: '',
-  riskPelastautumissuunnitelmaLisatiedot: '',
-  riskPelastautumissuunnitelmaTavoitteet: '',
+      yrittajanVoitto: '',
+      yrittajanVoittoLisatiedot: '',
 
-  riskRiskikartoitukset: '',
-  riskRiskikartoituksetLisatiedot: '',
-  riskRiskikartoituksetTavoitteet: '',
+      tuotantokustannusLaskenta: '',
+      tuotantokustannusLaskentaLisatiedot: '',
 
-  riskVakuutus: '',
-  riskVakuutusLisatiedot: '',
-  riskVakuutusTavoitteet: '',
+      maidonTuotantokustannus: '',
+      maidonTuotantokustannusLisatiedot: '',
 
-  riskHenkiloriskit: '',
-  riskHenkiloriskitLisatiedot: '',
-  riskHenkiloriskitTavoitteet: '',
+      maksuvalmiusKuvaus: '',
+      maksuvalmiusKuvausLisatiedot: '',
 
-  riskRahoitus: '',
-  riskRahoitusLisatiedot: '',
-  riskRahoitusTavoitteet: '',
+      budjetointiKuvaus: '',
+      budjetointiKuvausLisatiedot: '',
 
-  riskHintariski: '',
-  riskHintariskiLisatiedot: '',
-  riskHintariskiTavoitteet: '',
+      kilpailuErityisetToimenpiteet: '',
+      kilpailuErityisetToimenpiteetVuodet: '',
+      kilpailuErityisetToimenpiteetTavoiteTeksti: '',
 
-  riskVarautuminenSahko: '',
-  riskVarautuminenSahkoLisatiedot: '',
-  riskVarautuminenSahkoTavoitteet: '',
+      kilpailuErityisetToimenpiteetVuosi1: '',
+      kilpailuErityisetToimenpiteetVuosi2: '',
+      kilpailuErityisetToimenpiteetVuosi3: '',
 
-  riskVesihuolto: '',
-  riskVesihuoltoLisatiedot: '',
-  riskVesihuoltoTavoitteet: '',
+      // RISKIT
+      riskVarautumissuunnitelma: '',
+      riskVarautumissuunnitelmaLisatiedot: '',
 
-  riskElainriskit: '',
-  riskElainriskitLisatiedot: '',
-  riskElainriskitTavoitteet: '',
+      riskPelastautumissuunnitelma: '',
+      riskPelastautumissuunnitelmaLisatiedot: '',
 
-  riskPeltoriski: '',
-  riskPeltoriskiLisatiedot: '',
-  riskPeltoriskiTavoitteet: '',
+      riskRiskikartoitukset: '',
+      riskRiskikartoituksetLisatiedot: '',
 
-  riskTietoturva: '',
-  riskTietoturvaLisatiedot: '',
-  riskTietoturvaTavoitteet: '',
+      riskVakuutus: '',
+      riskVakuutusLisatiedot: '',
 
-  riskErityisetToimenpiteet: '',
-  riskErityisetToimenpiteetVuodet: '',
-  riskErityisetToimenpiteetTavoiteTeksti: '',
-};
+      riskHenkiloriskit: '',
+      riskHenkiloriskitLisatiedot: '',
+
+      riskRahoitus: '',
+      riskRahoitusLisatiedot: '',
+
+      riskHintariski: '',
+      riskHintariskiLisatiedot: '',
+
+      riskVarautuminenSahko: '',
+      riskVarautuminenSahkoLisatiedot: '',
+
+      riskVesihuolto: '',
+      riskVesihuoltoLisatiedot: '',
+
+      riskElainriskit: '',
+      riskElainriskitLisatiedot: '',
+
+      riskPeltoriski: '',
+      riskPeltoriskiLisatiedot: '',
+
+      riskTietoturva: '',
+      riskTietoturvaLisatiedot: '',
+
+      riskErityisetToimenpiteet: '',
+      riskErityisetToimenpiteetVuodet: '',
+
+     riskErityisetToimenpiteetVuosi1: '',
+     riskErityisetToimenpiteetVuosi2: '',
+     riskErityisetToimenpiteetVuosi3: '',
+    };
 
 
   });
-  
+
   useEffect(() => {
     localStorage.setItem('financeData', JSON.stringify(localFinanceData));
     if (onDataUpdate) {
@@ -168,13 +158,13 @@ return {
     e.preventDefault();
     if (onNext) onNext(localFinanceData);
   };
-  
+
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
       <LogoHeader />
       <h2>Talous ja hallinto</h2>
       <form onSubmit={handleSubmit}>
-      <table className="common-table finance-table">
+        <table className="common-table finance-table">
           <colgroup>
             <col />
             <col />
@@ -188,15 +178,15 @@ return {
             </tr>
           </thead>
           <tbody>
-            {/* Yrityksen arvot */}
+
             <tr>
               <td>Yrityksen arvot on määritetty</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.yrityksenArvot}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, yrityksenArvot: val })
-                    
+
                   }
                   themeColor="  #0345fa"
                 />
@@ -209,23 +199,13 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/* 
-              <td>
-                <AutoResizeTextArea
-                  name="yrityksenArvotTavoitteet"
-                  value={localFinanceData.yrityksenArvotTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
-            {/* Visio */}
+
             <tr>
               <td>Visio on määritetty</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.visioMaare}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, visioMaare: val })
@@ -241,23 +221,13 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="visioMaareTavoitteet"
-                  value={localFinanceData.visioMaareTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
-            {/* Strategia */}
+
             <tr>
               <td>Strategia on laadittu ja sitä päivitetään</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.strategiaLaadittu}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, strategiaLaadittu: val })
@@ -273,26 +243,16 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="strategiaLaadittuTavoitteet"
-                  value={localFinanceData.strategiaLaadittuTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
-            {/* Liiketoimintasuunnitelma ja/tai investointisuunnitelma */}
+
             <tr>
               <td>
                 Liiketoimintasuunnitelma ja/tai investointisuunnitelma on tehty
-        
+
               </td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.liiketoimintasuunnitelma}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, liiketoimintasuunnitelma: val })
@@ -308,23 +268,13 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="liiketoimintasuunnitelmaTavoitteet"
-                  value={localFinanceData.liiketoimintasuunnitelmaTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
-            {/* Organisaatio, omistajat ja vastuualueet */}
+
             <tr>
               <td>Organisaatio, omistajat ja vastuualueet on kuvattu</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.organisaatioKuvattu}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, organisaatioKuvattu: val })
@@ -340,52 +290,7 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="organisaatioKuvattuTavoitteet"
-                  value={localFinanceData.organisaatioKuvattuTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
-
-            {/* Kuvaus vertailutiedon hyödyntämisestä */}
-            <tr>
-              <td>Kuvaus vertailutiedon hyödyntämisestä</td>
-              <td>
-                <input
-                  type="text"
-                  name="johtaminenVertailutieto"
-                  value={localFinanceData.johtaminenVertailutieto}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              <td>
-                <AutoResizeTextArea
-                  name="johtaminenVertailutietoLisatiedot"
-                  value={localFinanceData.johtaminenVertailutietoLisatiedot}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                  placeholder ="Esim. pienryhmätoiminta"
-                />
-              </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="johtaminenVertailutietoTavoitteet"
-                  value={localFinanceData.johtaminenVertailutietoTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
-            </tr>
-
-            {/* Kuvaus asiantuntijapalveluiden hyödyntämisestä */}
             <tr>
               <td>Kuvaus asiantuntijapalveluiden hyödyntämisestä</td>
               <td>
@@ -403,25 +308,38 @@ return {
                   value={localFinanceData.johtaminenAsiantuntijatLisatiedot}
                   onChange={handleChange}
                   style={{ width: '100%' }}
-                   placeholder="(Esim. johtaminen ja hallinto, eläimet, pelto, talous) "
+                  placeholder="(Esim. johtaminen ja hallinto, eläimet, pelto, talous) "
                 />
               </td>
-              {/*
+            </tr>
+
+
+            <tr>
+              <td>Kuvaus vertailutiedon hyödyntämisestä</td>
               <td>
-                <AutoResizeTextArea
-                  name="johtaminenAsiantuntijatTavoitteet"
-                  value={localFinanceData.johtaminenAsiantuntijatTavoitteet}
+                <input
+                  type="text"
+                  name="johtaminenVertailutieto"
+                  value={localFinanceData.johtaminenVertailutieto}
                   onChange={handleChange}
                   style={{ width: '100%' }}
                 />
               </td>
-              */}
+              <td>
+                <AutoResizeTextArea
+                  name="johtaminenVertailutietoLisatiedot"
+                  value={localFinanceData.johtaminenVertailutietoLisatiedot}
+                  onChange={handleChange}
+                  style={{ width: '100%' }}
+                  placeholder="Esim. pienryhmätoiminta"
+                />
+              </td>
             </tr>
 
-            {/* Erityiset toimenpiteet */}
+
             <tr>
               <td>Kuvaus muista mahdollisista toimenpiteistä</td>
-              {/* Voit yhdistää 3 saraketta jos haluat enemmän tilaa */}
+
               <td colSpan="3">
                 <AutoResizeTextArea
                   name="johtaminenErityisetToimenpiteet"
@@ -433,57 +351,67 @@ return {
               </td>
             </tr>
             <tr>
-  <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
-  {/* Voit halutessasi jakaa sarakkeet eri tavalla, tässä käytetään colSpan="3" jotta saadaan lisää tilaa */}
-  <td colSpan="3">
-    <div style={{ marginBottom: '0.5rem' }}>
-      <YearToggle
-        value={localFinanceData.johtaminenErityisetToimenpiteetVuodet}
-        onChange={(val) =>
-          setLocalFinanceData({
-            ...localFinanceData,
-            johtaminenErityisetToimenpiteetVuodet: val
-          })
-        }
-        themeColor="#0345fa"
-      />
-    </div>
-    <AutoResizeTextArea
-      name="johtaminenErityisetToimenpiteetTavoiteTeksti"
-      value={localFinanceData.johtaminenErityisetToimenpiteetTavoiteTeksti}
-      onChange={handleChange}
-      rows={2}
-      placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
-      style={{ width: '100%' }}
-    />
-  </td>
-</tr>
+              <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+              <td colSpan="3">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                    <AutoResizeTextArea
+                      name="johtaminenErityisetToimenpiteetVuosi1"
+                      value={localFinanceData.johtaminenErityisetToimenpiteetVuosi1 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 1..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                    <AutoResizeTextArea
+                      name="johtaminenErityisetToimenpiteetVuosi2"
+                      value={localFinanceData.johtaminenErityisetToimenpiteetVuosi2 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 2..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                    <AutoResizeTextArea
+                      name="johtaminenErityisetToimenpiteetVuosi3"
+                      value={localFinanceData.johtaminenErityisetToimenpiteetVuosi3 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 3..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
 
-        {/* ======================
-            2. KILPAILUKYKY JA TALOUS
-        ======================= */}
+
         <table className="common-table finance-table">
           <colgroup>
             <col />
             <col />
             <col />
-           {/* <col />*/}
           </colgroup>
           <thead>
             <tr>
               <th>Kilpailukyky ja talous</th>
               <th>Uusin tulos</th>
               <th>Kuvaus</th>
-              {/* <th>Tavoite ja aikataulu</th> */}
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Toiminnan tavoitteet ja mittarit on määritetty</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.toiminnanMittarit}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, toiminnanMittarit: val })
@@ -499,16 +427,6 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="toiminnanMittaritTavoitteet"
-                  value={localFinanceData.toiminnanMittaritTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             <tr>
@@ -556,10 +474,10 @@ return {
             <tr>
               <td>
                 Koko tilan tulos- tai kannattavuuslaskelman teko säännöllisesti
-                
+
               </td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.kannattavuusLaskenta}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, kannattavuusLaskenta: val })
@@ -575,21 +493,11 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="kannattavuusLaskentaTavoitteet"
-                  value={localFinanceData.kannattavuusLaskentaTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             <tr>
               <td>
-                Yrittäjän voitto, snt/maito kg 
+                Yrittäjän voitto, snt/maito kg
               </td>
               <td>
                 <input
@@ -609,24 +517,14 @@ return {
                   placeholder="Esim. tuloslaskelmasta, kannattavuuskirjanpidosta"
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="yrittajanVoittoTavoitteet"
-                  value={localFinanceData.yrittajanVoittoTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             <tr>
               <td>
-                Tuotantokustannuslaskelman teko säännöllisesti 
+                Tuotantokustannuslaskelman teko säännöllisesti
               </td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.tuotantokustannusLaskenta}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, tuotantokustannusLaskenta: val })
@@ -643,16 +541,6 @@ return {
                   placeholder="Esim. rehu, maito"
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="tuotantokustannusLaskentaTavoitteet"
-                  value={localFinanceData.tuotantokustannusLaskentaTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             <tr>
@@ -674,16 +562,6 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="maidonTuotantokustannusTavoitteet"
-                  value={localFinanceData.maidonTuotantokustannusTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             <tr>
@@ -705,16 +583,6 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="maksuvalmiusKuvausTavoitteet"
-                  value={localFinanceData.maksuvalmiusKuvausTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             <tr>
@@ -736,16 +604,6 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="budjetointiKuvausTavoitteet"
-                  value={localFinanceData.budjetointiKuvausTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             <tr>
@@ -761,56 +619,67 @@ return {
               </td>
             </tr>
             <tr>
-  <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
-  <td colSpan="3">
-    <div style={{ marginBottom: '0.5rem' }}>
-      <YearToggle
-        value={localFinanceData.kilpailuErityisetToimenpiteetVuodet}
-        onChange={(val) =>
-          setLocalFinanceData({
-            ...localFinanceData,
-            kilpailuErityisetToimenpiteetVuodet: val
-          })
-        }
-        themeColor="#0345fa"
-      />
-    </div>
-    <AutoResizeTextArea
-      name="kilpailuErityisetToimenpiteetTavoiteTeksti"
-      value={localFinanceData.kilpailuErityisetToimenpiteetTavoiteTeksti}
-      onChange={handleChange}
-      rows={2}
-      placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
-      style={{ width: '100%' }}
-    />
-  </td>
-</tr>
+              <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+              <td colSpan="3">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                    <AutoResizeTextArea
+                      name="kilpailuErityisetToimenpiteetVuosi1"
+                      value={localFinanceData.kilpailuErityisetToimenpiteetVuosi1 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 1..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                    <AutoResizeTextArea
+                      name="kilpailuErityisetToimenpiteetVuosi2"
+                      value={localFinanceData.kilpailuErityisetToimenpiteetVuosi2 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 2..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                    <AutoResizeTextArea
+                      name="kilpailuErityisetToimenpiteetVuosi3"
+                      value={localFinanceData.kilpailuErityisetToimenpiteetVuosi3 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 3..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                </div>
+              </td>
+            </tr>
+
           </tbody>
         </table>
 
-        {/* ======================
-            3. RISKIEN HALLINTA
-        ======================= */}
         <table className="common-table finance-table">
           <colgroup>
             <col />
             <col />
             <col />
-           {/* <col />*/}
           </colgroup>
           <thead>
             <tr>
               <th>Riskien hallinta</th>
               <th>Uusin tulos</th>
               <th>Kuvaus</th>
-             {/* <th>Tavoite ja aikataulu</th>*/}
             </tr>
           </thead>
           <tbody>
-            <tr> 
+            <tr>
               <td>Varautumissuunnitelma poikkeustilanteisiin tehty</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.riskVarautumissuunnitelma}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, riskVarautumissuunnitelma: val })
@@ -826,22 +695,12 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-               {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskVarautumissuunnitelmaTavoitteet"
-                  value={localFinanceData.riskVarautumissuunnitelmaTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             <tr>
               <td>Pelastautumissuunnitelma tehty</td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.riskPelastautumissuunnitelma}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, riskPelastautumissuunnitelma: val })
@@ -857,24 +716,14 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskPelastautumissuunnitelmaTavoitteet"
-                  value={localFinanceData.riskPelastautumissuunnitelmaTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             <tr>
               <td>
-                Riskikartoituksia tehty 
+                Riskikartoituksia tehty
               </td>
               <td style={{ textAlign: 'center' }}>
-              <YesNoToggle
+                <YesNoToggle
                   value={localFinanceData.riskRiskikartoitukset}
                   onChange={(val) =>
                     setLocalFinanceData({ ...localFinanceData, riskRiskikartoitukset: val })
@@ -891,19 +740,7 @@ return {
                   placeholder="Esim. tapaturmat, eläintaudit, sähkö- ja paloturvallisuus, tietoturva"
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskRiskikartoituksetTavoitteet"
-                  value={localFinanceData.riskRiskikartoituksetTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
-
-            {/* Kuvaus vakuutusturvasta */}
             <tr>
               <td>Kuvaus vakuutusturvasta </td>
               <td>
@@ -924,19 +761,7 @@ return {
                   placeholder="Esim. omaisuus, toiminta, eläimet..."
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskVakuutusTavoitteet"
-                  value={localFinanceData.riskVakuutusTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
-
-            {/* Kuvaus henkilöriskien hallinnasta */}
             <tr>
               <td>
                 Kuvaus henkilöriskien hallinnasta ja dokumentaatiosta
@@ -959,19 +784,7 @@ return {
                   placeholder="Esim. edunvalvontavaltuutukset, testamentit, avioehto, varahenkilösuunnitelma"
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskHenkiloriskitTavoitteet"
-                  value={localFinanceData.riskHenkiloriskitTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
-
-            {/* Kuvaus rahoitusriskien hallinnasta */}
             <tr>
               <td>Kuvaus rahoitusriskien hallinnasta </td>
               <td>
@@ -992,19 +805,7 @@ return {
                   placeholder="Esim. korkosuojaus"
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskRahoitusTavoitteet"
-                  value={localFinanceData.riskRahoitusTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
-
-            {/* Kuvaus hintariskien hallinnasta */}
             <tr>
               <td>Kuvaus hintariskien hallinta</td>
               <td>
@@ -1024,169 +825,119 @@ return {
                   style={{ width: '100%' }}
                 />
               </td>
-              {/*
-              <td>
-                <AutoResizeTextArea
-                  name="riskHintariskiTavoitteet"
-                  value={localFinanceData.riskHintariskiTavoitteet}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              */}
             </tr>
 
             {localFinanceData.riskVarautumissuunnitelma !== "kylla" && (
-  <>
-            <tr>
-              <td>Kuvaus varautumisesta sähkökatkoksiin </td>
-              <td>
-                <input
-                  type="text"
-                  name="riskVarautuminenSahko"
-                  value={localFinanceData.riskVarautuminenSahko}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                />
-              </td>
-              <td>
-                <AutoResizeTextArea
-                  name="riskVarautuminenSahkoLisatiedot"
-                  value={localFinanceData.riskVarautuminenSahkoLisatiedot}
-                  onChange={handleChange}
-                  style={{ width: '100%' }}
-                  placeholder="Esim. tilalla on varavoimalähde"
-                />
-              </td>
-            
-            </tr>
+              <>
+                <tr>
+                  <td>Kuvaus varautumisesta sähkökatkoksiin </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="riskVarautuminenSahko"
+                      value={localFinanceData.riskVarautuminenSahko}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                    />
+                  </td>
+                  <td>
+                    <AutoResizeTextArea
+                      name="riskVarautuminenSahkoLisatiedot"
+                      value={localFinanceData.riskVarautuminenSahkoLisatiedot}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                      placeholder="Esim. tilalla on varavoimalähde"
+                    />
+                  </td>
 
-  
-    <tr>
-      <td>Kuvaus vesihuollon varajärjestelmästä</td>
-      <td>
-        <input
-          type="text"
-          name="riskVesihuolto"
-          value={localFinanceData.riskVesihuolto}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-        />
-      </td>
-      <td>
-        <AutoResizeTextArea
-          name="riskVesihuoltoLisatiedot"
-          value={localFinanceData.riskVesihuoltoLisatiedot}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-        />
-      </td>
-      {/*
-      <td>
-        <AutoResizeTextArea
-          name="riskVesihuoltoTavoitteet"
-          value={localFinanceData.riskVesihuoltoTavoitteet}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-        />
-      </td>
-      */}
-    </tr>
-    <tr>
-      <td>Kuvaus eläinriskien hallinnasta </td>
-      <td>
-        <input
-          type="text"
-          name="riskElainriskit"
-          value={localFinanceData.riskElainriskit}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-        />
-      </td>
-      <td>
-        <AutoResizeTextArea
-          name="riskElainriskitLisatiedot"
-          value={localFinanceData.riskElainriskitLisatiedot}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-          placeholder="Esim. salmonella, Biocheck, tautiluokitukset"
-        />
-      </td>
-      {/*
-      <td>
-        <AutoResizeTextArea
-          name="riskElainriskitTavoitteet"
-          value={localFinanceData.riskElainriskitTavoitteet}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-        />
-      </td>
-      */}
-    </tr>
-    <tr>
-      <td>Kuvaus peltoriskien hallinnasta </td>
-      <td>
-        <input
-          type="text"
-          name="riskPeltoriski"
-          value={localFinanceData.riskPeltoriski}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-        />
-      </td>
-      <td>
-        <AutoResizeTextArea
-          name="riskPeltoriskiLisatiedot"
-          value={localFinanceData.riskPeltoriskiLisatiedot}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-          placeholder="Esim. vuokrasopimukset, oman pellon osuus, pellon riittävyys ja laatu"
-        />
-      </td>
-      {/*
-      <td>
-        <AutoResizeTextArea
-          name="riskPeltoriskiTavoitteet"
-          value={localFinanceData.riskPeltoriskiTavoitteet}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-        />
-      </td>
-      */}
-    </tr>
-    <tr>
-      <td>Kuvaus tietoturvariskien hallinnasta </td>
-      <td>
-        <input
-          type="text"
-          name="riskTietoturva"
-          value={localFinanceData.riskTietoturva}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-        />
-      </td>
-      <td>
-        <AutoResizeTextArea
-          name="riskTietoturvaLisatiedot"
-          value={localFinanceData.riskTietoturvaLisatiedot}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-          placeholder="Esim. etävalvonta, maatalouden ja yksityistalouden eriyttäminen"
-        />
-      </td>
-      {/*
-      <td>
-        <AutoResizeTextArea
-          name="riskTietoturvaTavoitteet"
-          value={localFinanceData.riskTietoturvaTavoitteet}
-          onChange={handleChange}
-          style={{ width: '100%' }}
-        />
-      </td>
-      */}
-    </tr>
-  </>
-)}     
+                </tr>
+
+
+                <tr>
+                  <td>Kuvaus vesihuollon varajärjestelmästä</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="riskVesihuolto"
+                      value={localFinanceData.riskVesihuolto}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                    />
+                  </td>
+                  <td>
+                    <AutoResizeTextArea
+                      name="riskVesihuoltoLisatiedot"
+                      value={localFinanceData.riskVesihuoltoLisatiedot}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Kuvaus eläinriskien hallinnasta </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="riskElainriskit"
+                      value={localFinanceData.riskElainriskit}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                    />
+                  </td>
+                  <td>
+                    <AutoResizeTextArea
+                      name="riskElainriskitLisatiedot"
+                      value={localFinanceData.riskElainriskitLisatiedot}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                      placeholder="Esim. salmonella, Biocheck, tautiluokitukset"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Kuvaus peltoriskien hallinnasta </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="riskPeltoriski"
+                      value={localFinanceData.riskPeltoriski}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                    />
+                  </td>
+                  <td>
+                    <AutoResizeTextArea
+                      name="riskPeltoriskiLisatiedot"
+                      value={localFinanceData.riskPeltoriskiLisatiedot}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                      placeholder="Esim. vuokrasopimukset, oman pellon osuus, pellon riittävyys ja laatu"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Kuvaus tietoturvariskien hallinnasta </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="riskTietoturva"
+                      value={localFinanceData.riskTietoturva}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                    />
+                  </td>
+                  <td>
+                    <AutoResizeTextArea
+                      name="riskTietoturvaLisatiedot"
+                      value={localFinanceData.riskTietoturvaLisatiedot}
+                      onChange={handleChange}
+                      style={{ width: '100%' }}
+                      placeholder="Esim. etävalvonta, maatalouden ja yksityistalouden eriyttäminen"
+                    />
+                  </td>
+                </tr>
+              </>
+            )}
             <tr>
               <td>Kuvaus muista mahdollista toimenpiteistä</td>
               <td colSpan="3">
@@ -1200,35 +951,49 @@ return {
               </td>
             </tr>
             <tr>
-  <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
-  <td colSpan="3">
-    <div style={{ marginBottom: '0.5rem' }}>
-      <YearToggle
-        value={localFinanceData.riskErityisetToimenpiteetVuodet}
-        onChange={(val) =>
-          setLocalFinanceData({
-            ...localFinanceData,
-            riskErityisetToimenpiteetVuodet: val
-          })
-        }
-        themeColor="#0345fa"
-      />
-    </div>
-    <AutoResizeTextArea
-      name="riskErityisetToimenpiteetTavoiteTeksti"
-      value={localFinanceData.riskErityisetToimenpiteetTavoiteTeksti}
-      onChange={handleChange}
-      rows={2}
-      placeholder="Kirjoita tähän tarkempi kuvaus tavoitteista..."
-      style={{ width: '100%' }}
-    />
-  </td>
-</tr>
+              <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+              <td colSpan="3">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                    <AutoResizeTextArea
+                      name="riskErityisetToimenpiteetVuosi1"
+                      value={localFinanceData.riskErityisetToimenpiteetVuosi1 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 1..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                    <AutoResizeTextArea
+                      name="riskErityisetToimenpiteetVuosi2"
+                      value={localFinanceData.riskErityisetToimenpiteetVuosi2 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 2..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                    <AutoResizeTextArea
+                      name="riskErityisetToimenpiteetVuosi3"
+                      value={localFinanceData.riskErityisetToimenpiteetVuosi3 || ""}
+                      onChange={handleChange}
+                      rows={2}
+                      placeholder="Kirjoita tavoite vuodelle 3..."
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                </div>
+              </td>
+            </tr>
+
           </tbody>
         </table>
 
-
-        {/* Navigointi */}
         <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center' }}>
           <button type="button" onClick={onPrevious} style={{ marginRight: '1rem' }}>
             Edellinen
