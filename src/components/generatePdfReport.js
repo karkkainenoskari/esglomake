@@ -21,7 +21,7 @@ function getGoalsText(goal1, goal2, goal3) {
   return `Vuosi-1: ${t1}\nVuosi-2: ${t2}\nVuosi-3: ${t3}`;
 }
 
-const generatePdfReport = (initialData, environmentData, socialData,localFinanceData) => {
+const generatePdfReport = (initialData, environmentData, socialData, localFinanceData, financeData) => {
   const doc = new jsPDF();
 
   // Lisää logot
@@ -1008,6 +1008,75 @@ if (filteredRowsJohtaminen.length > 0) {
   startY = doc.lastAutoTable.finalY + 10;
 }
 
+// Kilpailukyky ja talous -taulukko
+const rowsKilpailukykyTalous = [
+  [
+    "Toiminnan tavoitteet ja mittarit on määritetty",
+    localFinanceData.toiminnanMittarit || "",
+    localFinanceData.toiminnanMittaritLisatiedot || ""
+  ],
+  [
+    "Velan määrä suhteessa liikevaihtoon, %",
+    localFinanceData.velkaLiikevaihto || "",
+    localFinanceData.velkaLiikevaihtoLisatiedot || ""
+  ],
+  [
+    "Velan määrä suhteessa käyttökatteeseen, %",
+    localFinanceData.velkaKayttokate || "",
+    localFinanceData.velkaKayttokateLisatiedot || ""
+  ],
+  [
+    "Koko tilan tulos- tai kannattavuuslaskelman teko säännöllisesti",
+    localFinanceData.kannattavuusLaskenta || "",
+    localFinanceData.kannattavuusLaskentaLisatiedot || ""
+  ],
+  [
+    "Yrittäjän voitto, snt/maito kg",
+    localFinanceData.yrittajanVoitto || "",
+    localFinanceData.yrittajanVoittoLisatiedot || ""
+  ],
+  [
+    "Tuotantokustannuslaskelman teko säännöllisesti",
+    localFinanceData.tuotantokustannusLaskenta || "",
+    localFinanceData.tuotantokustannusLaskentaLisatiedot || ""
+  ],
+  [
+    "Maidon tuotantokustannus, snt/maitokg",
+    localFinanceData.maidonTuotantokustannus || "",
+    localFinanceData.maidonTuotantokustannusLisatiedot || ""
+  ],
+  [
+    "Kuvaus maksuvalmiuden ylläpidosta",
+    localFinanceData.maksuvalmiusKuvaus || "",
+    localFinanceData.maksuvalmiusKuvausLisatiedot || ""
+  ],
+  [
+    "Kuvaus budjetointikäytännöistä",
+    localFinanceData.budjetointiKuvaus || "",
+    localFinanceData.budjetointiKuvausLisatiedot || ""
+  ]
+];
+
+// Suodatetaan ne rivit, joissa joko toinen tai kolmas solu sisältää dataa
+const filteredRowsKilpailukykyTalous = rowsKilpailukykyTalous.filter(([_, col2, col3]) => {
+  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+});
+
+// Jos rivejä löytyy, tulostetaan taulukko PDF:ään
+if (filteredRowsKilpailukykyTalous.length > 0) {
+  autoTable(doc, {
+    startY,
+    head: [["Kilpailukyky ja talous", "Uusin tulos", "Kuvaus"]],
+    body: filteredRowsKilpailukykyTalous,
+    theme: 'striped',
+    headStyles: { fillColor: '#0345fa' },
+    margin: { left: 14, right: 14 },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
+    showHead: 'firstPage'
+  });
+  startY = doc.lastAutoTable.finalY + 10;
+}
 
   // Lopuksi lisätään päivämäärä ja tallennetaan PDF
   const now = new Date();
