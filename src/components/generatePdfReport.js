@@ -1054,13 +1054,23 @@ const rowsKilpailukykyTalous = [
     "Kuvaus budjetointikäytännöistä",
     localFinanceData.budjetointiKuvaus || "",
     localFinanceData.budjetointiKuvausLisatiedot || "",
-  ]
+  ],
   [
     "Kuvaus muista mahdollisista toimenpiteistä",
     localFinanceData.kilpailuErityisetToimenpiteet || "",
     localFinanceData.kilpailuErityisetToimenpiteetLisatiedot || ""
   ],
 ];
+
+const kilpailuGoals = getGoalsText(
+  localFinanceData.kilpailuErityisetToimenpiteetVuosi1,
+  localFinanceData.kilpailuErityisetToimenpiteetVuosi2,
+  localFinanceData.kilpailuErityisetToimenpiteetVuosi3
+);
+
+if (kilpailuGoals) {
+  rowsKilpailukykyTalous.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", kilpailuGoals]);
+}
 
 const filteredRowsKilpailukykyTalous = (Array.isArray(rowsKilpailukykyTalous) ? rowsKilpailukykyTalous : []).filter(item => {
   if (!Array.isArray(item)) return false; // Ohitetaan virheelliset alkiot
@@ -1147,12 +1157,12 @@ const rowsRisk = [
     "Kuvaus tietoturvariskien hallinnasta",
     localFinanceData.riskTietoturva || "",
     localFinanceData.riskTietoturvaLisatiedot || ""
-  ]
+  ],
   [
     "Kuvaus muista mahdollisista toimenpiteistä",
     localFinanceData.riskiErityisetToimenpiteet || "",
     ""
-  ]
+  ],
 ];
 
 // Yhdistetään riskien hallinnan tavoitteet vuositason kentistä
