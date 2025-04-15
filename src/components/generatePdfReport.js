@@ -21,7 +21,7 @@ function getGoalsText(goal1, goal2, goal3) {
   return `Vuosi-1: ${t1}\nVuosi-2: ${t2}\nVuosi-3: ${t3}`;
 }
 
-const generatePdfReport = (initialData, environmentData, socialData, financeData) => {
+const generatePdfReport = (initialData, environmentData, socialData,localFinanceData) => {
   const doc = new jsPDF();
 
   // Lisää logot
@@ -929,6 +929,85 @@ if (filteredRowsQuality.length > 0) {
   startY = doc.lastAutoTable.finalY + 10;
 }
   
+// 1. Johtaminen - taulukko (talous ja hallinto -osio)
+const rowsJohtaminen = [
+  [
+    "Yrityksen arvot on määritetty",
+    localFinanceData.yrityksenArvot || "",
+    localFinanceData.yrityksenArvotLisatiedot || ""
+  ],
+  [
+    "Visio on määritetty",
+    localFinanceData.visioMaare || "",
+    localFinanceData.visioMaareLisatiedot || ""
+  ],
+  [
+    "Strategia on laadittu ja sitä päivitetään",
+    localFinanceData.strategiaLaadittu || "",
+    localFinanceData.strategiaLaadittuLisatiedot || ""
+  ],
+  [
+    "Liiketoimintasuunnitelma ja/tai investointisuunnitelma on tehty",
+    localFinanceData.liiketoimintasuunnitelma || "",
+    localFinanceData.liiketoimintasuunnitelmaLisatiedot || ""
+  ],
+  [
+    "Organisaatio, omistajat ja vastuualueet on kuvattu",
+    localFinanceData.organisaatioKuvattu || "",
+    localFinanceData.organisaatioKuvattuLisatiedot || ""
+  ],
+  [
+    "Kuvaus asiantuntijapalveluiden hyödyntämisestä",
+    localFinanceData.johtaminenAsiantuntijat || "",
+    localFinanceData.johtaminenAsiantuntijatLisatiedot || ""
+  ],
+  [
+    "Kuvaus vertailutiedon hyödyntämisestä",
+    localFinanceData.johtaminenVertailutieto || "",
+    localFinanceData.johtaminenVertailutietoLisatiedot || ""
+  ],
+  [
+    "Kuvaus muista mahdollisista toimenpiteistä",
+    localFinanceData.johtaminenErityisetToimenpiteet || "",
+    ""
+  ]
+];
+
+// Yhdistetään johtamisen tavoitteet vuositason kentistä
+const johtaminenTavoitteet = getGoalsText(
+  localFinanceData.johtaminenErityisetToimenpiteetVuosi1,
+  localFinanceData.johtaminenErityisetToimenpiteetVuosi2,
+  localFinanceData.johtaminenErityisetToimenpiteetVuosi3
+);
+if (johtaminenTavoitteet) {
+  rowsJohtaminen.push([
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    "",
+    johtaminenTavoitteet
+  ]);
+}
+
+// Suodatetaan vain ne rivit, joissa toisen tai kolmannen solun sisältö ei ole tyhjä
+const filteredRowsJohtaminen = rowsJohtaminen.filter(([_, col2, col3]) => {
+  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+});
+
+// Jos rivejä löytyy, lisätään taulukko PDF:ään
+if (filteredRowsJohtaminen.length > 0) {
+  autoTable(doc, {
+    startY,
+    head: [["Johtaminen", "Uusin tulos", "Kuvaus"]],
+    body: filteredRowsJohtaminen,
+    theme: 'striped',
+    headStyles: { fillColor: '#0345fa' },
+    margin: { left: 14, right: 14 },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    showHead: 'firstPage',
+    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+  });
+  startY = doc.lastAutoTable.finalY + 10;
+}
+
 
   // Lopuksi lisätään päivämäärä ja tallennetaan PDF
   const now = new Date();
