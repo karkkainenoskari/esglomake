@@ -1053,7 +1053,12 @@ const rowsKilpailukykyTalous = [
   [
     "Kuvaus budjetointikäytännöistä",
     localFinanceData.budjetointiKuvaus || "",
-    localFinanceData.budjetointiKuvausLisatiedot || ""
+    localFinanceData.budjetointiKuvausLisatiedot || "",
+  ]
+  [
+    "Kuvaus muista mahdollisista toimenpiteistä",
+    localFinanceData.kilpailuErityisetToimenpiteet || "",
+    ""
   ]
 ];
 
@@ -1074,6 +1079,111 @@ if (filteredRowsKilpailukykyTalous.length > 0) {
     styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
     columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
     showHead: 'firstPage'
+  });
+  startY = doc.lastAutoTable.finalY + 10;
+}
+
+// Riskien hallinta - osio
+const rowsRisk = [
+  [
+    "Varautumissuunnitelma poikkeustilanteisiin tehty",
+    localFinanceData.riskVarautuminenSahko || "",
+    localFinanceData.riskVarautuminenSahkoLisatiedot || ""
+  ],
+  [
+    "Pelastautumissuunnitelma tehty",
+    localFinanceData.riskPelastautumissuunnitelma || "",
+    localFinanceData.riskPelastautumissuunnitelmaLisatiedot || ""
+  ],
+  [
+    "Riskikartoitukset tehty",
+    localFinanceData.riskRiskikartoitukset || "",
+    localFinanceData.riskRiskikartoituksetLisatiedot || ""
+  ],
+  [
+    "Kuvaus vakuutusturvasta",
+    localFinanceData.riskVakuutus || "",
+    localFinanceData.riskVakuutusLisatiedot || ""
+  ],
+  [
+    "Kuvaus henkilöriskien hallinnasta ja dokumentaatiosta",
+    localFinanceData.riskHenkiloriskit || "",
+    localFinanceData.riskHenkiloriskitLisatiedot || ""
+  ],
+  [
+    "Kuvaus rahoitusriskien hallinnasta",
+    localFinanceData.riskRahoitus || "",
+    localFinanceData.riskRahoitusLisatiedot || ""
+  ],
+  [
+    "Kuvaus hintariskien hallinnasta",
+    localFinanceData.riskHintariski || "",
+    localFinanceData.riskHintariskiLisatiedot || ""
+  ],
+
+  [
+    "Riskivarautuminen sähkökatkoksissa",
+    localFinanceData.riskVarautuminenSahko || "",
+    localFinanceData.riskVarautuminenSahkoLisatiedot || ""
+  ],
+  [
+    "Vesihuollon varajärjestelmä",
+    localFinanceData.riskVesihuolto || "",
+    localFinanceData.riskVesihuoltoLisatiedot || ""
+  ],
+  [
+    "Kuvaus eläinriskien hallinnasta",
+    localFinanceData.riskElainriskit || "",
+    localFinanceData.riskElainriskitLisatiedot || ""
+  ],
+  [
+    "Kuvaus peltoriskien hallinnasta",
+    localFinanceData.riskPeltoriski || "",
+    localFinanceData.riskPeltoriskiLisatiedot || ""
+  ],
+  [
+    "Kuvaus tietoturvariskien hallinnasta",
+    localFinanceData.riskTietoturva || "",
+    localFinanceData.riskTietoturvaLisatiedot || ""
+  ]
+  [
+    "Kuvaus muista mahdollisista toimenpiteistä",
+    localFinanceData.riskiErityisetToimenpiteet || "",
+    ""
+  ]
+];
+
+// Yhdistetään riskien hallinnan tavoitteet vuositason kentistä
+const riskTavoitteet = getGoalsText(
+  localFinanceData.riskErityisetToimenpiteetVuosi1,
+  localFinanceData.riskErityisetToimenpiteetVuosi2,
+  localFinanceData.riskErityisetToimenpiteetVuosi3
+);
+if (riskTavoitteet) {
+  rowsRisk.push([
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    "",
+    riskTavoitteet
+  ]);
+}
+
+// Suodatetaan vain ne rivit, joissa toisen tai kolmannen solun (data-osuuksien) sisältö ei ole tyhjä
+const filteredRowsRisk = rowsRisk.filter(([_, col2, col3]) => {
+  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+});
+
+// Jos suodatettuja rivejä löytyy, tulostetaan riskien hallinnan taulukko PDF:ään
+if (filteredRowsRisk.length > 0) {
+  autoTable(doc, {
+    startY,
+    head: [["Riskien hallinta", "Uusin tulos", "Kuvaus"]],
+    body: filteredRowsRisk,
+    theme: 'striped',
+    headStyles: { fillColor: '#0345fa' },
+    margin: { left: 14, right: 14 },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    showHead: 'firstPage',
+    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
