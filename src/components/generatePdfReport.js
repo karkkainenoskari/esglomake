@@ -1058,13 +1058,15 @@ const rowsKilpailukykyTalous = [
   [
     "Kuvaus muista mahdollisista toimenpiteistä",
     localFinanceData.kilpailuErityisetToimenpiteet || "",
-    ""
-  ]
+    localFinanceData.kilpailuErityisetToimenpiteetLisatiedot || ""
+  ],
 ];
 
-// Suodatetaan ne rivit, joissa joko toinen tai kolmas solu sisältää dataa
-const filteredRowsKilpailukykyTalous = rowsKilpailukykyTalous.filter(([_, col2, col3]) => {
-  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+const filteredRowsKilpailukykyTalous = (Array.isArray(rowsKilpailukykyTalous) ? rowsKilpailukykyTalous : []).filter(item => {
+  if (!Array.isArray(item)) return false; // Ohitetaan virheelliset alkiot
+  const [col1 = "", col2 = "", col3 = ""] = item;
+  // Sisällytetään rivi, jos vähintään yksi solu on ei-tyhjä
+  return col1.trim() !== "" || col2.trim() !== "" || col3.trim() !== "";
 });
 
 // Jos rivejä löytyy, tulostetaan taulukko PDF:ään
@@ -1122,12 +1124,12 @@ const rowsRisk = [
   ],
 
   [
-    "Riskivarautuminen sähkökatkoksissa",
+    "Kuvaus varautumisesta sähkökatkoksiin",
     localFinanceData.riskVarautuminenSahko || "",
     localFinanceData.riskVarautuminenSahkoLisatiedot || ""
   ],
   [
-    "Vesihuollon varajärjestelmä",
+    "Kuvaus vesihuollon varajärjestelmästä",
     localFinanceData.riskVesihuolto || "",
     localFinanceData.riskVesihuoltoLisatiedot || ""
   ],
@@ -1167,10 +1169,11 @@ if (riskTavoitteet) {
   ]);
 }
 
-// Suodatetaan vain ne rivit, joissa toisen tai kolmannen solun (data-osuuksien) sisältö ei ole tyhjä
-const filteredRowsRisk = rowsRisk.filter(([_, col2, col3]) => {
-  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
-});
+const filteredRowsRisk = rowsRisk.filter(item => 
+  Array.isArray(item) && 
+  ((item[1] || "").trim() !== "" || (item[2] || "").trim() !== "")
+);
+
 
 // Jos suodatettuja rivejä löytyy, tulostetaan riskien hallinnan taulukko PDF:ään
 if (filteredRowsRisk.length > 0) {
