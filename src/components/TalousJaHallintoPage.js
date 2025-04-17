@@ -827,7 +827,7 @@ const TalousJaHallintoPage = ({
               </td>
             </tr>
 
-            {localFinanceData.riskVarautumissuunnitelma !== "kylla" && (
+            {localFinanceData.riskVarautumissuunnitelma !== "Kyllä" && (
               <>
                 <tr>
                   <td>Kuvaus varautumisesta sähkökatkoksiin </td>
