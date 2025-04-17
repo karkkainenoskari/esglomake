@@ -7,96 +7,96 @@ import LogoHeader from './LogoHeader'; // logo
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 // Kenttien konfiguraatiot
+// Kenttien konfiguraatiot (sallitaan myös yksikkö­sulut esim. "(ha)", "(kpl)", "(hlö)")
 const fieldConfigs = [
   {
     key: 'yrityksenNimi',
-    label: 'Yrityksen nimi:',
+    label: 'Yrityksen nimi(?: \\([^)]*\\))?:',
     nextLabels: [
-      'Yrittäjien nimet:',
-      'Yhtiömuoto:',
-      'Tilan kokonaistyövoima:',
-      'Lypsylehmien määrä:',
-      'Peltoala:',
-      'Luomu vai tavanomainen:',
-      'Navettatyyppi:',
-      'Lypsyjärjestelmä:'
+      'Yrittäjien nimet(?: \\([^)]*\\))?:',
+      'Yhtiömuoto(?: \\([^)]*\\))?:',
+      'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
+      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
+      'Peltoala(?: \\([^)]*\\))?:',
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
+      'Navettatyyppi(?: \\([^)]*\\))?:',
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
     ]
   },
   {
     key: 'yrittajienNimet',
-    label: 'Yrittäjien nimet:',
+    label: 'Yrittäjien nimet(?: \\([^)]*\\))?:',
     nextLabels: [
-      'Yhtiömuoto:',
-      'Tilan kokonaistyövoima:',
-      'Lypsylehmien määrä:',
-      'Peltoala:',
-      'Luomu vai tavanomainen:',
-      'Navettatyyppi:',
-      'Lypsyjärjestelmä:'
+      'Yhtiömuoto(?: \\([^)]*\\))?:',
+      'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
+      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
+      'Peltoala(?: \\([^)]*\\))?:',
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
+      'Navettatyyppi(?: \\([^)]*\\))?:',
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
     ]
   },
   {
     key: 'yhtiomuoto',
-    label: 'Yhtiömuoto:',
+    label: 'Yhtiömuoto(?: \\([^)]*\\))?:',
     nextLabels: [
-      'Tilan kokonaistyövoima:',
-      'Lypsylehmien määrä:',
-      'Peltoala:',
-      'Luomu vai tavanomainen:',
-      'Navettatyyppi:',
-      'Lypsyjärjestelmä:'
+      'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
+      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
+      'Peltoala(?: \\([^)]*\\))?:',
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
+      'Navettatyyppi(?: \\([^)]*\\))?:',
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
     ]
   },
   {
     key: 'tilanKokonaistyovoima',
-    label: 'Tilan kokonaistyövoima:',
+    label: 'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
     nextLabels: [
-      'Lypsylehmien määrä:',
-      'Peltoala:',
-      'Luomu vai tavanomainen:',
-      'Navettatyyppi:',
-      'Lypsyjärjestelmä:'
+      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
+      'Peltoala(?: \\([^)]*\\))?:',
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
+      'Navettatyyppi(?: \\([^)]*\\))?:',
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
     ]
   },
   {
     key: 'lypsylehmienMaara',
-    // Hyväksytään sekä "Lypsylehmien määrä:" että "Lypsylehmienmäärä:"
-    label: 'Lypsylehmien\\s?määrä:',
+    label: 'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
     nextLabels: [
-      'Peltoala:',
-      'Luomu vai tavanomainen:',
-      'Navettatyyppi:',
-      'Lypsyjärjestelmä:'
+      'Peltoala(?: \\([^)]*\\))?:',
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
+      'Navettatyyppi(?: \\([^)]*\\))?:',
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
     ]
   },
   {
     key: 'peltoala',
-    label: 'Peltoala:',
+    label: 'Peltoala(?: \\([^)]*\\))?:',
     nextLabels: [
-      'Luomu vai tavanomainen:',
-      'Navettatyyppi:',
-      'Lypsyjärjestelmä:'
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
+      'Navettatyyppi(?: \\([^)]*\\))?:',
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
     ]
   },
   {
     key: 'tuotomanTavanomainen',
-    label: 'Luomu vai tavanomainen:',
+    label: 'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
     nextLabels: [
-      'Navettatyyppi:',
-      'Lypsyjärjestelmä:'
+      'Navettatyyppi(?: \\([^)]*\\))?:',
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
     ]
   },
   {
     key: 'navettatyyppi',
-    label: 'Navettatyyppi:',
+    label: 'Navettatyyppi(?: \\([^)]*\\))?:',
     nextLabels: [
-      'Lypsyjärjestelmä:'
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
     ]
   },
   {
     key: 'lypsyjarjestelma',
-    label: 'Lypsyjärjestelmä:',
-    nextLabels: []
+    label: 'Lypsyjärjestelmä(?: \\([^)]*\\))?:',
+    nextLabels: [] // viimeinen kenttä
   },
 ];
 
@@ -115,19 +115,30 @@ function parsePdfText(allText) {
   };
 
   fieldConfigs.forEach(cfg => {
-    const lookahead = cfg.nextLabels.join('|');
-    const re = new RegExp(`${cfg.label}\\s*(.+?)(?=\\s*(?:${lookahead})|$)`, 'i');
+    let re;
+    if (cfg.nextLabels.length === 0) {
+      // viimeinen kenttä: nappaa kaiken jäljellä olevan tekstin
+      re = new RegExp(`${cfg.label}\\s*([\\s\\S]+)$`, 'i');
+    } else {
+      // muut kentät: non-greedy match lookaheadilla
+      const lookahead = cfg.nextLabels.join('|');
+      re = new RegExp(
+        `${cfg.label}\\s*([\\s\\S]*?)(?=\\s*(?:${lookahead}))`,
+        'i'
+      );
+    }
     const match = allText.match(re);
     if (match) {
       extracted[cfg.key] = match[1].trim();
     }
   });
+  
 
   const val = extracted.tuotomanTavanomainen.toLowerCase();
-  if (val.includes('luomu')) {
-    extracted.tuotomanTavanomainen = 'luomu';
+  if (val.includes('Luomu')) {
+    extracted.tuotomanTavanomainen = 'Luomu';
   } else if (val.includes('tav')) {
-    extracted.tuotomanTavanomainen = 'tavanomainen';
+    extracted.tuotomanTavanomainen = 'Tavanomainen';
   } else {
     extracted.tuotomanTavanomainen = '';
   }
