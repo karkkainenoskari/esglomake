@@ -25,11 +25,11 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
   const doc = new jsPDF();
 
   // Lisää logot
-  doc.addImage(savoniaLogo, 'PNG', 14, 10, 30, 20);
-  doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 30, 20);
-  doc.addImage(valioLogo, 'PNG', 86, 10, 30, 20);
-  doc.addImage(ysaoLogo, 'PNG', 122, 10, 30, 20);
-  doc.addImage(euLogo, 'PNG', 158, 10, 30, 20);
+  doc.addImage(savoniaLogo, 'PNG', 14, 10, 20, 13);
+  doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 20, 13);
+  doc.addImage(valioLogo, 'PNG', 86, 10, 20, 13);
+  doc.addImage(ysaoLogo, 'PNG', 122, 10, 20, 13);
+  doc.addImage(euLogo, 'PNG', 158, 10, 20, 13);
 
   let startY = 40;
 
@@ -914,7 +914,7 @@ const filteredRowsQuality = rowsQuality.filter(([_, col2, col3]) => {
 });
 
 
-if (filteredRowsQuality.length > 0) {
+if (filteredRowsQuality.length > 0) {  
   autoTable(doc, {
     startY,
     head: [["Tuotteen laatu", "Uusin tulos", "Kuvaus"]],
@@ -994,6 +994,9 @@ const filteredRowsJohtaminen = rowsJohtaminen.filter(([_, col2, col3]) => {
 
 // Jos rivejä löytyy, lisätään taulukko PDF:ään
 if (filteredRowsJohtaminen.length > 0) {
+  doc.setFontSize(14);
+  doc.text("Talous ja hallinto", 14, startY);
+  startY += 10;
   autoTable(doc, {
     startY,
     head: [["Johtaminen", "Uusin tulos", "Kuvaus"]],

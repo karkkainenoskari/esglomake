@@ -14,10 +14,15 @@ function App() {
   const [environmentData, setEnvironmentData] = useState({});
   const [socialData, setSocialData] = useState({});
   const [financeData, setFinanceData] = useState({});
-  // resetKey pakottaa lapsikomponentit remountaamaan, jolloin ne alustavat tilansa uudestaan
   const [resetKey, setResetKey] = useState(0);
 
-  // Sivujen nimet progress baria varten
+  useEffect(() => {
+    setInitialData( JSON.parse(localStorage.getItem('initialFormData')     || '{}') );
+    setEnvironmentData( JSON.parse(localStorage.getItem('environmentData') || '{}') );
+    setSocialData( JSON.parse(localStorage.getItem('socialData')           || '{}') );
+    setFinanceData( JSON.parse(localStorage.getItem('financeData')         || '{}') );
+  }, []);
+
   const pageTitles = [
     "Johdanto",
     "Yrityksen perustiedot / ohjeet",
