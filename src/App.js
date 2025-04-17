@@ -95,6 +95,13 @@ function App() {
     }
   };
 
+  const handleImportPdf = ({ initialData, environmentData, socialData, financeData }) => {
+    setInitialData(initialData);
+    setEnvironmentData(environmentData);
+    setSocialData(socialData);
+    setFinanceData(financeData);
+  };
+
   return (
     <div style={{ paddingTop: "60px", paddingBottom: "80px" }}>
       {step === 0 && <Johdanto onNext={handleJohdantoNext} />}
@@ -104,6 +111,7 @@ function App() {
           key={resetKey}
           onNext={handleInitialNext}
           initialData={initialData}
+          onImportPdf={handleImportPdf}
           onDataUpdate={setInitialData}
         />
       )}
@@ -114,6 +122,7 @@ function App() {
           onNext={handleEnvironmentNext}
           onPrevious={() => setStep(1)}
           companyData={initialData}
+          onImportPdf={handleImportPdf}
           initialEnvData={environmentData}
           onDataUpdate={setEnvironmentData}
         />
@@ -124,6 +133,7 @@ function App() {
           key={resetKey}
           onNext={handleSocialNext}
           onPrevious={() => setStep(2)}
+          onImportPdf={handleImportPdf}
           initialSocialData={socialData}
           onDataUpdate={setSocialData}
         />
@@ -137,6 +147,7 @@ function App() {
           initialData={initialData}
           environmentData={environmentData}
           socialData={socialData}
+          onImportPdf={handleImportPdf}
           initialFinanceData={financeData}
           onDataUpdate={setFinanceData}
         />
