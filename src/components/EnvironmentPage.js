@@ -256,7 +256,41 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
       <LogoHeader />
 
-      <h2>Ympäristö</h2>
+      <h2
+        style={{
+           paddingLeft: '100px',
+          margin: '12px 0 0', 
+          flexShrink: 0,
+          fontSize: '32px',   // ↑ isompi koko
+        }}
+      >
+        Ympäristö
+      </h2>
+      <div
+        style={{
+          marginLeft: '500px',
+          marginBottom: '30px',
+          border: '1px solid #ccc',
+          borderRadius: 8,
+          padding: '1rem 1.5rem',
+          maxWidth: 550,          // rajaa leveys
+          lineHeight: 1.5,
+          flex: '1 1 350px'
+        }}
+      >
+        <p style={{ margin: 0 }}>
+          Ekologisen kestävyyden vaatimukset ovat nousseet osaksi rahoituksen
+          hakuprosessia. Rahoituksen vastuullisuuden varmistamiseksi pankkien on
+          hyödyllistä seurata esimerkiksi rahoitettujen kohteiden ilmastovaikutuksia,
+          jonka vuoksi myös maatalousrahoituksessa on hyödyllistä esittää laskelma
+          tuotannon ilmastovaikutuksista. Ravinnetaseella ja ravinteiden hallinnan
+          osoittamisella laskelmien kautta on merkitystä etenkin kotieläintuotannon
+          tuotantosuunnissa. Tilan energiankulutuksen määrä ja lajit on hyödyllistä
+          kirjata ylös ja pohtia kehittämiseen vaihtoehtoja. Ekologiseen kestävyyteen
+          kuuluu olennaisesti myös luonnon monimuotoisuuden vaaliminen, johon
+          liittyviä toimia ja kehittämistavoitteita kannattaa kirjata ylös.
+        </p>
+      </div>
 
       <table className="common-table environment-table">
         <colgroup>
@@ -274,7 +308,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         <tbody>
           <tr>
             <td>Maidon hiilijalanjälki, Co2/kg maitoa
-              
+
             </td>
             <td>
               <input type="text" name="envMaidonHiilijalanjalki" value={envData.envMaidonHiilijalanjalki} onChange={handleChange} style={{ width: '100%' }} />
@@ -285,7 +319,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Scope 1 päästö, tCO2e, %
-              
+
             </td>
             <td>
               <input type="text" name="envScope1" value={envData.envScope1} onChange={handleChange} style={{ width: '100%' }} />
@@ -393,7 +427,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Maidon ureapitoisuus, mg/100 ml
-              
+
             </td>
             <td>
               <input type="text" name="envMaidonUrea" value={envData.envMaidonUrea} onChange={handleChange} style={{ width: '100%' }} />
@@ -413,7 +447,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Käytössä vähäpäästöinen kylmäaine tilasäililössä
-              
+
             </td>
             <td style={{ textAlign: 'center' }}>
               <YesNoToggle
@@ -463,7 +497,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           </tr>
           <tr>
             <td>Kuiva-ainekiloa rehua/EKM kg
-              </td>
+            </td>
             <td>
               <input type="text" name="envKuivaAinekiloa" value={envData.envKuivaAinekiloa} onChange={handleChange} style={{ width: '100%' }} />
             </td>
@@ -474,7 +508,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <td>Typen hyväksikäyttö % ruokinnassa
 
-          </td>
+            </td>
             <td>
               <input type="text" name="envTypenHyvaksykaytto" value={envData.envTypenHyvaksykaytto} onChange={handleChange} style={{ width: '100%' }} />
             </td>
@@ -512,49 +546,49 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
           </tr>
           <tr>
-            
+
           </tr>
 
           {/* Muokattu rivi: Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä */}
           <tr>
-          <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
-              <td colSpan="2">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
-                    <AutoResizeTextArea
-                      name="envTavoitteetVuosi1"
-                      value={envData.envTavoitteetVuosi1 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 1..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
-                    <AutoResizeTextArea
-                      name="envTavoitteetVuosi2"
-                      value={envData.envTavoitteetVuosi2 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 2..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
-                    <AutoResizeTextArea
-                      name="envTavoitteetVuosi3"
-                      value={envData.envTavoitteetVuosi3 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 3..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
+            <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+            <td colSpan="2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <AutoResizeTextArea
+                    name="envTavoitteetVuosi1"
+                    value={envData.envTavoitteetVuosi1 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 1..."
+                    style={{ width: '100%' }}
+                  />
                 </div>
-              </td>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <AutoResizeTextArea
+                    name="envTavoitteetVuosi2"
+                    value={envData.envTavoitteetVuosi2 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 2..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <AutoResizeTextArea
+                    name="envTavoitteetVuosi3"
+                    value={envData.envTavoitteetVuosi3 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 3..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -684,44 +718,44 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
           </tr>
           <tr>
-          <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
-              <td colSpan="2">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
-                    <AutoResizeTextArea
-                      name="divTavoitteetVuosi1"
-                      value={envData.divTavoitteetVuosi1 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 1..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
-                    <AutoResizeTextArea
-                      name="divTavoitteetVuosi2"
-                      value={envData.divTavoitteetVuosi2 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 2..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
-                    <AutoResizeTextArea
-                      name="divTavoitteetVuosi3"
-                      value={envData.divTavoitteetVuosi3 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 3..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
+            <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+            <td colSpan="2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <AutoResizeTextArea
+                    name="divTavoitteetVuosi1"
+                    value={envData.divTavoitteetVuosi1 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 1..."
+                    style={{ width: '100%' }}
+                  />
                 </div>
-              </td>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <AutoResizeTextArea
+                    name="divTavoitteetVuosi2"
+                    value={envData.divTavoitteetVuosi2 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 2..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <AutoResizeTextArea
+                    name="divTavoitteetVuosi3"
+                    value={envData.divTavoitteetVuosi3 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 3..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -743,7 +777,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         <tbody>
           <tr>
             <td>Viljelykasvien kokonaispinta-ala, ha
-             
+
             </td>
             <td>
               <input
@@ -759,12 +793,12 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 name="envPeltoviljelyKokonaispintaAlaLisatiedot"
                 value={envData.envPeltoviljelyKokonaispintaAlaLisatiedot || ""}
                 onChange={handleChange}
-                style={{ width: '100%' }}  placeholder="Tieto löytyy hiilijalanjälkilaskurista"
+                style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälkilaskurista"
               />
             </td>
           </tr>
           <tr>
-            <td>Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey   
+            <td>Viljelykasvien pinta-ala suhteessa eläinmäärään, ha/ey
             </td>
             <td>
               <input
@@ -785,7 +819,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Turvemaiden osuus, %   
+            <td>Turvemaiden osuus, %
             </td>
             <td>
               <input
@@ -977,44 +1011,44 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-          <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
-              <td colSpan="2">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
-                    <AutoResizeTextArea
-                      name="envPeltoviljelyTavoitteetVuosi1"
-                      value={envData.envPeltoviljelyTavoitteetVuosi1 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 1..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
-                    <AutoResizeTextArea
-                      name="envPeltoviljelyTavoitteetVuosi2"
-                      value={envData.envPeltoviljelyTavoitteetVuosi2 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 2..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
-                    <AutoResizeTextArea
-                      name="envPeltoviljelyTavoitteetVuosi3"
-                      value={envData.envPeltoviljelyTavoitteetVuosi3 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 3..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
+            <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+            <td colSpan="2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <AutoResizeTextArea
+                    name="envPeltoviljelyTavoitteetVuosi1"
+                    value={envData.envPeltoviljelyTavoitteetVuosi1 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 1..."
+                    style={{ width: '100%' }}
+                  />
                 </div>
-              </td>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <AutoResizeTextArea
+                    name="envPeltoviljelyTavoitteetVuosi2"
+                    value={envData.envPeltoviljelyTavoitteetVuosi2 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 2..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <AutoResizeTextArea
+                    name="envPeltoviljelyTavoitteetVuosi3"
+                    value={envData.envPeltoviljelyTavoitteetVuosi3 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 3..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -1048,7 +1082,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="lantaLietelannanOsuus" value={envData.lantaLietelannanOsuus} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="lantaLietelannanOsuusLisatiedot" value={envData.lantaLietelannanOsuusLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy hiilijalanjälkilaskurista" />
+              <AutoResizeTextArea name="lantaLietelannanOsuusLisatiedot" value={envData.lantaLietelannanOsuusLisatiedot || ''} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälkilaskurista" />
             </td>
           </tr>
           <tr>
@@ -1117,44 +1151,44 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
           </tr>
           <tr>
-          <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
-              <td colSpan="2">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
-                    <AutoResizeTextArea
-                      name="lantaTavoitteetVuosi1"
-                      value={envData.lantaTavoitteetVuosi1 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 1..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
-                    <AutoResizeTextArea
-                      name="lantaTavoitteetVuosi2"
-                      value={envData.lantaTavoitteetVuosi2 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 2..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
-                    <AutoResizeTextArea
-                      name="lantaTavoitteetVuosi3"
-                      value={envData.lantaTavoitteetVuosi3 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 3..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
+            <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+            <td colSpan="2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <AutoResizeTextArea
+                    name="lantaTavoitteetVuosi1"
+                    value={envData.lantaTavoitteetVuosi1 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 1..."
+                    style={{ width: '100%' }}
+                  />
                 </div>
-              </td>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <AutoResizeTextArea
+                    name="lantaTavoitteetVuosi2"
+                    value={envData.lantaTavoitteetVuosi2 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 2..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <AutoResizeTextArea
+                    name="lantaTavoitteetVuosi3"
+                    value={envData.lantaTavoitteetVuosi3 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 3..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -1179,7 +1213,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="energySahkonKayttomaara" value={envData.energySahkonKayttomaara} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="energySahkonKayttomaaraLisatiedot" value={envData.energySahkonKayttomaaraLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy hiilijalanjälkilaskurista" />
+              <AutoResizeTextArea name="energySahkonKayttomaaraLisatiedot" value={envData.energySahkonKayttomaaraLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälkilaskurista" />
             </td>
           </tr>
           <tr>
@@ -1206,7 +1240,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="energyPolttoaineenKaytto" value={envData.energyPolttoaineenKaytto} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="energyPolttoaineenKayttoLisatiedot" value={envData.energyPolttoaineenKayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy hiilijalanjälki laskurista" />
+              <AutoResizeTextArea name="energyPolttoaineenKayttoLisatiedot" value={envData.energyPolttoaineenKayttoLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Tieto löytyy hiilijalanjälki laskurista" />
             </td>
           </tr>
           <tr>
@@ -1267,89 +1301,89 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-          <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
-              <td colSpan="2">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
-                    <AutoResizeTextArea
-                      name="energyTavoitteetVuosi1"
-                      value={envData.energyTavoitteetVuosi1 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 1..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
-                    <AutoResizeTextArea
-                      name="energyTavoitteetVuosi2"
-                      value={envData.energyTavoitteetVuosi2 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 2..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
-                    <AutoResizeTextArea
-                      name="energyTavoitteetVuosi3"
-                      value={envData.energyTavoitteetVuosi3 || ""}
-                      onChange={handleChange}
-                      rows={2}
-                      placeholder="Kirjoita tavoite vuodelle 3..."
-                      style={{ width: '100%' }}
-                    />
-                  </div>
+            <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
+            <td colSpan="2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <AutoResizeTextArea
+                    name="energyTavoitteetVuosi1"
+                    value={envData.energyTavoitteetVuosi1 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 1..."
+                    style={{ width: '100%' }}
+                  />
                 </div>
-              </td>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <AutoResizeTextArea
+                    name="energyTavoitteetVuosi2"
+                    value={envData.energyTavoitteetVuosi2 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 2..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <AutoResizeTextArea
+                    name="energyTavoitteetVuosi3"
+                    value={envData.energyTavoitteetVuosi3 || ""}
+                    onChange={handleChange}
+                    rows={2}
+                    placeholder="Kirjoita tavoite vuodelle 3..."
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
 
       <div
-  style={{
-    marginTop: '1rem',
-    display: 'flex',
-    justifyContent: 'center',   // keskittää napit
-    gap: '1rem',                // sama marginaali napin väliin
-    alignItems: 'center'
-  }}
->
-  <button
-    type="button"
-    onClick={onPrevious}
-    style={{
-      fontSize: '16px',
-      padding: '10px 20px',
-      borderRadius: '8px',
-      backgroundColor: '#28a745',      
-      color: 'white',
-      border: 'none',
-      cursor: 'pointer'
-    }}
-  >
-    Edellinen
-  </button>
+        style={{
+          marginTop: '1rem',
+          display: 'flex',
+          justifyContent: 'center',   // keskittää napit
+          gap: '1rem',                // sama marginaali napin väliin
+          alignItems: 'center'
+        }}
+      >
+        <button
+          type="button"
+          onClick={onPrevious}
+          style={{
+            fontSize: '16px',
+            padding: '10px 20px',
+            borderRadius: '8px',
+            backgroundColor: '#28a745',
+            color: 'white',
+            border: 'none',
+            cursor: 'pointer'
+          }}
+        >
+          Edellinen
+        </button>
 
-  <button
-    type="submit"
-    onClick={handleSubmit}
-    style={{
-      fontSize: '16px',
-      padding: '10px 20px',
-      borderRadius: '8px',
-      backgroundColor: '#28a745',      // sininen “Seuraava” (kuten Johdanto)
-      color: 'white',
-      border: 'none',
-      cursor: 'pointer'
-    }}
-  >
-    Seuraava
-  </button>
-</div>
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          style={{
+            fontSize: '16px',
+            padding: '10px 20px',
+            borderRadius: '8px',
+            backgroundColor: '#28a745',      // sininen “Seuraava” (kuten Johdanto)
+            color: 'white',
+            border: 'none',
+            cursor: 'pointer'
+          }}
+        >
+          Seuraava
+        </button>
+      </div>
 
     </div>
   );
