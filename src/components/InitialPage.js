@@ -1,4 +1,3 @@
-// components/InitialPage.js
 import React, { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import * as pdfjsLib from 'pdfjs-dist';
@@ -6,212 +5,152 @@ import LogoHeader from './LogoHeader'; // logo
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
-// Kenttien konfiguraatiot
-// Kenttien konfiguraatiot (sallitaan myös yksikkö­sulut esim. "(ha)", "(kpl)", "(hlö)")
+// Kenttien konfiguraatiot (Initial data)
 const fieldConfigs = [
-  {
-    key: 'yrityksenNimi',
-    label: 'Yrityksen nimi(?: \\([^)]*\\))?:',
-    nextLabels: [
-      'Yrittäjien nimet(?: \\([^)]*\\))?:',
-      'Yhtiömuoto(?: \\([^)]*\\))?:',
-      'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
-      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
-      'Peltoala(?: \\([^)]*\\))?:',
-      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
-      'Navettatyyppi(?: \\([^)]*\\))?:',
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
-    ]
-  },
-  {
-    key: 'yrittajienNimet',
-    label: 'Yrittäjien nimet(?: \\([^)]*\\))?:',
-    nextLabels: [
-      'Yhtiömuoto(?: \\([^)]*\\))?:',
-      'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
-      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
-      'Peltoala(?: \\([^)]*\\))?:',
-      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
-      'Navettatyyppi(?: \\([^)]*\\))?:',
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
-    ]
-  },
-  {
-    key: 'yhtiomuoto',
-    label: 'Yhtiömuoto(?: \\([^)]*\\))?:',
-    nextLabels: [
-      'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
-      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
-      'Peltoala(?: \\([^)]*\\))?:',
-      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
-      'Navettatyyppi(?: \\([^)]*\\))?:',
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
-    ]
-  },
-  {
-    key: 'tilanKokonaistyovoima',
-    label: 'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
-    nextLabels: [
-      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
-      'Peltoala(?: \\([^)]*\\))?:',
-      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
-      'Navettatyyppi(?: \\([^)]*\\))?:',
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
-    ]
-  },
-  {
-    key: 'lypsylehmienMaara',
-    label: 'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
-    nextLabels: [
-      'Peltoala(?: \\([^)]*\\))?:',
-      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
-      'Navettatyyppi(?: \\([^)]*\\))?:',
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
-    ]
-  },
-  {
-    key: 'peltoala',
-    label: 'Peltoala(?: \\([^)]*\\))?:',
-    nextLabels: [
-      'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
-      'Navettatyyppi(?: \\([^)]*\\))?:',
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
-    ]
-  },
-  {
-    key: 'tuotomanTavanomainen',
-    label: 'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
-    nextLabels: [
-      'Navettatyyppi(?: \\([^)]*\\))?:',
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
-    ]
-  },
-  {
-    key: 'navettatyyppi',
-    label: 'Navettatyyppi(?: \\([^)]*\\))?:',
-    nextLabels: [
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:'
-    ]
-  },
-  {
-    key: 'lypsyjarjestelma',
-    label: 'Lypsyjärjestelmä(?: \\([^)]*\\))?:',
-    nextLabels: [] // viimeinen kenttä
-  },
+  { key: 'yrityksenNimi', label: 'Yrityksen nimi(?: \\([^)]*\\))?:', nextLabels: [
+      'Yrittäjien nimet(?: \\([^)]*\\))?:', 'Yhtiömuoto(?: \\([^)]*\\))?:', 'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
+      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:', 'Peltoala(?: \\([^)]*\\))?:', 'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
+      'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
+  { key: 'yrittajienNimet', label: 'Yrittäjien nimet(?: \\([^)]*\\))?:', nextLabels: [
+      'Yhtiömuoto(?: \\([^)]*\\))?:', 'Tilan kokonaistyövoima(?: \\([^)]*\\))?:', 'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
+      'Peltoala(?: \\([^)]*\\))?:', 'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:',
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
+  { key: 'yhtiomuoto', label: 'Yhtiömuoto(?: \\([^)]*\\))?:', nextLabels: [
+      'Tilan kokonaistyövoima(?: \\([^)]*\\))?:', 'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:', 'Peltoala(?: \\([^)]*\\))?:',
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
+  { key: 'tilanKokonaistyovoima', label: 'Tilan kokonaistyövoima(?: \\([^)]*\\))?:', nextLabels: [
+      'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:', 'Peltoala(?: \\([^)]*\\))?:', 'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
+      'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
+  { key: 'lypsylehmienMaara', label: 'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:', nextLabels: [
+      'Peltoala(?: \\([^)]*\\))?:', 'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:',
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
+  { key: 'peltoala', label: 'Peltoala(?: \\([^)]*\\))?:', nextLabels: [
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
+  { key: 'tuotomanTavanomainen', label: 'Luomu vai tavanomainen(?: \\([^)]*\\))?:', nextLabels: [
+      'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
+  { key: 'navettatyyppi', label: 'Navettatyyppi(?: \\([^)]*\\))?:', nextLabels: [
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
+  { key: 'lypsyjarjestelma', label: 'Lypsyjärjestelmä(?: \\([^)]*\\))?:', nextLabels: [] }
 ];
 
-function parsePdfText(allText) {
-  console.log('PDF-sisältö:\n', allText);
-  const extracted = {
-    yrityksenNimi: '',
-    yrittajienNimet: '',
-    yhtiomuoto: '',
-    tilanKokonaistyovoima: '',
-    lypsylehmienMaara: '',
-    peltoala: '',
-    tuotomanTavanomainen: '',
-    navettatyyppi: '',
-    lypsyjarjestelma: ''
-  };
+// Ympäristö-datan kenttien konfiguraatiot (käytetään parseEnvironmentData:ssa)
+const envFieldConfigs = [
+  { key: 'envMaidonHiilijalanjalki', label: 'Maidon hiilijalanjälki, Co2/kg maitoa' },
+  { key: 'envScope1',           label: 'Scope 1 päästö, tCO2e, %' },
+  { key: 'envScope2',           label: 'Scope 2 päästö, tCO2e, %' },
+  { key: 'envScope3',           label: 'Scope 3 päästö, tCO2e, %' },
+  // VOIT LISÄTÄ MUUT KENTÄT TARPEEN MUKAAN
+];
 
+// Parsii yrityksen perustiedot
+function parsePdfText(allText) {
+  const extracted = {
+    yrityksenNimi: '', yrittajienNimet: '', yhtiomuoto: '', tilanKokonaistyovoima: '',
+    lypsylehmienMaara: '', peltoala: '', tuotomanTavanomainen: '', navettatyyppi: '', lypsyjarjestelma: ''
+  };
   fieldConfigs.forEach(cfg => {
     let re;
-    if (cfg.nextLabels.length === 0) {
-      // viimeinen kenttä: nappaa kaiken jäljellä olevan tekstin
+    if (!cfg.nextLabels.length) {
       re = new RegExp(`${cfg.label}\\s*([\\s\\S]+)$`, 'i');
     } else {
-      // muut kentät: non-greedy match lookaheadilla
       const lookahead = cfg.nextLabels.join('|');
-      re = new RegExp(
-        `${cfg.label}\\s*([\\s\\S]*?)(?=\\s*(?:${lookahead}))`,
-        'i'
-      );
+      re = new RegExp(`${cfg.label}\\s*([\\s\\S]*?)(?=\\s*(?:${lookahead}))`, 'i');
     }
     const match = allText.match(re);
-    if (match) {
-      extracted[cfg.key] = match[1].trim();
-    }
+    if (match) extracted[cfg.key] = match[1].trim();
   });
-  
-
   const val = extracted.tuotomanTavanomainen.toLowerCase();
-  if (val.includes('Luomu')) {
-    extracted.tuotomanTavanomainen = 'Luomu';
-  } else if (val.includes('tav')) {
-    extracted.tuotomanTavanomainen = 'Tavanomainen';
-  } else {
-    extracted.tuotomanTavanomainen = '';
-  }
-
+  extracted.tuotomanTavanomainen = val.includes('luomu') ? 'Luomu' : val.includes('tav') ? 'Tavanomainen' : '';
   return extracted;
 }
 
-const InitialPage = ({ onNext, initialData, onDataUpdate }) => {
+function parseEnvironmentData(allText) {
+  const extracted = {};
+  envFieldConfigs.forEach((cfg, idx) => {
+    // valmistele lookahead seuraaville labeleille
+    const nextLabels = envFieldConfigs.slice(idx + 1)
+      .map(f => f.label.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+    const lookahead = nextLabels.length
+      ? `(?=\\s*(?:${nextLabels.join('|')}))`
+      : '';
+
+    const escapedLabel = cfg.label.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    // nappaa kaiken labelin jälkeen seuraavaan labeliin saakka
+    const re = new RegExp(
+      `${escapedLabel}\\s*([\\s\\S]*?)${lookahead}`,
+      'i'
+    );
+
+    const m = allText.match(re);
+    if (m) {
+      // m[1] voi olla esim. "dd dd Kilpailu ja talous"
+      const parts = m[1].trim().split(/\s{2,}/);
+      extracted[cfg.key]               = parts[0] || '';
+      extracted[cfg.key + 'Lisatiedot'] = parts[1] || '';
+    } else {
+      extracted[cfg.key]               = '';
+      extracted[cfg.key + 'Lisatiedot'] = '';
+    }
+  });
+  return extracted;
+}
+
+const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
   const [formData, setFormData] = useState(() => {
-    const savedData = localStorage.getItem('initialFormData');
-    return savedData
-      ? JSON.parse(savedData)
-      : {
-          yrityksenNimi: '',
-          yrittajienNimet: '',
-          yhtiomuoto: '',
-          tilanKokonaistyovoima: '',
-          lypsylehmienMaara: '',
-          peltoala: '',
-          tuotomanTavanomainen: '',
-          navettatyyppi: '',
-          lypsyjarjestelma: ''
-        };
+    const saved = localStorage.getItem('initialFormData');
+    return saved ? JSON.parse(saved) : {/* oletukset */};
   });
 
   useEffect(() => {
     localStorage.setItem('initialFormData', JSON.stringify(formData));
-    if (onDataUpdate) {
-      onDataUpdate(formData);
-    }
-  }, [formData, onDataUpdate]);
+    onDataUpdate && onDataUpdate(formData);
+  }, [formData]);
+  
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  const handleChange = e => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleSubmit = e => { e.preventDefault(); onNext && onNext(formData); };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (onNext) {
-      onNext(formData);
-    }
-  };
-
-  const onDrop = (acceptedFiles) => {
+  const onDrop = async acceptedFiles => {
     const file = acceptedFiles[0];
-    if (file && file.type === 'application/pdf') {
-      const reader = new FileReader();
-      reader.onload = async (e) => {
-        try {
-          const typedarray = new Uint8Array(e.target.result);
-          const pdf = await pdfjsLib.getDocument(typedarray).promise;
-          let allText = '';
-          for (let pageIndex = 1; pageIndex <= pdf.numPages; pageIndex++) {
-            const page = await pdf.getPage(pageIndex);
-            const textContent = await page.getTextContent();
-            const strings = textContent.items.map(item => item.str);
-            allText += strings.join(' ') + '\n';
-          }
-          const parsedData = parsePdfText(allText);
-          setFormData(prev => ({ ...prev, ...parsedData }));
-        } catch (error) {
-          console.error('PDF:n lukeminen epäonnistui:', error);
-        }
-      };
-      reader.readAsArrayBuffer(file);
-    } else {
+    if (!file || file.type !== 'application/pdf') {
       alert('Ole hyvä ja pudota PDF-tiedosto.');
+      return;
     }
+    const reader = new FileReader();
+    reader.onload = async e => {
+      try {
+        const typedarray = new Uint8Array(e.target.result);
+        const pdf = await pdfjsLib.getDocument(typedarray).promise;
+        let allText = '';
+        const allItems = [];
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const content = await page.getTextContent();
+          allText += content.items.map(item => item.str).join(' ') + '\n';
+          allItems.push(...content.items);
+        }
+        // Parsitaan initial-data
+        const parsedInitial = parsePdfText(allText);
+        setFormData(prev => ({ ...prev, ...parsedInitial }));
+        // Parsitaan environment-data item-listauksesta
+                // Parsitaan environment-data PDF:n tekstistä (string)
+        const parsedEnv = parseEnvironmentData(allText);
+        // Tallennetaan sekä localStorageen että App.js:lle
+        localStorage.setItem('environmentData', JSON.stringify(parsedEnv));
+        onImportPdf && onImportPdf({
+          initialData:     parsedInitial,
+          environmentData: parsedEnv,
+          socialData:      {},
+          financeData:     {}
+        });
+      } catch (err) {
+        console.error('PDF:n lukeminen epäonnistui:', err);
+      }
+    };
+    reader.readAsArrayBuffer(file);
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <LogoHeader />
