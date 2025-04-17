@@ -1075,11 +1075,9 @@ if (kilpailuGoals) {
   rowsKilpailukykyTalous.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", kilpailuGoals]);
 }
 
-const filteredRowsKilpailukykyTalous = (Array.isArray(rowsKilpailukykyTalous) ? rowsKilpailukykyTalous : []).filter(item => {
-  if (!Array.isArray(item)) return false; // Ohitetaan virheelliset alkiot
-  const [col1 = "", col2 = "", col3 = ""] = item;
-  // Sisällytetään rivi, jos vähintään yksi solu on ei-tyhjä
-  return col1.trim() !== "" || col2.trim() !== "" || col3.trim() !== "";
+// Suodatetaan vain ne rivit, joissa toisen tai kolmannen solun sisältö ei ole tyhjä
+const filteredRowsKilpailukykyTalous = rowsKilpailukykyTalous.filter(([_, col2, col3]) => {
+  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
 });
 
 // Jos rivejä löytyy, tulostetaan taulukko PDF:ään
