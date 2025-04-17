@@ -264,7 +264,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               <td style={{ textAlign: 'center' }}>
                 <YesNoToggle
                   value={socialData.henkilostoStrategia}
-                  onChange={(val) => setSocialData({ ...socialData, HenkilostoStrategia: val })}
+                  onChange={(val) => setSocialData({ ...socialData, henkilostoStrategia: val })}
                   themeColor=" #ec9005"
                 />
               </td>

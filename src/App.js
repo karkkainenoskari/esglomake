@@ -8,6 +8,26 @@ import ProgressBar from './components/ProgressBar';
 import generatePdfReport from './components/generatePdfReport';
 import Johdanto from './components/Johdanto';
 
+function safeStringify(obj) {
+  const seen = new WeakSet();
+  return JSON.stringify(
+    obj,
+    (_, value) => {
+      // funktiot ja DOM‑solmut pois
+      if (typeof value === 'function' || value?.nodeType === 1) return undefined;
+      // ikkuna‑objekti pois
+      if (typeof Window !== 'undefined' && value instanceof Window) return undefined;
+      // estä ympyrä
+      if (typeof value === 'object' && value !== null) {
+        if (seen.has(value)) return undefined;
+        seen.add(value);
+      }
+      return value;
+    },
+    2
+  );
+}
+
 function App() {
   /* --------------------------------------------------
      1. Tilat
@@ -329,22 +349,15 @@ function App() {
     alignItems: 'center',
     overflowX: 'auto'        // varmistus jos palkki ei mahdu
   }}
->
-        <ProgressBar
-          currentPage={step + 1}
-          pageTitles={pageTitles}
-          onNavigate={handleNavigate}
-        />
-      </div>
-
-      {/* (Valinnainen) staattinen ProgressBar keskellä sivua */}
-      <ProgressBar
-        currentPage={step + 1}
-        pageTitles={pageTitles}
-        onNavigate={handleNavigate}
-      />
-    </div>
-  );
+  >
+  <ProgressBar
+    currentPage={step + 1}
+    pageTitles={pageTitles}
+    onNavigate={handleNavigate}
+  />
+</div>
+</div>
+);
 }
 
 export default App;
