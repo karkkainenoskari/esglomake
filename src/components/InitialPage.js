@@ -7,29 +7,45 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 // Kenttien konfiguraatiot (Initial data)
 const fieldConfigs = [
-  { key: 'yrityksenNimi', label: 'Yrityksen nimi(?: \\([^)]*\\))?:', nextLabels: [
+  {
+    key: 'yrityksenNimi', label: 'Yrityksen nimi(?: \\([^)]*\\))?:', nextLabels: [
       'Yrittäjien nimet(?: \\([^)]*\\))?:', 'Yhtiömuoto(?: \\([^)]*\\))?:', 'Tilan kokonaistyövoima(?: \\([^)]*\\))?:',
       'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:', 'Peltoala(?: \\([^)]*\\))?:', 'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
-      'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
-  { key: 'yrittajienNimet', label: 'Yrittäjien nimet(?: \\([^)]*\\))?:', nextLabels: [
+      'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:']
+  },
+  {
+    key: 'yrittajienNimet', label: 'Yrittäjien nimet(?: \\([^)]*\\))?:', nextLabels: [
       'Yhtiömuoto(?: \\([^)]*\\))?:', 'Tilan kokonaistyövoima(?: \\([^)]*\\))?:', 'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:',
       'Peltoala(?: \\([^)]*\\))?:', 'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:',
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
-  { key: 'yhtiomuoto', label: 'Yhtiömuoto(?: \\([^)]*\\))?:', nextLabels: [
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:']
+  },
+  {
+    key: 'yhtiomuoto', label: 'Yhtiömuoto(?: \\([^)]*\\))?:', nextLabels: [
       'Tilan kokonaistyövoima(?: \\([^)]*\\))?:', 'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:', 'Peltoala(?: \\([^)]*\\))?:',
-      'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
-  { key: 'tilanKokonaistyovoima', label: 'Tilan kokonaistyövoima(?: \\([^)]*\\))?:', nextLabels: [
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:']
+  },
+  {
+    key: 'tilanKokonaistyovoima', label: 'Tilan kokonaistyövoima(?: \\([^)]*\\))?:', nextLabels: [
       'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:', 'Peltoala(?: \\([^)]*\\))?:', 'Luomu vai tavanomainen(?: \\([^)]*\\))?:',
-      'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
-  { key: 'lypsylehmienMaara', label: 'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:', nextLabels: [
+      'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:']
+  },
+  {
+    key: 'lypsylehmienMaara', label: 'Lypsylehmien\\s?määrä(?: \\([^)]*\\))?:', nextLabels: [
       'Peltoala(?: \\([^)]*\\))?:', 'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:',
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
-  { key: 'peltoala', label: 'Peltoala(?: \\([^)]*\\))?:', nextLabels: [
-      'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
-  { key: 'tuotomanTavanomainen', label: 'Luomu vai tavanomainen(?: \\([^)]*\\))?:', nextLabels: [
-      'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
-  { key: 'navettatyyppi', label: 'Navettatyyppi(?: \\([^)]*\\))?:', nextLabels: [
-      'Lypsyjärjestelmä(?: \\([^)]*\\))?:' ] },
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:']
+  },
+  {
+    key: 'peltoala', label: 'Peltoala(?: \\([^)]*\\))?:', nextLabels: [
+      'Luomu vai tavanomainen(?: \\([^)]*\\))?:', 'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:']
+  },
+  {
+    key: 'tuotomanTavanomainen', label: 'Luomu vai tavanomainen(?: \\([^)]*\\))?:', nextLabels: [
+      'Navettatyyppi(?: \\([^)]*\\))?:', 'Lypsyjärjestelmä(?: \\([^)]*\\))?:']
+  },
+  {
+    key: 'navettatyyppi', label: 'Navettatyyppi(?: \\([^)]*\\))?:', nextLabels: [
+      'Lypsyjärjestelmä(?: \\([^)]*\\))?:']
+  },
   { key: 'lypsyjarjestelma', label: 'Lypsyjärjestelmä(?: \\([^)]*\\))?:', nextLabels: [] }
 ];
 
@@ -103,10 +119,10 @@ function parseEnvironmentData(allText) {
     if (m) {
       // m[1] voi olla esim. "dd dd Kilpailu ja talous"
       const parts = m[1].trim().split(/\s{2,}/);
-      extracted[cfg.key]               = parts[0] || '';
+      extracted[cfg.key] = parts[0] || '';
       extracted[cfg.key + 'Lisatiedot'] = parts[1] || '';
     } else {
-      extracted[cfg.key]               = '';
+      extracted[cfg.key] = '';
       extracted[cfg.key + 'Lisatiedot'] = '';
     }
   });
@@ -116,14 +132,14 @@ function parseEnvironmentData(allText) {
 const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
   const [formData, setFormData] = useState(() => {
     const saved = localStorage.getItem('initialFormData');
-    return saved ? JSON.parse(saved) : {/* oletukset */};
+    return saved ? JSON.parse(saved) : {/* oletukset */ };
   });
 
   useEffect(() => {
     localStorage.setItem('initialFormData', JSON.stringify(formData));
     onDataUpdate && onDataUpdate(formData);
   }, [formData]);
-  
+
 
   const handleChange = e => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   const handleSubmit = e => { e.preventDefault(); onNext && onNext(formData); };
@@ -151,15 +167,15 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
         const parsedInitial = parsePdfText(allText);
         setFormData(prev => ({ ...prev, ...parsedInitial }));
         // Parsitaan environment-data item-listauksesta
-                // Parsitaan environment-data PDF:n tekstistä (string)
+        // Parsitaan environment-data PDF:n tekstistä (string)
         const parsedEnv = parseEnvironmentData(allText);
         // Tallennetaan sekä localStorageen että App.js:lle
         localStorage.setItem('environmentData', JSON.stringify(parsedEnv));
         onImportPdf && onImportPdf({
-          initialData:     parsedInitial,
+          initialData: parsedInitial,
           environmentData: parsedEnv,
-          socialData:      {},
-          financeData:     {}
+          socialData: {},
+          financeData: {}
         });
       } catch (err) {
         console.error('PDF:n lukeminen epäonnistui:', err);
@@ -180,6 +196,18 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
         <div className="initial-page">
           <h2>Yrityksen perustiedot</h2>
           <form onSubmit={handleSubmit}>
+            {/* Yrityksen nimi */}
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <label style={{ width: '180px' }}>Yrityksen nimi:</label>
+              <input
+                type="text"
+                name="yrityksenNimi"
+                value={formData.yrityksenNimi}
+                onChange={handleChange}
+                style={{ flex: 1 }}
+              />
+            </div>
+
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
               <label style={{ width: '180px' }}>Yrittäjien nimet:</label>
               <input
@@ -275,18 +303,18 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
               </select>
             </div>
             <button
-          onClick={onNext}
-          style={{
-            fontSize: '16px',
-            padding: '10px 20px',
-            borderRadius: '8px',
-            backgroundColor: '#007acc',
-            color: 'white',
-            border: 'none'
-          }}
-        >
-          Seuraava
-        </button>
+              onClick={onNext}
+              style={{
+                fontSize: '16px',
+                padding: '10px 20px',
+                borderRadius: '8px',
+                backgroundColor: '#007acc',
+                color: 'white',
+                border: 'none'
+              }}
+            >
+              Seuraava
+            </button>
           </form>
         </div>
 
@@ -305,48 +333,48 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
             overflowY: 'auto'
           }}
         >
-       <h3>Ohjeet lomakkeen täyttöön:</h3>
+          <h3>Ohjeet lomakkeen täyttöön:</h3>
 
-<ol style={{ paddingLeft: '1.2rem' }}>
-  <li>
-    <strong>Lomakkeen täyttäminen</strong>
-    <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-      <li>Täytä kentät huolellisesti. Tyhjät kentät eivät näy lopullisessa raportissa.</li>
-      <li>Vasemmassa yläkulmassa oleva <em>kolmen viivan</em> painike avaa valikon, josta löydät kaikki päätoiminnot.</li>
-    </ul>
-  </li>
-  <br></br>
-  <li>
-    <strong>Tallennus, luonnokset ja jatkaminen</strong>
-    <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-      <li><em>Tallenna PDF‑raportti</em> luo lopullisen raportin tällä hetkellä syötetyistä tiedoista.</li>
-      <li><em>Tallenna luonnos</em> lataa selaimeesi JSON‑tiedoston, jossa on kaikki tähänastiset täytetyt kentät.</li>
-      <li><em>Jatka edellistä raporttia</em> lataa aiemmin tallennetun JSON‑luonnoksen ja palauttaa kentät.</li>
-      <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta.</li>
-    </ul>
-  </li>
-  <br></br>
+          <ol style={{ paddingLeft: '1.2rem' }}>
+            <li>
+              <strong>Lomakkeen täyttäminen</strong>
+              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+                <li>Täytä kentät huolellisesti. Tyhjät kentät eivät näy lopullisessa raportissa.</li>
+                <li>Vasemmassa yläkulmassa oleva <em>kolmen viivan</em> painike avaa valikon, josta löydät kaikki päätoiminnot.</li>
+              </ul>
+            </li>
+            <br></br>
+            <li>
+              <strong>Tallennus, luonnokset ja jatkaminen</strong>
+              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+                <li><em>Tallenna PDF‑raportti</em> luo lopullisen raportin tällä hetkellä syötetyistä tiedoista.</li>
+                <li><em>Tallenna luonnos</em> lataa selaimeesi JSON‑tiedoston, jossa on kaikki tähänastiset täytetyt kentät.</li>
+                <li><em>Jatka edellistä raporttia</em> lataa aiemmin tallennetun JSON‑luonnoksen ja palauttaa kentät.</li>
+                <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta.</li>
+              </ul>
+            </li>
+            <br></br>
 
-  <li>
-    <strong>Tietojen tyhjentäminen</strong>
-    <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-      <li><em>Tyhjennä kaikki</em> (valikossa) poistaa kaikki syötetyt tiedot selaimen muistista. Toiminto kysyy vahvistuksen ennen tyhjennystä.</li>
-    </ul>
-  </li>
-  <br></br>
-  <li>
-    <strong>Raportin viimeistely</strong>
-    <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-      <li>Kun olet täyttänyt kaikki sivut, valitse valikosta <em>Tallenna PDF‑raportti</em>.</li>
-      <li>PDF avautuu uuteen välilehteen tai latautuu tiedostona. Voit tallentaa tai tulostaa sen tarpeen mukaan.</li>
-    </ul>
-  </li>
-</ol>
-</div>
+            <li>
+              <strong>Tietojen tyhjentäminen</strong>
+              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+                <li><em>Tyhjennä kaikki</em> (valikossa) poistaa kaikki syötetyt tiedot selaimen muistista. Toiminto kysyy vahvistuksen ennen tyhjennystä.</li>
+              </ul>
+            </li>
+            <br></br>
+            <li>
+              <strong>Raportin viimeistely</strong>
+              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+                <li>Kun olet täyttänyt kaikki sivut, valitse valikosta <em>Tallenna PDF‑raportti</em>.</li>
+                <li>PDF avautuu uuteen välilehteen tai latautuu tiedostona. Voit tallentaa tai tulostaa sen tarpeen mukaan.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
       </main>
 
       {/* PDF-tiedoston pudotusalue, jossa lisää tilaa PDF-drop zone:n ja muun sisällön väliin (marginTop: '2rem') */}
-      
+
     </div>
   );
 };
