@@ -312,22 +312,24 @@ function App() {
           onDataUpdate={setFinanceData}
         />
       )}
-
-      {/* --- Kiinteä alapalkki: pelkkä ProgressBar --- */}
-      <div
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: 60,
-          zIndex: 9999,
-          backgroundColor: '#eee',
-          display: 'flex',
-          alignItems: 'center',
-          padding: '0 1rem'
-        }}
-      >
+<div
+  style={{
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    /* oikea reuna ei veny vierityspalkin alle */
+    width: '100%',
+    padding: '0 12px',      // pieni väli molempiin reunoihin
+    boxSizing: 'border-box',
+    height: 60,
+    zIndex: 9999,
+    backgroundColor: '#eee',
+    display: 'flex',
+    justifyContent: 'center', // keskitetään sisältö
+    alignItems: 'center',
+    overflowX: 'auto'        // varmistus jos palkki ei mahdu
+  }}
+>
         <ProgressBar
           currentPage={step + 1}
           pageTitles={pageTitles}
