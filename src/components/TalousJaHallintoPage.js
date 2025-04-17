@@ -994,14 +994,48 @@ const TalousJaHallintoPage = ({
           </tbody>
         </table>
 
-        <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center' }}>
-          <button type="button" onClick={onPrevious} style={{ marginRight: '1rem' }}>
-            Edellinen
-          </button>
-          <button type="submit">
-            Seuraava
-          </button>
-        </div>
+        <div
+  style={{
+    marginTop: '1rem',
+    display: 'flex',
+    justifyContent: 'center',   // keskittää napit
+    gap: '1rem',                // sama marginaali napin väliin
+    alignItems: 'center'
+  }}
+>
+  <button
+    type="button"
+    onClick={onPrevious}
+    style={{
+      fontSize: '16px',
+      padding: '10px 20px',
+      borderRadius: '8px',
+      backgroundColor: '#0345FA',      // harmaa “Edellinen”
+      color: 'white',
+      border: 'none',
+      cursor: 'pointer'
+    }}
+  >
+    Edellinen
+  </button>
+
+  <button
+    type="submit"
+    onClick={handleSubmit}
+    style={{
+      fontSize: '16px',
+      padding: '10px 20px',
+      borderRadius: '8px',
+      backgroundColor: '#0345FA',      // sininen “Seuraava” (kuten Johdanto)
+      color: 'white',
+      border: 'none',
+      cursor: 'pointer'
+    }}
+  >
+    Seuraava
+  </button>
+</div>
+
       </form>
     </div>
   );

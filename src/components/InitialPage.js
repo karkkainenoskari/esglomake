@@ -274,7 +274,19 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
                 <option value="Parsilypsy">Parsilypsy</option>
               </select>
             </div>
-            <button type="submit">Seuraava</button>
+            <button
+          onClick={onNext}
+          style={{
+            fontSize: '16px',
+            padding: '10px 20px',
+            borderRadius: '8px',
+            backgroundColor: '#007acc',
+            color: 'white',
+            border: 'none'
+          }}
+        >
+          Seuraava
+        </button>
           </form>
         </div>
 
