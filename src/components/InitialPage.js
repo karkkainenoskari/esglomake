@@ -36,10 +36,28 @@ const fieldConfigs = [
 // Ympäristö-datan kenttien konfiguraatiot (käytetään parseEnvironmentData:ssa)
 const envFieldConfigs = [
   { key: 'envMaidonHiilijalanjalki', label: 'Maidon hiilijalanjälki, Co2/kg maitoa' },
-  { key: 'envScope1',           label: 'Scope 1 päästö, tCO2e, %' },
-  { key: 'envScope2',           label: 'Scope 2 päästö, tCO2e, %' },
-  { key: 'envScope3',           label: 'Scope 3 päästö, tCO2e, %' },
-  // VOIT LISÄTÄ MUUT KENTÄT TARPEEN MUKAAN
+  { key: 'envScope1', label: 'Scope 1 päästö, tCO2e, %' },
+  { key: 'envScope2', label: 'Scope 2 päästö, tCO2e, %' },
+  { key: 'envScope3', label: 'Scope 3 päästö, tCO2e, %' },
+  { key: 'envHiiliviljelykoulutus', label: 'Hiiliviljelykoulutus suoritettu' },
+  { key: 'envHiiliviljelytoimenpiteet', label: 'Hiiliviljelytoimenpiteet rehuntuotannossa, ha' },
+  { key: 'envKeskilehmaluku', label: 'Keskilehmäluku, kpl' },
+  { key: 'envPoikimavali', label: 'Poikimaväli, vrk' },
+  { key: 'envHiehopoikimaika', label: 'Hiehojen poikimaikä, kk' },
+  { key: 'envKeskituotos', label: 'Keskituotos, EKM kg/lehmä' },
+  { key: 'envTuotosRasva', label: 'Tuotosseurannan rasva-%, vuoden keskiarvo' },
+  { key: 'envTuotosValkuainen', label: 'Tuotosseurannan valkuais-%, vuoden keskiarvo' },
+  { key: 'envMaidonUrea', label: 'Maidon ureapitoisuus, mg/100 ml' },
+  { key: 'envMeijerimaidonOsuus', label: 'Meijerimaidon osuus, %' },
+  { key: 'envKaytossaVahapaastoinenKylmainetilasaililossa', label: 'Käytössä vähäpäästöinen kylmäaine tilasäililössä' },
+  { key: 'envKarkearehunOsuus', label: 'Karkearehun osuus lypsylehmien ruokinnassa, %' },
+  { key: 'envPaastojaVahentavatLisaravinteet', label: 'Päästöjä vähentävät lisäravinteet lypsylehmillä käytössä' },
+  { key: 'envRuokinnanSeurantalaskelmaTehty', label: 'Ruokinnan seurantalaskelma tehty' },
+  { key: 'envKuivaAinekiloa', label: 'Kuiva-ainekiloa rehua/EKM kg' },
+  { key: 'envTypenHyvaksykaytto', label: 'Typen hyväksikäyttö % ruokinnassa' },
+  { key: 'envRehunSaastoindeksi', label: 'Rehun säästöindeksin huomioiminen jalostuksessa' },
+  { key: 'envRuokinnanOmavaraisuusaste', label: 'Ruokinnan omavaraisuusaste %' },
+  { key: 'envMuutToimenpiteet', label: 'Kuvaus muista mahdollisista toimenpiteistä' }
 ];
 
 // Parsii yrityksen perustiedot
