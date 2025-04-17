@@ -147,14 +147,14 @@ function App() {
     <div style={{ paddingTop: 60, paddingBottom: 80 }}>
 
       {/* --- Hampurilainen + valikko vasempaan yläkulmaan --- */}
-      <div style={{ position: 'fixed', top: 10, left: 10, zIndex: 10000 }}>
+      <div style={{ position: 'fixed', top: 18, left: 40, zIndex: 10000 }}>
         {/* Hampurilaispainike */}
         <button
           aria-label="Valikko"
           onClick={() => setMenuOpen(o => !o)}
           style={{
-            width: 40,
-            height: 32,
+            width: 45,
+            height: 40,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-around',

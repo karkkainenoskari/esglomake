@@ -293,65 +293,48 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
             overflowY: 'auto'
           }}
         >
-         <h3>Ohjeet lomakkeen täyttöön:</h3>
-          <ol style={{ paddingLeft: '1.2rem' }}>
-           
-            <li>
-              <strong>Lomakkeen täyttäminen</strong>
-              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-                <li>Täytä kentät huolellisesti ja mahdollisimman kattavasti.</li>
-                <li>Jos jokin kenttä jää tyhjäksi, sitä ei näytetä PDF-raportissa.</li>
-                <li>Useimmilla sivuilla on myös tekstikenttiä (“Kuvaus”), joihin voit kirjoittaa tarkentavia tietoja tai selityksiä.</li>
-              </ul>
-            </li>
+       <h3>Ohjeet lomakkeen täyttöön:</h3>
 
-            <li>
-              <strong>Tallentaminen ja jatkaminen</strong>
-              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-                <li>Painamalla <em>Tallenna ja lopeta</em> -painiketta tallennat kaikki tähän mennessä täyttämäsi tiedot PDF-raporttiin.</li>
-                <li>Lomake tallentaa automaattisesti edistymisesi selaimen muistiin myös kesken täyttämisen, joten jos poistut sivulta ja palaat myöhemmin, työhösi pitäisi päästä jatkamaan samasta kohdasta.</li>
-                <li>Huomaa, että jos tyhjennät tiedot (ks. seuraava kohta), aiemmin syöttämäsi tiedot poistuvat.</li>
-              </ul>
-            </li>
+<ol style={{ paddingLeft: '1.2rem' }}>
+  <li>
+    <strong>Lomakkeen täyttäminen</strong>
+    <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+      <li>Täytä kentät huolellisesti. Tyhjät kentät eivät näy lopullisessa raportissa.</li>
+      <li>Vasemmassa yläkulmassa oleva <em>kolmen viivan</em> painike avaa valikon, josta löydät kaikki päätoiminnot.</li>
+    </ul>
+  </li>
+  <br></br>
+  <li>
+    <strong>Tallennus, luonnokset ja jatkaminen</strong>
+    <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+      <li><em>Tallenna PDF‑raportti</em> luo lopullisen raportin tällä hetkellä syötetyistä tiedoista.</li>
+      <li><em>Tallenna luonnos</em> lataa selaimeesi JSON‑tiedoston, jossa on kaikki tähänastiset täytetyt kentät.</li>
+      <li><em>Jatka edellistä raporttia</em> lataa aiemmin tallennetun JSON‑luonnoksen ja palauttaa kentät.</li>
+      <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta.</li>
+    </ul>
+  </li>
+  <br></br>
 
-            <li>
-              <strong>Tietojen tyhjentäminen</strong>
-              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-                <li>Jos haluat aloittaa alusta, voit käyttää <em>Tyhjennä kaikki</em> -painiketta. Tämä avaa ensin varmistusikkunan, jossa voit vielä perua, jos painoit painiketta vahingossa.</li>
-                <li>Hyväksyessäsi tyhjennyksen kaikki antamasi lomaketiedot tyhjennetään.</li>
-              </ul>
-            </li>
-
-            <li>
-              <strong>PDF-raportti</strong>
-              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-                <li>Kun painat <em>Tallenna ja lopeta</em> -painiketta, järjestelmä koostaa täytetyistä tiedoista PDF-tiedoston.</li>
-                <li>Voit tallentaa PDF-raportin omalle koneellesi tai tulostaa sen tarvittaessa.</li>
-                <li>Raportti sisältää vain ne tiedot, jotka olet lomakkeelle syöttänyt.</li>
-              </ul>
-            </li>
-          </ol>
-        </div>
+  <li>
+    <strong>Tietojen tyhjentäminen</strong>
+    <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+      <li><em>Tyhjennä kaikki</em> (valikossa) poistaa kaikki syötetyt tiedot selaimen muistista. Toiminto kysyy vahvistuksen ennen tyhjennystä.</li>
+    </ul>
+  </li>
+  <br></br>
+  <li>
+    <strong>Raportin viimeistely</strong>
+    <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+      <li>Kun olet täyttänyt kaikki sivut, valitse valikosta <em>Tallenna PDF‑raportti</em>.</li>
+      <li>PDF avautuu uuteen välilehteen tai latautuu tiedostona. Voit tallentaa tai tulostaa sen tarpeen mukaan.</li>
+    </ul>
+  </li>
+</ol>
+</div>
       </main>
 
       {/* PDF-tiedoston pudotusalue, jossa lisää tilaa PDF-drop zone:n ja muun sisällön väliin (marginTop: '2rem') */}
-      <div
-        {...getRootProps()}
-        style={{
-          border: '2px dashed #007acc',
-          padding: '20px',
-          textAlign: 'center',
-          borderRadius: '8px',
-          marginTop: '2rem'
-        }}
-      >
-        <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Pudota PDF-tiedosto tähän, niin täytämme lomakkeen tiedot automaattisesti.</p>
-        ) : (
-          <p>Raahaa PDF-tiedosto tähän tai klikkaa valitaksesi tiedoston, jossa aiemmat lomaketiedot ovat.</p>
-        )}
-      </div>
+      
     </div>
   );
 };
