@@ -261,7 +261,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       <div
         style={{
           marginLeft: '350px',
-          marginBottom: '30px',
+          marginBottom: '40px',
           marginTop: '25px',
           border: '1px solid #ccc',
           borderRadius: 10,
@@ -288,9 +288,9 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       </div>
       <h3
     style={{
-      marginLeft: '100px',   // siirtää otsikon alkua sivulle päin
+      marginLeft: '70px',   // siirtää otsikon alkua sivulle päin
       marginTop: '-100px',     // pystysuuntainen etäisyys edellisestä
-      fontSize: '40px',      // haluttu koko
+      fontSize: '32px',      // haluttu koko
       fontWeight: '600'      // haluttu paksuus
     }}
   >

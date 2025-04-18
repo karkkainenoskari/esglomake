@@ -162,7 +162,37 @@ const TalousJaHallintoPage = ({
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
       <LogoHeader />
-      <h2>Talous ja hallinto</h2>
+      <div
+        style={{
+          marginLeft: '350px',
+          marginBottom: '40px',
+          marginTop: '25px',
+          border: '1px solid #ccc',
+          borderRadius: 10,
+          padding: '1rem 1.5rem',
+          Width: '450px',
+          height: '215px',
+          overflow: 'auto',         // rajaa leveys
+          lineHeight: 1.5,
+          flex: '1 1 350px'
+        }}
+      >
+        <p style={{ margin: 0 }}>
+        Keskeisin arvioitava lainan myöntämisen kriteeri on lainan takaisinmaksukyky. Toiminnan on oltava liiketoimintasuunnitelmalla osoitettuna laskennallisesti riittävän kannattavaa, jotta pitkällä aikavälillä rahavirtojen voidaan olettaa riittävän tavoitteisiin. Kannattavuuden ohella yrityksen tulee pystyä osoittamaan valmiudet maksuvalmiuden säilyttämiseen. Rahoittajat arvioivat tätä tyypillisesti toteutuneen maksukäyttäytymisen perusteella. Uuden yrittäjän, jolla ei ole käytettävissä maksuhistoriaa, tai investoivan yrityksen, jonka toimintaa ollaan olennaisesti muuttamassa, on erittäin hyödyllistä laatia kassabudjetti vuotuisista tuloista ja menoista. Budjetin laatiminen ja sen toteutumisen jatkuva seuraaminen on erittäin hyvä tapa osoittaa kassanhallinnan ja riskinhallinnan osaaminen rahoittajalle. Lainanhakijan on tarpeellista laatia yritykselle visio, johon toiminta tähtää ja strategia sille, miten toimintaa aiotaan tulevaisuudessa harjoittaa. Rahoituksen näkökulmasta etenkin tulevia investointitarpeita tulisi huolellisesti pohtia osana strategiaa.
+        </p>
+      </div>
+      <h3
+    style={{
+      marginLeft: '40px',   // siirtää otsikon alkua sivulle päin
+      marginTop: '-100px',     // pystysuuntainen etäisyys edellisestä
+      fontSize: '32px',      // haluttu koko
+      fontWeight: '600'      // haluttu paksuus
+    }}
+  >
+    Talous ja hallinto
+  </h3>
+
+
       <form onSubmit={handleSubmit}>
         <table className="common-table finance-table">
           <colgroup>

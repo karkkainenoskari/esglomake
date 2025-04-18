@@ -240,7 +240,35 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       <LogoHeader />
 
 
-      <h2>Sosiaalinen vastuu</h2>
+      <div
+        style={{
+          marginLeft: '350px',
+          marginBottom: '40px',
+          marginTop: '25px',
+          border: '1px solid #ccc',
+          borderRadius: 10,
+          padding: '1rem 1.5rem',
+          Width: '450px',
+          height: '215px',
+          overflow: 'auto',         // rajaa leveys
+          lineHeight: 1.5,
+          flex: '1 1 350px'
+        }}
+      >
+        <p style={{ margin: 0 }}>
+        Maatalousyrityksen sosiaaliseen kestävyyteen kuuluvat asiat, jotka vaikuttavat yritykseen sidoksissa olevien henkilöiden toimintaan sekä yrittäjiin itseensä. Kotieläintalouden tuotantosuunnissa eläinten hyvinvointiin panostamisen voidaan myös katsoa oleva olennainen osa sosiaalista vastuullisuutta. Sosiaalista vastuullisuutta on ihmisten hyvinvointiin liittyvistä asioista sopiminen mahdollisuuksien mukaan kirjallisesti, panostukset terveyteen ja hyvinvointiin sekä riskeihin varautuminen. Sosiaaliseen vastuullisuuteen liittyvät myös osaaminen ja lisäkouluttautuminen, jaksamisen ylläpitäminen esimerkiksi vapaapäivien ja vuosilomien suhteen, sekä toiminnan avoimuus kuten sosiaalisessa mediassa toimiminen tai naapurisuhteiden ylläpitäminen. Verkostotoiminta, kuten pienryhmiin tai kehittämishankkeisiin osallistuminen, voi olla osa sosiaalista kestävyyttä.
+        </p>
+      </div>
+      <h3
+    style={{
+      marginLeft: '40px',   // siirtää otsikon alkua sivulle päin
+      marginTop: '-100px',     // pystysuuntainen etäisyys edellisestä
+      fontSize: '32px',      // haluttu koko
+      fontWeight: '600'      // haluttu paksuus
+    }}
+  >
+    Sosiaalinen vastuu
+  </h3>
       <form onSubmit={handleSubmit}>
         <table className="common-table social-table">
           <colgroup>
