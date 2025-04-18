@@ -4,7 +4,7 @@ import './tables.css';
 import LogoHeader from './LogoHeader';
 import AutoResizeTextArea from './AutoResizeTextArea';
 import YesNoToggle from './YesNoToggle';
-import YearToggle from './YearToggle';
+
 
 const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUpdate }) => {
   // Alustetaan tila lazy initializerilla: ensin tarkistetaan localStorage.
