@@ -186,7 +186,7 @@ const TalousJaHallintoPage = ({
       marginLeft: '40px',   // siirtää otsikon alkua sivulle päin
       marginTop: '-100px',     // pystysuuntainen etäisyys edellisestä
       fontSize: '32px',      // haluttu koko
-      fontWeight: '600'      // haluttu paksuus
+      fontWeight: '700'      // haluttu paksuus
     }}
   >
     Talous ja hallinto
