@@ -1029,7 +1029,7 @@ const TalousJaHallintoPage = ({
     marginTop: '1rem',
     display: 'flex',
     justifyContent: 'center',   // keskittää napit
-    gap: '1rem',                // sama marginaali napin väliin
+    gap: '1.5rem',                // sama marginaali napin väliin
     alignItems: 'center'
   }}
 >

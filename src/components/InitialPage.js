@@ -129,7 +129,7 @@ function parseEnvironmentData(allText) {
   return extracted;
 }
 
-const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
+const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPrevious}) => {
   const [formData, setFormData] = useState(() => {
     const saved = localStorage.getItem('initialFormData');
     return saved ? JSON.parse(saved) : {/* oletukset */ };
@@ -302,19 +302,38 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf }) => {
                 <option value="Parsilypsy">Parsilypsy</option>
               </select>
             </div>
-            <button
-              onClick={onNext}
-              style={{
-                fontSize: '16px',
-                padding: '10px 20px',
-                borderRadius: '8px',
-                backgroundColor: '#007acc',
-                color: 'white',
-                border: 'none'
-              }}
-            >
-              Seuraava
-            </button>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1.5rem' }}>
+  <button
+    type="button"
+    onClick={onPrevious}
+    style={{
+      fontSize: '16px',
+      padding: '10px 20px',
+      borderRadius: '8px',
+      backgroundColor: '#007acc',
+      color: 'white',
+      border: 'none',
+      cursor: 'pointer'
+    }}
+  >
+    Edellinen
+  </button>
+  <button
+    onClick={onNext}
+    style={{
+      fontSize: '16px',
+      padding: '10px 20px',
+      borderRadius: '8px',
+      backgroundColor: '#007acc',  // your custom green
+      color: 'white',
+      border: 'none',
+      cursor: 'pointer'
+    }}
+  >
+    Seuraava
+  </button>
+</div>
+
           </form>
         </div>
 

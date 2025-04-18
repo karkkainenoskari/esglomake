@@ -29,14 +29,10 @@ const Johdanto = ({ onNext }) => {
         <div style={{ flex: '1 1 50%', padding: '1rem' }}>
           <h3>ESG:</h3>
           <p>
-            ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance.
-            ESG-raportointi tarkoittaa yrityksen ympäristö-, sosiaalisia ja hallinnollisia vastuullisuuteen
-            liittyvien tekijöiden tunnistamista, vastuullisia toimintatapoja ja niiden raportointia.
+          ESG on lyhenne englannin kielen sanoista Environmental, Social ja Governance. ESG raportointi termillä tarkoitetaan yrityksen ympäristö-, sosiaaliseen- ja hallinnolliseen vastuuseen liittyvien tekijöiden tunnistamista, vastuullisia toimintatapoja ja niiden raportointia. Tulevaisuudessa vastuullisuusajattelu ja raportointivaade koskee välillisesti myös maitotilayrityksiä, kun yhteiskunta, asiakkaat, rahoituslaitokset ja kuluttajat haluavat tietää koko toimitusketjun vastuullisuudesta. Vastuullisuusraportointi tulee nousemaan talousraportoinnin rinnalle osaksi lainoitus- ja rahoitusprosesseja. Tämä työkalu auttaa maitotilayritystä kuvaamaan miettimään omalle yritykselle tärkeitä vastuullisuusasioita ja tuottaa niistä yrityksen ESG vastuullisuusraportin
           </p>
           <p>
-            Tulevaisuudessa vastuullisuusajattelu ja raportointivaade koskevat myös maitotilayrityksiä, kun
-            yhteiskunta, asiakkaat, rahoituslaitokset ja kuluttajat haluavat tietää koko toimitusketjun vastuullisuudesta.
-            Tämä työkalu auttaa maitotilayritystä kuvaamaan ja pohtimaan yritykselle tärkeitä vastuullisuusasioita.
+          Työkalu ja raporttipohja on tuotettu osana Tulevaisuuden maatila -hanketta (1.1.2024-31.12.2025). Toteutuksesta vastasivat yhteistyössä YsAo, Savonia-amk ja Maitoyrittäjät ry. Hankkeen rahoittajana oli Pohjois-Savon Liitto ja rahoituslähteenä JTF -rahasto.
           </p>
         </div>
         
@@ -56,8 +52,8 @@ const Johdanto = ({ onNext }) => {
           style={{
             fontSize: '16px',
             padding: '10px 20px',
+            backgroundColor: '#989D39',
             borderRadius: '8px',
-            backgroundColor: '#007acc',
             color: 'white',
             border: 'none'
           }}
