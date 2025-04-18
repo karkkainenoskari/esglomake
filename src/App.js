@@ -289,6 +289,7 @@ function App() {
       {step === 1 && (
         <InitialPage
           key={resetKey}
+          onPrevious={() => setStep(0)} 
           onNext={handleInitialNext}
           initialData={initialData}
           onImportPdf={handleImportPdf}
