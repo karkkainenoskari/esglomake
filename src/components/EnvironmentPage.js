@@ -256,24 +256,19 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
 
       <LogoHeader />
 
-      <h2
-        style={{
-           paddingLeft: '100px',
-          margin: '12px 0 0', 
-          flexShrink: 0,
-          fontSize: '32px',   // ↑ isompi koko
-        }}
-      >
-        Ympäristö
-      </h2>
+   
+    
       <div
         style={{
-          marginLeft: '500px',
+          marginLeft: '350px',
           marginBottom: '30px',
+          marginTop: '25px',
           border: '1px solid #ccc',
-          borderRadius: 8,
+          borderRadius: 10,
           padding: '1rem 1.5rem',
-          maxWidth: 550,          // rajaa leveys
+          Width: '450px',
+          height: '215px',
+          overflow: 'auto',         // rajaa leveys
           lineHeight: 1.5,
           flex: '1 1 350px'
         }}
@@ -291,6 +286,16 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           liittyviä toimia ja kehittämistavoitteita kannattaa kirjata ylös.
         </p>
       </div>
+      <h3
+    style={{
+      marginLeft: '100px',   // siirtää otsikon alkua sivulle päin
+      marginTop: '-100px',     // pystysuuntainen etäisyys edellisestä
+      fontSize: '40px',      // haluttu koko
+      fontWeight: '600'      // haluttu paksuus
+    }}
+  >
+    Ympäristö
+  </h3>
 
       <table className="common-table environment-table">
         <colgroup>
