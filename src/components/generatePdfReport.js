@@ -23,11 +23,11 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
   const doc = new jsPDF();
 
   // Lisää logot
-  doc.addImage(savoniaLogo, 'PNG', 14, 10, 20, 13);
+  doc.addImage(savoniaLogo, 'PNG', 14, 10, 20, 10);
   doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 20, 13);
   doc.addImage(valioLogo, 'PNG', 86, 10, 20, 13);
-  doc.addImage(ysaoLogo, 'PNG', 122, 10, 20, 13);
-  doc.addImage(euLogo, 'PNG', 158, 10, 20, 13);
+  doc.addImage(ysaoLogo, 'PNG', 122, 10, 20, 10);
+  doc.addImage(euLogo, 'PNG', 158, 10, 20, 14);
 
   let startY = 40;
 
