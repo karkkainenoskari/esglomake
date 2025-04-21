@@ -588,7 +588,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
-                <textarea
+                <AutoResizeTextArea
                   name="muutErityiset"
                   value={socialData.muutErityiset}
                   onChange={handleChange}
@@ -769,7 +769,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
-                <textarea
+                <AutoResizeTextArea
                   type="text"
                   name="yhteistyoErityiset"
                   value={socialData.yhteistyoErityiset}
@@ -1023,7 +1023,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
-                <textarea type="text" name="erityisetToimenpiteet" value={socialData.erityisetToimenpiteet} onChange={handleChange} style={{ width: '100%' }} />
+                <AutoResizeTextArea type="text" name="erityisetToimenpiteet" value={socialData.erityisetToimenpiteet} onChange={handleChange} style={{ width: '100%' }} />
               </td>
             </tr>
             <tr>
@@ -1176,7 +1176,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             <tr>
               <td>Kuvaus muista mahdollisista toimenpiteistä</td>
               <td colSpan="3">
-                <textarea
+                <AutoResizeTextArea
                   type="text"
                   name="maitoErityisetToimenpiteet"
                   value={socialData.maitoErityisetToimenpiteet}

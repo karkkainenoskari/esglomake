@@ -546,7 +546,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
-              <textarea name="envMuutToimenpiteet" value={envData.envMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envMuutToimenpiteet" value={envData.envMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
 
           </tr>
@@ -715,7 +715,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
-              <textarea name="divErityisetToimenpiteet" value={envData.divErityisetToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="divErityisetToimenpiteet" value={envData.divErityisetToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
 
           </tr>
@@ -1006,7 +1006,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
-              <textarea
+              <AutoResizeTextArea
                 name="envPeltoviljelyErityisetToimenpiteet"
                 value={envData.envPeltoviljelyErityisetToimenpiteet || ""}
                 onChange={handleChange}
@@ -1151,7 +1151,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
-              <textarea name="lantaMuutToimenpiteet" value={envData.lantaMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="lantaMuutToimenpiteet" value={envData.lantaMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
 
           </tr>
@@ -1302,7 +1302,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           <tr>
             <td>Kuvaus muista mahdollisista toimenpiteistä</td>
             <td colSpan="3">
-              <textarea name="energyErityisetToimenpiteet" value={envData.energyErityisetToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="energyErityisetToimenpiteet" value={envData.energyErityisetToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
           </tr>
           <tr>
