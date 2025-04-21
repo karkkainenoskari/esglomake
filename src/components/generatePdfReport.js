@@ -354,10 +354,6 @@ const bodyMono = filteredRowsMono.map(([label, col2, col3]) => {
 
 // 4) Piirrä Monimuotoisuus‑taulukko, jos rivejä löytyy
 if (bodyMono.length > 0) {
-  doc.setFontSize(14);
-  doc.text("Monimuotoisuus", 14, startY);
-  startY += 10;
-
   autoTable(doc, {
     startY,
     head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
@@ -474,9 +470,6 @@ if (bodyMono.length > 0) {
   });
   
   if (bodyPelto.length > 0) {
-    doc.setFontSize(14);
-    doc.text("Peltoviljely", 14, startY);
-    startY += 10;
     autoTable(doc, {
       startY,
       head: [["Peltoviljely", "Uusin tulos", "Kuvaus"]],
@@ -567,9 +560,6 @@ if (bodyMono.length > 0) {
   });
   
   if (bodyLanta.length > 0) {
-    doc.setFontSize(14);
-    doc.text("Lannan käsittely ja jätehuolto", 14, startY);
-    startY += 10;
     autoTable(doc, {
       startY,
       head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
@@ -660,9 +650,6 @@ if (bodyMono.length > 0) {
   });
   
   if (bodyEnergy.length > 0) {
-    doc.setFontSize(14);
-    doc.text("Energian käyttö", 14, startY);
-    startY += 10;
     autoTable(doc, {
       startY,
       head: [["Energian käyttö", "Uusin tulos", "Kuvaus"]],
@@ -804,31 +791,41 @@ const henkiloTavoitteet = getGoalsText(
   socialData.henkilostoTavoitteetVuosi3
 );
 if (henkiloTavoitteet) {
-  rowsSocial.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", henkiloTavoitteet]);
+  rowsSocial.push([
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    "",
+    henkiloTavoitteet
+  ]);
 }
 
-// Suodatetaan rivit, joista ainakin toinen kentistä ei ole tyhjä
-// Oletetaan että rivisi on [otsikko, col2, col3]
-const filteredRowsSocial = rowsSocial.filter(([_, col2, col3]) => {
-  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+const filteredRowsSocial = rowsSocial.filter(([_, col2, col3]) =>
+  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+);
+
+const bodySocial = filteredRowsSocial.map(([label, col2, col3]) => {
+  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+  return [label, col2, col3];
 });
 
-if (filteredRowsSocial.length > 0) {
+if (bodySocial.length > 0) {
   doc.setFontSize(14);
-doc.text("Sosiaalinen vastuu", 14, startY);
-startY += 10;
-
+  doc.text("Sosiaalinen vastuu", 14, startY);
+  startY += 10;
   autoTable(doc, {
-    
     startY,
-    head: [["Henkilöstö ja työolosuhteet", "Uusin tulos", "Kuvaus"]],
-    body: filteredRowsSocial,
+    head: [["Henkilöstö ja työolosuhteet","Uusin tulos","Kuvaus"]],
+    body: bodySocial,
     theme: 'striped',
     headStyles: { fillColor: '#FFA500' },
     margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
     showHead: 'firstPage',
-    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    columnStyles: {0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
@@ -874,25 +871,38 @@ const coopTavoitteet = getGoalsText(
   socialData.yhteistyoErityisetVuosi3
 );
 if (coopTavoitteet) {
-  rowsCoop.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", coopTavoitteet]);
+  rowsCoop.push([
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    "",
+    coopTavoitteet
+  ]);
 }
 
-// Oletetaan että rivisi on [otsikko, col2, col3]
-const filteredRowsCoop = rowsCoop.filter(([_, col2, col3]) => {
-  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+const filteredRowsCoop = rowsCoop.filter(([_, col2, col3]) =>
+  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+);
+
+const bodyCoop = filteredRowsCoop.map(([label, col2, col3]) => {
+  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+  return [label, col2, col3];
 });
 
-if (filteredRowsCoop.length > 0) {
+if (bodyCoop.length > 0) {
   autoTable(doc, {
     startY,
-    head: [["Yhteistyö ja avoimuus", "Uusin tulos", "Kuvaus"]],
-    body: filteredRowsCoop,
+    head: [["Yhteistyö ja avoimuus","Uusin tulos","Kuvaus"]],
+    body: bodyCoop,
     theme: 'striped',
     headStyles: { fillColor: '#FFA500' },
     margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
     showHead: 'firstPage',
-    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    columnStyles: {0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
@@ -988,12 +998,11 @@ const rowsAnimalWelfare = [
 ];
 
 const animalWelfareGoals = getGoalsText(
-  socialData.animalTavoitteetVuosi1,
-  socialData.animalTavoitteetVuosi2,
-  socialData.animalTavoitteetVuosi3
+  socialData.nautojenTerveydenhuoltorekisteriErityiset, // oletettu kolmen vuoden kenttä
+  socialData.nautojenTerveydenhuoltorekisteriErityiset2,
+  socialData.nautojenTerveydenhuoltorekisteriErityiset3
 );
 if (animalWelfareGoals) {
-  // Lisätään uusi rivi, jossa yhdistetään kolmen vuoden tavoitteet
   rowsAnimalWelfare.push([
     "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
     "",
@@ -1001,27 +1010,35 @@ if (animalWelfareGoals) {
   ]);
 }
 
+const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(([_, col2, col3]) =>
+  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+);
 
-// Oletetaan että rivisi on [otsikko, col2, col3]
-const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(([_, col2, col3]) => {
-  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+const bodyAnimalWelfare = filteredRowsAnimalWelfare.map(([label, col2, col3]) => {
+  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+  return [label, col2, col3];
 });
 
-
-if (filteredRowsAnimalWelfare.length > 0) {
+if (bodyAnimalWelfare.length > 0) {
   autoTable(doc, {
     startY,
-    head: [["Eläinten hyvinvointi", "Uusin tulos", "Kuvaus"]],
-    body: filteredRowsAnimalWelfare,
+    head: [["Eläinten hyvinvointi","Uusin tulos","Kuvaus"]],
+    body: bodyAnimalWelfare,
     theme: 'striped',
     headStyles: { fillColor: '#FFA500' },
     margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
     showHead: 'firstPage',
-    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    columnStyles: {0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
+
 
 // 4. Tuotteen laatu
 const rowsQuality = [
@@ -1059,27 +1076,38 @@ const qualityTavoitteet = getGoalsText(
   socialData.maitoErityisetToimenpiteetVuosi3
 );
 if (qualityTavoitteet) {
-  rowsQuality.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", qualityTavoitteet]);
+  rowsQuality.push([
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    "",
+    qualityTavoitteet
+  ]);
 }
 
+const filteredRowsQuality = rowsQuality.filter(([_, col2, col3]) =>
+  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+);
 
-// Oletetaan että rivisi on [otsikko, col2, col3]
-const filteredRowsQuality = rowsQuality.filter(([_, col2, col3]) => {
-  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+const bodyQuality = filteredRowsQuality.map(([label, col2, col3]) => {
+  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+  return [label, col2, col3];
 });
 
-
-if (filteredRowsQuality.length > 0) {  
+if (bodyQuality.length > 0) {
   autoTable(doc, {
     startY,
-    head: [["Tuotteen laatu", "Uusin tulos", "Kuvaus"]],
-    body: filteredRowsQuality,
+    head: [["Tuotteen laatu","Uusin tulos","Kuvaus"]],
+    body: bodyQuality,
     theme: 'striped',
     headStyles: { fillColor: '#FFA500' },
     margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
     showHead: 'firstPage',
-    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    columnStyles: {0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
