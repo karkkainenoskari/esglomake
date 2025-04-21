@@ -15,11 +15,12 @@ function getGoalsText(goal1, goal2, goal3) {
   const t1 = (goal1 || "").trim();
   const t2 = (goal2 || "").trim();
   const t3 = (goal3 || "").trim();
-  if (!t1 && !t2 && !t3) {
-    return "";
-  }
-  return `Vuosi-1: ${t1}\nVuosi-2: ${t2}\nVuosi-3: ${t3}`;
+  if (!t1 && !t2 && !t3) return "";
+
+  // Lisätään \n\n jotta solun sisällä tulee yksi tyhjä rivi rivinvaihtojen väliin
+  return `Vuosi-1: ${t1}\n\nVuosi-2: ${t2}\n\nVuosi-3: ${t3}`;
 }
+
 
 const generatePdfReport = (initialData, environmentData, socialData, localFinanceData, financeData) => {
   const doc = new jsPDF();
