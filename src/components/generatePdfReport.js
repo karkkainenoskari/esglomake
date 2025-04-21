@@ -1170,26 +1170,34 @@ if (johtaminenTavoitteet) {
   ]);
 }
 
-// Suodatetaan vain ne rivit, joissa toisen tai kolmannen solun sisältö ei ole tyhjä
-const filteredRowsJohtaminen = rowsJohtaminen.filter(([_, col2, col3]) => {
-  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+const filteredRowsJohtaminen = rowsJohtaminen.filter(([_, col2, col3]) =>
+  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+);
+
+const bodyJohtaminen = filteredRowsJohtaminen.map(([label, col2, col3]) => {
+  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign:'top', cellPadding:3 } },
+      { content: col2 || "", colSpan: 2, styles: { overflow:'linebreak', valign:'top', cellPadding:3 } }
+    ];
+  }
+  return [ label, col2, col3 ];
 });
 
-// Jos rivejä löytyy, lisätään taulukko PDF:ään
-if (filteredRowsJohtaminen.length > 0) {
+if (bodyJohtaminen.length > 0) {
   doc.setFontSize(14);
   doc.text("Talous ja hallinto", 14, startY);
   startY += 10;
   autoTable(doc, {
     startY,
-    head: [["Johtaminen", "Uusin tulos", "Kuvaus"]],
-    body: filteredRowsJohtaminen,
-    theme: 'striped',
-    headStyles: { fillColor: '#0345fa' },
-    margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-    showHead: 'firstPage',
-    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    head: [["Johtaminen","Uusin tulos","Kuvaus"]],
+    body: bodyJohtaminen,
+    theme:'striped',
+    headStyles:{ fillColor:'#0345fa' },
+    margin:{ left:14, right:14 },
+    styles:{ fontSize:10, cellPadding:3, overflow:'linebreak', valign:'top' },
+    showHead:'firstPage',
+    columnStyles:{0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
@@ -1253,28 +1261,39 @@ const kilpailuGoals = getGoalsText(
   localFinanceData.kilpailuErityisetToimenpiteetVuosi2,
   localFinanceData.kilpailuErityisetToimenpiteetVuosi3
 );
-
 if (kilpailuGoals) {
-  rowsKilpailukykyTalous.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", kilpailuGoals]);
+  rowsKilpailukykyTalous.push([
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    "",
+    kilpailuGoals
+  ]);
 }
 
-// Suodatetaan vain ne rivit, joissa toisen tai kolmannen solun sisältö ei ole tyhjä
-const filteredRowsKilpailukykyTalous = rowsKilpailukykyTalous.filter(([_, col2, col3]) => {
-  return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+const filteredRowsKilpailukykyTalous = rowsKilpailukykyTalous.filter(([_, col2, col3]) =>
+  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+);
+
+const bodyKilpailukyky = filteredRowsKilpailukykyTalous.map(([label, col2, col3]) => {
+  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    return [
+      { content: label, styles:{ cellWidth:60, overflow:'linebreak', valign:'top', cellPadding:3 } },
+      { content: col2||"", colSpan:2, styles:{ overflow:'linebreak', valign:'top', cellPadding:3 } }
+    ];
+  }
+  return [ label, col2, col3 ];
 });
 
-// Jos rivejä löytyy, tulostetaan taulukko PDF:ään
-if (filteredRowsKilpailukykyTalous.length > 0) {
+if (bodyKilpailukyky.length > 0) {
   autoTable(doc, {
     startY,
-    head: [["Kilpailukyky ja talous", "Uusin tulos", "Kuvaus"]],
-    body: filteredRowsKilpailukykyTalous,
-    theme: 'striped',
-    headStyles: { fillColor: '#0345fa' },
-    margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
-    showHead: 'firstPage'
+    head: [["Kilpailukyky ja talous","Uusin tulos","Kuvaus"]],
+    body: bodyKilpailukyky,
+    theme:'striped',
+    headStyles:{ fillColor:'#0345fa' },
+    margin:{ left:14, right:14 },
+    styles:{ fontSize:10, cellPadding:3, overflow:'linebreak', valign:'top' },
+    showHead:'firstPage',
+    columnStyles:{0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
@@ -1349,7 +1368,6 @@ const rowsRisk = [
   ],
 ];
 
-// Yhdistetään riskien hallinnan tavoitteet vuositason kentistä
 const riskTavoitteet = getGoalsText(
   localFinanceData.riskErityisetToimenpiteetVuosi1,
   localFinanceData.riskErityisetToimenpiteetVuosi2,
@@ -1363,24 +1381,31 @@ if (riskTavoitteet) {
   ]);
 }
 
-const filteredRowsRisk = rowsRisk.filter(item => 
-  Array.isArray(item) && 
-  ((item[1] || "").trim() !== "" || (item[2] || "").trim() !== "")
+const filteredRowsRisk = rowsRisk.filter(([_, col2, col3]) =>
+  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
 );
 
+const bodyRisk = filteredRowsRisk.map(([label, col2, col3]) => {
+  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    return [
+      { content: label, styles:{ cellWidth:60, overflow:'linebreak', valign:'top', cellPadding:3 } },
+      { content: col2||"", colSpan:2, styles:{ overflow:'linebreak', valign:'top', cellPadding:3 } }
+    ];
+  }
+  return [ label, col2, col3 ];
+});
 
-// Jos suodatettuja rivejä löytyy, tulostetaan riskien hallinnan taulukko PDF:ään
-if (filteredRowsRisk.length > 0) {
+if (bodyRisk.length > 0) {
   autoTable(doc, {
     startY,
-    head: [["Riskien hallinta", "Uusin tulos", "Kuvaus"]],
-    body: filteredRowsRisk,
-    theme: 'striped',
-    headStyles: { fillColor: '#0345fa' },
-    margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-    showHead: 'firstPage',
-    columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    head: [["Riskien hallinta","Uusin tulos","Kuvaus"]],
+    body: bodyRisk,
+    theme:'striped',
+    headStyles:{ fillColor:'#0345fa' },
+    margin:{ left:14, right:14 },
+    styles:{ fontSize:10, cellPadding:3, overflow:'linebreak', valign:'top' },
+    showHead:'firstPage',
+    columnStyles:{0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
