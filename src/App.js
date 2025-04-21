@@ -32,17 +32,34 @@ function App() {
   useEffect(() => { window.scrollTo(0, 0); }, [step]);
 
   const handleSaveDraft = () => {
+    // 1) Valmistele JSON-data
+    const data = {
+      initialData,
+      environmentData,
+      socialData,
+      financeData
+    };
+  
     const blob = new Blob(
-      [JSON.stringify({ initialData, environmentData, socialData, financeData }, null, 2)],
+      [JSON.stringify(data, null, 2)],
       { type: 'application/json' }
     );
-    const url  = URL.createObjectURL(blob);
+    const url = URL.createObjectURL(blob);
+
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm   = String(now.getMonth() + 1).padStart(2, '0');
+    const dd   = String(now.getDate()).padStart(2, '0');
+    const filename = `esg_lomake_luonnos_${dd}-${mm}-${yyyy}.json`;
+
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'esg‑luonnos.json';
+    link.download = filename;
     link.click();
+
     URL.revokeObjectURL(url);
   };
+  
 
   const handleLoadDraft = (file) => {
     const reader = new FileReader();
