@@ -39,7 +39,7 @@ const Johdanto = ({ onNext }) => {
         {/* Oikea sarake: ESG kuva */}
         <div style={{ flex: '1 1 50%', padding: '1rem', textAlign: 'center' }}>
           <img
-            src="/esg.png"  // Muokkaa polku vastaamaan oman projektisi tiedostorakennetta
+            src="/esg.PNG"  // Muokkaa polku vastaamaan oman projektisi tiedostorakennetta
             alt="ESG"
             style={{ maxWidth: '100%', borderRadius: '8px' }}
           />
