@@ -206,7 +206,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
                 <li><em>Tallenna PDF‑raportti</em> luo lopullisen raportin tällä hetkellä syötetyistä tiedoista.</li>
                 <li><em>Tallenna luonnos</em> lataa selaimeesi JSON‑tiedoston, jossa on kaikki tähänastiset täytetyt kentät.</li>
                 <li><em>Jatka edellistä raporttia</em> lataa aiemmin tallennetun JSON‑luonnoksen ja palauttaa kentät.</li>
-                <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta.</li>
+                <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta.(HUOM! Tiedot häviävät lomakkeesta, jos poistat sivuhistoriasta välimuistissa olevat tiedot)</li>
               </ul>
             </li>
             <br></br>
