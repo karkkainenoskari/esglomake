@@ -190,26 +190,70 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
   if (envGoals) {
     rowsEnv.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", envGoals]);
   }
-  const filteredRowsEnv = rowsEnv.filter(([_, col2, col3]) => {
-    return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
-  });
-  if (filteredRowsEnv.length > 0) {
-    doc.setFontSize(14);
-    doc.text("Ympäristö", 14, startY);
-    startY += 10;
-    autoTable(doc, {
-      startY,
-      head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos", "Kuvaus"]],
-      body: filteredRowsEnv,
-      theme: 'striped',
-      headStyles: { fillColor: '#4CAF50' },
-      margin: { left: 14, right: 14 },
-      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-      showHead: 'firstPage',
-      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
-    });
-    startY = doc.lastAutoTable.finalY + 10;
+ const filteredRowsEnv = rowsEnv.filter(([_, col2, col3]) =>
+  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+);
+
+// 3) Muunna taulukon body siten, että "Kuvaus muista mahdollisista toimenpiteistä"
+//    venyy kahden sarakkeen yli (colSpan:2) ja muut rivit pysyvät ennallaan.
+const bodyEnv = filteredRowsEnv.map(([label, col2, col3]) => {
+  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    return [
+      // Label-solu
+      {
+        content: label,
+        styles: {
+          cellWidth: 60,
+          overflow: 'linebreak',
+          valign: 'top',
+          cellPadding: 3
+        }
+      },
+      // Kuvaus-solu yhdistää sarakkeet 2+3
+      {
+        content: col2 || "",
+        colSpan: 2,
+        styles: {
+          overflow: 'linebreak',
+          valign: 'top',
+          cellPadding: 3
+        }
+      }
+    ];
   }
+  // Muut rivit kolmeen sarakkeeseen
+  return [ label, col2, col3 ];
+});
+
+// 4) Piirrä taulukko jos rivejä löytyy
+if (bodyEnv.length > 0) {
+  doc.setFontSize(14);
+  doc.text("Ympäristö", 14, startY);
+  startY += 10;
+
+  autoTable(doc, {
+    startY,
+    head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos", "Kuvaus"]],
+    body: bodyEnv,
+    theme: 'striped',
+    headStyles: { fillColor: '#4CAF50' },
+    margin: { left: 14, right: 14 },
+    styles: {
+      fontSize: 10,
+      cellPadding: 3,
+      overflow: 'linebreak',
+      valign: 'top'
+    },
+    showHead: 'firstPage',
+    columnStyles: {
+      0: { cellWidth: 60 },
+      1: { cellWidth: 30 },
+      2: { cellWidth: 92 }
+    }
+  });
+
+  startY = doc.lastAutoTable.finalY + 10;
+}
 
   // 3. Monimuotoisuus
   const rowsMono = [
@@ -259,31 +303,85 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
       ""
     ],
   ];
-  const monoGoals = getGoalsText(
-    environmentData.divTavoitteetVuosi1,
-    environmentData.divTavoitteetVuosi2,
-    environmentData.divTavoitteetVuosi3
-  );
-  if (monoGoals) {
-    rowsMono.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", monoGoals]);
+ // 3. Monimuotoisuus
+
+// 1) Lisää monimuotoisuuden tavoitteet, jos kentät eivät ole tyhjiä
+const monoGoals = getGoalsText(
+  environmentData.divTavoitteetVuosi1,
+  environmentData.divTavoitteetVuosi2,
+  environmentData.divTavoitteetVuosi3
+);
+if (monoGoals) {
+  rowsMono.push([
+    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+    "",
+    monoGoals
+  ]);
+}
+
+// 2) Suodata pois tyhjät rivit
+const filteredRowsMono = rowsMono.filter(([_, col2, col3]) =>
+  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+);
+
+// 3) Muunna taulukon body siten, että "Kuvaus muista mahdollisista toimenpiteistä"
+//    venyy kahden sarakkeen yli, muut rivit pysyvät kolmen sarakkeen muotoon
+const bodyMono = filteredRowsMono.map(([label, col2, col3]) => {
+  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    return [
+      {
+        content: label,
+        styles: {
+          cellWidth: 60,
+          overflow: 'linebreak',
+          valign: 'top',
+          cellPadding: 3
+        }
+      },
+      {
+        content: col2 || "",
+        colSpan: 2,
+        styles: {
+          overflow: 'linebreak',
+          valign: 'top',
+          cellPadding: 3
+        }
+      }
+    ];
   }
-  const filteredRowsMono = rowsMono.filter(([_, col2, col3]) => {
-    return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+  return [ label, col2, col3 ];
+});
+
+// 4) Piirrä Monimuotoisuus‑taulukko, jos rivejä löytyy
+if (bodyMono.length > 0) {
+  doc.setFontSize(14);
+  doc.text("Monimuotoisuus", 14, startY);
+  startY += 10;
+
+  autoTable(doc, {
+    startY,
+    head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
+    body: bodyMono,
+    theme: 'striped',
+    headStyles: { fillColor: '#4CAF50' },
+    margin: { left: 14, right: 14 },
+    styles: {
+      fontSize: 10,
+      cellPadding: 3,
+      overflow: 'linebreak',
+      valign: 'top'
+    },
+    showHead: 'firstPage',
+    columnStyles: {
+      0: { cellWidth: 60 },
+      1: { cellWidth: 30 },
+      2: { cellWidth: 92 }
+    }
   });
-  if (filteredRowsMono.length > 0) {
-    autoTable(doc, {
-      startY,
-      head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
-      body: filteredRowsMono,
-      theme: 'striped',
-      headStyles: { fillColor: '#4CAF50' },
-      margin: { left: 14, right: 14 },
-      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
-      showHead: 'firstPage'
-    });
-    startY = doc.lastAutoTable.finalY + 10;
-  }
+
+  startY = doc.lastAutoTable.finalY + 10;
+}
+
 
   // 4. Peltoviljely
   const rowsPelto = [
@@ -354,22 +452,41 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
     environmentData.envPeltoviljelyTavoitteetVuosi3
   );
   if (peltoGoals) {
-    rowsPelto.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", peltoGoals]);
+    rowsPelto.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      peltoGoals
+    ]);
   }
-  const filteredRowsPelto = rowsPelto.filter(([_, col2, col3]) => {
-    return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+  
+  const filteredRowsPelto = rowsPelto.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
+  
+  const bodyPelto = filteredRowsPelto.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [ label, col2, col3 ];
   });
-  if (filteredRowsPelto.length > 0) {
+  
+  if (bodyPelto.length > 0) {
+    doc.setFontSize(14);
+    doc.text("Peltoviljely", 14, startY);
+    startY += 10;
     autoTable(doc, {
       startY,
       head: [["Peltoviljely", "Uusin tulos", "Kuvaus"]],
-      body: filteredRowsPelto,
+      body: bodyPelto,
       theme: 'striped',
       headStyles: { fillColor: '#4CAF50' },
       margin: { left: 14, right: 14 },
-      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
-      showHead: 'firstPage'
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
     });
     startY = doc.lastAutoTable.finalY + 10;
   }
@@ -428,22 +545,41 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
     environmentData.lantaTavoitteetVuosi3
   );
   if (lantaGoals) {
-    rowsLanta.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", lantaGoals]);
+    rowsLanta.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      lantaGoals
+    ]);
   }
-  const filteredRowsLanta = rowsLanta.filter(([_, col2, col3]) => {
-    return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+  
+  const filteredRowsLanta = rowsLanta.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
+  
+  const bodyLanta = filteredRowsLanta.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [ label, col2, col3 ];
   });
-  if (filteredRowsLanta.length > 0) {
+  
+  if (bodyLanta.length > 0) {
+    doc.setFontSize(14);
+    doc.text("Lannan käsittely ja jätehuolto", 14, startY);
+    startY += 10;
     autoTable(doc, {
       startY,
       head: [["Lannan käsittely ja jätehuolto", "Uusin tulos", "Kuvaus"]],
-      body: filteredRowsLanta,
+      body: bodyLanta,
       theme: 'striped',
       headStyles: { fillColor: '#4CAF50' },
       margin: { left: 14, right: 14 },
-      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
-      showHead: 'firstPage'
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
     });
     startY = doc.lastAutoTable.finalY + 10;
   }
@@ -502,22 +638,41 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
     environmentData.energyTavoitteetVuosi3
   );
   if (energyGoals) {
-    rowsEnergy.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", energyGoals]);
+    rowsEnergy.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      energyGoals
+    ]);
   }
-  const filteredRowsEnergy = rowsEnergy.filter(([_, col2, col3]) => {
-    return (col2 || "").trim() !== "" || (col3 || "").trim() !== "";
+  
+  const filteredRowsEnergy = rowsEnergy.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
+  
+  const bodyEnergy = filteredRowsEnergy.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [ label, col2, col3 ];
   });
-  if (filteredRowsEnergy.length > 0) {
+  
+  if (bodyEnergy.length > 0) {
+    doc.setFontSize(14);
+    doc.text("Energian käyttö", 14, startY);
+    startY += 10;
     autoTable(doc, {
       startY,
       head: [["Energian käyttö", "Uusin tulos", "Kuvaus"]],
-      body: filteredRowsEnergy,
+      body: bodyEnergy,
       theme: 'striped',
-      margin: { left: 14, right: 14 },
       headStyles: { fillColor: '#4CAF50' },
-      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
-      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } },
-      showHead: 'firstPage'
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
     });
     startY = doc.lastAutoTable.finalY + 10;
   }
