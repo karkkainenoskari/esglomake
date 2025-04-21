@@ -3,9 +3,8 @@ import React from 'react';
 const ProgressBar = ({ currentPage, pageTitles, onNavigate, onSaveAndFinish }) => {
   return (
     <div style={styles.container}>
-      {/* Renderöidään ensin sivut 1 ja 2 */}
       {pageTitles.slice(0, 2).map((title, index) => {
-        const actualIndex = index; // 0 tai 1
+        const actualIndex = index;
         const pageNumber = actualIndex + 1;
         const isActive = pageNumber === currentPage;
 
@@ -21,11 +20,8 @@ const ProgressBar = ({ currentPage, pageTitles, onNavigate, onSaveAndFinish }) =
         );
       })}
 
-  
-
-      {/* Renderöidään sivut 3 ja 4 */}
       {pageTitles.slice(2).map((title, index) => {
-        const actualIndex = index + 2; // 2 tai 3
+        const actualIndex = index + 2;
         const pageNumber = actualIndex + 1;
         const isActive = pageNumber === currentPage;
 

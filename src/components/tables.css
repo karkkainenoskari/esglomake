@@ -1,30 +1,23 @@
 /* tables.css */
 
-/* Yleiset taulukon tyylit */
 .common-table {
   width: 100%;
-  /* Vaihdetaan collapse -> separate */
   border-collapse: separate;
-  /* Poistetaan ylimääräinen väli, joka syntyy separate-asetuksella */
   border-spacing: 0;
-  /* Pyöristetään reunat */
   border-radius: 20px;
-  /* Pakotetaan pyöristys näkymään myös taulukon reunoilla */
   overflow: hidden;
   margin-bottom: 2rem;
-  /* Lisätään (tai siirretään) reunaviiva taulukon ulkoreunaan */
   border: 2px solid #f0f0f0;
 }
 
 .common-table input[type="text"],
 .common-table select,
 .common-table textarea {
-  border-radius: 5px; /* Säädä arvoa haluamasi pyöristyksen mukaan */
+  border-radius: 5px; 
   border: 1px solid #8d8d8d;
 }
 
 
-/* Taulukon solujen tyylit */
 .common-table th,
 .common-table td {
   border: 1px solid #f0f0f0;
@@ -32,27 +25,23 @@
   text-align: left;
 }
 
-/* Otsikkosolujen tausta */
-/* Ympäristö (vihreä otsikkorivi) */
 .environment-table th {
-  background-color: #4CAF50; /* vihreä */
+  background-color: #4CAF50; 
   color: #fff;
 }
 
-/* Sosiaalinen vastuu (oranssi otsikkorivi) */
+
 .social-table th {
-  background-color: #ec9005; /* oranssi */
+  background-color: #ec9005; 
   color: #fff;
 }
 
-/* Talous ja hallinto (sininen otsikkorivi) */
+
 .finance-table th {
-  background-color: #0345fa; /* sininen */
+  background-color: #0345fa; 
   color: #fff;
 }
 
-
-/* Muut taulukot käyttävät edelleen neljää saraketta */
 .common-table col:nth-child(1) {
   width: 30%;
 }
@@ -63,8 +52,6 @@
   width: 49%;
 }
 
-
-/* Talous ja hallinto -sivun taulukko: vain 3 saraketta */
 .finance-table col:nth-child(1) {
   width: 30%;
 }
@@ -72,11 +59,10 @@
   width: 10%;
 }
 .finance-table col:nth-child(3) {
-  width: 49%; /* Jäljelle jäävä tila */
+  width: 49%; 
 }
 
 
-  /* Tyyli, joka kohdistuu kaikkiin input-, select- ja textarea-kenttiin etusivulla */
 .initial-page input[type="text"],
 .initial-page select,
 .initial-page textarea {
@@ -85,5 +71,5 @@
 }
 
 .extended-input {
-  width: 90%;   /* tai 100%, tai jokin kiinteä pikseliarvo */
+  width: 90%;  
 }

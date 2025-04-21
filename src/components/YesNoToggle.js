@@ -21,7 +21,7 @@ const YesNoToggle = ({ value, onChange, themeColor = '#007acc' }) => {
           color: value === 'Kyllä' ? '#fff' : themeColor,
           border: 'none',
           cursor: 'pointer',
-          borderRight: `2px solid ${themeColor}` // Lisätty väliviiva napin jaon erottamiseksi
+          borderRight: `2px solid ${themeColor}` 
         }}
         onClick={() => onChange('Kyllä')}
       >

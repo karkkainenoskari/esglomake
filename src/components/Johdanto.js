@@ -1,4 +1,3 @@
-// components/Johdanto.js
 import React from 'react';
 import LogoHeader from './LogoHeader';
 
@@ -6,11 +5,9 @@ const Johdanto = ({ onNext }) => {
     return (
         <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
           <LogoHeader />
-          {/* ISO otsikko */}
           <h1 style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
             Maitotilan ESG-vastuullisuusraportti
           </h1>
-          {/* Pienempi otsikko */}
           <h3 style={{ textAlign: 'center', marginBottom: '2rem', fontWeight: 'normal' }}>
         
           </h3>
@@ -25,7 +22,6 @@ const Johdanto = ({ onNext }) => {
           flexWrap: 'wrap'
         }}
       >
-        {/* Vasen sarake: ESG teksti */}
         <div style={{ flex: '1 1 50%', padding: '1rem' }}>
           <h3>ESG:</h3>
           <p>
@@ -35,8 +31,6 @@ const Johdanto = ({ onNext }) => {
           Työkalu ja raporttipohja on tuotettu osana Tulevaisuuden maatila -hanketta (1.1.2024-31.12.2025). Toteutuksesta vastasivat yhteistyössä YsAo, Savonia-amk ja Maitoyrittäjät ry. Hankkeen rahoittajana oli Pohjois-Savon Liitto ja rahoituslähteenä JTF -rahasto.
           </p>
         </div>
-        
-        {/* Oikea sarake: ESG kuva */}
         <div style={{ flex: '1 1 50%', padding: '1rem', textAlign: 'center' }}>
           <img
             src="/esg.PNG"  

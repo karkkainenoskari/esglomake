@@ -11,9 +11,6 @@ import Johdanto from './components/Johdanto';
 
 
 function App() {
-  /* --------------------------------------------------
-     1. Tilat
-  -------------------------------------------------- */
   const [step, setStep]                 = useState(0);
   const [initialData, setInitialData]   = useState({});
   const [environmentData, setEnvironmentData] = useState({});
@@ -22,16 +19,9 @@ function App() {
   const [resetKey, setResetKey]         = useState(0);
   const [menuOpen, setMenuOpen]         = useState(false);
 
-  /* --------------------------------------------------
-     2. File input ref (voidaan klikata ohjelmallisesti
-        ja nollata, jotta sama tiedosto voidaan valita
-        useamman kerran peräkkäin ilman refreshiä)
-  -------------------------------------------------- */
+
   const fileInputRef = useRef(null);
 
-  /* --------------------------------------------------
-     3. Haetaan localStoragesta mahdolliset vanhat datat
-  -------------------------------------------------- */
   useEffect(() => {
     setInitialData(     JSON.parse(localStorage.getItem('initialFormData') || '{}'));
     setEnvironmentData( JSON.parse(localStorage.getItem('environmentData') || '{}'));
@@ -39,14 +29,8 @@ function App() {
     setFinanceData(     JSON.parse(localStorage.getItem('financeData')     || '{}'));
   }, []);
 
-  /* --------------------------------------------------
-     4. Sivun vaihto -> rullaa ylös
-  -------------------------------------------------- */
   useEffect(() => { window.scrollTo(0, 0); }, [step]);
 
-  /* --------------------------------------------------
-     5. Luonnos –  tallenna / lataa
-  -------------------------------------------------- */
   const handleSaveDraft = () => {
     const blob = new Blob(
       [JSON.stringify({ initialData, environmentData, socialData, financeData }, null, 2)],
@@ -87,24 +71,18 @@ function App() {
       } catch {
         alert('Virhe: tiedosto ei ole kelvollinen luonnos‑JSON.');
       } finally {
-        // Nollataan valitsin, jotta sama tiedosto voidaan valita uudelleen
         if (fileInputRef.current) fileInputRef.current.value = null;
       }
     };
     reader.readAsText(file);
   };
 
-  /* --------------------------------------------------
-     6. Navigointi‑ ja tallennusfunktiot
-  -------------------------------------------------- */
   const handleJohdantoNext    = () => setStep(1);
   const handleInitialNext     = (d) => { setInitialData(d);       setStep(2); };
   const handleEnvironmentNext = (d) => { setEnvironmentData(d);   setStep(3); };
   const handleSocialNext      = (d) => { setSocialData(d);        setStep(4); };
   const handleFinanceNext     = (d) => { setFinanceData(d);       alert('PDF tallennus onnistui ja data tallennettu.'); };
 
-   // PDF‑generointi: luetaan aina aina viimeisimmät arvot localStoragesta,
-  // jotta “Jatka edellisestä” –toiminto ehtii päivittää JSON-tuonnin jälkeen
   const handleSaveAndFinish = () => {
     const init   = JSON.parse(localStorage.getItem('initialFormData')   || '{}');
     const env    = JSON.parse(localStorage.getItem('environmentData')   || '{}');
@@ -137,9 +115,6 @@ function App() {
     setFinanceData(financeData);
   };
 
-  /* --------------------------------------------------
-     7. ProgressBar‑otsikot
-  -------------------------------------------------- */
   const pageTitles = [
     'Johdanto',
     'Yrityksen perustiedot / ohjeet',
@@ -148,15 +123,11 @@ function App() {
     'Talous ja hallinto'
   ];
 
-  /* --------------------------------------------------
-     8. JSX
-  -------------------------------------------------- */
   return (
     <div style={{ paddingTop: 60, paddingBottom: 80 }}>
 
-      {/* --- Hampurilainen + valikko vasempaan yläkulmaan --- */}
       <div style={{ position: 'fixed', top: 18, left: 40, zIndex: 10000 }}>
-        {/* Hampurilaispainike */}
+
         <button
           aria-label="Valikko"
           onClick={() => setMenuOpen(o => !o)}
@@ -179,7 +150,6 @@ function App() {
           <span style={{ width: '100%', height: 3, background: '#fff', borderRadius: 2 }} />
         </button>
 
-        {/* Dropdown‑valikko */}
         {menuOpen && (
           <div
             style={{
@@ -253,13 +223,12 @@ function App() {
               Tyhjennä kaikki
             </button>
 
-            {/* Piilotettu file input */}
             <input
               ref={fileInputRef}
               type="file"
               accept="application/json"
               style={{ display: 'none' }}
-              onClick={e => { e.target.value = null; }}            /* nollaa ennen valintaa */
+              onClick={e => { e.target.value = null; }}         
               onChange={e => {
                 if (e.target.files[0]) {
                   handleLoadDraft(e.target.files[0]);
@@ -271,7 +240,6 @@ function App() {
         )}
       </div>
 
-      {/* --- Sivukohtainen sisältö --- */}
       {step === 0 && <Johdanto onNext={handleJohdantoNext} />}
 
       {step === 1 && (
@@ -326,17 +294,16 @@ function App() {
     position: 'fixed',
     bottom: 0,
     left: 0,
-    /* oikea reuna ei veny vierityspalkin alle */
     width: '100%',
-    padding: '0 12px',      // pieni väli molempiin reunoihin
+    padding: '0 12px',    
     boxSizing: 'border-box',
     height: 60,
     zIndex: 9999,
     backgroundColor: '#eee',
     display: 'flex',
-    justifyContent: 'center', // keskitetään sisältö
+    justifyContent: 'center', 
     alignItems: 'center',
-    overflowX: 'auto'        // varmistus jos palkki ei mahdu
+    overflowX: 'auto'     
   }}
   >
   <ProgressBar

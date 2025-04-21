@@ -6,14 +6,13 @@ import YesNoToggle from './YesNoToggle';
 
 
 const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDataUpdate }) => {
-  // Alustetaan tila localStoragesta, jos dataa löytyy, muuten käytetään initialEnvData tai oletusarvoja.
   const [envData, setEnvData] = useState(() => {
     const savedData = localStorage.getItem('environmentData');
     if (savedData) {
       return JSON.parse(savedData);
     }
     return initialEnvData || {
-      // === 2.1 Hiilijalanjälki ja tuotannon tehokkuus (environment) ===
+      // === 2.1 Hiilijalanjälki
       envMaidonHiilijalanjalki: '',
       envMaidonHiilijalanjalkiLisatiedot: '',
       envMaidonHiilijalanjalkiTavoitteet: '',
@@ -89,7 +88,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       envTavoitteetVuosi2: '',
       envTavoitteetVuosi3: '',
 
-      // === 2.2 Monimuotoisuus (diversity) ===
+      // === 2.2 Monimuotoisuus
       divHoitosopimus: '',
       divHoitosopimusLisatiedot: '',
       divHoitosopimusTavoitteet: '',
@@ -156,7 +155,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       envPeltoviljelyToimenpiteet: '',
       envPeltoviljelyToimenpiteetLisatiedot: '',
       envPeltoviljelyToimenpiteetTavoitteet: '',
-      // Uudet kentät Peltoviljely -osuudelle
       envPeltoviljelyErityisetToimenpiteetVuodet: '',
       envPeltoviljelyErityisetToimenpiteetTavoiteTeksti: '',
 
@@ -168,12 +166,10 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       envPeltoviljelyTavoitteetVuosi3: '',
 
       envPeltoviljelyErityisetToimenpiteet: '',
-      // Tässä alkuperäinen "Kuvaus muista mahdollisista toimenpiteistä" -kenttä Peltoviljelyssä
-      // Uudet kentät lisäykseen:
-      envPeltoviljelyErityisetToimenpiteetVuodet: '', // jos tätä kenttää ei ole jo, varmista ettei duplikoidu
+      envPeltoviljelyErityisetToimenpiteetVuodet: '', 
       envPeltoviljelyErityisetToimenpiteetTavoiteTeksti: '',
 
-      // === 2.4 Lannan käsittely ja jätehuolto (lanta) ===
+      // === 2.4 Lannan käsittely ja jätehuolto 
       lantaYmparistolupa: '',
       lantaLietelannanOsuus: '',
       lantaLevitysmenetelma: '',
@@ -183,14 +179,13 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       lantaJateoljy: '',
       lantaPuristeneste: '',
       lantaMuutToimenpiteet: '',
-      // Uudet kentät Lanta-osuudelle
       lantaMuutToimenpiteetVuodet: '',
       lantaMuutToimenpiteetTavoiteTeksti: '',
       lantaTavoitteetVuosi1: '',
       lantaTavoitteetVuosi2: '',
       lantaTavoitteetVuosi3: '',
 
-      // === 2.5 Energian käyttö (energy) ===
+      // === 2.5 Energian käyttö 
       energySahkonKayttomaara: '',
       energySahkonKayttomaaraLisatiedot: '',
       energySahkonKayttomaaraTavoitteet: '',
@@ -216,7 +211,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       energyLampotalteenottoLisatiedot: '',
       energyLampotalteenottoTavoitteet: '',
       energyErityisetToimenpiteet: '',
-      // Uudet kentät Energian käyttö -osuudelle
       energyErityisetToimenpiteetVuodet: '',
       energyErityisetToimenpiteetTavoiteTeksti: '',
       energyTavoitteetVuosi1: '',
@@ -232,7 +226,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
     }
   }, [initialEnvData]);
 
-  // Tallennetaan envData localStorageen aina, kun sitä muutetaan
   useEffect(() => {
     localStorage.setItem('environmentData', JSON.stringify(envData));
     if (onDataUpdate) {
@@ -255,9 +248,6 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
 
       <LogoHeader />
-
-   
-    
       <div
         style={{
           marginLeft: '350px',
@@ -268,7 +258,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
           padding: '1rem 1.5rem',
           Width: '450px',
           height: '215px',
-          overflow: 'auto',         // rajaa leveys
+          overflow: 'auto',         
           lineHeight: 1.5,
           flex: '1 1 350px'
         }}
@@ -288,10 +278,10 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
       </div>
       <h3
     style={{
-      marginLeft: '70px',   // siirtää otsikon alkua sivulle päin
-      marginTop: '-100px',     // pystysuuntainen etäisyys edellisestä
-      fontSize: '32px',      // haluttu koko
-      fontWeight: '700'      // haluttu paksuus
+      marginLeft: '70px',  
+      marginTop: '-100px',     
+      fontSize: '32px',      
+      fontWeight: '700'      
     }}
   >
     Ympäristö
@@ -548,13 +538,9 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td colSpan="3">
               <AutoResizeTextArea name="envMuutToimenpiteet" value={envData.envMuutToimenpiteet} onChange={handleChange} rows={2} style={{ width: '100%' }} />
             </td>
-
           </tr>
           <tr>
-
           </tr>
-
-          {/* Muokattu rivi: Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä */}
           <tr>
             <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
             <td colSpan="2">
@@ -1352,8 +1338,8 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         style={{
           marginTop: '1rem',
           display: 'flex',
-          justifyContent: 'center',   // keskittää napit
-          gap: '1.5rem',                // sama marginaali napin väliin
+          justifyContent: 'center',   
+          gap: '1.5rem',                
           alignItems: 'center'
         }}
       >
@@ -1380,7 +1366,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             fontSize: '16px',
             padding: '10px 20px',
             borderRadius: '8px',
-            backgroundColor: '#28a745',      // sininen “Seuraava” (kuten Johdanto)
+            backgroundColor: '#28a745',    
             color: 'white',
             border: 'none',
             cursor: 'pointer'

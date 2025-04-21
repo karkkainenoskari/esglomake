@@ -19,10 +19,7 @@ const TalousJaHallintoPage = ({
     if (savedData) {
       return JSON.parse(savedData);
     }
-    // Palauta laajennettu oletusdata:
-    // Ota talteen alla olevat avaimet ja lisää localFinanceData:n sisälle
     return {
-      // JOHTAMINEN
       yrityksenArvot: '',
       yrityksenArvotLisatiedot: '',
 
@@ -54,8 +51,6 @@ const TalousJaHallintoPage = ({
       johtaminenErityisetToimenpiteetVuosi2: '',
       johtaminenErityisetToimenpiteetVuosi3: '',
 
-
-      // KILPAILUKYKY JA TALOUS
       toiminnanMittarit: '',
       toiminnanMittaritLisatiedot: '',
 
@@ -91,7 +86,6 @@ const TalousJaHallintoPage = ({
       kilpailuErityisetToimenpiteetVuosi2: '',
       kilpailuErityisetToimenpiteetVuosi3: '',
 
-      // RISKIT
       riskVarautumissuunnitelma: '',
       riskVarautumissuunnitelmaLisatiedot: '',
 
@@ -172,7 +166,7 @@ const TalousJaHallintoPage = ({
           padding: '1rem 1.5rem',
           Width: '450px',
           height: '215px',
-          overflow: 'auto',         // rajaa leveys
+          overflow: 'auto',       
           lineHeight: 1.5,
           flex: '1 1 350px'
         }}
@@ -183,10 +177,10 @@ const TalousJaHallintoPage = ({
       </div>
       <h3
     style={{
-      marginLeft: '40px',   // siirtää otsikon alkua sivulle päin
-      marginTop: '-100px',     // pystysuuntainen etäisyys edellisestä
-      fontSize: '32px',      // haluttu koko
-      fontWeight: '700'      // haluttu paksuus
+      marginLeft: '40px',   
+      marginTop: '-100px',     
+      fontSize: '32px',      
+      fontWeight: '700'      
     }}
   >
     Talous ja hallinto
@@ -1028,8 +1022,8 @@ const TalousJaHallintoPage = ({
   style={{
     marginTop: '1rem',
     display: 'flex',
-    justifyContent: 'center',   // keskittää napit
-    gap: '1.5rem',                // sama marginaali napin väliin
+    justifyContent: 'center',   
+    gap: '1.5rem',                
     alignItems: 'center'
   }}
 >
@@ -1040,7 +1034,7 @@ const TalousJaHallintoPage = ({
       fontSize: '16px',
       padding: '10px 20px',
       borderRadius: '8px',
-      backgroundColor: '#0345FA',      // harmaa “Edellinen”
+      backgroundColor: '#0345FA',      
       color: 'white',
       border: 'none',
       cursor: 'pointer'
@@ -1056,7 +1050,7 @@ const TalousJaHallintoPage = ({
       fontSize: '16px',
       padding: '10px 20px',
       borderRadius: '8px',
-      backgroundColor: '#0345FA',      // sininen “Seuraava” (kuten Johdanto)
+      backgroundColor: '#0345FA',     
       color: 'white',
       border: 'none',
       cursor: 'pointer'

@@ -9,15 +9,12 @@ import {
   euLogo 
 } from './logos.js';
 
-// Apufunktio, joka palauttaa monivuotisten tavoitteiden tekstin,
-// jos vähintään yksi kenttä (vuosi-1, vuosi-2, vuosi-3) sisältää dataa.
 function getGoalsText(goal1, goal2, goal3) {
   const t1 = (goal1 || "").trim();
   const t2 = (goal2 || "").trim();
   const t3 = (goal3 || "").trim();
   if (!t1 && !t2 && !t3) return "";
 
-  // Lisätään \n\n jotta solun sisällä tulee yksi tyhjä rivi rivinvaihtojen väliin
   return `Vuosi-1: ${t1}\n\nVuosi-2: ${t2}\n\nVuosi-3: ${t3}`;
 }
 
@@ -34,7 +31,6 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
   let startY = 40;
 
-  // PDF-raportin otsikko
   doc.setFontSize(16);
   doc.text("ESG Vastuullisuusraportti", 14, startY);
   startY += 10;
@@ -182,7 +178,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
       environmentData.envMuutToimenpiteetLisatiedot || "",
     ],
   ];
-  // Lisää ympäristön tavoitteet, jos kentät eivät ole tyhjiä
+
   const envGoals = getGoalsText(
     environmentData.envTavoitteetVuosi1,
     environmentData.envTavoitteetVuosi2,
@@ -195,11 +191,9 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
   (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
 );
 
-// 3) Muunna taulukon body siten, että "Kuvaus muista mahdollisista toimenpiteistä"
-//    venyy kahden sarakkeen yli (colSpan:2) ja muut rivit pysyvät ennallaan.
 const bodyEnv = filteredRowsEnv.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    // muista-toimenpiteet löytyy col2:sta
+
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -207,17 +201,14 @@ const bodyEnv = filteredRowsEnv.map(([label, col2, col3]) => {
   }
 
   if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    // tavoitteet löytyy col3:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
-  // Muut rivit kolmeen sarakkeeseen
   return [ label, col2, col3 ];
 });
 
-// 4) Piirrä taulukko jos rivejä löytyy
 if (bodyEnv.length > 0) {
   doc.setFontSize(14);
   doc.text("Ympäristö", 14, startY);
@@ -295,9 +286,7 @@ if (bodyEnv.length > 0) {
       ""
     ],
   ];
- // 3. Monimuotoisuus
 
-// 1) Lisää monimuotoisuuden tavoitteet, jos kentät eivät ole tyhjiä
 const monoGoals = getGoalsText(
   environmentData.divTavoitteetVuosi1,
   environmentData.divTavoitteetVuosi2,
@@ -311,16 +300,12 @@ if (monoGoals) {
   ]);
 }
 
-// 2) Suodata pois tyhjät rivit
 const filteredRowsMono = rowsMono.filter(([_, col2, col3]) =>
   (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
 );
 
-// 3) Muunna taulukon body siten, että "Kuvaus muista mahdollisista toimenpiteistä"
-//    venyy kahden sarakkeen yli, muut rivit pysyvät kolmen sarakkeen muotoon
 const bodyMono = filteredRowsMono.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -328,7 +313,6 @@ const bodyMono = filteredRowsMono.map(([label, col2, col3]) => {
   }
 
   if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    // tavoitteet löytyy col3:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -337,7 +321,6 @@ const bodyMono = filteredRowsMono.map(([label, col2, col3]) => {
   return [ label, col2, col3 ];
 });
 
-// 4) Piirrä Monimuotoisuus‑taulukko, jos rivejä löytyy
 if (bodyMono.length > 0) {
   autoTable(doc, {
     startY,
@@ -446,7 +429,6 @@ if (bodyMono.length > 0) {
   
   const bodyPelto = filteredRowsPelto.map(([label, col2, col3]) => {
     if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-      // muista-toimenpiteet löytyy col2:sta
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
         { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -454,7 +436,6 @@ if (bodyMono.length > 0) {
     }
   
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-      // tavoitteet löytyy col3:sta
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -545,7 +526,6 @@ if (bodyMono.length > 0) {
   
   const bodyLanta = filteredRowsLanta.map(([label, col2, col3]) => {
     if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-      // muista-toimenpiteet löytyy col2:sta
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
         { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -553,7 +533,6 @@ if (bodyMono.length > 0) {
     }
   
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-      // tavoitteet löytyy col3:sta
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -644,7 +623,6 @@ if (bodyMono.length > 0) {
   
   const bodyEnergy = filteredRowsEnergy.map(([label, col2, col3]) => {
     if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-      // muista-toimenpiteet löytyy col2:sta
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
         { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -652,7 +630,6 @@ if (bodyMono.length > 0) {
     }
   
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-      // tavoitteet löytyy col3:sta
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -678,7 +655,6 @@ if (bodyMono.length > 0) {
 
 // 3. Sosiaalinen vastuu: Henkilöstö ja työolosuhteet
 const rowsSocial = [
-  // Ensimmäinen osa: peruskentät
   [
     "Kirjallinen henkilöstöstrategia tehty",
     socialData.henkilostoStrategia || "",
@@ -737,7 +713,6 @@ const rowsSocial = [
     socialData.tyoajanMittaaminen || "",
     socialData.tyoajanMittaaminenLisatiedot || ""
   ],
-  // Ryhmittely: Työntekijöihin liittyvää
   ["Työntekijöihin liittyvää", "", ""],
   [
     "Kuvaus työntekijöiden palkkauksesta",
@@ -796,7 +771,6 @@ const rowsSocial = [
   ],
 ];
 
-// Henkilöstö ja työolosuhteet: yhdistetään kolmen vuoden tavoitteet
 const henkiloTavoitteet = getGoalsText(
   socialData.henkilostoTavoitteetVuosi1,
   socialData.henkilostoTavoitteetVuosi2,
@@ -816,7 +790,6 @@ const filteredRowsSocial = rowsSocial.filter(([_, col2, col3]) =>
 
 const bodySocial = filteredRowsSocial.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -824,7 +797,6 @@ const bodySocial = filteredRowsSocial.map(([label, col2, col3]) => {
   }
 
   if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    // tavoitteet löytyy col3:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -885,7 +857,6 @@ const rowsCoop = [
   ],
 ];
 
-// Yhteistyö ja avoimuus: yhdistetään kolmen vuoden tavoitteet
 const coopTavoitteet = getGoalsText(
   socialData.yhteistyoErityisetVuosi1,
   socialData.yhteistyoErityisetVuosi2,
@@ -905,7 +876,6 @@ const filteredRowsCoop = rowsCoop.filter(([_, col2, col3]) =>
 
 const bodyCoop = filteredRowsCoop.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -913,7 +883,6 @@ const bodyCoop = filteredRowsCoop.map(([label, col2, col3]) => {
   }
 
   if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    // tavoitteet löytyy col3:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1028,7 +997,7 @@ const rowsAnimalWelfare = [
 ];
 
 const animalWelfareGoals = getGoalsText(
-  socialData.nautojenTerveydenhuoltorekisteriErityiset, // oletettu kolmen vuoden kenttä
+  socialData.nautojenTerveydenhuoltorekisteriErityiset, 
   socialData.nautojenTerveydenhuoltorekisteriErityiset2,
   socialData.nautojenTerveydenhuoltorekisteriErityiset3
 );
@@ -1046,7 +1015,6 @@ const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(([_, col2, col3]) =>
 
 const bodyAnimalWelfare = filteredRowsAnimalWelfare.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1054,7 +1022,6 @@ const bodyAnimalWelfare = filteredRowsAnimalWelfare.map(([label, col2, col3]) =>
   }
 
   if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    // tavoitteet löytyy col3:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1108,7 +1075,6 @@ const rowsQuality = [
   ],
 ];
 
-// Tuotteen laatu: yhdistetään kolmen vuoden tavoitteet
 const qualityTavoitteet = getGoalsText(
   socialData.maitoErityisetToimenpiteetVuosi1,
   socialData.maitoErityisetToimenpiteetVuosi2,
@@ -1128,7 +1094,6 @@ const filteredRowsQuality = rowsQuality.filter(([_, col2, col3]) =>
 
 const bodyQuality = filteredRowsQuality.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1136,7 +1101,6 @@ const bodyQuality = filteredRowsQuality.map(([label, col2, col3]) => {
   }
 
   if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    // tavoitteet löytyy col3:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1160,7 +1124,6 @@ if (bodyQuality.length > 0) {
   startY = doc.lastAutoTable.finalY + 10;
 }
   
-// 1. Johtaminen - taulukko (talous ja hallinto -osio)
 const rowsJohtaminen = [
   [
     "Yrityksen arvot on määritetty",
@@ -1204,7 +1167,6 @@ const rowsJohtaminen = [
   ]
 ];
 
-// Yhdistetään johtamisen tavoitteet vuositason kentistä
 const johtaminenTavoitteet = getGoalsText(
   localFinanceData.johtaminenErityisetToimenpiteetVuosi1,
   localFinanceData.johtaminenErityisetToimenpiteetVuosi2,
@@ -1224,7 +1186,6 @@ const filteredRowsJohtaminen = rowsJohtaminen.filter(([_, col2, col3]) =>
 
 const bodyJohtaminen = filteredRowsJohtaminen.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1232,7 +1193,6 @@ const bodyJohtaminen = filteredRowsJohtaminen.map(([label, col2, col3]) => {
   }
 
   if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    // tavoitteet löytyy col3:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1259,7 +1219,6 @@ if (bodyJohtaminen.length > 0) {
   startY = doc.lastAutoTable.finalY + 10;
 }
 
-// Kilpailukyky ja talous -taulukko
 const rowsKilpailukykyTalous = [
   [
     "Toiminnan tavoitteet ja mittarit on määritetty",
@@ -1332,7 +1291,6 @@ const filteredRowsKilpailukykyTalous = rowsKilpailukykyTalous.filter(([_, col2, 
 
 const bodyKilpailukyky = filteredRowsKilpailukykyTalous.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1340,7 +1298,6 @@ const bodyKilpailukyky = filteredRowsKilpailukykyTalous.map(([label, col2, col3]
   }
 
   if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    // tavoitteet löytyy col3:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1364,7 +1321,6 @@ if (bodyKilpailukyky.length > 0) {
   startY = doc.lastAutoTable.finalY + 10;
 }
 
-// Riskien hallinta - osio
 const rowsRisk = [
   [
     "Varautumissuunnitelma poikkeustilanteisiin tehty",
@@ -1453,7 +1409,6 @@ const filteredRowsRisk = rowsRisk.filter(([_, col2, col3]) =>
 
 const bodyRisk = filteredRowsRisk.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1461,7 +1416,6 @@ const bodyRisk = filteredRowsRisk.map(([label, col2, col3]) => {
   }
 
   if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    // tavoitteet löytyy col3:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
       { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
@@ -1484,8 +1438,6 @@ if (bodyRisk.length > 0) {
   });
   startY = doc.lastAutoTable.finalY + 10;
 }
-
-  // Lopuksi lisätään päivämäärä ja tallennetaan PDF
   const now = new Date();
   const day = String(now.getDate()).padStart(2, '0');
   const month = String(now.getMonth() + 1).padStart(2, '0');

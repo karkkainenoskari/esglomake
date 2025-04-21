@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useDropzone } from 'react-dropzone';
 import * as pdfjsLib from 'pdfjs-dist';
-import LogoHeader from './LogoHeader'; // logo
+import LogoHeader from './LogoHeader';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
@@ -26,14 +25,10 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <LogoHeader />
       <h1 style={{ textAlign: 'center' }}>Maitotilan ESG-vastuullisuusraportti</h1>
-
-      {/* Flex-kontti, jossa "Yrityksen perustiedot" ja "Ohjeet lomakkeen täyttöön" laatikot näkyvät vierekkäin. */}
       <main style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem' }}>
-        {/* Yrityksen perustiedot -lomake */}
         <div className="initial-page">
           <h2>Yrityksen perustiedot</h2>
           <form onSubmit={handleSubmit}>
-            {/* Yrityksen nimi */}
             <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
               <label style={{ width: '180px' }}>Yrityksen nimi:</label>
               <input
@@ -161,7 +156,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
       fontSize: '16px',
       padding: '10px 20px',
       borderRadius: '8px',
-      backgroundColor: '#007acc',  // your custom green
+      backgroundColor: '#007acc', 
       color: 'white',
       border: 'none',
       cursor: 'pointer'
@@ -173,9 +168,6 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
 
           </form>
         </div>
-
-        {/* Ohjeiden laatikko – pysyy samana ennallaan, sisältäen uudet ohjetiedot. 
-             Lisätty overflowY: 'auto' jotta laatikossa näkyy scrollauspalkki. */}
         <div
           style={{
             flexShrink: 0,
@@ -228,9 +220,6 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
           </ol>
         </div>
       </main>
-
-      {/* PDF-tiedoston pudotusalue, jossa lisää tilaa PDF-drop zone:n ja muun sisällön väliin (marginTop: '2rem') */}
-
     </div>
   );
 };

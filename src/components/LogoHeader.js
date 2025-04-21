@@ -4,21 +4,21 @@ const LogoHeader = () => (
   <header
   style={{
     width: '100%',
-    backgroundColor: '#fff', // Valkoinen
+    backgroundColor: '#fff', 
     padding: '10px 0',
     position: 'fixed',
     top: 0,
     left: 0,
     zIndex: 1000,
-    borderBottom: '1px solid #ccc' // Alareunan viiva
+    borderBottom: '1px solid #ccc' 
   }}
 >
 <div
       style={{
         display: 'flex',
-        justifyContent: 'space-evenly', // Tasainen jako koko leveyteen
+        justifyContent: 'space-evenly', 
         alignItems: 'center',
-        width: '100%' // Varmistaa, että div ulottuu koko sivun leveydelle
+        width: '100%'
       }}
     >
       <img src="/savonia.png" alt="Savonia" style={{ height: '60px' }} />

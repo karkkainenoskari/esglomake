@@ -1,4 +1,3 @@
-// src/components/SosiaalinenVastuuPage.js
 import React, { useState, useEffect } from 'react';
 import './tables.css';
 import LogoHeader from './LogoHeader';
@@ -7,14 +6,12 @@ import YesNoToggle from './YesNoToggle';
 
 
 const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUpdate }) => {
-  // Alustetaan tila lazy initializerilla: ensin tarkistetaan localStorage.
   const [socialData, setSocialData] = useState(() => {
     const savedData = localStorage.getItem('socialData');
     if (savedData) {
       return JSON.parse(savedData);
     }
     return initialSocialData || {
-      // 1. Henkilöstö ja työolosuhteet
       henkilostoStrategia: '',
       henkilostoStrategiaLisatiedot: '',
 
@@ -36,7 +33,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       henkilostoTavoitteetVuosi2: '',
       henkilostoTavoitteetVuosi3: '',
 
-      // 2. Yrittäjiin liittyvää
       osaamisenKehittaminen: '',
       osaamisenKehittaminenLisatiedot: '',
       osaamisenKehittaminenTavoitteet: '',
@@ -56,7 +52,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       tyoajanMittaaminenLisatiedot: '',
       tyoajanMittaaminenTavoitteet: '',
 
-      // 3. Työntekijöihin liittyvää
       palkkaus: '',
       palkkausLisatiedot: '',
       palkkausTavoitteet: '',
@@ -102,9 +97,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       maitoErityisetToimenpiteetVuosi2: '',
       maitoErityisetToimenpiteetVuosi3: '',
      
-
-
-      // 3.2 Yhteistyö ja avoimuus (omaksi taulukoksi)
       yhteistyoMuidenYrittajien: '',
       yhteistyoMuidenYrittajienLisatiedot: '',
       yhteistyoMuidenYrittajienTavoitteet: '',
@@ -126,7 +118,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       yhteistyoErityisetVuodet: '',
       yhteistyoErityisetTavoiteTeksti: '',
 
-      // 3.3 Eläinten hyvinvointi
       nautojenTerveydenhuoltorekisteri: '',
       nautojenTerveydenhuoltorekisteriLisatiedot: '',
       nautojenTerveydenhuoltorekisteriTavoitteet: '',
@@ -189,7 +180,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       elviStatusLisatiedot: '',
       elviStatusTavoitteet: '',
       elviStatusErityiset: '',
-      // 3.4 Maidon laatu
+
       laakekirjanpito: '',
       laakekirjanpitoLisatiedot: '',
       laakekirjanpitoTavoitteet: '',
@@ -205,7 +196,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       maitoErityisetToimenpiteet: '',
       maitoErityisetToimenpiteetLisatiedot: '',
       maitoErityisetToimenpiteetTavoitteet: '',
-      // Uudet kentät Eläinten hyvinvointi -osuudelle
       maitoErityisetToimenpiteetVuodet: '',
       maitoErityisetToimenpiteetTavoiteTeksti: ''
     };
@@ -217,7 +207,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
     }
   }, [initialSocialData]);
 
-  // Tallennetaan socialData localStorageen aina, kun sitä muutetaan.
   useEffect(() => {
     localStorage.setItem('socialData', JSON.stringify(socialData));
     if (onDataUpdate) {
@@ -236,10 +225,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
   };
   return (
     <div style={{ padding: '1rem', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Lisätään logot yläosaan */}
       <LogoHeader />
-
-
       <div
         style={{
           marginLeft: '350px',
@@ -250,7 +236,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           padding: '1rem 1.5rem',
           Width: '450px',
           height: '215px',
-          overflow: 'auto',         // rajaa leveys
+          overflow: 'auto',        
           lineHeight: 1.5,
           flex: '1 1 350px'
         }}
@@ -261,10 +247,10 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       </div>
       <h3
     style={{
-      marginLeft: '40px',   // siirtää otsikon alkua sivulle päin
-      marginTop: '-100px',     // pystysuuntainen etäisyys edellisestä
-      fontSize: '32px',      // haluttu koko
-      fontWeight: '700'      // haluttu paksuus
+      marginLeft: '40px',   
+      marginTop: '-100px',     
+      fontSize: '32px',      
+      fontWeight: '700'      
     }}
   >
     Sosiaalinen vastuu
@@ -1185,7 +1171,6 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
                 />
               </td>
             </tr>
-            {/* Uusi rivi eläinten hyvinvointi -osuudelle: vuosisyklin valinta + tavoitekenttä */}
             <tr>
               <td>Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä</td>
               <td colSpan="3">
@@ -1233,8 +1218,8 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
   style={{
     marginTop: '1rem',
     display: 'flex',
-    justifyContent: 'center',   // keskittää napit
-    gap: '1.5rem',                // sama marginaali napin väliin
+    justifyContent: 'center', 
+    gap: '1.5rem',                
     alignItems: 'center'
   }}
 >
@@ -1245,7 +1230,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       fontSize: '16px',
       padding: '10px 20px',
       borderRadius: '8px',
-      backgroundColor: '#ec9005',      // harmaa “Edellinen”
+      backgroundColor: '#ec9005', 
       color: 'white',
       border: 'none',
       cursor: 'pointer'
@@ -1261,7 +1246,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
       fontSize: '16px',
       padding: '10px 20px',
       borderRadius: '8px',
-      backgroundColor: '#ec9005',      // sininen “Seuraava” (kuten Johdanto)
+      backgroundColor: '#ec9005',   
       color: 'white',
       border: 'none',
       cursor: 'pointer'
