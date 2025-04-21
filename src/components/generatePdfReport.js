@@ -198,27 +198,18 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 //    venyy kahden sarakkeen yli (colSpan:2) ja muut rivit pysyvät ennallaan.
 const bodyEnv = filteredRowsEnv.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    // muista-toimenpiteet löytyy col2:sta
     return [
-      // Label-solu
-      {
-        content: label,
-        styles: {
-          cellWidth: 60,
-          overflow: 'linebreak',
-          valign: 'top',
-          cellPadding: 3
-        }
-      },
-      // Kuvaus-solu yhdistää sarakkeet 2+3
-      {
-        content: col2 || "",
-        colSpan: 2,
-        styles: {
-          overflow: 'linebreak',
-          valign: 'top',
-          cellPadding: 3
-        }
-      }
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+
+  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+    // tavoitteet löytyy col3:sta
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
   // Muut rivit kolmeen sarakkeeseen
@@ -328,25 +319,18 @@ const filteredRowsMono = rowsMono.filter(([_, col2, col3]) =>
 //    venyy kahden sarakkeen yli, muut rivit pysyvät kolmen sarakkeen muotoon
 const bodyMono = filteredRowsMono.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    // muista-toimenpiteet löytyy col2:sta
     return [
-      {
-        content: label,
-        styles: {
-          cellWidth: 60,
-          overflow: 'linebreak',
-          valign: 'top',
-          cellPadding: 3
-        }
-      },
-      {
-        content: col2 || "",
-        colSpan: 2,
-        styles: {
-          overflow: 'linebreak',
-          valign: 'top',
-          cellPadding: 3
-        }
-      }
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+
+  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+    // tavoitteet löytyy col3:sta
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
   return [ label, col2, col3 ];
@@ -461,9 +445,18 @@ if (bodyMono.length > 0) {
   
   const bodyPelto = filteredRowsPelto.map(([label, col2, col3]) => {
     if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      // muista-toimenpiteet löytyy col2:sta
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+  
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      // tavoitteet löytyy col3:sta
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
       ];
     }
     return [ label, col2, col3 ];
@@ -551,9 +544,18 @@ if (bodyMono.length > 0) {
   
   const bodyLanta = filteredRowsLanta.map(([label, col2, col3]) => {
     if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      // muista-toimenpiteet löytyy col2:sta
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+  
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      // tavoitteet löytyy col3:sta
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
       ];
     }
     return [ label, col2, col3 ];
@@ -641,9 +643,18 @@ if (bodyMono.length > 0) {
   
   const bodyEnergy = filteredRowsEnergy.map(([label, col2, col3]) => {
     if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      // muista-toimenpiteet löytyy col2:sta
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+  
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      // tavoitteet löytyy col3:sta
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
       ];
     }
     return [ label, col2, col3 ];
@@ -804,9 +815,18 @@ const filteredRowsSocial = rowsSocial.filter(([_, col2, col3]) =>
 
 const bodySocial = filteredRowsSocial.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+
+  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+    // tavoitteet löytyy col3:sta
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
   return [label, col2, col3];
@@ -884,9 +904,18 @@ const filteredRowsCoop = rowsCoop.filter(([_, col2, col3]) =>
 
 const bodyCoop = filteredRowsCoop.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+
+  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+    // tavoitteet löytyy col3:sta
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
   return [label, col2, col3];
@@ -1016,9 +1045,18 @@ const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(([_, col2, col3]) =>
 
 const bodyAnimalWelfare = filteredRowsAnimalWelfare.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+
+  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+    // tavoitteet löytyy col3:sta
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
   return [label, col2, col3];
@@ -1089,9 +1127,18 @@ const filteredRowsQuality = rowsQuality.filter(([_, col2, col3]) =>
 
 const bodyQuality = filteredRowsQuality.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    // muista-toimenpiteet löytyy col2:sta
     return [
       { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2 || "", colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+
+  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+    // tavoitteet löytyy col3:sta
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
   return [label, col2, col3];
@@ -1176,9 +1223,18 @@ const filteredRowsJohtaminen = rowsJohtaminen.filter(([_, col2, col3]) =>
 
 const bodyJohtaminen = filteredRowsJohtaminen.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    // muista-toimenpiteet löytyy col2:sta
     return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign:'top', cellPadding:3 } },
-      { content: col2 || "", colSpan: 2, styles: { overflow:'linebreak', valign:'top', cellPadding:3 } }
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+
+  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+    // tavoitteet löytyy col3:sta
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
   return [ label, col2, col3 ];
@@ -1275,9 +1331,18 @@ const filteredRowsKilpailukykyTalous = rowsKilpailukykyTalous.filter(([_, col2, 
 
 const bodyKilpailukyky = filteredRowsKilpailukykyTalous.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    // muista-toimenpiteet löytyy col2:sta
     return [
-      { content: label, styles:{ cellWidth:60, overflow:'linebreak', valign:'top', cellPadding:3 } },
-      { content: col2||"", colSpan:2, styles:{ overflow:'linebreak', valign:'top', cellPadding:3 } }
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+
+  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+    // tavoitteet löytyy col3:sta
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
   return [ label, col2, col3 ];
@@ -1387,9 +1452,18 @@ const filteredRowsRisk = rowsRisk.filter(([_, col2, col3]) =>
 
 const bodyRisk = filteredRowsRisk.map(([label, col2, col3]) => {
   if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+    // muista-toimenpiteet löytyy col2:sta
     return [
-      { content: label, styles:{ cellWidth:60, overflow:'linebreak', valign:'top', cellPadding:3 } },
-      { content: col2||"", colSpan:2, styles:{ overflow:'linebreak', valign:'top', cellPadding:3 } }
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+    ];
+  }
+
+  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+    // tavoitteet löytyy col3:sta
+    return [
+      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
     ];
   }
   return [ label, col2, col3 ];
