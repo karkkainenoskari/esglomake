@@ -22,7 +22,6 @@ function getGoalsText(goal1, goal2, goal3) {
 const generatePdfReport = (initialData, environmentData, socialData, localFinanceData, financeData) => {
   const doc = new jsPDF();
 
-  // Lisää logot
   doc.addImage(savoniaLogo, 'PNG', 14, 10, 20, 10);
   doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 20, 13);
   doc.addImage(valioLogo, 'PNG', 86, 10, 20, 13);

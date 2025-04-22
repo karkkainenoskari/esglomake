@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect, useRef } from 'react';
 import InitialPage from './components/InitialPage';
 import EnvironmentPage from './components/EnvironmentPage';
@@ -32,7 +31,6 @@ function App() {
   useEffect(() => { window.scrollTo(0, 0); }, [step]);
 
   const handleSaveDraft = () => {
-    // 1) Valmistele JSON-data
     const data = {
       initialData,
       environmentData,
