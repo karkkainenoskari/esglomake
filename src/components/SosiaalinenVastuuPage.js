@@ -242,7 +242,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
         }}
       >
         <p style={{ margin: 0 }}>
-        Maatalousyrityksen sosiaaliseen kestävyyteen kuuluvat asiat, jotka vaikuttavat yritykseen sidoksissa olevien henkilöiden toimintaan sekä yrittäjiin itseensä. Kotieläintalouden tuotantosuunnissa eläinten hyvinvointiin panostamisen voidaan myös katsoa oleva olennainen osa sosiaalista vastuullisuutta. Sosiaalista vastuullisuutta on ihmisten hyvinvointiin liittyvistä asioista sopiminen mahdollisuuksien mukaan kirjallisesti, panostukset terveyteen ja hyvinvointiin sekä riskeihin varautuminen. Sosiaaliseen vastuullisuuteen liittyvät myös osaaminen ja lisäkouluttautuminen, jaksamisen ylläpitäminen esimerkiksi vapaapäivien ja vuosilomien suhteen, sekä toiminnan avoimuus kuten sosiaalisessa mediassa toimiminen tai naapurisuhteiden ylläpitäminen. Verkostotoiminta, kuten pienryhmiin tai kehittämishankkeisiin osallistuminen, voi olla osa sosiaalista kestävyyttä.
+        Sosiaalinen vastuu tarkoittaa yrityksen toimia, jotka vaikuttavat yritystä ympäröivään yhteiskuntaan, yhteisöön, yrityksen työntekijöihin, yrittäjiin itseensä sekä eläimiin. Sosiaalisen vastuullisuuden ytimessä ovat esimerkiksi panostukset henkilöstön johtamiseen, työhyvinvointiin, työtyytyväisyyteen ja -terveyteen sekä työssä jaksamiseen. Myös henkilöstön osaamisen kehittäminen ja lisäkouluttaminen ovat osa sosiaalista vastuullisuutta. Yrityksen toiminnan avoimuus ja näkyminen ulospäin sekä yhteiskunta- ja naapurisuhteiden ylläpitäminen ja kehittäminen, verkostoituminen toisten yrittäjien ja ammattilaisten sekä muun yhteiskunnan kanssa, kuten erilaisiin pienryhmiin, työpajoihin tai kehittämishankkeisiin osallistuminen, ovat osana sosiaalista kestävyyttä. Lisäksi panostukset eläinten hyvinvointiin ja terveyteen sekä tuotteen laatuun katsotaan sosiaaliseksi vastuullisuudeksi.  
         </p>
       </div>
       <h3
@@ -448,7 +448,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
             </tr>
             <tr>
-              <td>Hoitota vaativia tapaturmia keskimäärin, kpl/v</td>
+              <td>Hoitoa vaativia tapaturmia keskimäärin, kpl/v</td>
               <td>
                 <input type="text" name="hoitotaVaativiaTapaturmia" value={socialData.hoitotaVaativiaTapaturmia} onChange={handleChange} style={{ width: '100%' }} />
               </td>
@@ -647,7 +647,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
           <tbody>
             <tr>
               <td>
-                Kuvaa yhteistyötä muiden yrittäjien kanssa<br />
+                Kuvaus yhteistyötä muiden yrittäjien kanssa<br />
 
               </td>
               <td>
@@ -839,7 +839,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
 
-              <td>Sorkkaterveyden seuranta ja hoito säännöllisesti, kyllä/ei</td>
+              <td>Sorkkaterveyden seuranta ja hoito säännöllisesti</td>
               <td style={{ textAlign: 'center' }}>
                 <YesNoToggle
                   value={socialData.sorkkaterveys}

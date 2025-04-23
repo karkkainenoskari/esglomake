@@ -846,7 +846,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             </td>
           </tr>
           <tr>
-            <td>Säilörehun D-arvo keskimäärin (esim. Valman kautta) </td>
+            <td>Säilörehun D-arvo keskimäärin</td>
             <td>
               <input
                 type="text"
@@ -861,7 +861,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                 name="envSaileRehunDArvoLisatiedot"
                 value={envData.envSaileRehunDArvoLisatiedot || ""}
                 onChange={handleChange}
-                style={{ width: '100%' }} placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista"
+                style={{ width: '100%' }} placeholder="Esim. Valman kautta (Tieto löytyy tuotosseurannasta tai meijerin tiedoista)"
               />
             </td>
           </tr>

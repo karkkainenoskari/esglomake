@@ -187,34 +187,36 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
             <li>
               <strong>Lomakkeen täyttäminen</strong>
               <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-                <li>Täytä kentät huolellisesti. Tyhjät kentät eivät näy lopullisessa raportissa.</li>
-                <li>Vasemmassa yläkulmassa oleva <em>kolmen viivan</em> painike avaa valikon, josta löydät kaikki päätoiminnot.</li>
+              <li>Vasemmassa yläkulmassa oleva sininen kolmen viivan painike avaa valikon, josta löydät kaikki päätoiminnot.</li>
+              <li>Raportti koostuu neljästä osiosta: perustiedot, ympäristö, sosiaalinen vastuu sekä talous ja hallinto</li>
+              <li>Pääset liikkumaan osioiden välillä edestakaisin joko alapalkista tai edellinen/seuraava -painikkeista</li>
+              <li>Täytä kustakin osiosta vain omalle yritykselle merkitykselliset asiat tai mistä sinulta löytyy tuloksia ja tekemistä</li>
+              <li>Vastaustyyli vaihtelee riveittäin. Joillekin riveille vastataan kyllä, joillekin riveille voi kirjata tunnusluvun/tuloksen ja joillekin riveille pelkästään kuvataan toimia tai tekemistä. Jokaiselle riville voi kirjoittaa lisätietoa ja tarkempaa kuvausta.</li> 
+              <li>Jokaisen osa-alueen perässä on kohta ”muut mahdolliset toimenpiteet”, jonne voit täydentää omia mahdollisia vastuullisuustoimia, joita ei löydy valmiista listasta.</li>
+              <li>Kunkin osion perässä on mahdollisuus kuvata seuraavan kolmen vuoden tavoitteita kyseiseen osioon liittyen (ympäristö, sosiaalinen, talous)</li>
+              <li>Vain täytetyt/vastatut kohdat tulostuvat raporille, täyttämättömät jäävät pois. Raportti kokoaa tämänhetkiset toimet ja mahdolliset tavoitteet osioittain. </li>
+
               </ul>
             </li>
             <br></br>
             <li>
-              <strong>Tallennus, luonnokset ja jatkaminen</strong>
+              <strong>Tallennus ja jatkaminen</strong>
               <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-                <li><em>Tallenna PDF‑raportti</em> luo lopullisen raportin tällä hetkellä syötetyistä tiedoista.</li>
-                <li><em>Tallenna luonnos</em> lataa selaimeesi JSON‑tiedoston, jossa on kaikki tähänastiset täytetyt kentät.</li>
-                <li><em>Jatka edellistä raporttia</em> lataa aiemmin tallennetun JSON‑luonnoksen ja palauttaa kentät.</li>
+                <li><em>"Tallenna luonnos"</em> lataa selaimeesi JSON‑tiedoston, jossa on kaikki tähänastiset täytetyt kentät.</li>
+                <li><em>"Jatka edellistä raporttia"</em> nappia klikkaamaalla voit ladata aiemmin tallennetun JSON‑luonnoksen ja palauttaa lomakkeeseen aikasemmin jo syöttämäsi tiedot.</li>
                 <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta.(HUOM! Tiedot häviävät lomakkeesta, jos poistat sivuhistoriasta välimuistissa olevat tiedot)</li>
               </ul>
             </li>
             <br></br>
+            <li>
+              <strong>Raportin viimeistely ja tulostaminen</strong>
+              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+                <li>Kun olet täyttänyt raportin valmiiksi, valitse vasemman yläkulman valikosta <em>"Tallenna PDF‑raportti"</em>.</li>
+                <li>PDF avautuu uuteen välilehteen tai latautuu tiedostona. Voit tallentaa sen omalle koneellesi tiedostona tai tulostaa sen tarpeen mukaan.</li>
+                <li>Vain täytetyt kohdat tulostuvat yhteenvetoon</li>
 
-            <li>
-              <strong>Tietojen tyhjentäminen</strong>
-              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-                <li><em>Tyhjennä kaikki</em> (valikossa) poistaa kaikki syötetyt tiedot selaimen muistista. Toiminto kysyy vahvistuksen ennen tyhjennystä.</li>
-              </ul>
-            </li>
-            <br></br>
-            <li>
-              <strong>Raportin viimeistely</strong>
-              <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-                <li>Kun olet täyttänyt kaikki sivut, valitse valikosta <em>Tallenna PDF‑raportti</em>.</li>
-                <li>PDF avautuu uuteen välilehteen tai latautuu tiedostona. Voit tallentaa tai tulostaa sen tarpeen mukaan.</li>
+
+
               </ul>
             </li>
           </ol>

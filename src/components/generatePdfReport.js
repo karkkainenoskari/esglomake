@@ -729,7 +729,7 @@ const rowsSocial = [
     socialData.sairauspoissaolotLisatiedot || ""
   ],
   [
-    "Hoitota vaativia tapaturmia keskimäärin, kpl/v",
+    "Hoitoa vaativia tapaturmia keskimäärin, kpl/v",
     socialData.hoitotaVaativiaTapaturmia || "",
     socialData.hoitotaVaativiaTapaturmiaLisatiedot || ""
   ],
@@ -825,7 +825,7 @@ if (bodySocial.length > 0) {
 // 4. Yhteistyö ja avoimuus
 const rowsCoop = [
   [
-    "Kuvaa yhteistyötä muiden yrittäjien kanssa",
+    "Kuvaus yhteistyötä muiden yrittäjien kanssa",
     socialData.yhteistyoMuidenYrittajien || "",
     socialData.yhteistyoMuidenYrittajienLisatiedot || ""
   ],
