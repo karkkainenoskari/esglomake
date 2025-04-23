@@ -1,12 +1,12 @@
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
-import { 
-  savoniaLogo, 
-  maitoyrittajatLogo, 
-  valioLogo, 
-  ysaoLogo, 
-  euLogo 
+import {
+  savoniaLogo,
+  maitoyrittajatLogo,
+  valioLogo,
+  ysaoLogo,
+  euLogo
 } from './logos.js';
 
 function getGoalsText(goal1, goal2, goal3) {
@@ -22,6 +22,13 @@ function getGoalsText(goal1, goal2, goal3) {
 const generatePdfReport = (initialData, environmentData, socialData, localFinanceData, financeData) => {
   const doc = new jsPDF();
 
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  const dateStr = `${dd}-${mm}-${yyyy}`;
+
+
   doc.addImage(savoniaLogo, 'PNG', 14, 10, 20, 10);
   doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 20, 13);
   doc.addImage(valioLogo, 'PNG', 86, 10, 20, 13);
@@ -29,10 +36,14 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
   doc.addImage(euLogo, 'PNG', 158, 10, 20, 14);
 
   let startY = 40;
-
   doc.setFontSize(16);
   doc.text("ESG Vastuullisuusraportti", 14, startY);
-  startY += 10;
+  startY += 8;
+  
+  // päivämäärä vasempaan reunaan
+  doc.setFontSize(10);
+  doc.text(dateStr, 14, startY);
+  startY += 12;
 
   // 1. Yrityksen perustiedot
   const initialRows = [
@@ -186,62 +197,62 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
   if (envGoals) {
     rowsEnv.push(["Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä", "", envGoals]);
   }
- const filteredRowsEnv = rowsEnv.filter(([_, col2, col3]) =>
-  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
-);
+  const filteredRowsEnv = rowsEnv.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
 
-const bodyEnv = filteredRowsEnv.map(([label, col2, col3]) => {
-  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+  const bodyEnv = filteredRowsEnv.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
 
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-
-  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-  return [ label, col2, col3 ];
-});
-
-if (bodyEnv.length > 0) {
-  doc.setFontSize(14);
-  doc.text("Ympäristö", 14, startY);
-  startY += 10;
-
-  autoTable(doc, {
-    startY,
-    head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos", "Kuvaus"]],
-    body: bodyEnv,
-    theme: 'striped',
-    headStyles: { fillColor: '#4CAF50' },
-    margin: { left: 14, right: 14 },
-    styles: {
-      fontSize: 10,
-      cellPadding: 3,
-      overflow: 'linebreak',
-      valign: 'top'
-    },
-    showHead: 'firstPage',
-    columnStyles: {
-      0: { cellWidth: 60 },
-      1: { cellWidth: 30 },
-      2: { cellWidth: 92 }
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
     }
+
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [label, col2, col3];
   });
 
-  startY = doc.lastAutoTable.finalY + 10;
-}
+  if (bodyEnv.length > 0) {
+    doc.setFontSize(14);
+    doc.text("Ympäristö", 14, startY);
+    startY += 10;
+
+    autoTable(doc, {
+      startY,
+      head: [["Hiilijalanjälki ja tuotannon tehokkuus", "Uusin tulos", "Kuvaus"]],
+      body: bodyEnv,
+      theme: 'striped',
+      headStyles: { fillColor: '#4CAF50' },
+      margin: { left: 14, right: 14 },
+      styles: {
+        fontSize: 10,
+        cellPadding: 3,
+        overflow: 'linebreak',
+        valign: 'top'
+      },
+      showHead: 'firstPage',
+      columnStyles: {
+        0: { cellWidth: 60 },
+        1: { cellWidth: 30 },
+        2: { cellWidth: 92 }
+      }
+    });
+
+    startY = doc.lastAutoTable.finalY + 10;
+  }
 
   // 3. Monimuotoisuus
   const rowsMono = [
     [
       "Maatalousluonnon ja maiseman -hoitosopimus",
-      environmentData.divHoitosopimus || "", 
+      environmentData.divHoitosopimus || "",
       environmentData.divHoitosopimusLisatiedot || ""
     ],
     [
@@ -286,64 +297,64 @@ if (bodyEnv.length > 0) {
     ],
   ];
 
-const monoGoals = getGoalsText(
-  environmentData.divTavoitteetVuosi1,
-  environmentData.divTavoitteetVuosi2,
-  environmentData.divTavoitteetVuosi3
-);
-if (monoGoals) {
-  rowsMono.push([
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    "",
-    monoGoals
-  ]);
-}
-
-const filteredRowsMono = rowsMono.filter(([_, col2, col3]) =>
-  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
-);
-
-const bodyMono = filteredRowsMono.map(([label, col2, col3]) => {
-  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
+  const monoGoals = getGoalsText(
+    environmentData.divTavoitteetVuosi1,
+    environmentData.divTavoitteetVuosi2,
+    environmentData.divTavoitteetVuosi3
+  );
+  if (monoGoals) {
+    rowsMono.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      monoGoals
+    ]);
   }
 
-  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-  return [ label, col2, col3 ];
-});
+  const filteredRowsMono = rowsMono.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
 
-if (bodyMono.length > 0) {
-  autoTable(doc, {
-    startY,
-    head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
-    body: bodyMono,
-    theme: 'striped',
-    headStyles: { fillColor: '#4CAF50' },
-    margin: { left: 14, right: 14 },
-    styles: {
-      fontSize: 10,
-      cellPadding: 3,
-      overflow: 'linebreak',
-      valign: 'top'
-    },
-    showHead: 'firstPage',
-    columnStyles: {
-      0: { cellWidth: 60 },
-      1: { cellWidth: 30 },
-      2: { cellWidth: 92 }
+  const bodyMono = filteredRowsMono.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
     }
+
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [label, col2, col3];
   });
 
-  startY = doc.lastAutoTable.finalY + 10;
-}
+  if (bodyMono.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Monimuotoisuus", "Uusin tulos", "Kuvaus"]],
+      body: bodyMono,
+      theme: 'striped',
+      headStyles: { fillColor: '#4CAF50' },
+      margin: { left: 14, right: 14 },
+      styles: {
+        fontSize: 10,
+        cellPadding: 3,
+        overflow: 'linebreak',
+        valign: 'top'
+      },
+      showHead: 'firstPage',
+      columnStyles: {
+        0: { cellWidth: 60 },
+        1: { cellWidth: 30 },
+        2: { cellWidth: 92 }
+      }
+    });
+
+    startY = doc.lastAutoTable.finalY + 10;
+  }
 
 
   // 4. Peltoviljely
@@ -421,11 +432,11 @@ if (bodyMono.length > 0) {
       peltoGoals
     ]);
   }
-  
+
   const filteredRowsPelto = rowsPelto.filter(([_, col2, col3]) =>
     (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
   );
-  
+
   const bodyPelto = filteredRowsPelto.map(([label, col2, col3]) => {
     if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
       return [
@@ -433,16 +444,16 @@ if (bodyMono.length > 0) {
         { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
       ];
     }
-  
+
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
       ];
     }
-    return [ label, col2, col3 ];
+    return [label, col2, col3];
   });
-  
+
   if (bodyPelto.length > 0) {
     autoTable(doc, {
       startY,
@@ -518,11 +529,11 @@ if (bodyMono.length > 0) {
       lantaGoals
     ]);
   }
-  
+
   const filteredRowsLanta = rowsLanta.filter(([_, col2, col3]) =>
     (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
   );
-  
+
   const bodyLanta = filteredRowsLanta.map(([label, col2, col3]) => {
     if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
       return [
@@ -530,16 +541,16 @@ if (bodyMono.length > 0) {
         { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
       ];
     }
-  
+
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
       ];
     }
-    return [ label, col2, col3 ];
+    return [label, col2, col3];
   });
-  
+
   if (bodyLanta.length > 0) {
     autoTable(doc, {
       startY,
@@ -615,11 +626,11 @@ if (bodyMono.length > 0) {
       energyGoals
     ]);
   }
-  
+
   const filteredRowsEnergy = rowsEnergy.filter(([_, col2, col3]) =>
     (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
   );
-  
+
   const bodyEnergy = filteredRowsEnergy.map(([label, col2, col3]) => {
     if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
       return [
@@ -627,16 +638,16 @@ if (bodyMono.length > 0) {
         { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
       ];
     }
-  
+
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
         { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
       ];
     }
-    return [ label, col2, col3 ];
+    return [label, col2, col3];
   });
-  
+
   if (bodyEnergy.length > 0) {
     autoTable(doc, {
       startY,
@@ -652,797 +663,793 @@ if (bodyMono.length > 0) {
     startY = doc.lastAutoTable.finalY + 10;
   }
 
-// 3. Sosiaalinen vastuu: Henkilöstö ja työolosuhteet
-const rowsSocial = [
-  [
-    "Kirjallinen henkilöstöstrategia tehty",
-    socialData.henkilostoStrategia || "",
-    socialData.henkilostoStrategiaLisatiedot || ""
-  ],
-  [
-    "Kuvaus henkilöstöstrategian sisällöstä",
-    socialData.HenkilostoStrategiaSisalto || "",
-    socialData.HenkilostoStrategiaSisaltoLisatiedot || ""
-  ],
-  [
-    "Työn tuottavuus, maitokg/navettatyöt h",
-    socialData.tyotuottavuus || "",
-    socialData.tyotuottavuusLisatiedot || ""
-  ],
-  [
-    "Tasa-arvon huomiointi",
-    socialData.tasaArvo || "",
-    socialData.tasaArvoLisatiedot || ""
-  ],
-  [
-    "Kuvaus töitä helpottavista ja keventävistä ratkaisuista",
-    socialData.tyotaHelpottavatRatkaisut || "",
-    socialData.tyotaHelpottavatRatkaisutLisatiedot || ""
-  ],
+  // 3. Sosiaalinen vastuu: Henkilöstö ja työolosuhteet
+  const rowsSocial = [
+    [
+      "Kirjallinen henkilöstöstrategia tehty",
+      socialData.henkilostoStrategia || "",
+      socialData.henkilostoStrategiaLisatiedot || ""
+    ],
+    [
+      "Kuvaus henkilöstöstrategian sisällöstä",
+      socialData.HenkilostoStrategiaSisalto || "",
+      socialData.HenkilostoStrategiaSisaltoLisatiedot || ""
+    ],
+    [
+      "Työn tuottavuus, maitokg/navettatyöt h",
+      socialData.tyotuottavuus || "",
+      socialData.tyotuottavuusLisatiedot || ""
+    ],
+    [
+      "Tasa-arvon huomiointi",
+      socialData.tasaArvo || "",
+      socialData.tasaArvoLisatiedot || ""
+    ],
+    [
+      "Kuvaus töitä helpottavista ja keventävistä ratkaisuista",
+      socialData.tyotaHelpottavatRatkaisut || "",
+      socialData.tyotaHelpottavatRatkaisutLisatiedot || ""
+    ],
 
-  ["Yrittäjiin liittyvää", "", ""],
-  [
-    "Oman osaamisen kehittäminen ja lisäkouluttautuminen, pv/v",
-    socialData.osaamisenKehittaminen || "",
-    socialData.osaamisenKehittaminenLisatiedot || ""
-  ],
-  [
-    "Oma työterveyshuolto",
-    socialData.tyoterveyshuolto || "",
-    socialData.tyoterveyshuoltoLisatiedot || ""
-  ],
-  [
-    "Kuvaus oman hyvinvoinnin ja jaksamisen ylläpidosta",
-    socialData.jaksaminen || "",
-    socialData.jaksaminenLisatiedot || ""
-  ],
-  [
-    "Mahdollisuus säännöllisiin vapaapäiviin",
-    socialData.vapaapäivat || "",
-    socialData.vapaapäivatLisatiedot || ""
-  ],
-  [
-    "Vuosilomien pitäminen suunnitellusti",
-    socialData.vuosilomat || "",
-    socialData.vuosilomatLisatiedot || ""
-  ],
- 
-  [
-    "Työajan mittaaminen",
-    socialData.tyoajanMittaaminen || "",
-    socialData.tyoajanMittaaminenLisatiedot || ""
-  ],
-  ["Työntekijöihin liittyvää", "", ""],
-  [
-    "Kuvaus työntekijöiden palkkauksesta",
-    socialData.palkkaus || "",
-    socialData.palkkausLisatiedot || ""
-  ],
-  [
-    "Työterveyshuolto",
-    socialData.tyoterveyshuolto || "",
-    socialData.tyoterveyshuolto2Lisatiedot || ""
-  ],
-  [
-    "Sairauspoissaolot, pv/v",
-    socialData.sairauspoissaolot || "",
-    socialData.sairauspoissaolotLisatiedot || ""
-  ],
-  [
-    "Hoitoa vaativia tapaturmia keskimäärin, kpl/v",
-    socialData.hoitotaVaativiaTapaturmia || "",
-    socialData.hoitotaVaativiaTapaturmiaLisatiedot || ""
-  ],
-  [
-    "Osaamisen kehittäminen ja lisäkouluttautuminen, pv/v",
-    socialData.osaamisenKehittaminenJaLisakouluttautuminen || "",
-    socialData.osaamisenKehittaminenJaLisakouluttautuminenLisatiedot || ""
-  ],
-  [
-    "Kuvaus yrityksen tyhy -toiminnasta",
-    socialData.tyhy || "",
-    socialData.tyhyLisatiedot || ""
-  ],
-  [
-    "Säännölliset kehityskeskuskustelut",
-    socialData.kehityskeskustelut || "",
-    socialData.kehityskeskustelutLisatiedot || ""
-  ],
-  [
-    "Kuvaus säännöllisistä palaverikäytännöistä",
-    socialData.palaverit || "",
-    socialData.palaveritLisatiedot || ""
-  ],
-  [
-    "Työsuhteiden kesto keskimäärin, työvuosia/hlö",
-    socialData.tyosuhteidenKesto || "",
-    socialData.tyosuhteidenKestoLisatiedot || ""
-  ],
-  [
-    "Työtyytyväisyyden mittaaminen käytössä",
-    socialData.tyotyotyot || "",
-    socialData.tyotyotyotLisatiedot || ""
-  ],
-  [
-    "Kuvaus muista mahdollisista toimenpiteistä",
-    socialData.muutErityiset || "",
-    ""
-  ],
-];
+    ["Yrittäjiin liittyvää", "", ""],
+    [
+      "Oman osaamisen kehittäminen ja lisäkouluttautuminen, pv/v",
+      socialData.osaamisenKehittaminen || "",
+      socialData.osaamisenKehittaminenLisatiedot || ""
+    ],
+    [
+      "Oma työterveyshuolto",
+      socialData.tyoterveyshuolto || "",
+      socialData.tyoterveyshuoltoLisatiedot || ""
+    ],
+    [
+      "Kuvaus oman hyvinvoinnin ja jaksamisen ylläpidosta",
+      socialData.jaksaminen || "",
+      socialData.jaksaminenLisatiedot || ""
+    ],
+    [
+      "Mahdollisuus säännöllisiin vapaapäiviin",
+      socialData.vapaapäivat || "",
+      socialData.vapaapäivatLisatiedot || ""
+    ],
+    [
+      "Vuosilomien pitäminen suunnitellusti",
+      socialData.vuosilomat || "",
+      socialData.vuosilomatLisatiedot || ""
+    ],
 
-const henkiloTavoitteet = getGoalsText(
-  socialData.henkilostoTavoitteetVuosi1,
-  socialData.henkilostoTavoitteetVuosi2,
-  socialData.henkilostoTavoitteetVuosi3
-);
-if (henkiloTavoitteet) {
-  rowsSocial.push([
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    "",
-    henkiloTavoitteet
-  ]);
-}
+    [
+      "Työajan mittaaminen",
+      socialData.tyoajanMittaaminen || "",
+      socialData.tyoajanMittaaminenLisatiedot || ""
+    ],
+    ["Työntekijöihin liittyvää", "", ""],
+    [
+      "Kuvaus työntekijöiden palkkauksesta",
+      socialData.palkkaus || "",
+      socialData.palkkausLisatiedot || ""
+    ],
+    [
+      "Työterveyshuolto",
+      socialData.tyoterveyshuolto || "",
+      socialData.tyoterveyshuolto2Lisatiedot || ""
+    ],
+    [
+      "Sairauspoissaolot, pv/v",
+      socialData.sairauspoissaolot || "",
+      socialData.sairauspoissaolotLisatiedot || ""
+    ],
+    [
+      "Hoitoa vaativia tapaturmia keskimäärin, kpl/v",
+      socialData.hoitotaVaativiaTapaturmia || "",
+      socialData.hoitotaVaativiaTapaturmiaLisatiedot || ""
+    ],
+    [
+      "Osaamisen kehittäminen ja lisäkouluttautuminen, pv/v",
+      socialData.osaamisenKehittaminenJaLisakouluttautuminen || "",
+      socialData.osaamisenKehittaminenJaLisakouluttautuminenLisatiedot || ""
+    ],
+    [
+      "Kuvaus yrityksen tyhy -toiminnasta",
+      socialData.tyhy || "",
+      socialData.tyhyLisatiedot || ""
+    ],
+    [
+      "Säännölliset kehityskeskuskustelut",
+      socialData.kehityskeskustelut || "",
+      socialData.kehityskeskustelutLisatiedot || ""
+    ],
+    [
+      "Kuvaus säännöllisistä palaverikäytännöistä",
+      socialData.palaverit || "",
+      socialData.palaveritLisatiedot || ""
+    ],
+    [
+      "Työsuhteiden kesto keskimäärin, työvuosia/hlö",
+      socialData.tyosuhteidenKesto || "",
+      socialData.tyosuhteidenKestoLisatiedot || ""
+    ],
+    [
+      "Työtyytyväisyyden mittaaminen käytössä",
+      socialData.tyotyotyot || "",
+      socialData.tyotyotyotLisatiedot || ""
+    ],
+    [
+      "Kuvaus muista mahdollisista toimenpiteistä",
+      socialData.muutErityiset || "",
+      ""
+    ],
+  ];
 
-const filteredRowsSocial = rowsSocial.filter(([_, col2, col3]) =>
-  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
-);
-
-const bodySocial = filteredRowsSocial.map(([label, col2, col3]) => {
-  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
+  const henkiloTavoitteet = getGoalsText(
+    socialData.henkilostoTavoitteetVuosi1,
+    socialData.henkilostoTavoitteetVuosi2,
+    socialData.henkilostoTavoitteetVuosi3
+  );
+  if (henkiloTavoitteet) {
+    rowsSocial.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      henkiloTavoitteet
+    ]);
   }
 
-  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-  return [label, col2, col3];
-});
+  const filteredRowsSocial = rowsSocial.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
 
-if (bodySocial.length > 0) {
-  doc.setFontSize(14);
-  doc.text("Sosiaalinen vastuu", 14, startY);
-  startY += 10;
-  autoTable(doc, {
-    startY,
-    head: [["Henkilöstö ja työolosuhteet","Uusin tulos","Kuvaus"]],
-    body: bodySocial,
-    theme: 'striped',
-    headStyles: { fillColor: '#FFA500' },
-    margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
-    showHead: 'firstPage',
-    columnStyles: {0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
+  const bodySocial = filteredRowsSocial.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [label, col2, col3];
   });
-  startY = doc.lastAutoTable.finalY + 10;
-}
 
-// 4. Yhteistyö ja avoimuus
-const rowsCoop = [
-  [
-    "Kuvaus yhteistyötä muiden yrittäjien kanssa",
-    socialData.yhteistyoMuidenYrittajien || "",
-    socialData.yhteistyoMuidenYrittajienLisatiedot || ""
-  ],
-  [
-    "Kuvaus yhteistyöstä kyläyhteisön kanssa",
-    socialData.yhteistyoKylayhteisyo || "",
-    socialData.yhteistyoKylayhteisyoLisatiedot || ""
-  ],
-  [
-    "Kuvaus merkittävimmistä yhteistyökumppaneista",
-    socialData.yhteistyoMerkittavat || "",
-    socialData.yhteistyoMerkittavatLisatiedot || ""
-  ],
-  [
-    "Kuvaus yrittäjien luottamustoimista",
-    socialData.yhteistyoLuottamustoimet || "",
-    socialData.yhteistyoLuottamustoimetLisatiedot || ""
-  ],
-  [
-    "Kuvaus yrityksen avoimuudesta ja imagon kehittämisestä",
-    socialData.avoimuusImago || "",
-    socialData.avoimuusImagoLisatiedot || ""
-  ],
-  [
-    "Kuvaus muista mahdollisista toimenpiteistä",
-    socialData.yhteistyoErityiset || "",
-    ""
-  ],
-];
-
-const coopTavoitteet = getGoalsText(
-  socialData.yhteistyoErityisetVuosi1,
-  socialData.yhteistyoErityisetVuosi2,
-  socialData.yhteistyoErityisetVuosi3
-);
-if (coopTavoitteet) {
-  rowsCoop.push([
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    "",
-    coopTavoitteet
-  ]);
-}
-
-const filteredRowsCoop = rowsCoop.filter(([_, col2, col3]) =>
-  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
-);
-
-const bodyCoop = filteredRowsCoop.map(([label, col2, col3]) => {
-  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
+  if (bodySocial.length > 0) {
+    doc.setFontSize(14);
+    doc.text("Sosiaalinen vastuu", 14, startY);
+    startY += 10;
+    autoTable(doc, {
+      startY,
+      head: [["Henkilöstö ja työolosuhteet", "Uusin tulos", "Kuvaus"]],
+      body: bodySocial,
+      theme: 'striped',
+      headStyles: { fillColor: '#FFA500' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    });
+    startY = doc.lastAutoTable.finalY + 10;
   }
 
-  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-  return [label, col2, col3];
-});
+  // 4. Yhteistyö ja avoimuus
+  const rowsCoop = [
+    [
+      "Kuvaus yhteistyötä muiden yrittäjien kanssa",
+      socialData.yhteistyoMuidenYrittajien || "",
+      socialData.yhteistyoMuidenYrittajienLisatiedot || ""
+    ],
+    [
+      "Kuvaus yhteistyöstä kyläyhteisön kanssa",
+      socialData.yhteistyoKylayhteisyo || "",
+      socialData.yhteistyoKylayhteisyoLisatiedot || ""
+    ],
+    [
+      "Kuvaus merkittävimmistä yhteistyökumppaneista",
+      socialData.yhteistyoMerkittavat || "",
+      socialData.yhteistyoMerkittavatLisatiedot || ""
+    ],
+    [
+      "Kuvaus yrittäjien luottamustoimista",
+      socialData.yhteistyoLuottamustoimet || "",
+      socialData.yhteistyoLuottamustoimetLisatiedot || ""
+    ],
+    [
+      "Kuvaus yrityksen avoimuudesta ja imagon kehittämisestä",
+      socialData.avoimuusImago || "",
+      socialData.avoimuusImagoLisatiedot || ""
+    ],
+    [
+      "Kuvaus muista mahdollisista toimenpiteistä",
+      socialData.yhteistyoErityiset || "",
+      ""
+    ],
+  ];
 
-if (bodyCoop.length > 0) {
-  autoTable(doc, {
-    startY,
-    head: [["Yhteistyö ja avoimuus","Uusin tulos","Kuvaus"]],
-    body: bodyCoop,
-    theme: 'striped',
-    headStyles: { fillColor: '#FFA500' },
-    margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
-    showHead: 'firstPage',
-    columnStyles: {0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
+  const coopTavoitteet = getGoalsText(
+    socialData.yhteistyoErityisetVuosi1,
+    socialData.yhteistyoErityisetVuosi2,
+    socialData.yhteistyoErityisetVuosi3
+  );
+  if (coopTavoitteet) {
+    rowsCoop.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      coopTavoitteet
+    ]);
+  }
+
+  const filteredRowsCoop = rowsCoop.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
+
+  const bodyCoop = filteredRowsCoop.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [label, col2, col3];
   });
-  startY = doc.lastAutoTable.finalY + 10;
-}
 
-// 7. Eläinten hyvinvointi
-const rowsAnimalWelfare = [
-  [
-    "Nautojen terveydenhuoltorekisteri Naseva käytössä",
-    socialData.nautojenTerveydenhuoltorekisteri || "",
-    socialData.nautojenTerveydenhuoltorekisteriLisatiedot || ""
-  ],
-  [
-    "Sorkkaterveyden seuranta ja hoito säännöllisesti, kyllä/ei",
-    socialData.sorkkaterveys || "",
-    socialData.sorkkaterveysLisatiedot || ""
-  ],
-  [
-    "Lehmien poisto %",
-    socialData.lehmienpoisto || "",
-    socialData.lehminepoistoLisatiedot || ""
-  ],
-  [
-    "Vasikkakuolleisuus %",
-    socialData.vasikkakuolleisuus || "",
-    socialData.vasikkakuolleisuusLisatiedot || ""
-  ],
-  [
-    "Lehmien keskipoikimakerta",
-    socialData.lehmienKeskipoikimakerta || "",
-    socialData.lehmienKeskipoikimakertaLisatiedot || ""
-  ],
-  [
-    "Poistettujen lehmien elinikäistuotos, kg",
-    socialData.poistettujenLehmienElinikaiTuotos || "",
-    socialData.poistettujenLehmienElinikaiTuotosLisatiedot || ""
-  ],
-  [
-    "Poistettujen lehmien EKM kg/elinpäivä",
-    socialData.ekmPerElinpiva || "",
-    socialData.ekmPerElinpivaLisatiedot || ""
-  ],
-  [
-    "Laiduntaminen käytössä",
-    socialData.laiduntaminen || "",
-    socialData.laiduntaminenLisatiedot || ""
-  ],
-  [
-    "Jaloittelu käytössä",
-    socialData.jaloittelu || "",
-    socialData.jaloitteluLisatiedot || ""
-  ],
-  [
-    "Ympärivuotinen jaloittelu käytössä",
-    socialData.ymparivuotinenJaloittelu || "",
-    socialData.ymparivuotinenJaloitteluLisatiedot || ""
-  ],
-  [
-    "Kuvaus lehmien makuupaikasta",
-    socialData.lehmienMakuupaikka || "",
-    socialData.lehmienMakuupaikkaLisatiedot || ""
-  ],
-  [
-    "Viilennys lypsynavetassa",
-    socialData.viilennys || "",
-    socialData.viilennysLisatiedot || ""
-  ],
-  [
-    "Lehmillä käytävämatot",
-    socialData.lehmillaKaytavat || "",
-    socialData.lehmillaKaytavatLisatiedot || ""
-  ],
-  [
-    "Pidennetty vierihoito tai imettäjälehmät käytäntönä",
-    socialData.vierihoito || "",
-    socialData.vierihoitoLisatiedot || ""
-  ],
-  [
-    "WellFare Quality -koulutus ja sertifiointi suoritettu",
-    socialData.wellfareQuality || "",
-    socialData.wellfareQualityLisatiedot || ""
-  ],
-  [
-    "ELVI -merkki -status voimassa",
-    socialData.elviStatus || "",
-    socialData.elviStatusLisatiedot || ""
-  ],
-  [
-    "Kuvaus muista mahdollisista toimenpiteistä",
-    socialData.erityisetToimenpiteet || "",
-    ""
-  ],
-  
-];
-
-const animalWelfareGoals = getGoalsText(
-  socialData.nautojenTerveydenhuoltorekisteriErityiset, 
-  socialData.nautojenTerveydenhuoltorekisteriErityiset2,
-  socialData.nautojenTerveydenhuoltorekisteriErityiset3
-);
-if (animalWelfareGoals) {
-  rowsAnimalWelfare.push([
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    "",
-    animalWelfareGoals
-  ]);
-}
-
-const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(([_, col2, col3]) =>
-  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
-);
-
-const bodyAnimalWelfare = filteredRowsAnimalWelfare.map(([label, col2, col3]) => {
-  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
+  if (bodyCoop.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Yhteistyö ja avoimuus", "Uusin tulos", "Kuvaus"]],
+      body: bodyCoop,
+      theme: 'striped',
+      headStyles: { fillColor: '#FFA500' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    });
+    startY = doc.lastAutoTable.finalY + 10;
   }
 
-  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-  return [label, col2, col3];
-});
+  // 7. Eläinten hyvinvointi
+  const rowsAnimalWelfare = [
+    [
+      "Nautojen terveydenhuoltorekisteri Naseva käytössä",
+      socialData.nautojenTerveydenhuoltorekisteri || "",
+      socialData.nautojenTerveydenhuoltorekisteriLisatiedot || ""
+    ],
+    [
+      "Sorkkaterveyden seuranta ja hoito säännöllisesti, kyllä/ei",
+      socialData.sorkkaterveys || "",
+      socialData.sorkkaterveysLisatiedot || ""
+    ],
+    [
+      "Lehmien poisto %",
+      socialData.lehmienpoisto || "",
+      socialData.lehminepoistoLisatiedot || ""
+    ],
+    [
+      "Vasikkakuolleisuus %",
+      socialData.vasikkakuolleisuus || "",
+      socialData.vasikkakuolleisuusLisatiedot || ""
+    ],
+    [
+      "Lehmien keskipoikimakerta",
+      socialData.lehmienKeskipoikimakerta || "",
+      socialData.lehmienKeskipoikimakertaLisatiedot || ""
+    ],
+    [
+      "Poistettujen lehmien elinikäistuotos, kg",
+      socialData.poistettujenLehmienElinikaiTuotos || "",
+      socialData.poistettujenLehmienElinikaiTuotosLisatiedot || ""
+    ],
+    [
+      "Poistettujen lehmien EKM kg/elinpäivä",
+      socialData.ekmPerElinpiva || "",
+      socialData.ekmPerElinpivaLisatiedot || ""
+    ],
+    [
+      "Laiduntaminen käytössä",
+      socialData.laiduntaminen || "",
+      socialData.laiduntaminenLisatiedot || ""
+    ],
+    [
+      "Jaloittelu käytössä",
+      socialData.jaloittelu || "",
+      socialData.jaloitteluLisatiedot || ""
+    ],
+    [
+      "Ympärivuotinen jaloittelu käytössä",
+      socialData.ymparivuotinenJaloittelu || "",
+      socialData.ymparivuotinenJaloitteluLisatiedot || ""
+    ],
+    [
+      "Kuvaus lehmien makuupaikasta",
+      socialData.lehmienMakuupaikka || "",
+      socialData.lehmienMakuupaikkaLisatiedot || ""
+    ],
+    [
+      "Viilennys lypsynavetassa",
+      socialData.viilennys || "",
+      socialData.viilennysLisatiedot || ""
+    ],
+    [
+      "Lehmillä käytävämatot",
+      socialData.lehmillaKaytavat || "",
+      socialData.lehmillaKaytavatLisatiedot || ""
+    ],
+    [
+      "Pidennetty vierihoito tai imettäjälehmät käytäntönä",
+      socialData.vierihoito || "",
+      socialData.vierihoitoLisatiedot || ""
+    ],
+    [
+      "WellFare Quality -koulutus ja sertifiointi suoritettu",
+      socialData.wellfareQuality || "",
+      socialData.wellfareQualityLisatiedot || ""
+    ],
+    [
+      "ELVI -merkki -status voimassa",
+      socialData.elviStatus || "",
+      socialData.elviStatusLisatiedot || ""
+    ],
+    [
+      "Kuvaus muista mahdollisista toimenpiteistä",
+      socialData.erityisetToimenpiteet || "",
+      ""
+    ],
 
-if (bodyAnimalWelfare.length > 0) {
-  autoTable(doc, {
-    startY,
-    head: [["Eläinten hyvinvointi","Uusin tulos","Kuvaus"]],
-    body: bodyAnimalWelfare,
-    theme: 'striped',
-    headStyles: { fillColor: '#FFA500' },
-    margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
-    showHead: 'firstPage',
-    columnStyles: {0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
+  ];
+
+  const animalWelfareGoals = getGoalsText(
+    socialData.nautojenTerveydenhuoltorekisteriErityiset,
+    socialData.nautojenTerveydenhuoltorekisteriErityiset2,
+    socialData.nautojenTerveydenhuoltorekisteriErityiset3
+  );
+  if (animalWelfareGoals) {
+    rowsAnimalWelfare.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      animalWelfareGoals
+    ]);
+  }
+
+  const filteredRowsAnimalWelfare = rowsAnimalWelfare.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
+
+  const bodyAnimalWelfare = filteredRowsAnimalWelfare.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [label, col2, col3];
   });
-  startY = doc.lastAutoTable.finalY + 10;
-}
 
-
-// 4. Tuotteen laatu
-const rowsQuality = [
-  [
-    "Sähköinen lääkekirjanpito käytössä",
-    socialData.laakekirjanpito || "",
-    socialData.laakekirjanpitoLisatiedot || ""
-  ],
-  [
-    "Tankkimaidon testaaminen antibioottihoitojen yhteydessä",
-    socialData.tankkimaidonTestaus || "",
-    socialData.tankkimaidonTestausLisatiedot || ""
-  ],
-  [
-    "Montako vuotta tuotettu E-luokan maitoa",
-    socialData.eLuokanOsuus || "",
-    socialData.eLuokanOsuusLisatiedot || ""
-  ],
-  [
-    "Maidon solupitoisuus",
-    socialData.maidonSolupitoisuus || "",
-    socialData.maidonSolupitoisuusLisatiedot || ""
-  ],
-  [
-    "Kuvaus muista mahdollisista toimenpiteistä",
-    socialData.maitoErityisetToimenpiteet || "",
-    ""
-  ],
-];
-
-const qualityTavoitteet = getGoalsText(
-  socialData.maitoErityisetToimenpiteetVuosi1,
-  socialData.maitoErityisetToimenpiteetVuosi2,
-  socialData.maitoErityisetToimenpiteetVuosi3
-);
-if (qualityTavoitteet) {
-  rowsQuality.push([
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    "",
-    qualityTavoitteet
-  ]);
-}
-
-const filteredRowsQuality = rowsQuality.filter(([_, col2, col3]) =>
-  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
-);
-
-const bodyQuality = filteredRowsQuality.map(([label, col2, col3]) => {
-  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
+  if (bodyAnimalWelfare.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Eläinten hyvinvointi", "Uusin tulos", "Kuvaus"]],
+      body: bodyAnimalWelfare,
+      theme: 'striped',
+      headStyles: { fillColor: '#FFA500' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    });
+    startY = doc.lastAutoTable.finalY + 10;
   }
 
-  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-  return [label, col2, col3];
-});
 
-if (bodyQuality.length > 0) {
-  autoTable(doc, {
-    startY,
-    head: [["Tuotteen laatu","Uusin tulos","Kuvaus"]],
-    body: bodyQuality,
-    theme: 'striped',
-    headStyles: { fillColor: '#FFA500' },
-    margin: { left: 14, right: 14 },
-    styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
-    showHead: 'firstPage',
-    columnStyles: {0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
+  // 4. Tuotteen laatu
+  const rowsQuality = [
+    [
+      "Sähköinen lääkekirjanpito käytössä",
+      socialData.laakekirjanpito || "",
+      socialData.laakekirjanpitoLisatiedot || ""
+    ],
+    [
+      "Tankkimaidon testaaminen antibioottihoitojen yhteydessä",
+      socialData.tankkimaidonTestaus || "",
+      socialData.tankkimaidonTestausLisatiedot || ""
+    ],
+    [
+      "Montako vuotta tuotettu E-luokan maitoa",
+      socialData.eLuokanOsuus || "",
+      socialData.eLuokanOsuusLisatiedot || ""
+    ],
+    [
+      "Maidon solupitoisuus",
+      socialData.maidonSolupitoisuus || "",
+      socialData.maidonSolupitoisuusLisatiedot || ""
+    ],
+    [
+      "Kuvaus muista mahdollisista toimenpiteistä",
+      socialData.maitoErityisetToimenpiteet || "",
+      ""
+    ],
+  ];
+
+  const qualityTavoitteet = getGoalsText(
+    socialData.maitoErityisetToimenpiteetVuosi1,
+    socialData.maitoErityisetToimenpiteetVuosi2,
+    socialData.maitoErityisetToimenpiteetVuosi3
+  );
+  if (qualityTavoitteet) {
+    rowsQuality.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      qualityTavoitteet
+    ]);
+  }
+
+  const filteredRowsQuality = rowsQuality.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
+
+  const bodyQuality = filteredRowsQuality.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [label, col2, col3];
   });
-  startY = doc.lastAutoTable.finalY + 10;
-}
-  
-const rowsJohtaminen = [
-  [
-    "Yrityksen arvot on määritetty",
-    localFinanceData.yrityksenArvot || "",
-    localFinanceData.yrityksenArvotLisatiedot || ""
-  ],
-  [
-    "Visio on määritetty",
-    localFinanceData.visioMaare || "",
-    localFinanceData.visioMaareLisatiedot || ""
-  ],
-  [
-    "Strategia on laadittu ja sitä päivitetään",
-    localFinanceData.strategiaLaadittu || "",
-    localFinanceData.strategiaLaadittuLisatiedot || ""
-  ],
-  [
-    "Liiketoimintasuunnitelma ja/tai investointisuunnitelma on tehty",
-    localFinanceData.liiketoimintasuunnitelma || "",
-    localFinanceData.liiketoimintasuunnitelmaLisatiedot || ""
-  ],
-  [
-    "Organisaatio, omistajat ja vastuualueet on kuvattu",
-    localFinanceData.organisaatioKuvattu || "",
-    localFinanceData.organisaatioKuvattuLisatiedot || ""
-  ],
-  [
-    "Kuvaus asiantuntijapalveluiden hyödyntämisestä",
-    localFinanceData.johtaminenAsiantuntijat || "",
-    localFinanceData.johtaminenAsiantuntijatLisatiedot || ""
-  ],
-  [
-    "Kuvaus vertailutiedon hyödyntämisestä",
-    localFinanceData.johtaminenVertailutieto || "",
-    localFinanceData.johtaminenVertailutietoLisatiedot || ""
-  ],
-  [
-    "Kuvaus muista mahdollisista toimenpiteistä",
-    localFinanceData.johtaminenErityisetToimenpiteet || "",
-    ""
-  ]
-];
 
-const johtaminenTavoitteet = getGoalsText(
-  localFinanceData.johtaminenErityisetToimenpiteetVuosi1,
-  localFinanceData.johtaminenErityisetToimenpiteetVuosi2,
-  localFinanceData.johtaminenErityisetToimenpiteetVuosi3
-);
-if (johtaminenTavoitteet) {
-  rowsJohtaminen.push([
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    "",
-    johtaminenTavoitteet
-  ]);
-}
-
-const filteredRowsJohtaminen = rowsJohtaminen.filter(([_, col2, col3]) =>
-  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
-);
-
-const bodyJohtaminen = filteredRowsJohtaminen.map(([label, col2, col3]) => {
-  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
+  if (bodyQuality.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Tuotteen laatu", "Uusin tulos", "Kuvaus"]],
+      body: bodyQuality,
+      theme: 'striped',
+      headStyles: { fillColor: '#FFA500' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    });
+    startY = doc.lastAutoTable.finalY + 10;
   }
 
-  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-  return [ label, col2, col3 ];
-});
+  const rowsJohtaminen = [
+    [
+      "Yrityksen arvot on määritetty",
+      localFinanceData.yrityksenArvot || "",
+      localFinanceData.yrityksenArvotLisatiedot || ""
+    ],
+    [
+      "Visio on määritetty",
+      localFinanceData.visioMaare || "",
+      localFinanceData.visioMaareLisatiedot || ""
+    ],
+    [
+      "Strategia on laadittu ja sitä päivitetään",
+      localFinanceData.strategiaLaadittu || "",
+      localFinanceData.strategiaLaadittuLisatiedot || ""
+    ],
+    [
+      "Liiketoimintasuunnitelma ja/tai investointisuunnitelma on tehty",
+      localFinanceData.liiketoimintasuunnitelma || "",
+      localFinanceData.liiketoimintasuunnitelmaLisatiedot || ""
+    ],
+    [
+      "Organisaatio, omistajat ja vastuualueet on kuvattu",
+      localFinanceData.organisaatioKuvattu || "",
+      localFinanceData.organisaatioKuvattuLisatiedot || ""
+    ],
+    [
+      "Kuvaus asiantuntijapalveluiden hyödyntämisestä",
+      localFinanceData.johtaminenAsiantuntijat || "",
+      localFinanceData.johtaminenAsiantuntijatLisatiedot || ""
+    ],
+    [
+      "Kuvaus vertailutiedon hyödyntämisestä",
+      localFinanceData.johtaminenVertailutieto || "",
+      localFinanceData.johtaminenVertailutietoLisatiedot || ""
+    ],
+    [
+      "Kuvaus muista mahdollisista toimenpiteistä",
+      localFinanceData.johtaminenErityisetToimenpiteet || "",
+      ""
+    ]
+  ];
 
-if (bodyJohtaminen.length > 0) {
-  doc.setFontSize(14);
-  doc.text("Talous ja hallinto", 14, startY);
-  startY += 10;
-  autoTable(doc, {
-    startY,
-    head: [["Johtaminen","Uusin tulos","Kuvaus"]],
-    body: bodyJohtaminen,
-    theme:'striped',
-    headStyles:{ fillColor:'#0345fa' },
-    margin:{ left:14, right:14 },
-    styles:{ fontSize:10, cellPadding:3, overflow:'linebreak', valign:'top' },
-    showHead:'firstPage',
-    columnStyles:{0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
+  const johtaminenTavoitteet = getGoalsText(
+    localFinanceData.johtaminenErityisetToimenpiteetVuosi1,
+    localFinanceData.johtaminenErityisetToimenpiteetVuosi2,
+    localFinanceData.johtaminenErityisetToimenpiteetVuosi3
+  );
+  if (johtaminenTavoitteet) {
+    rowsJohtaminen.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      johtaminenTavoitteet
+    ]);
+  }
+
+  const filteredRowsJohtaminen = rowsJohtaminen.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
+
+  const bodyJohtaminen = filteredRowsJohtaminen.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [label, col2, col3];
   });
-  startY = doc.lastAutoTable.finalY + 10;
-}
 
-const rowsKilpailukykyTalous = [
-  [
-    "Toiminnan tavoitteet ja mittarit on määritetty",
-    localFinanceData.toiminnanMittarit || "",
-    localFinanceData.toiminnanMittaritLisatiedot || ""
-  ],
-  [
-    "Velan määrä suhteessa liikevaihtoon, %",
-    localFinanceData.velkaLiikevaihto || "",
-    localFinanceData.velkaLiikevaihtoLisatiedot || ""
-  ],
-  [
-    "Velan määrä suhteessa käyttökatteeseen, %",
-    localFinanceData.velkaKayttokate || "",
-    localFinanceData.velkaKayttokateLisatiedot || ""
-  ],
-  [
-    "Koko tilan tulos- tai kannattavuuslaskelman teko säännöllisesti",
-    localFinanceData.kannattavuusLaskenta || "",
-    localFinanceData.kannattavuusLaskentaLisatiedot || ""
-  ],
-  [
-    "Yrittäjän voitto, snt/maito kg",
-    localFinanceData.yrittajanVoitto || "",
-    localFinanceData.yrittajanVoittoLisatiedot || ""
-  ],
-  [
-    "Tuotantokustannuslaskelman teko säännöllisesti",
-    localFinanceData.tuotantokustannusLaskenta || "",
-    localFinanceData.tuotantokustannusLaskentaLisatiedot || ""
-  ],
-  [
-    "Maidon tuotantokustannus, snt/maitokg",
-    localFinanceData.maidonTuotantokustannus || "",
-    localFinanceData.maidonTuotantokustannusLisatiedot || ""
-  ],
-  [
-    "Kuvaus maksuvalmiuden ylläpidosta",
-    localFinanceData.maksuvalmiusKuvaus || "",
-    localFinanceData.maksuvalmiusKuvausLisatiedot || ""
-  ],
-  [
-    "Kuvaus budjetointikäytännöistä",
-    localFinanceData.budjetointiKuvaus || "",
-    localFinanceData.budjetointiKuvausLisatiedot || "",
-  ],
-  [
-    "Kuvaus muista mahdollisista toimenpiteistä",
-    localFinanceData.kilpailuErityisetToimenpiteet || "",
-    localFinanceData.kilpailuErityisetToimenpiteetLisatiedot || ""
-  ],
-];
-
-const kilpailuGoals = getGoalsText(
-  localFinanceData.kilpailuErityisetToimenpiteetVuosi1,
-  localFinanceData.kilpailuErityisetToimenpiteetVuosi2,
-  localFinanceData.kilpailuErityisetToimenpiteetVuosi3
-);
-if (kilpailuGoals) {
-  rowsKilpailukykyTalous.push([
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    "",
-    kilpailuGoals
-  ]);
-}
-
-const filteredRowsKilpailukykyTalous = rowsKilpailukykyTalous.filter(([_, col2, col3]) =>
-  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
-);
-
-const bodyKilpailukyky = filteredRowsKilpailukykyTalous.map(([label, col2, col3]) => {
-  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
+  if (bodyJohtaminen.length > 0) {
+    doc.setFontSize(14);
+    doc.text("Talous ja hallinto", 14, startY);
+    startY += 10;
+    autoTable(doc, {
+      startY,
+      head: [["Johtaminen", "Uusin tulos", "Kuvaus"]],
+      body: bodyJohtaminen,
+      theme: 'striped',
+      headStyles: { fillColor: '#0345fa' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    });
+    startY = doc.lastAutoTable.finalY + 10;
   }
 
-  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-  return [ label, col2, col3 ];
-});
+  const rowsKilpailukykyTalous = [
+    [
+      "Toiminnan tavoitteet ja mittarit on määritetty",
+      localFinanceData.toiminnanMittarit || "",
+      localFinanceData.toiminnanMittaritLisatiedot || ""
+    ],
+    [
+      "Velan määrä suhteessa liikevaihtoon, %",
+      localFinanceData.velkaLiikevaihto || "",
+      localFinanceData.velkaLiikevaihtoLisatiedot || ""
+    ],
+    [
+      "Velan määrä suhteessa käyttökatteeseen, %",
+      localFinanceData.velkaKayttokate || "",
+      localFinanceData.velkaKayttokateLisatiedot || ""
+    ],
+    [
+      "Koko tilan tulos- tai kannattavuuslaskelman teko säännöllisesti",
+      localFinanceData.kannattavuusLaskenta || "",
+      localFinanceData.kannattavuusLaskentaLisatiedot || ""
+    ],
+    [
+      "Yrittäjän voitto, snt/maito kg",
+      localFinanceData.yrittajanVoitto || "",
+      localFinanceData.yrittajanVoittoLisatiedot || ""
+    ],
+    [
+      "Tuotantokustannuslaskelman teko säännöllisesti",
+      localFinanceData.tuotantokustannusLaskenta || "",
+      localFinanceData.tuotantokustannusLaskentaLisatiedot || ""
+    ],
+    [
+      "Maidon tuotantokustannus, snt/maitokg",
+      localFinanceData.maidonTuotantokustannus || "",
+      localFinanceData.maidonTuotantokustannusLisatiedot || ""
+    ],
+    [
+      "Kuvaus maksuvalmiuden ylläpidosta",
+      localFinanceData.maksuvalmiusKuvaus || "",
+      localFinanceData.maksuvalmiusKuvausLisatiedot || ""
+    ],
+    [
+      "Kuvaus budjetointikäytännöistä",
+      localFinanceData.budjetointiKuvaus || "",
+      localFinanceData.budjetointiKuvausLisatiedot || "",
+    ],
+    [
+      "Kuvaus muista mahdollisista toimenpiteistä",
+      localFinanceData.kilpailuErityisetToimenpiteet || "",
+      localFinanceData.kilpailuErityisetToimenpiteetLisatiedot || ""
+    ],
+  ];
 
-if (bodyKilpailukyky.length > 0) {
-  autoTable(doc, {
-    startY,
-    head: [["Kilpailukyky ja talous","Uusin tulos","Kuvaus"]],
-    body: bodyKilpailukyky,
-    theme:'striped',
-    headStyles:{ fillColor:'#0345fa' },
-    margin:{ left:14, right:14 },
-    styles:{ fontSize:10, cellPadding:3, overflow:'linebreak', valign:'top' },
-    showHead:'firstPage',
-    columnStyles:{0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
+  const kilpailuGoals = getGoalsText(
+    localFinanceData.kilpailuErityisetToimenpiteetVuosi1,
+    localFinanceData.kilpailuErityisetToimenpiteetVuosi2,
+    localFinanceData.kilpailuErityisetToimenpiteetVuosi3
+  );
+  if (kilpailuGoals) {
+    rowsKilpailukykyTalous.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      kilpailuGoals
+    ]);
+  }
+
+  const filteredRowsKilpailukykyTalous = rowsKilpailukykyTalous.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
+
+  const bodyKilpailukyky = filteredRowsKilpailukykyTalous.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [label, col2, col3];
   });
-  startY = doc.lastAutoTable.finalY + 10;
-}
 
-const rowsRisk = [
-  [
-    "Varautumissuunnitelma poikkeustilanteisiin tehty",
-    localFinanceData.riskVarautuminenSahko || "",
-    localFinanceData.riskVarautuminenSahkoLisatiedot || ""
-  ],
-  [
-    "Pelastautumissuunnitelma tehty",
-    localFinanceData.riskPelastautumissuunnitelma || "",
-    localFinanceData.riskPelastautumissuunnitelmaLisatiedot || ""
-  ],
-  [
-    "Riskikartoitukset tehty",
-    localFinanceData.riskRiskikartoitukset || "",
-    localFinanceData.riskRiskikartoituksetLisatiedot || ""
-  ],
-  [
-    "Kuvaus vakuutusturvasta",
-    localFinanceData.riskVakuutus || "",
-    localFinanceData.riskVakuutusLisatiedot || ""
-  ],
-  [
-    "Kuvaus henkilöriskien hallinnasta ja dokumentaatiosta",
-    localFinanceData.riskHenkiloriskit || "",
-    localFinanceData.riskHenkiloriskitLisatiedot || ""
-  ],
-  [
-    "Kuvaus rahoitusriskien hallinnasta",
-    localFinanceData.riskRahoitus || "",
-    localFinanceData.riskRahoitusLisatiedot || ""
-  ],
-  [
-    "Kuvaus hintariskien hallinnasta",
-    localFinanceData.riskHintariski || "",
-    localFinanceData.riskHintariskiLisatiedot || ""
-  ],
-
-  [
-    "Kuvaus varautumisesta sähkökatkoksiin",
-    localFinanceData.riskVarautuminenSahko || "",
-    localFinanceData.riskVarautuminenSahkoLisatiedot || ""
-  ],
-  [
-    "Kuvaus vesihuollon varajärjestelmästä",
-    localFinanceData.riskVesihuolto || "",
-    localFinanceData.riskVesihuoltoLisatiedot || ""
-  ],
-  [
-    "Kuvaus eläinriskien hallinnasta",
-    localFinanceData.riskElainriskit || "",
-    localFinanceData.riskElainriskitLisatiedot || ""
-  ],
-  [
-    "Kuvaus peltoriskien hallinnasta",
-    localFinanceData.riskPeltoriski || "",
-    localFinanceData.riskPeltoriskiLisatiedot || ""
-  ],
-  [
-    "Kuvaus tietoturvariskien hallinnasta",
-    localFinanceData.riskTietoturva || "",
-    localFinanceData.riskTietoturvaLisatiedot || ""
-  ],
-  [
-    "Kuvaus muista mahdollisista toimenpiteistä",
-    localFinanceData.riskiErityisetToimenpiteet || "",
-    ""
-  ],
-];
-
-const riskTavoitteet = getGoalsText(
-  localFinanceData.riskErityisetToimenpiteetVuosi1,
-  localFinanceData.riskErityisetToimenpiteetVuosi2,
-  localFinanceData.riskErityisetToimenpiteetVuosi3
-);
-if (riskTavoitteet) {
-  rowsRisk.push([
-    "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
-    "",
-    riskTavoitteet
-  ]);
-}
-
-const filteredRowsRisk = rowsRisk.filter(([_, col2, col3]) =>
-  (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
-);
-
-const bodyRisk = filteredRowsRisk.map(([label, col2, col3]) => {
-  if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
+  if (bodyKilpailukyky.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Kilpailukyky ja talous", "Uusin tulos", "Kuvaus"]],
+      body: bodyKilpailukyky,
+      theme: 'striped',
+      headStyles: { fillColor: '#0345fa' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    });
+    startY = doc.lastAutoTable.finalY + 10;
   }
 
-  if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
-    return [
-      { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-      { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
-    ];
-  }
-  return [ label, col2, col3 ];
-});
+  const rowsRisk = [
+    [
+      "Varautumissuunnitelma poikkeustilanteisiin tehty",
+      localFinanceData.riskVarautuminenSahko || "",
+      localFinanceData.riskVarautuminenSahkoLisatiedot || ""
+    ],
+    [
+      "Pelastautumissuunnitelma tehty",
+      localFinanceData.riskPelastautumissuunnitelma || "",
+      localFinanceData.riskPelastautumissuunnitelmaLisatiedot || ""
+    ],
+    [
+      "Riskikartoitukset tehty",
+      localFinanceData.riskRiskikartoitukset || "",
+      localFinanceData.riskRiskikartoituksetLisatiedot || ""
+    ],
+    [
+      "Kuvaus vakuutusturvasta",
+      localFinanceData.riskVakuutus || "",
+      localFinanceData.riskVakuutusLisatiedot || ""
+    ],
+    [
+      "Kuvaus henkilöriskien hallinnasta ja dokumentaatiosta",
+      localFinanceData.riskHenkiloriskit || "",
+      localFinanceData.riskHenkiloriskitLisatiedot || ""
+    ],
+    [
+      "Kuvaus rahoitusriskien hallinnasta",
+      localFinanceData.riskRahoitus || "",
+      localFinanceData.riskRahoitusLisatiedot || ""
+    ],
+    [
+      "Kuvaus hintariskien hallinnasta",
+      localFinanceData.riskHintariski || "",
+      localFinanceData.riskHintariskiLisatiedot || ""
+    ],
 
-if (bodyRisk.length > 0) {
-  autoTable(doc, {
-    startY,
-    head: [["Riskien hallinta","Uusin tulos","Kuvaus"]],
-    body: bodyRisk,
-    theme:'striped',
-    headStyles:{ fillColor:'#0345fa' },
-    margin:{ left:14, right:14 },
-    styles:{ fontSize:10, cellPadding:3, overflow:'linebreak', valign:'top' },
-    showHead:'firstPage',
-    columnStyles:{0:{cellWidth:60},1:{cellWidth:30},2:{cellWidth:92}}
+    [
+      "Kuvaus varautumisesta sähkökatkoksiin",
+      localFinanceData.riskVarautuminenSahko || "",
+      localFinanceData.riskVarautuminenSahkoLisatiedot || ""
+    ],
+    [
+      "Kuvaus vesihuollon varajärjestelmästä",
+      localFinanceData.riskVesihuolto || "",
+      localFinanceData.riskVesihuoltoLisatiedot || ""
+    ],
+    [
+      "Kuvaus eläinriskien hallinnasta",
+      localFinanceData.riskElainriskit || "",
+      localFinanceData.riskElainriskitLisatiedot || ""
+    ],
+    [
+      "Kuvaus peltoriskien hallinnasta",
+      localFinanceData.riskPeltoriski || "",
+      localFinanceData.riskPeltoriskiLisatiedot || ""
+    ],
+    [
+      "Kuvaus tietoturvariskien hallinnasta",
+      localFinanceData.riskTietoturva || "",
+      localFinanceData.riskTietoturvaLisatiedot || ""
+    ],
+    [
+      "Kuvaus muista mahdollisista toimenpiteistä",
+      localFinanceData.riskiErityisetToimenpiteet || "",
+      ""
+    ],
+  ];
+
+  const riskTavoitteet = getGoalsText(
+    localFinanceData.riskErityisetToimenpiteetVuosi1,
+    localFinanceData.riskErityisetToimenpiteetVuosi2,
+    localFinanceData.riskErityisetToimenpiteetVuosi3
+  );
+  if (riskTavoitteet) {
+    rowsRisk.push([
+      "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä",
+      "",
+      riskTavoitteet
+    ]);
+  }
+
+  const filteredRowsRisk = rowsRisk.filter(([_, col2, col3]) =>
+    (col2 || "").trim() !== "" || (col3 || "").trim() !== ""
+  );
+
+  const bodyRisk = filteredRowsRisk.map(([label, col2, col3]) => {
+    if (label === "Kuvaus muista mahdollisista toimenpiteistä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col2, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+
+    if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
+      return [
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+      ];
+    }
+    return [label, col2, col3];
   });
-  startY = doc.lastAutoTable.finalY + 10;
-}
-  const now = new Date();
-  const day = String(now.getDate()).padStart(2, '0');
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const year = now.getFullYear();
-  const dateStr = `${day}-${month}-${year}`;
-  doc.save(`ESG_raportti_${dateStr}.pdf`);
+
+  if (bodyRisk.length > 0) {
+    autoTable(doc, {
+      startY,
+      head: [["Riskien hallinta", "Uusin tulos", "Kuvaus"]],
+      body: bodyRisk,
+      theme: 'striped',
+      headStyles: { fillColor: '#0345fa' },
+      margin: { left: 14, right: 14 },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak', valign: 'top' },
+      showHead: 'firstPage',
+      columnStyles: { 0: { cellWidth: 60 }, 1: { cellWidth: 30 }, 2: { cellWidth: 92 } }
+    });
+    startY = doc.lastAutoTable.finalY + 10;
+  }
+  const fileDate = dateStr;
+  doc.save(`ESG_raportti_${fileDate}.pdf`);
 };
 
 export default generatePdfReport;
