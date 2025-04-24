@@ -4,7 +4,6 @@ import autoTable from 'jspdf-autotable';
 import {
   savoniaLogo,
   maitoyrittajatLogo,
-  valioLogo,
   ysaoLogo,
   euLogo
 } from './logos.js';
@@ -223,7 +222,7 @@ startY = 20;  // Aseta yläreuna haluamallasi etäisyydellä
 
   if (bodyEnv.length > 0) {
     doc.setFontSize(14);
-    doc.text("Ympäristö", 14, startY);
+    doc.text("Ympäristö", 16, startY);
     startY += 10;
 
     autoTable(doc, {
@@ -822,7 +821,7 @@ startY = 20;  // Aseta yläreuna haluamallasi etäisyydellä
 
   if (bodySocial.length > 0) {
     doc.setFontSize(14);
-    doc.text("Sosiaalinen vastuu", 14, startY);
+    doc.text("Sosiaalinen vastuu", 16, startY);
     startY += 10;
     autoTable(doc, {
       startY,
@@ -1221,7 +1220,7 @@ startY = 20;  // Aseta yläreuna haluamallasi etäisyydellä
 
   if (bodyJohtaminen.length > 0) {
     doc.setFontSize(14);
-    doc.text("Talous ja hallinto", 14, startY);
+    doc.text("Talous ja hallinto", 16, startY);
     startY += 10;
     autoTable(doc, {
       startY,
