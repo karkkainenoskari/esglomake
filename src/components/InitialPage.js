@@ -203,8 +203,8 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
               <strong>Tallennus ja jatkaminen</strong>
               <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
                 <li><em>"Tallenna luonnos"</em> lataa selaimeesi JSON‑tiedoston, jossa on kaikki tähänastiset täytetyt kentät.</li>
-                <li><em>"Jatka edellistä raporttia"</em> nappia klikkaamaalla voit ladata aiemmin tallennetun JSON‑luonnoksen ja palauttaa lomakkeeseen aikasemmin jo syöttämäsi tiedot.</li>
-                <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta.(HUOM! Tiedot häviävät lomakkeesta, jos poistat sivuhistoriasta välimuistissa olevat tiedot)</li>
+                <li><em>"Jatka edellistä raporttia"</em> nappia klikkaamaalla voit ladata aiemmin tallennetun JSON‑luonnoksen ja palauttaa lomakkeeseen aiemmin syöttämäsi tiedot.</li>
+                <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta. (HUOM! Tiedot häviävät lomakkeesta, jos poistat sivuhistoriasta välimuistissa olevat tiedot)</li>
               </ul>
             </li>
             <br></br>

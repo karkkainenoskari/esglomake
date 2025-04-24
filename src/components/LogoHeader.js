@@ -21,11 +21,10 @@ const LogoHeader = () => (
         width: '100%'
       }}
     >
-      <img src="/savonia.png" alt="Savonia" style={{ height: '60px' }} />
-      <img src="/maitoyrittajat.png" alt="Maitoyrittäjät" style={{ height: '60px' }} />
-      <img src="/valio.png" alt="Valio" style={{ height: '60px' }} />
-      <img src="/ysao.png" alt="Ysao" style={{ height: '60px' }} />
-      <img src="/euroopanunioni.png" alt="Euroopan unioni" style={{ height: '60px' }} />
+      <img src="/savonia.png" alt="Savonia" style={{ height: '62px' }} />
+      <img src="/maitoyrittajat.png" alt="Maitoyrittäjät" style={{ height: '77px' }} />
+      <img src="/ysao.png" alt="Ysao" style={{ height: '52px' }} />
+      <img src="/euroopanunioni.png" alt="Euroopan unioni" style={{ height: '75px' }} />
     </div>
   </header>
 );

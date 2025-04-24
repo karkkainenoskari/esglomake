@@ -10,23 +10,34 @@ import Johdanto from './components/Johdanto';
 
 
 function App() {
-  const [step, setStep]                 = useState(0);
-  const [initialData, setInitialData]   = useState({});
+  const [step, setStep] = useState(0);
+  const [initialData, setInitialData] = useState({});
   const [environmentData, setEnvironmentData] = useState({});
-  const [socialData, setSocialData]     = useState({});
-  const [financeData, setFinanceData]   = useState({});
-  const [resetKey, setResetKey]         = useState(0);
-  const [menuOpen, setMenuOpen]         = useState(false);
+  const [socialData, setSocialData] = useState({});
+  const [financeData, setFinanceData] = useState({});
+  const [resetKey, setResetKey] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
 
   const fileInputRef = useRef(null);
 
   useEffect(() => {
-    setInitialData(     JSON.parse(localStorage.getItem('initialFormData') || '{}'));
-    setEnvironmentData( JSON.parse(localStorage.getItem('environmentData') || '{}'));
-    setSocialData(      JSON.parse(localStorage.getItem('socialData')      || '{}'));
-    setFinanceData(     JSON.parse(localStorage.getItem('financeData')     || '{}'));
+    setInitialData(JSON.parse(localStorage.getItem('initialFormData') || '{}'));
+    setEnvironmentData(JSON.parse(localStorage.getItem('environmentData') || '{}'));
+    setSocialData(JSON.parse(localStorage.getItem('socialData') || '{}'));
+    setFinanceData(JSON.parse(localStorage.getItem('financeData') || '{}'));
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuOpen && menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [menuOpen]);
 
   useEffect(() => { window.scrollTo(0, 0); }, [step]);
 
@@ -37,7 +48,7 @@ function App() {
       socialData,
       financeData
     };
-  
+
     const blob = new Blob(
       [JSON.stringify(data, null, 2)],
       { type: 'application/json' }
@@ -46,8 +57,8 @@ function App() {
 
     const now = new Date();
     const yyyy = now.getFullYear();
-    const mm   = String(now.getMonth() + 1).padStart(2, '0');
-    const dd   = String(now.getDate()).padStart(2, '0');
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
     const filename = `esg_lomake_luonnos_${dd}-${mm}-${yyyy}.json`;
 
     const link = document.createElement('a');
@@ -57,7 +68,7 @@ function App() {
 
     URL.revokeObjectURL(url);
   };
-  
+
 
   const handleLoadDraft = (file) => {
     const reader = new FileReader();
@@ -65,10 +76,10 @@ function App() {
       try {
         const parsed = JSON.parse(e.target.result);
         const {
-          initialData:    init = {},
+          initialData: init = {},
           environmentData: env = {},
-          socialData:      soc = {},
-          financeData:     fin = {}
+          socialData: soc = {},
+          financeData: fin = {}
         } = parsed;
 
         setInitialData(init);
@@ -78,8 +89,8 @@ function App() {
 
         localStorage.setItem('initialFormData', JSON.stringify(init));
         localStorage.setItem('environmentData', JSON.stringify(env));
-        localStorage.setItem('socialData',      JSON.stringify(soc));
-        localStorage.setItem('financeData',     JSON.stringify(fin));
+        localStorage.setItem('socialData', JSON.stringify(soc));
+        localStorage.setItem('financeData', JSON.stringify(fin));
 
         setResetKey(k => k + 1);
         alert('Luonnos ladattu onnistuneesti!');
@@ -92,17 +103,17 @@ function App() {
     reader.readAsText(file);
   };
 
-  const handleJohdantoNext    = () => setStep(1);
-  const handleInitialNext     = (d) => { setInitialData(d);       setStep(2); };
-  const handleEnvironmentNext = (d) => { setEnvironmentData(d);   setStep(3); };
-  const handleSocialNext      = (d) => { setSocialData(d);        setStep(4); };
-  const handleFinanceNext     = (d) => { setFinanceData(d);       alert('PDF tallennus onnistui ja data tallennettu.'); };
+  const handleJohdantoNext = () => setStep(1);
+  const handleInitialNext = (d) => { setInitialData(d); setStep(2); };
+  const handleEnvironmentNext = (d) => { setEnvironmentData(d); setStep(3); };
+  const handleSocialNext = (d) => { setSocialData(d); setStep(4); };
+  const handleFinanceNext = (d) => { setFinanceData(d); alert('PDF tallennus onnistui ja data tallennettu.'); };
 
   const handleSaveAndFinish = () => {
-    const init   = JSON.parse(localStorage.getItem('initialFormData')   || '{}');
-    const env    = JSON.parse(localStorage.getItem('environmentData')   || '{}');
-    const social = JSON.parse(localStorage.getItem('socialData')        || '{}');
-    const fin    = JSON.parse(localStorage.getItem('financeData')       || '{}');
+    const init = JSON.parse(localStorage.getItem('initialFormData') || '{}');
+    const env = JSON.parse(localStorage.getItem('environmentData') || '{}');
+    const social = JSON.parse(localStorage.getItem('socialData') || '{}');
+    const fin = JSON.parse(localStorage.getItem('financeData') || '{}');
     generatePdfReport(init, env, social, fin);
   };
 
@@ -116,7 +127,7 @@ function App() {
     setSocialData({});
     setFinanceData({});
 
-    ['initialFormData','environmentData','socialData','financeData']
+    ['initialFormData', 'environmentData', 'socialData', 'financeData']
       .forEach(key => localStorage.removeItem(key));
 
     setResetKey(k => k + 1);
@@ -141,19 +152,38 @@ function App() {
   return (
     <div style={{ paddingTop: 60, paddingBottom: 80 }}>
 
-      <div style={{ position: 'fixed', top: 18, left: 40, zIndex: 10000 }}>
+      <div
+        ref={menuRef}
+        style={{
+          position: 'fixed',
+          top: 12,        // siirretty alaspäin (ennen 18)
+          left: 60,
+          zIndex: 10000
+        }}
+      >
+        {/* pieni Valikko-teksti napin yläpuolelle */}
+        <div
+          style={{
+            fontSize: '0.85rem',
+            color: '#007acc',
+            marginBottom: '4px',
+            textTransform: 'uppercase'
+          }}
+        >
+          Valikko
+        </div>
 
         <button
           aria-label="Valikko"
           onClick={() => setMenuOpen(o => !o)}
           style={{
-            width: 45,
-            height: 40,
+            width: 55,
+            height: 45,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-around',
             alignItems: 'center',
-            padding: 6,
+            padding: 8,
             background: '#007acc',
             border: 'none',
             borderRadius: 6,
@@ -243,7 +273,7 @@ function App() {
               type="file"
               accept="application/json"
               style={{ display: 'none' }}
-              onClick={e => { e.target.value = null; }}         
+              onClick={e => { e.target.value = null; }}
               onChange={e => {
                 if (e.target.files[0]) {
                   handleLoadDraft(e.target.files[0]);
@@ -260,7 +290,7 @@ function App() {
       {step === 1 && (
         <InitialPage
           key={resetKey}
-          onPrevious={() => setStep(0)} 
+          onPrevious={() => setStep(0)}
           onNext={handleInitialNext}
           initialData={initialData}
           onImportPdf={handleImportPdf}
@@ -304,31 +334,31 @@ function App() {
           onDataUpdate={setFinanceData}
         />
       )}
-<div
-  style={{
-    position: 'fixed',
-    bottom: 0,
-    left: 0,
-    width: '100%',
-    padding: '0 12px',    
-    boxSizing: 'border-box',
-    height: 60,
-    zIndex: 9999,
-    backgroundColor: '#eee',
-    display: 'flex',
-    justifyContent: 'center', 
-    alignItems: 'center',
-    overflowX: 'auto'     
-  }}
-  >
-  <ProgressBar
-    currentPage={step + 1}
-    pageTitles={pageTitles}
-    onNavigate={handleNavigate}
-  />
-</div>
-</div>
-);
+      <div
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          padding: '0 12px',
+          boxSizing: 'border-box',
+          height: 60,
+          zIndex: 9999,
+          backgroundColor: '#eee',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          overflowX: 'auto'
+        }}
+      >
+        <ProgressBar
+          currentPage={step + 1}
+          pageTitles={pageTitles}
+          onNavigate={handleNavigate}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default App;
