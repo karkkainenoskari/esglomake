@@ -1042,22 +1042,6 @@ const TalousJaHallintoPage = ({
   >
     Edellinen
   </button>
-
-  <button
-    type="submit"
-    onClick={handleSubmit}
-    style={{
-      fontSize: '16px',
-      padding: '10px 20px',
-      borderRadius: '8px',
-      backgroundColor: '#0345FA',     
-      color: 'white',
-      border: 'none',
-      cursor: 'pointer'
-    }}
-  >
-    Seuraava
-  </button>
 </div>
 
       </form>
