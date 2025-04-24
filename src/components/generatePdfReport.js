@@ -31,7 +31,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
   doc.addImage(savoniaLogo, 'PNG', 20, 12, 30, 15);
   doc.addImage(maitoyrittajatLogo, 'PNG', 73, 10, 22, 18);
-  doc.addImage(ysaoLogo, 'PNG', 115, 12, 30, 13);
+  doc.addImage(ysaoLogo, 'PNG', 115, 12, 30, 12);
   doc.addImage(euLogo, 'PNG', 170, 10, 20, 19);
 
   let startY = 40;
