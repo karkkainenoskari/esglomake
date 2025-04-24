@@ -29,19 +29,18 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
   const dateStr = `${dd}-${mm}-${yyyy}`;
 
 
-  doc.addImage(savoniaLogo, 'PNG', 14, 10, 20, 10);
-  doc.addImage(maitoyrittajatLogo, 'PNG', 50, 10, 20, 13);
-  doc.addImage(valioLogo, 'PNG', 86, 10, 20, 13);
-  doc.addImage(ysaoLogo, 'PNG', 122, 10, 20, 10);
-  doc.addImage(euLogo, 'PNG', 158, 10, 20, 14);
+  doc.addImage(savoniaLogo, 'PNG', 20, 12, 30, 15);
+  doc.addImage(maitoyrittajatLogo, 'PNG', 73, 10, 22, 18);
+  doc.addImage(ysaoLogo, 'PNG', 115, 12, 30, 13);
+  doc.addImage(euLogo, 'PNG', 170, 10, 20, 19);
 
   let startY = 40;
-  doc.setFontSize(16);
+  doc.setFontSize(18);
   doc.text("ESG Vastuullisuusraportti", 14, startY);
   startY += 8;
   
   // päivämäärä vasempaan reunaan
-  doc.setFontSize(10);
+  doc.setFontSize(11);
   doc.text(dateStr, 14, startY);
   startY += 12;
 
@@ -69,6 +68,9 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
     });
     startY = doc.lastAutoTable.finalY + 10;
   }
+
+  doc.addPage();
+startY = 20;  // Aseta yläreuna haluamallasi etäisyydellä
 
   // 2. Ympäristö
   const rowsEnv = [
@@ -663,6 +665,9 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
     startY = doc.lastAutoTable.finalY + 10;
   }
 
+  doc.addPage();
+  startY = 20;  // Aseta yläreuna haluamallasi etäisyydellä
+
   // 3. Sosiaalinen vastuu: Henkilöstö ja työolosuhteet
   const rowsSocial = [
     [
@@ -1133,6 +1138,9 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
     });
     startY = doc.lastAutoTable.finalY + 10;
   }
+
+  doc.addPage();
+  startY = 20;  // Aseta yläreuna haluamallasi etäisyydellä
 
   const rowsJohtaminen = [
     [

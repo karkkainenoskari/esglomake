@@ -24,7 +24,7 @@ const LogoHeader = () => (
       <img src="/savonia.png" alt="Savonia" style={{ height: '62px' }} />
       <img src="/maitoyrittajat.png" alt="Maitoyrittäjät" style={{ height: '77px' }} />
       <img src="/ysao.png" alt="Ysao" style={{ height: '52px' }} />
-      <img src="/euroopanunioni.png" alt="Euroopan unioni" style={{ height: '75px' }} />
+      <img src="/euroopanunioni.png" alt="Euroopan unioni" style={{ height: '77px' }} />
     </div>
   </header>
 );
