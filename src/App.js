@@ -156,48 +156,57 @@ function App() {
         ref={menuRef}
         style={{
           position: 'fixed',
-          top: 12,        // siirretty alaspäin (ennen 18)
-          left: 60,
+          top: 26,
+          left: 1420,
           zIndex: 10000
         }}
       >
-        {/* pieni Valikko-teksti napin yläpuolelle */}
-        <div
-          style={{
-            fontSize: '0.85rem',
-            color: '#007acc',
-            marginBottom: '4px',
-            textTransform: 'uppercase'
-          }}
-        >
-          Valikko
-        </div>
-
         <button
           aria-label="Valikko"
           onClick={() => setMenuOpen(o => !o)}
           style={{
-            width: 55,
-            height: 45,
+            width: 120,                // riittävästi tilaa tekstille ja ikoneille
+            height: 50,
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-around',
+            flexDirection: 'row',      // rivisuuntaan
             alignItems: 'center',
-            padding: 8,
+            justifyContent: 'space-between',
+            padding: '0 12px',         // vasen ja oikea sisennys
             background: '#007acc',
             border: 'none',
             borderRadius: 6,
             cursor: 'pointer'
           }}
         >
-          <span style={{ width: '100%', height: 3, background: '#fff', borderRadius: 2 }} />
-          <span style={{ width: '100%', height: 3, background: '#fff', borderRadius: 2 }} />
-          <span style={{ width: '100%', height: 3, background: '#fff', borderRadius: 2 }} />
+          {/* Teksti vasemmalla */}
+          <span style={{
+            fontSize: '0.85rem',
+            color: '#fff',
+            textTransform: 'uppercase',
+            whiteSpace: 'nowrap'
+          }}>
+            Valikko
+          </span>
+
+          {/* Burger-ikonit oikealla */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '35%'           // kolmen viivan väliin tilaa
+          }}>
+            <span style={{ width: 20, height: 3, background: '#fff', borderRadius: 2 }} />
+            <span style={{ width: 20, height: 3, background: '#fff', borderRadius: 2 }} />
+            <span style={{ width: 20, height: 3, background: '#fff', borderRadius: 2 }} />
+          </div>
         </button>
 
         {menuOpen && (
           <div
             style={{
+              position: 'absolute',
+              top: 'calc(100% + 8px)',
+              right: 0,
               marginTop: 8,
               padding: '0.75rem',
               background: '#ffffff',
@@ -210,7 +219,7 @@ function App() {
               minWidth: 220
             }}
           >
-          
+
 
             <button
               onClick={() => { handleSaveDraft(); setMenuOpen(false); }}
