@@ -160,19 +160,19 @@ const TalousJaHallintoPage = ({
         style={{
           marginLeft: '350px',
           marginBottom: '40px',
-          marginTop: '25px',
+          marginTop: '45px',
           border: '1px solid #ccc',
           borderRadius: 10,
           padding: '1rem 1.5rem',
           Width: '450px',
-          height: '215px',
+          height: '85px',
           overflow: 'auto',       
           lineHeight: 1.5,
           flex: '1 1 350px'
         }}
       >
         <p style={{ margin: 0 }}>
-        Keskeisin arvioitava lainan myöntämisen kriteeri on lainan takaisinmaksukyky. Toiminnan on oltava liiketoimintasuunnitelmalla osoitettuna laskennallisesti riittävän kannattavaa, jotta pitkällä aikavälillä rahavirtojen voidaan olettaa riittävän tavoitteisiin. Kannattavuuden ohella yrityksen tulee pystyä osoittamaan valmiudet maksuvalmiuden säilyttämiseen. Rahoittajat arvioivat tätä tyypillisesti toteutuneen maksukäyttäytymisen perusteella. Uuden yrittäjän, jolla ei ole käytettävissä maksuhistoriaa, tai investoivan yrityksen, jonka toimintaa ollaan olennaisesti muuttamassa, on erittäin hyödyllistä laatia kassabudjetti vuotuisista tuloista ja menoista. Budjetin laatiminen ja sen toteutumisen jatkuva seuraaminen on erittäin hyvä tapa osoittaa kassanhallinnan ja riskinhallinnan osaaminen rahoittajalle. Lainanhakijan on tarpeellista laatia yritykselle visio, johon toiminta tähtää ja strategia sille, miten toimintaa aiotaan tulevaisuudessa harjoittaa. Rahoituksen näkökulmasta etenkin tulevia investointitarpeita tulisi huolellisesti pohtia osana strategiaa.
+        Talous ja hallinto -osiossa kuvataan, miten yrityksen johtamisella edistetään vastuullisuutta. Ytimessä ovat mm. strategia, arvopohja, talouden hallinta sekä riskit ja niihin varautuminen. 
         </p>
       </div>
       <h3

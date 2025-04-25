@@ -230,19 +230,19 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
         style={{
           marginLeft: '350px',
           marginBottom: '40px',
-          marginTop: '25px',
+          marginTop: '45px',
           border: '1px solid #ccc',
           borderRadius: 10,
           padding: '1rem 1.5rem',
           Width: '450px',
-          height: '215px',
+          height: '130px',
           overflow: 'auto',        
           lineHeight: 1.5,
           flex: '1 1 350px'
         }}
       >
         <p style={{ margin: 0 }}>
-        Sosiaalinen vastuu tarkoittaa yrityksen toimia, jotka vaikuttavat yritystä ympäröivään yhteiskuntaan, yhteisöön, yrityksen työntekijöihin, yrittäjiin itseensä sekä eläimiin. Sosiaalisen vastuullisuuden ytimessä ovat esimerkiksi panostukset henkilöstön johtamiseen, työhyvinvointiin, työtyytyväisyyteen ja -terveyteen sekä työssä jaksamiseen. Myös henkilöstön osaamisen kehittäminen ja lisäkouluttaminen ovat osa sosiaalista vastuullisuutta. Yrityksen toiminnan avoimuus ja näkyminen ulospäin sekä yhteiskunta- ja naapurisuhteiden ylläpitäminen ja kehittäminen, verkostoituminen toisten yrittäjien ja ammattilaisten sekä muun yhteiskunnan kanssa, kuten erilaisiin pienryhmiin, työpajoihin tai kehittämishankkeisiin osallistuminen, ovat osana sosiaalista kestävyyttä. Lisäksi panostukset eläinten hyvinvointiin ja terveyteen sekä tuotteen laatuun katsotaan sosiaaliseksi vastuullisuudeksi.  
+        Sosiaalinen vastuu -osiossa kuvataan miten yrityksen vuorovaikutus ja yhteistyö sekä yhteiskunnassa että yrityksen sisällä edistävät vastuullisuutta. Ytimessä ovat mm. panostukset henkilöstön johtamiseen, hyvinvointiin ja osaamisen kehittämiseen. Avoimuus,  suhteiden ylläpitäminen ja verkostoituminen sekä panostaminen eläinten hyvinvointiin ja tuotteen laatuun ovat sosiaalista vastuullisuutta. 
         </p>
       </div>
       <h3

@@ -252,28 +252,21 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
         style={{
           marginLeft: '350px',
           marginBottom: '40px',
-          marginTop: '25px',
+          marginTop: '45px',
           border: '1px solid #ccc',
           borderRadius: 10,
           padding: '1rem 1.5rem',
           Width: '450px',
-          height: '215px',
+          height: '110px',
           overflow: 'auto',         
           lineHeight: 1.5,
           flex: '1 1 350px'
         }}
       >
         <p style={{ margin: 0 }}>
-          Ekologisen kestävyyden vaatimukset ovat nousseet osaksi rahoituksen
-          hakuprosessia. Rahoituksen vastuullisuuden varmistamiseksi pankkien on
-          hyödyllistä seurata esimerkiksi rahoitettujen kohteiden ilmastovaikutuksia,
-          jonka vuoksi myös maatalousrahoituksessa on hyödyllistä esittää laskelma
-          tuotannon ilmastovaikutuksista. Ravinnetaseella ja ravinteiden hallinnan
-          osoittamisella laskelmien kautta on merkitystä etenkin kotieläintuotannon
-          tuotantosuunnissa. Tilan energiankulutuksen määrä ja lajit on hyödyllistä
-          kirjata ylös ja pohtia kehittämiseen vaihtoehtoja. Ekologiseen kestävyyteen
-          kuuluu olennaisesti myös luonnon monimuotoisuuden vaaliminen, johon
-          liittyviä toimia ja kehittämistavoitteita kannattaa kirjata ylös.
+        Ympäristö -osiossa kuvataan maidontuotannon ilmasto- ja luontovaikutukset ja kerrotaan, miten ympäristö -toimilla edistetään vastuullisuutta. Ytimessä ovat mm. 
+ruokinnan ja rehustuksen onnistuminen, energian ja ravinteiden käyttö, karjanlannan hyödyntäminen, toiminnan tehokkuus ja monimuotoisuus.
+
         </p>
       </div>
       <h3
