@@ -916,8 +916,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Jaloittelu käytössä </td>
-              <td>
-                <input type="text" name="jaloittelu" value={socialData.jaloittelu} onChange={handleChange} style={{ width: '100%' }} />
+              <td style={{ textAlign: 'center' }}>
+                <YesNoToggle
+                  value={socialData.jaloittelu}
+                  onChange={(val) => setSocialData({ ...socialData, jaloittelu: val })}
+                  themeColor=" #ec9005"
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="jaloitteluLisatiedot" value={socialData.jaloitteluLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Kuvaa mitkä eläinryhmät jaloittelevat" />
@@ -925,8 +929,12 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Ympärivuotinen jaloittelu käytössä </td>
-              <td>
-                <input type="text" name="ymparivuotinenJaloittelu" value={socialData.ymparivuotinenJaloittelu} onChange={handleChange} style={{ width: '100%' }} />
+              <td style={{ textAlign: 'center' }}>
+                <YesNoToggle
+                  value={socialData.ymparivuotinenJaloittelu}
+                  onChange={(val) => setSocialData({ ...socialData, ymparivuotinenJaloittelu: val })}
+                  themeColor=" #ec9005"
+                />
               </td>
               <td>
                 <AutoResizeTextArea name="ymparivuotinenJaloitteluLisatiedot" value={socialData.ymparivuotinenJaloitteluLisatiedot} onChange={handleChange} style={{ width: '100%' }} placeholder="Kuvaa mitkä eläinryhmät jaloittelevat ympärivuotisesti" />

@@ -546,7 +546,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td colSpan="2">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 1</label>
                   <AutoResizeTextArea
                     name="envTavoitteetVuosi1"
                     value={envData.envTavoitteetVuosi1 || ""}
@@ -557,7 +557,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 2</label>
                   <AutoResizeTextArea
                     name="envTavoitteetVuosi2"
                     value={envData.envTavoitteetVuosi2 || ""}
@@ -568,7 +568,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 3</label>
                   <AutoResizeTextArea
                     name="envTavoitteetVuosi3"
                     value={envData.envTavoitteetVuosi3 || ""}
@@ -713,7 +713,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td colSpan="2">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 1</label>
                   <AutoResizeTextArea
                     name="divTavoitteetVuosi1"
                     value={envData.divTavoitteetVuosi1 || ""}
@@ -724,7 +724,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 2</label>
                   <AutoResizeTextArea
                     name="divTavoitteetVuosi2"
                     value={envData.divTavoitteetVuosi2 || ""}
@@ -735,7 +735,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 3</label>
                   <AutoResizeTextArea
                     name="divTavoitteetVuosi3"
                     value={envData.divTavoitteetVuosi3 || ""}
@@ -1006,7 +1006,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td colSpan="2">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 1</label>
                   <AutoResizeTextArea
                     name="envPeltoviljelyTavoitteetVuosi1"
                     value={envData.envPeltoviljelyTavoitteetVuosi1 || ""}
@@ -1017,7 +1017,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 2</label>
                   <AutoResizeTextArea
                     name="envPeltoviljelyTavoitteetVuosi2"
                     value={envData.envPeltoviljelyTavoitteetVuosi2 || ""}
@@ -1028,7 +1028,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 3</label>
                   <AutoResizeTextArea
                     name="envPeltoviljelyTavoitteetVuosi3"
                     value={envData.envPeltoviljelyTavoitteetVuosi3 || ""}
@@ -1146,7 +1146,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td colSpan="2">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 1</label>
                   <AutoResizeTextArea
                     name="lantaTavoitteetVuosi1"
                     value={envData.lantaTavoitteetVuosi1 || ""}
@@ -1157,7 +1157,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 2</label>
                   <AutoResizeTextArea
                     name="lantaTavoitteetVuosi2"
                     value={envData.lantaTavoitteetVuosi2 || ""}
@@ -1168,7 +1168,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 3</label>
                   <AutoResizeTextArea
                     name="lantaTavoitteetVuosi3"
                     value={envData.lantaTavoitteetVuosi3 || ""}
@@ -1296,7 +1296,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
             <td colSpan="2">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-1</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 1</label>
                   <AutoResizeTextArea
                     name="energyTavoitteetVuosi1"
                     value={envData.energyTavoitteetVuosi1 || ""}
@@ -1307,7 +1307,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-2</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 2</label>
                   <AutoResizeTextArea
                     name="energyTavoitteetVuosi2"
                     value={envData.energyTavoitteetVuosi2 || ""}
@@ -1318,7 +1318,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
                   />
                 </div>
                 <div>
-                  <label style={{ fontWeight: 'bold' }}>Vuosi-3</label>
+                  <label style={{ fontWeight: 'bold' }}>Vuosi 3</label>
                   <AutoResizeTextArea
                     name="energyTavoitteetVuosi3"
                     value={envData.energyTavoitteetVuosi3 || ""}
