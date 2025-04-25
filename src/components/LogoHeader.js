@@ -5,7 +5,7 @@ const LogoHeader = () => (
   style={{
     width: '100%',
     backgroundColor: '#fff', 
-    padding: '10px 0',
+    padding: '9px 0',
     position: 'fixed',
     top: 0,
     left: 0,
@@ -21,9 +21,9 @@ const LogoHeader = () => (
         width: '100%'
       }}
     >
-      <img src="/savonia.png" alt="Savonia" style={{ height: '62px' }} />
+      <img src="/savonia.png" alt="Savonia" style={{ height: '60px' }} />
       <img src="/maitoyrittajat.png" alt="Maitoyrittäjät" style={{ height: '77px' }} />
-      <img src="/ysao.png" alt="Ysao" style={{ height: '52px' }} />
+      <img src="/ysao.png" alt="Ysao" style={{ height: '48px' }} />
       <img src="/euroopanunioni.png" alt="Euroopan unioni" style={{ height: '77px' }} />
     </div>
   </header>

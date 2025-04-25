@@ -68,9 +68,6 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
     startY = doc.lastAutoTable.finalY + 10;
   }
 
-  doc.addPage();
-startY = 20;  // Aseta yläreuna haluamallasi etäisyydellä
-
   // 2. Ympäristö
   const rowsEnv = [
     [

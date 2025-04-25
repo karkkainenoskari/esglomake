@@ -203,7 +203,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
             <li>
               <strong>Tallennus ja jatkaminen</strong>
               <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-              <li>Vasemmassa yläkulmassa oleva sininen kolmen viivan painike avaa valikon, josta löydät kaikki päätoiminnot.</li>
+              <li>Oikeassa yläkulmassa oleva sininen kolmen viivan painike avaa valikon, josta löydät kaikki päätoiminnot.</li>
                 <li><em>"Tallenna luonnos"</em> lataa selaimeesi JSON‑tiedoston, jossa on kaikki tähänastiset täytetyt kentät.</li>
                 <li><em>"Jatka edellistä raporttia"</em> nappia klikkaamaalla voit ladata aiemmin tallennetun JSON‑luonnoksen ja palauttaa lomakkeeseen aiemmin syöttämäsi tiedot.</li>
                 <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta. (HUOM! Tiedot häviävät lomakkeesta, jos poistat sivuhistoriasta välimuistissa olevat tiedot)</li>
@@ -213,7 +213,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
             <li>
               <strong>Raportin viimeistely ja tulostaminen</strong>
               <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-                <li>Kun olet täyttänyt raportin valmiiksi, valitse vasemman yläkulman valikosta <em>"Tallenna PDF‑raportti"</em>.</li>
+                <li>Kun olet täyttänyt raportin valmiiksi, valitse oikean yläkulman valikosta <em>"Tallenna PDF‑raportti"</em>.</li>
                 <li>PDF avautuu uuteen välilehteen tai latautuu tiedostona. Voit tallentaa sen omalle koneellesi tiedostona tai tulostaa sen tarpeen mukaan.</li>
                 <li>Vain täytetyt kohdat tulostuvat yhteenvetoon</li>
 

@@ -156,8 +156,8 @@ function App() {
         ref={menuRef}
         style={{
           position: 'fixed',
-          top: 26,
-          left: 1420,
+          top: 18,
+          left: 1435,
           zIndex: 10000
         }}
       >
