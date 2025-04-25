@@ -377,7 +377,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
               <td>
                 <AutoResizeTextArea name="vapaapäivatLisatiedot" value={socialData.vapaapäivatLisatiedot} onChange={handleChange} style={{ width: '100%' }}
-                  placeholder="Kuvaa miten..." />
+                  />
               </td>
             </tr>
             <tr>
@@ -407,7 +407,7 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
               </td>
               <td>
                 <AutoResizeTextArea name="tyoajanMittaaminenLisatiedot" value={socialData.tyoajanMittaaminenLisatiedot} onChange={handleChange} style={{ width: '100%' }}
-                  placeholder="Kuvaa miten..." />
+                   />
               </td>
             </tr>
             <tr>
@@ -517,11 +517,14 @@ const SosiaalinenVastuuPage = ({ onNext, onPrevious, initialSocialData, onDataUp
             </tr>
             <tr>
               <td>Kuvaus säännöllisistä palaverikäytännöistä</td>
-              <td style={{ textAlign: 'center' }}>
-                <YesNoToggle
+
+              <td>
+                <input
+                  type="text"
+                  name="palaverit"
                   value={socialData.palaverit}
-                  onChange={(val) => setSocialData({ ...socialData, palaverit: val })}
-                  themeColor=" #ec9005"
+                  onChange={handleChange}
+                  style={{ width: '100%' }}
                 />
               </td>
               <td>

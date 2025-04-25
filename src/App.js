@@ -210,19 +210,7 @@ function App() {
               minWidth: 220
             }}
           >
-            <button
-              onClick={() => { handleSaveAndFinish(); setMenuOpen(false); }}
-              style={{
-                padding: '6px 8px',
-                border: 'none',
-                borderRadius: 6,
-                background: '#007acc',
-                color: '#fff',
-                cursor: 'pointer'
-              }}
-            >
-              Tallenna PDF‑raportti
-            </button>
+          
 
             <button
               onClick={() => { handleSaveDraft(); setMenuOpen(false); }}
@@ -235,7 +223,7 @@ function App() {
                 cursor: 'pointer'
               }}
             >
-              Tallenna luonnos
+              Tallenna raportin sisältö
             </button>
 
             <button
@@ -251,7 +239,21 @@ function App() {
                 cursor: 'pointer'
               }}
             >
-              Jatka edellistä raporttia
+              Hae edellisen raportin sisältö
+            </button>
+
+            <button
+              onClick={() => { handleSaveAndFinish(); setMenuOpen(false); }}
+              style={{
+                padding: '6px 8px',
+                border: 'none',
+                borderRadius: 6,
+                background: '#007acc',
+                color: '#fff',
+                cursor: 'pointer'
+              }}
+            >
+              Tulosta valmis ESG-raportti
             </button>
 
             <button

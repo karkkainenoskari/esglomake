@@ -182,12 +182,13 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
           }}
         >
           <h3>Ohjeet lomakkeen täyttöön:</h3>
+          <strong>(HUOM! Jos täytät raporttia toista kertaa niin voit ladata vanhan raportin datan lomakkeeseen tarvittaessa.)</strong>
 
           <ol style={{ paddingLeft: '1.2rem' }}>
+
             <li>
               <strong>Lomakkeen täyttäminen</strong>
               <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
-              <li>Vasemmassa yläkulmassa oleva sininen kolmen viivan painike avaa valikon, josta löydät kaikki päätoiminnot.</li>
               <li>Raportti koostuu neljästä osiosta: perustiedot, ympäristö, sosiaalinen vastuu sekä talous ja hallinto</li>
               <li>Pääset liikkumaan osioiden välillä edestakaisin joko alapalkista tai edellinen/seuraava -painikkeista</li>
               <li>Täytä kustakin osiosta vain omalle yritykselle merkitykselliset asiat tai mistä sinulta löytyy tuloksia ja tekemistä</li>
@@ -202,6 +203,7 @@ const InitialPage = ({ onNext, initialData, onDataUpdate, onImportPdf, onPreviou
             <li>
               <strong>Tallennus ja jatkaminen</strong>
               <ul style={{ listStyleType: 'disc', marginLeft: '1.2rem' }}>
+              <li>Vasemmassa yläkulmassa oleva sininen kolmen viivan painike avaa valikon, josta löydät kaikki päätoiminnot.</li>
                 <li><em>"Tallenna luonnos"</em> lataa selaimeesi JSON‑tiedoston, jossa on kaikki tähänastiset täytetyt kentät.</li>
                 <li><em>"Jatka edellistä raporttia"</em> nappia klikkaamaalla voit ladata aiemmin tallennetun JSON‑luonnoksen ja palauttaa lomakkeeseen aiemmin syöttämäsi tiedot.</li>
                 <li>Sovellus tallentaa syötteesi myös automaattisesti selaimen muistiin. Voit sulkea ikkunan ja jatkaa myöhemmin ilman erillistä luonnosta. (HUOM! Tiedot häviävät lomakkeesta, jos poistat sivuhistoriasta välimuistissa olevat tiedot)</li>

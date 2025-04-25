@@ -362,7 +362,7 @@ const EnvironmentPage = ({ onNext, onPrevious, companyData, initialEnvData, onDa
               <input type="text" name="envHiiliviljelytoimenpiteet" value={envData.envHiiliviljelytoimenpiteet} onChange={handleChange} style={{ width: '100%' }} />
             </td>
             <td>
-              <AutoResizeTextArea name="envHiiliviljelytoimenpiteetLisatiedot" value={envData.envHiiliviljelytoimenpiteetLisatiedot} onChange={handleChange} style={{ width: '100%' }} />
+              <AutoResizeTextArea name="envHiiliviljelytoimenpiteetLisatiedot" value={envData.envHiiliviljelytoimenpiteetLisatiedot} onChange={handleChange} style={{ width: '100%' }}placeholder="Tieto löytyy tuotosseurannasta tai meijerin tiedoista" />
             </td>
           </tr>
           <tr>
