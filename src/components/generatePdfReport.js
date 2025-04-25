@@ -210,8 +210,9 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles:
+           { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }}},
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top',cellPadding: { top: 10, right: 3, bottom: 3, left: 3 } }}
       ];
     }
     return [label, col2, col3];
@@ -322,8 +323,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -445,8 +446,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -542,8 +543,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -639,8 +640,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -809,8 +810,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }}},
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -895,8 +896,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -1034,8 +1035,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -1113,8 +1114,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -1208,8 +1209,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -1313,8 +1314,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
@@ -1431,8 +1432,8 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: 3 } },
-        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: 3 } }
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
     return [label, col2, col3];
