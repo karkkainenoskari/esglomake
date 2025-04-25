@@ -1,9 +1,6 @@
 /* tables.css */
 
-/* Yleinen fontti koko sivulle (voit poistaa, jos haluat jättää selaimen oletusfontin) */
-html, body {
-  /* font-family: sans-serif; */
-}
+
 
 .common-table {
   width: 100%;
@@ -15,7 +12,6 @@ html, body {
   border: 2px solid #f0f0f0;
 }
 
-/* Syötekenttien ulkoasu – Lisätty vain font-family, koko periytyy lomakkeen oletuksesta */
 .common-table input[type="text"],
 .common-table select,
 .common-table textarea {

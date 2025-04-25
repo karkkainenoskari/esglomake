@@ -14,8 +14,16 @@ function getGoalsText(goal1, goal2, goal3) {
   const t3 = (goal3 || "").trim();
   if (!t1 && !t2 && !t3) return "";
 
-  return `Vuosi-1: ${t1}\n\nVuosi-2: ${t2}\n\nVuosi-3: ${t3}`;
+  return `Vuosi 1:
+${t1}
+
+Vuosi 2:
+${t2}
+
+Vuosi 3:
+${t3}`;
 }
+
 
 
 const generatePdfReport = (initialData, environmentData, socialData, localFinanceData, financeData) => {
@@ -211,7 +219,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
         { content: label, styles:
-           { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }}},
+           { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }}},
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top',cellPadding: { top: 10, right: 3, bottom: 3, left: 3 } }}
       ];
     }
@@ -323,7 +331,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -446,7 +454,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -543,7 +551,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -640,7 +648,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -810,7 +818,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }}},
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }}},
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -896,7 +904,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -1035,7 +1043,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -1114,7 +1122,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -1209,7 +1217,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -1314,7 +1322,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
@@ -1432,7 +1440,7 @@ const generatePdfReport = (initialData, environmentData, socialData, localFinanc
 
     if (label === "Kuvaus mahdollisista tavoitteista seuraavan kolmen vuoden sisällä") {
       return [
-        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
+        { content: label, styles: { cellWidth: 60, overflow: 'linebreak', valign: 'top',fontStyle: 'bold', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} },
         { content: col3, colSpan: 2, styles: { overflow: 'linebreak', valign: 'top', cellPadding: { top: 10, right: 3, bottom: 3, left: 3  }} }
       ];
     }
