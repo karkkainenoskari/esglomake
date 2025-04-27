@@ -11,7 +11,8 @@ const TalousJaHallintoPage = ({
   initialData,
   environmentData,
   socialData,
-  onDataUpdate
+  onDataUpdate,
+  onGoHome
 }) => {
 
   const [localFinanceData, setLocalFinanceData] = useState(() => {
@@ -1017,32 +1018,64 @@ const TalousJaHallintoPage = ({
 
           </tbody>
         </table>
-
         <div
   style={{
     marginTop: '1rem',
     display: 'flex',
-    justifyContent: 'center',   
-    gap: '1.5rem',                
-    alignItems: 'center'
+    flexDirection: 'column',  
+    alignItems: 'center',
+    gap: '0.5rem'              
   }}
 >
-  <button
-    type="button"
-    onClick={onPrevious}
+  <div style={{ display: 'flex', gap: '1.5rem' }}>
+    <button
+      type="button"
+      onClick={onPrevious}
+      style={{
+        fontSize: '16px',
+        padding: '10px 20px',
+        borderRadius: '8px',
+        backgroundColor: '#0345FA',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer'
+      }}
+    >
+      Edellinen
+    </button>
+
+    <button
+      type="button"
+      onClick={onGoHome}
+      style={{
+        fontSize: '16px',
+        padding: '10px 20px',
+        borderRadius: '8px',
+        backgroundColor: '#0345FA',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer'
+      }}
+    >
+      Palaa etusivulle
+    </button>
+  </div>
+
+  <span
     style={{
-      fontSize: '16px',
-      padding: '10px 20px',
-      borderRadius: '8px',
-      backgroundColor: '#0345FA',      
-      color: 'white',
-      border: 'none',
-      cursor: 'pointer'
+      fontSize: '14px',
+      color: '#333',
+      textAlign: 'center',
+      maxWidth: '650px', 
+      lineHeight: 1.4
     }}
   >
-    Edellinen
-  </button>
+    (HUOM! Muista tallentaa oikean yläkulman valikosta joko raportin luonnos versio tai valmis ESG-raportti)
+  </span>
 </div>
+
+
+
 
       </form>
     </div>

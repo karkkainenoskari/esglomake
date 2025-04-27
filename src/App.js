@@ -336,6 +336,7 @@ function App() {
         <TalousJaHallintoPage
           key={resetKey}
           onNext={handleFinanceNext}
+          onGoHome={() => setStep(1)}
           onPrevious={() => setStep(3)}
           initialData={initialData}
           environmentData={environmentData}
