@@ -157,7 +157,7 @@ function App() {
         style={{
           position: 'fixed',
           top: 18,
-          left: 1435,
+          right: 20,
           zIndex: 10000
         }}
       >
