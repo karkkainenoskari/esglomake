@@ -2,6 +2,7 @@
 
 React-sovellus maitotilan ESG-vastuullisuusraportin kokoamiseen ja tulostamiseen.
 Sovellus ohjaa käyttäjää vaiheittain ympäristö-, sosiaalisen vastuun sekä talouden ja hallinnon aiheisiin.
+Sovellusta voit tarkastella julkisesta osoitteesta: https://www.esgmaito.fi/
 
 ## Ominaisuudet
 - Vaiheittainen lomake neljällä pääosalla
